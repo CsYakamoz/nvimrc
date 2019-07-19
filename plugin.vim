@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     " display, always pursue beautiful thing :)
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/vim-color-forest-night'
+    Plug 'soft-aesthetic/soft-era-vim'
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
