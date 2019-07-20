@@ -2,7 +2,6 @@
     let mapleader = " "         " use space as the leader
     nnoremap <Leader>w :w<CR>
     nnoremap <Leader>q :q<CR>
-    nnoremap <Leader>Q :qa<CR>
 
     " yarn to system, paste from system
     vnoremap <Leader>y "+y
@@ -18,16 +17,10 @@
     :tnoremap <Esc> <C-\><C-n>
 
 " To use `Ctrl + {h, j, k, l}` to navigate windows
-    " normal
     nnoremap <C-h> <C-w>h
     nnoremap <C-j> <C-w>j
     nnoremap <C-k> <C-w>k
     nnoremap <C-l> <C-w>l
-    " terminal
-    tnoremap <C-S-h> <C-\><C-N><C-w>h
-    tnoremap <C-S-j> <C-\><C-N><C-w>j
-    tnoremap <C-S-k> <C-\><C-N><C-w>k
-    tnoremap <C-S-l> <C-\><C-N><C-w>l
 
 " Change windows size
     " + or - is increase or decrease cuuent windows height
@@ -49,30 +42,43 @@
     nnoremap <silent> <C-g> :Rg<CR>
 
 " coc.nvim
+    " Use tab for trigger completion with characters ahead and navigate.
+    " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
     inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    
     function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
 
-    let g:coc_snippet_next = '<Tab>'
-    let g:coc_snippet_prev = '<S-Tab>'
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-    " rename
-    nmap <silent> re <Plug>(coc-rename)
+    " Use K to show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
+
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
 
     " renmap keys for gotos
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gr <Plug>(coc-references)
 
     " integration with vim-airline
-    let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-    let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+    let g:airline#extensions#coc#enabled = 1
 
 " vista
     nnoremap <Leader>v :Vista!!<CR>      
