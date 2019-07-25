@@ -1,7 +1,6 @@
 set termguicolors                   " use true color
 set nowrap                          " don't wrap line    
 set hidden                          " allow jump buffer without saving
-set cmdheight=2                     " better display for messages
 set signcolumn=yes                  " always show signcolumns
 
 set number                          " show line number

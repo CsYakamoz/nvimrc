@@ -59,6 +59,9 @@
     " Coc only does snippet and additional edit on confirm.
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+    let g:coc_snippet_next = '<Tab>'
+    let g:coc_snippet_prev = '<S-Tab>'
+
     " Use K to show documentation in preview window
     nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -77,8 +80,6 @@
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gr <Plug>(coc-references)
 
-    " integration with vim-airline
-    let g:airline#extensions#coc#enabled = 1
-
 " vista
     nnoremap <Leader>v :Vista!!<CR>      
+

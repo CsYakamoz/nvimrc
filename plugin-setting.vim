@@ -41,6 +41,10 @@
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
     let NERDTreeIgnore = ['node_modules', '\.git']
 
+" nerdcommenter
+    " Add spaces after comment delimiters by default
+    let g:NERDSpaceDelims = 1
+
 " startify
     " When opening a file or bookmark, don't change to its directory
     let g:startify_change_to_dir = 0
