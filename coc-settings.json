@@ -1,6 +1,6 @@
 {
   "suggest.noselect": false,
-  "prettier.eslintIntegration": true,
+  "eslint.autoFixOnSave": true,
   "snippets.ultisnips.enable": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",

@@ -1,7 +1,7 @@
 " color-schema
-    "colorscheme gruvbox
-    "colorscheme forest-night
-    colorscheme soft-era
+    colorscheme gruvbox
+    " colorscheme forest-night
+    " colorscheme soft-era
 
 " transparency background
     hi Normal  ctermfg=252 ctermbg=none
@@ -11,8 +11,8 @@
     let g:indent_guides_enable_on_vim_startup = 1
 
 " airline
-    "let g:airline_theme='bubblegum'
-    let g:airline_theme = 'softera'
+    let g:airline_theme='bubblegum'
+    " let g:airline_theme = 'softera'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 
