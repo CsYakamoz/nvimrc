@@ -1,7 +1,10 @@
 {
-  "suggest.noselect": false,
   "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
+
   "snippets.ultisnips.enable": false,
+
+  "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
