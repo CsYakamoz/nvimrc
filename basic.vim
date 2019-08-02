@@ -15,6 +15,14 @@ set softtabstop=4                   " tab key indents by 4 spaces
 set shiftwidth=4                    " >> indents by 4 spaces
 set shiftround                      " >> indents to next multiple of shiftwidth
 
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+autocmd WinEnter * set cursorline
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorcolumn
+autocmd WinLeave * set nocursorcolumn
+
 " restore cursor position when opening file(if opened)
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |

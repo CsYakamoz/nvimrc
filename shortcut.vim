@@ -37,7 +37,7 @@
     nnoremap <Leader>f :Prettier<CR>
 
 " fzf
-    nnoremap <silent> <C-f> :Files<CR>
+    nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :Rg<CR>
 
@@ -53,6 +53,10 @@
         let col = col('.') - 1
         return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
+
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     let g:coc_snippet_next = '<Tab>'
     let g:coc_snippet_prev = '<S-Tab>'
