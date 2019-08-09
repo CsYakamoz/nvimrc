@@ -13,7 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     " easy-tool, lazy guys may need it -.-
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
-
+    Plug 'machakann/vim-swap'
     Plug 'terryma/vim-expand-region'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
@@ -23,13 +23,12 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'tmhedberg/simpylfold'
     Plug 'airblade/vim-gitgutter'
-
     Plug 'liuchengxu/vista.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
 
-    " complete
+    " intellisense engine
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 

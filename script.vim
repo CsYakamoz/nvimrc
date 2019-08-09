@@ -37,6 +37,8 @@ nnoremap <silent> <Leader>t :call <SID>ToggleTerminal()<CR>
 nnoremap <silent> <M-`>     :call <SID>ToggleTerminal()<CR>
 
 
+" auto change input method, required im-select for macOS
+" if use fcitx, see https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
 let g:original_method = "com.apple.keylayout.ABC"
 function! ChangeInputMethodToEn()
     let g:original_method = system("/usr/local/bin/im-select")

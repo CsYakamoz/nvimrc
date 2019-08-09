@@ -18,6 +18,7 @@ set shiftround                      " >> indents to next multiple of shiftwidth
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
+" Only activated window have the highlight line & column
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorcolumn
