@@ -12,6 +12,5 @@ command! -nargs=1 LoadScript exec 'source '.s:home.'/'.'<args>'
 LoadScript basic.vim
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
-LoadScript shortcut.vim
 LoadScript script.vim
 

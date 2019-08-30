@@ -32,21 +32,19 @@ function! s:ToggleTerminal()
       endif
     endif
 endfunction
-
 nnoremap <silent> <Leader>t :call <SID>ToggleTerminal()<CR>
-nnoremap <silent> <M-`>     :call <SID>ToggleTerminal()<CR>
 
-
-" auto change input method, required im-select for macOS
-" if use fcitx, see https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
-let g:original_method = "com.apple.keylayout.ABC"
+" auto change input method, required im-select for MacOS
+" if used fcitx in Linux,
+" see https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
+let s:original_method = "com.apple.keylayout.ABC"
 function! ChangeInputMethodToEn()
-    let g:original_method = system("/usr/local/bin/im-select")
+    let s:original_method = system("/usr/local/bin/im-select")
     call system("/usr/local/bin/im-select com.apple.keylayout.ABC")
 endfunction
 autocmd InsertLeave * call ChangeInputMethodToEn()
 
 function! ChangeInputMethodToOriginal()
-    call system("/usr/local/bin/im-select ".g:original_method)
+    call system("/usr/local/bin/im-select ".s:original_method)
 endfunction
 autocmd InsertEnter * call ChangeInputMethodToOriginal()
