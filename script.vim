@@ -32,7 +32,7 @@ function! s:ToggleTerminal()
       endif
     endif
 endfunction
-nnoremap <silent> <Leader>t :call <SID>ToggleTerminal()<CR>
+nnoremap <silent> <M-`> :call <SID>ToggleTerminal()<CR>
 
 " auto change input method, required im-select for MacOS
 " if used fcitx in Linux,

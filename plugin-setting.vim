@@ -45,14 +45,15 @@
     " ignore directories
     let NERDTreeIgnore = ['node_modules']
 
-    nnoremap <Leader>e :NERDTreeToggle<CR>
+    nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+    nnoremap <silent> <F4> :NERDTreeFind<CR>
 
 " nerdcommenter
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
 
 " Startify
-    nnoremap <silent> <Leader>s :Startify<CR>
+    nnoremap <silent> <F2> :Startify<CR>
 
     " When opening a file or bookmark, don't change to its directory
     let g:startify_change_to_dir = 0
@@ -89,8 +90,6 @@
 " vim-smooth-scroll
     noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
     noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-    noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-    noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " ale
     let g:ale_sign_error = '✗'
@@ -135,3 +134,8 @@
 
     " Use Prettier to format file
     nnoremap <Leader>f :CocCommand prettier.formatFile<CR>
+
+" vim-test
+    let test#strategy = "neovim"
+    nnoremap <silent> <F5> :TestFile<CR>
+    nnoremap <silent> <F6> :TestNearest<CR>

@@ -15,7 +15,10 @@
     set foldmethod=indent               " the kind of folding used for the current window.
     set foldlevelstart=10               " not yet understood
     set updatetime=300                  " you will have bad experience for diagnostic messages when it's default 4000.
-    
+
+" set the language
+    language en_US
+
 " transparency background
     hi Normal  ctermfg=252 ctermbg=none
 
@@ -40,14 +43,14 @@
 " key remap
     let mapleader = " "         " use space as the leader
     nnoremap <Leader>w :w<CR>
-    nnoremap <Leader>q :q<CR>
+    nnoremap <silent> <Leader>q :q<CR>
 
     " yarn to system, paste from system
-    vnoremap <Leader>y "+y
-    nnoremap <Leader>p "+p
-    vnoremap <Leader>p "+p
+    vnoremap <silent> <Leader>y "+y
+    nnoremap <silent> <Leader>p "+p
+    vnoremap <silent> <Leader>p "+p
 
-    nnoremap <Leader><BackSpace> :nohl<CR>
+    nnoremap <silent> <Leader><BackSpace> :nohl<CR>
 
     " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
     inoremap <C-c> <ESC>
@@ -55,16 +58,16 @@
     :tnoremap <Esc> <C-\><C-n>
 
     " using `Ctrl + {h, j, k, l}` to navigate windows
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
+    nnoremap <silent> <C-h> <C-w>h
+    nnoremap <silent> <C-j> <C-w>j
+    nnoremap <silent> <C-k> <C-w>k
+    nnoremap <silent> <C-l> <C-w>l
 
     " change windows size
     " + or - is increase or decrease current windows height
-    nnoremap <Leader>+ <C-w>3+
-    nnoremap <Leader>- <C-w>3-
+    nnoremap <silent> <Leader>+ <C-w>3+
+    nnoremap <silent> <Leader>- <C-w>3-
     " > or < is increase or decrease current windows width
-    nnoremap <Leader>> <C-w>5>
-    nnoremap <Leader>< <C-w>5< 
+    nnoremap <silent> <Leader>> <C-w>5>
+    nnoremap <silent> <Leader>< <C-w>5< 
 

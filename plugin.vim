@@ -24,6 +24,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'terryma/vim-smooth-scroll'
+    Plug 'janko/vim-test'
 
     Plug 'dense-analysis/ale'
     Plug 'honza/vim-snippets'
