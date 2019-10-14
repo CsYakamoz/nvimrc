@@ -25,7 +25,7 @@
       \ }
 
     " files preview
-    command! -bang -nargs=? -complete=dir GitFiles
+    command! -bang -nargs=? -complete=dir GFiles
       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
     " Note: node_modules was ignored
