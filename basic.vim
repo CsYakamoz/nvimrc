@@ -41,6 +41,16 @@
     endif
 
 " key remap
+    " don't use arrow key in normal and insert mode
+    map <Left> <Nop>
+    map <Right> <Nop>
+    map <Up> <Nop>
+    map <Down> <Nop>
+    imap <Up> <Nop>
+    imap <Down> <Nop>
+    imap <Left> <Nop>
+    imap <Right> <Nop>
+
     let mapleader = " "         " use space as the leader
     nnoremap <Leader>w :w<CR>
     nnoremap <silent> <Leader>q :q<CR>
@@ -48,7 +58,9 @@
     " yarn to system, paste from system
     vnoremap <silent> <Leader>y "+y
     nnoremap <silent> <Leader>p "+p
+    nnoremap <silent> <Leader>P "+P
     vnoremap <silent> <Leader>p "+p
+    vnoremap <silent> <Leader>P "+P
 
     nnoremap <silent> <Leader><BackSpace> :nohl<CR>
 

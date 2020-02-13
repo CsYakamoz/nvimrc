@@ -1,5 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/gruvbox-material'
+    Plug 'arcticicestudio/nord-vim'
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
@@ -14,6 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rsi'
 
     Plug 'sheerun/vim-polyglot'
     Plug 'jiangmiao/auto-pairs'
@@ -23,8 +25,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'terryma/vim-smooth-scroll'
+    " Plug 'terryma/vim-smooth-scroll'
     Plug 'janko/vim-test'
+    Plug 'junegunn/vim-peekaboo'
+
+    Plug 'skywind3000/vim-quickui'
 
     Plug 'dense-analysis/ale'
     Plug 'honza/vim-snippets'

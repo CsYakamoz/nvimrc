@@ -1,5 +1,6 @@
 " color-schema
     colorscheme gruvbox-material
+    " colorscheme nord
 
 " indent_guides
     let g:indent_guides_guide_size = 1
@@ -7,9 +8,10 @@
 
 " airline
     let g:airline_theme='bubblegum'
+    " let g:airline_theme='nord'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 
+    let g:airline#extensions#tabline#formatter = 'jsformatter' 
 
 " simpylfold
     let g:SimpylFold_docstring_preview = 1
@@ -35,6 +37,8 @@
         \   <bang>0 ? fzf#vim#with_preview('up:60%')
         \           : fzf#vim#with_preview('right:50%:hidden', '?'),
         \   <bang>0)
+
+    let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
 " nerdtree
     " How can I open NERDTree automatically when vim starts up on opening a directory?
@@ -76,20 +80,20 @@
           \ ]
 
 " Vista
-    nnoremap <Leader>v :Vista!!<CR>      
+    nnoremap <Leader><F6> :Vista!!<CR>      
 
     " default executive
     let g:vista_default_executive="coc"
+    let g:vista_executive_for = {
+        \ 'sh': 'ctags',
+        \ 'vim': 'ctags',
+        \ }
 
     " fzf - preview
     let g:vista_fzf_preview = ['right:50%']
 
 " vim-javascript
     let g:javascript_plugin_jsdoc = 1
-
-" vim-smooth-scroll
-    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " ale
     let g:ale_sign_error = '✗'
@@ -108,10 +112,6 @@
         let col = col('.') - 1
         return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
-
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-    " Coc only does snippet and additional edit on confirm.
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     let g:coc_snippet_next = '<Tab>'
     let g:coc_snippet_prev = '<S-Tab>'
@@ -135,7 +135,70 @@
     " Use Prettier to format file
     nnoremap <Leader>f :CocCommand prettier.formatFile<CR>
 
+    " Use `[g` and `]g` to navigate diagnostics
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+    " Using CocList
+    " Show all diagnostics
+    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+
 " vim-test
     let test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
     nnoremap <silent> <F6> :TestNearest<CR>
+
+" vim-quickui
+    " clear all the menus
+    call quickui#menu#reset()
+    
+    call quickui#menu#install('&Tool', [
+                \ [ "&Startify\tF2", 'Startify' ],
+                \ [ "--", '' ],
+                \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
+                \ [ "--", '' ],
+                \ [ "TestFile\tF5", 'TestFile'],
+                \ [ "&TestNearest\tF6", 'TestNearest' ],
+                \ [ "--", '' ],
+                \ [ "&VistaToogle\tF6", 'Vista!!' ],
+                \ [ "VistaFinder", 'Vista finder' ],
+                \ ])
+    
+    call quickui#menu#install('&Git', [
+                \ [ 'status', 'Gstatus'],
+                \ [ 'commit', 'Gcommit'],
+                \ [ "--", '' ],
+                \ [ 'blame', 'Gblame'],
+                \ [ 'diffsplit', 'Gdiffsplit'],
+                \ [ 'vdiffsplit', 'Gvdiffsplit'],
+                \ [ "--", '' ],
+                \ [ 'read(checkout)', 'Gread'],
+                \ [ 'write(add)', 'Gwrite'],
+                \ ])
+    
+    " script inside %{...} will be evaluated and expanded in the string
+    call quickui#menu#install("&Option", [
+    			\ ['Set Spell %{&spell? "Off":"On"}', 'set spell!'],
+    			\ ['Enable mouse', 'set mouse=a'],
+    			\ ['Disable mouse', 'set mouse='],
+    			\ ['Set Paste %{&paste? "Off":"On"}', 'set paste!'],
+    			\ ])
+    
+    " register HELP menu with weight 1000
+    call quickui#menu#install('&Help', [
+    			\ ["&Cheatsheet", 'help index', ''],
+    			\ ['T&ips', 'help tips', ''],
+    			\ ['--',''],
+    			\ ["&Tutorial", 'help tutor', ''],
+    			\ ['&Quick Reference', 'help quickref', ''],
+    			\ ['&Summary', 'help summary', ''],
+    			\ ], 10000)
+    
+    " enable to display tips in the cmdline
+    let g:quickui_show_tip = 1
+    
+    " hit space twice to open menu
+    noremap <Leader><Leader> :call quickui#menu#open()<cr>
+
+    let g:quickui_border_style = 2
+    let g:quickui_color_scheme = 'gruvbox'

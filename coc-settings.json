@@ -1,7 +1,9 @@
 {
   "prettier.eslintIntegration": true,
 
-  "snippets.ultisnips.enable": false,
+  "snippets.userSnippetsDirectory": "~/.config/coc/ultisnips",
+
+  "yank.enableCompletion": false,
 
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
