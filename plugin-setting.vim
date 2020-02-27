@@ -20,11 +20,8 @@
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :Rg<CR>
-    let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit' 
-      \ }
+    " [Buffers] Jump to the existing window if possible
+    let g:fzf_buffers_jump = 1
 
     " files preview
     command! -bang -nargs=? -complete=dir GFiles
@@ -34,9 +31,7 @@
     command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
-        \   <bang>0 ? fzf#vim#with_preview('up:60%')
-        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-        \   <bang>0)
+        \   fzf#vim#with_preview(), <bang>0)
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
@@ -139,10 +134,6 @@
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-    " Using CocList
-    " Show all diagnostics
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-
 " vim-test
     let test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
@@ -153,12 +144,14 @@
     call quickui#menu#reset()
     
     call quickui#menu#install('&Tool', [
-                \ [ "&Startify\tF2", 'Startify' ],
-                \ [ "--", '' ],
                 \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
+                \ [ "&Startify\tF2", 'Startify' ],
                 \ [ "--", '' ],
                 \ [ "TestFile\tF5", 'TestFile'],
                 \ [ "&TestNearest\tF6", 'TestNearest' ],
+                \ [ "--", '' ],
+                \ [ "&PmR", 'call PmR()' ],
+                \ [ "PmR-Reset", 'call PmRReset()' ],
                 \ [ "--", '' ],
                 \ [ "&VistaToogle\tF6", 'Vista!!' ],
                 \ [ "VistaFinder", 'Vista finder' ],
@@ -202,3 +195,6 @@
 
     let g:quickui_border_style = 2
     let g:quickui_color_scheme = 'gruvbox'
+
+" vim-gitgutter
+    let g:gitgutter_preview_win_floating = 1

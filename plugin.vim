@@ -1,6 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/gruvbox-material'
     Plug 'arcticicestudio/nord-vim'
+
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
@@ -16,7 +17,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
-
     Plug 'sheerun/vim-polyglot'
     Plug 'jiangmiao/auto-pairs'
     Plug 'tmhedberg/simpylfold'
@@ -30,9 +30,10 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/vim-peekaboo'
 
     Plug 'skywind3000/vim-quickui'
+    Plug 'kkoomen/vim-doge'
 
     Plug 'dense-analysis/ale'
     Plug 'honza/vim-snippets'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 

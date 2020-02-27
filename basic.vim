@@ -83,3 +83,6 @@
     nnoremap <silent> <Leader>> <C-w>5>
     nnoremap <silent> <Leader>< <C-w>5< 
 
+    " add new empty line in normal mode
+    nnoremap <Leader>o o<ESC>
+    nnoremap <Leader>O O<ESC>

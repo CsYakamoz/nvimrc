@@ -52,7 +52,7 @@ autocmd InsertEnter * call ChangeInputMethodToOriginal()
 " Creates a floating window with a most recent buffer to be used
 " reference: https://github.com/camspiers/dotfiles/blob/master/files/.config/nvim/init.vim#L246
 function! CreateCenteredFloatingWindow()
-    let width = float2nr(&columns * 0.7)
+    let width = float2nr(&columns * 1)
     let height = float2nr(&lines * 0.7)
     let top = ((&lines - height) / 2) - 1
     let left = (&columns - width) / 2
@@ -72,4 +72,36 @@ function! CreateCenteredFloatingWindow()
     let opts.width -= 4
     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
+
+let s:pmr_option = {
+    \ }
+let s:pmr_current_target = "alpha"
+
+function! s:Reset(item)
+    let s:pmr_current_target = a:item
+endfunction
+
+function! g:PmRReset() 
+    call fzf#run({
+    \   'source': keys(s:pmr_option),
+    \   'sink': function('<SID>Reset')
+    \ })
+endfunction
+
+function! s:PmRExec(item) 
+    let l:target = s:pmr_option[s:pmr_current_target]
+    let l:command = 'ssh ' . l:target['user'] . '@' . l:target['addresses'] . ' pm2 restart ' . a:item
+    call system(command)
+    echo 'Successfully restart ' . a:item
+endfunction
+
+function! g:PmR()
+    let l:target = s:pmr_option[s:pmr_current_target]
+    let l:command = 'ssh ' . l:target['user'] . '@' . l:target['addresses'] . " pm2 ls | awk '{print $2}' | grep -E '[^(App)|\s+|(`pm2)]'"
+    call fzf#run({
+    \   'source': l:command,
+    \   'sink': function('<SID>PmRExec'),
+    \   'options': '--multi',
+    \ })
 endfunction
