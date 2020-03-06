@@ -147,14 +147,22 @@
                 \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
                 \ [ "&Startify\tF2", 'Startify' ],
                 \ [ "--", '' ],
+                \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
+                \ [ "--", '' ],
                 \ [ "TestFile\tF5", 'TestFile'],
                 \ [ "&TestNearest\tF6", 'TestNearest' ],
                 \ [ "--", '' ],
                 \ [ "&PmR", 'call PmR()' ],
                 \ [ "PmR-Reset", 'call PmRReset()' ],
                 \ [ "--", '' ],
+                \ [ "&CpR", 'call CpR()' ],
+                \ [ "CpR-Reset", 'call CpRReset()' ],
+                \ [ "--", '' ],
                 \ [ "&VistaToogle\tF6", 'Vista!!' ],
                 \ [ "VistaFinder", 'Vista finder' ],
+                \ [ "--", '' ],
+                \ [ "&MarkdownPreview", 'MarkdownPreview' ],
+                \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
                 \ ])
     
     call quickui#menu#install('&Git', [
@@ -198,3 +206,6 @@
 
 " vim-gitgutter
     let g:gitgutter_preview_win_floating = 1
+
+" markdown-preview.nvim
+    let g:mkdp_auto_close = 0

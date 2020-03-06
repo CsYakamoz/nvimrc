@@ -1,35 +1,35 @@
 function! s:ToggleTerminal()
     let found_winnr = 0
     for winnr in range(1, winnr('$'))
-      if getbufvar(winbufnr(winnr), '&buftype') == 'terminal'
-        let found_winnr = winnr
-      endif
+        if getbufvar(winbufnr(winnr), '&buftype') == 'terminal'
+            let found_winnr = winnr
+        endif
     endfor
 
     if found_winnr > 0
-      execute found_winnr . 'wincmd q'
+        execute found_winnr . 'wincmd q'
     else
-      let found_bufnr = 0
-      for bufnr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
-        if getbufvar(bufnr, '&buftype') == 'terminal'
-          let found_bufnr = bufnr
-        endif
-      endfor
-      if found_bufnr > 0
-        if &lines > 30
-          botright 15split
-          execute 'buffer ' . found_bufnr
+        let found_bufnr = 0
+        for bufnr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
+            if getbufvar(bufnr, '&buftype') == 'terminal'
+                let found_bufnr = bufnr
+            endif
+        endfor
+        if found_bufnr > 0
+            if &lines > 30
+                botright 15split
+                execute 'buffer ' . found_bufnr
+            else
+                botright split
+                execute 'buffer ' . found_bufnr
+            endif
         else
-          botright split
-          execute 'buffer ' . found_bufnr
+            if &lines > 30
+                execute 'botright 15split term://' . &shell
+            else
+                execute 'botright split term://' . &shell
+            endif
         endif
-      else
-        if &lines > 30
-          execute 'botright 15split term://' . &shell
-        else
-          execute 'botright split term://' . &shell
-        endif
-      endif
     endif
 endfunction
 nnoremap <silent> <M-=> :call <SID>ToggleTerminal()<CR>
@@ -53,7 +53,7 @@ autocmd InsertEnter * call ChangeInputMethodToOriginal()
 " reference: https://github.com/camspiers/dotfiles/blob/master/files/.config/nvim/init.vim#L246
 function! CreateCenteredFloatingWindow()
     let width = float2nr(&columns * 1)
-    let height = float2nr(&lines * 0.7)
+    let height = float2nr(&lines * 0.75)
     let top = ((&lines - height) / 2) - 1
     let left = (&columns - width) / 2
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
@@ -74,34 +74,18 @@ function! CreateCenteredFloatingWindow()
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
 
-let s:pmr_option = {
-    \ }
-let s:pmr_current_target = "alpha"
 
-function! s:Reset(item)
-    let s:pmr_current_target = a:item
+function! s:CloseBuffer(item)
+    execute 'bdelete ' . a:item
 endfunction
 
-function! g:PmRReset() 
+function! CloseSpecificBuffer()
+    let l:list = filter(range(1, bufnr('$')), 'buflisted(v:val) && getbufvar(v:val, "&filetype") != "qf"')
+    let l:named_list = map(l:list, 'bufname(v:val)')
+
     call fzf#run({
-    \   'source': keys(s:pmr_option),
-    \   'sink': function('<SID>Reset')
-    \ })
-endfunction
-
-function! s:PmRExec(item) 
-    let l:target = s:pmr_option[s:pmr_current_target]
-    let l:command = 'ssh ' . l:target['user'] . '@' . l:target['addresses'] . ' pm2 restart ' . a:item
-    call system(command)
-    echo 'Successfully restart ' . a:item
-endfunction
-
-function! g:PmR()
-    let l:target = s:pmr_option[s:pmr_current_target]
-    let l:command = 'ssh ' . l:target['user'] . '@' . l:target['addresses'] . " pm2 ls | awk '{print $2}' | grep -E '[^(App)|\s+|(`pm2)]'"
-    call fzf#run({
-    \   'source': l:command,
-    \   'sink': function('<SID>PmRExec'),
-    \   'options': '--multi',
+    \   'source': l:named_list,
+    \   'sink': function('<SID>CloseBuffer'),
+    \   'window': 'call CreateCenteredFloatingWindow()' 
     \ })
 endfunction

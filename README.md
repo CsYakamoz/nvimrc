@@ -29,6 +29,7 @@
 |          [ryanoasis/vim-devicons](http://github.com/ryanoasis/vim-devicons)          |   Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more    |
 |         [vim-airline/vim-airline](http://github.com/vim-airline/vim-airline)         |                                 lean & mean status/tabline for vim that's light as air                                  |
 |  [vim-airline/vim-airline-themes](http://github.com/vim-airline/vim-airline-themes)  |                                         A collection of themes for vim-airline                                          |
+|    [iamcco/markdown-preview.nvim](http://github.com/iamcco/markdown-preview.nvim)    |                                          markdown preview plugin for (neo)vim                                           |
 | [nathanaelkane/vim-indent-guides](http://github.com/nathanaelkane/vim-indent-guides) |                               A Vim plugin for visually displaying indent levels in code                                |
 |                [junegunn/fzf.vim](http://github.com/junegunn/fzf.vim)                |                                           A command-line fuzzy finder in vim                                            |
 |              [machakann/vim-swap](http://github.com/machakann/vim-swap)              |                                    A Vim text editor plugin to swap delimited items.                                    |
@@ -49,6 +50,7 @@
 |                  [janko/vim-test](http://github.com/janko/vim-test)                  |                                        Run your _tests_ at the speed of thought                                         |
 |           [junegunn/vim-peekaboo](http://github.com/junegunn/vim-peekaboo)           | Peekaboo extends `"` and `@` in normal mode and `<CTRL-R>` in insert mode so you can see the contents of the registers. |
 |         [skywind3000/vim-quickui](http://github.com/skywind3000/vim-quickui)         |                              The missing UI extensions for Vim 8.2 (and NeoVim 0.4) !! 😎                               |
+|                [kkoomen/vim-doge](http://github.com/kkoomen/vim-doge)                | (Do)cumentation (Ge)nerator 15+ languages 📚 Generate proper code documentation skeletons with a single keypress. ⚡️🔥 |
 |              [dense-analysis/ale](http://github.com/dense-analysis/ale)              |              Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support              |
 |              [honza/vim-snippets](http://github.com/honza/vim-snippets)              |                              vim-snipmate default snippets (Previously snipmate-snippets)                               |
 |               [neoclide/coc.nvim](http://github.com/neoclide/coc.nvim)               |                 Intellisense engine for vim8 & neovim, full language server protocol support as VSCode                  |
