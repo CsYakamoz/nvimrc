@@ -86,6 +86,7 @@ function! CloseSpecificBuffer()
     call fzf#run({
     \   'source': l:named_list,
     \   'sink': function('<SID>CloseBuffer'),
+    \   'options': '--multi',
     \   'window': 'call CreateCenteredFloatingWindow()' 
     \ })
 endfunction

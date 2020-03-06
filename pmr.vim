@@ -9,7 +9,7 @@ endfunction
 function! g:PmRReset() 
     call fzf#run({
     \   'source': keys(s:pmr_option),
-    \   'sink': function('<SID>Reset')
+    \   'sink': function('<SID>Reset'),
     \   'window': 'call CreateCenteredFloatingWindow()' 
     \ })
 endfunction

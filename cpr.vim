@@ -11,7 +11,7 @@ endfunction
 function! g:CpRReset()
     call fzf#run({
     \   'source': s:cpr_option_list,
-    \   'sink': function('<SID>Reset')
+    \   'sink': function('<SID>Reset'),
     \   'window': 'call CreateCenteredFloatingWindow()' 
     \ })
 endfunction
@@ -27,8 +27,12 @@ function! CpR()
         let l:remote_path = l:target['dir'] . '/' . l:relative_path
         let l:ssh = l:target['user'] . '@' . l:target['addr']
 
-        let l:command = "scp " . l:file . " " . l:ssh . ':' . l:remote_path
-        call system(command)
+        let l:remote_dir = fnamemodify(l:remote_path, ':h')
+        let l:mkdir_command = 'ssh ' . l:ssh . ' "mkdir -p ' . l:remote_dir . '"'
+        call system(l:mkdir_command)
+
+        let l:scp_command = "scp " . l:file . " " . l:ssh . ':' . l:remote_path
+        call system(l:scp_command)
 
         echo 'Successfully copy the file to remote server with id(' . s:cpr_current_target . ')'
     else

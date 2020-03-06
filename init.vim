@@ -1,4 +1,4 @@
-" csportrait-neovim's init.vim
+" csyakamoz-neovim's init.vim
 "
 " reference:
 "   - https://github.com/vim-china/hello-vim
