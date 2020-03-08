@@ -13,5 +13,4 @@ LoadScript basic.vim
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
 LoadScript script.vim
-LoadScript pmr.vim
-LoadScript cpr.vim
+LoadScript qubao-tool-kit.vim

@@ -24,13 +24,13 @@
 |                                         Name                                         |                                                        Effection                                                        |
 | :----------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: |
 |       [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)        |                                                      Color schema                                                       |
-|        [arcticicestudio/nord-vim](https://gitu.com/arcticicestudio/nord-vim)         |                                                      Color schema                                                       |
+|            [sainnhe/forest-night](https://gitu.com/sainnhe/forest-night)             |                                                      Color schema                                                       |
 |             [mhinz/vim-startify](https://github.com/mhinz/vim-startify)              |                                             The fancy start screen for Vim                                              |
 |          [ryanoasis/vim-devicons](http://github.com/ryanoasis/vim-devicons)          |   Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more    |
 |         [vim-airline/vim-airline](http://github.com/vim-airline/vim-airline)         |                                 lean & mean status/tabline for vim that's light as air                                  |
 |  [vim-airline/vim-airline-themes](http://github.com/vim-airline/vim-airline-themes)  |                                         A collection of themes for vim-airline                                          |
-|    [iamcco/markdown-preview.nvim](http://github.com/iamcco/markdown-preview.nvim)    |                                          markdown preview plugin for (neo)vim                                           |
 | [nathanaelkane/vim-indent-guides](http://github.com/nathanaelkane/vim-indent-guides) |                               A Vim plugin for visually displaying indent levels in code                                |
+|    [iamcco/markdown-preview.nvim](http://github.com/iamcco/markdown-preview.nvim)    |                                          markdown preview plugin for (neo)vim                                           |
 |                [junegunn/fzf.vim](http://github.com/junegunn/fzf.vim)                |                                           A command-line fuzzy finder in vim                                            |
 |              [machakann/vim-swap](http://github.com/machakann/vim-swap)              |                                    A Vim text editor plugin to swap delimited items.                                    |
 |       [terryma/vim-expand-region](http://github.com/terryma/vim-expand-region)       |    Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.    |
@@ -46,7 +46,6 @@
 |             [scrooloose/nerdtree](http://github.com/scrooloose/nerdtree)             |                                             A tree explorer plugin for vim.                                             |
 |        [scrooloose/nerdcommenter](http://github.com/scrooloose/nerdcommenter)        |                                      Vim plugin for intensely orgasmic commenting                                       |
 |     [Xuyuanp/nerdtree-git-plugin](http://github.com/Xuyuanp/nerdtree-git-plugin)     |                                         A plugin of NERDTree showing git status                                         |
-|    ~~[terryma/vim-smooth-scroll](https://github.com/terryma/vim-smooth-scroll)~~     |                                       ~~Make _scrolling_ in _Vim_ more pleasant~~                                       |
 |                  [janko/vim-test](http://github.com/janko/vim-test)                  |                                        Run your _tests_ at the speed of thought                                         |
 |           [junegunn/vim-peekaboo](http://github.com/junegunn/vim-peekaboo)           | Peekaboo extends `"` and `@` in normal mode and `<CTRL-R>` in insert mode so you can see the contents of the registers. |
 |         [skywind3000/vim-quickui](http://github.com/skywind3000/vim-quickui)         |                              The missing UI extensions for Vim 8.2 (and NeoVim 0.4) !! 😎                               |

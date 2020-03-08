@@ -1,6 +1,6 @@
 " color-schema
     colorscheme gruvbox-material
-    " colorscheme nord
+    " colorscheme forest-night
 
 " indent_guides
     let g:indent_guides_guide_size = 1
@@ -8,7 +8,7 @@
 
 " airline
     let g:airline_theme='bubblegum'
-    " let g:airline_theme='nord'
+    " let g:airline_theme='forest_night'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter' 

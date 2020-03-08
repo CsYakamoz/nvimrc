@@ -5,6 +5,8 @@
 
   "yank.enableCompletion": false,
 
+  "diagnostic.displayByAle": true,
+
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",

@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/gruvbox-material'
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'sainnhe/forest-night'
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
@@ -26,7 +26,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'terryma/vim-smooth-scroll'
     Plug 'janko/vim-test'
     Plug 'junegunn/vim-peekaboo'
 
