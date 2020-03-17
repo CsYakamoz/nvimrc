@@ -68,7 +68,7 @@ function! CpR()
         let l:scp_command = "scp " . l:file . " " . l:ssh . ':' . l:remote_path
         call system(l:scp_command)
 
-        echo 'Successfully copy the file to remote server with id(' . s:cpr_current_target . ')'
+        echo 'Successfully copy the file(' . l:relative_path . ') to remote server with id(' . s:cpr_current_target . ')'
     else
         echo 'no config for this project(' . l:root . ')'
     endif

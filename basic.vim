@@ -15,6 +15,7 @@
     set foldmethod=indent               " the kind of folding used for the current window.
     set foldlevelstart=10               " not yet understood
     set updatetime=300                  " you will have bad experience for diagnostic messages when it's default 4000.
+    set shortmess+=c                    " Don't pass messages to |ins-completion-menu|
 
 " set the language
     language en_US
@@ -86,3 +87,10 @@
     " add new empty line in normal mode
     nnoremap <Leader>o o<ESC>
     nnoremap <Leader>O O<ESC>
+
+    cnoremap <C-a> <Home>
+    cnoremap <C-b> <Left>
+    cnoremap <C-f> <Right>
+    cnoremap <C-e> <End>
+    cnoremap <C-d> <Del>
+    cnoremap <C-h> <BS>

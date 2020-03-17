@@ -134,6 +134,10 @@
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+    " coc-ci
+    nmap <silent> w <Plug>(coc-ci-w)
+    nmap <silent> b <Plug>(coc-ci-b)
+
 " vim-test
     let test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
@@ -144,8 +148,8 @@
     call quickui#menu#reset()
     
     call quickui#menu#install('&Tool', [
-                \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
                 \ [ "&Startify\tF2", 'Startify' ],
+                \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
                 \ [ "--", '' ],
                 \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
                 \ [ "--", '' ],
@@ -166,19 +170,19 @@
                 \ ])
     
     call quickui#menu#install('&Git', [
-                \ [ 'status', 'Gstatus'],
-                \ [ 'commit', 'Gcommit'],
+                \ [ '&diffsplit', 'Gdiffsplit'],
+                \ [ '&vdiffsplit', 'Gvdiffsplit'],
+                \ [ '&blame', 'Gblame'],
                 \ [ "--", '' ],
-                \ [ 'blame', 'Gblame'],
-                \ [ 'diffsplit', 'Gdiffsplit'],
-                \ [ 'vdiffsplit', 'Gvdiffsplit'],
+                \ [ '&status', 'Gstatus'],
+                \ [ '&commit', 'Gcommit'],
                 \ [ "--", '' ],
-                \ [ 'read(checkout)', 'Gread'],
-                \ [ 'write(add)', 'Gwrite'],
+                \ [ '&read(checkout)', 'Gread'],
+                \ [ '&write(add)', 'Gwrite'],
                 \ ])
     
     " script inside %{...} will be evaluated and expanded in the string
-    call quickui#menu#install("&Option", [
+    call quickui#menu#install("Option", [
     			\ ['Set Spell %{&spell? "Off":"On"}', 'set spell!'],
     			\ ['Enable mouse', 'set mouse=a'],
     			\ ['Disable mouse', 'set mouse='],
@@ -186,7 +190,7 @@
     			\ ])
     
     " register HELP menu with weight 1000
-    call quickui#menu#install('&Help', [
+    call quickui#menu#install('Help', [
     			\ ["&Cheatsheet", 'help index', ''],
     			\ ['T&ips', 'help tips', ''],
     			\ ['--',''],
@@ -199,7 +203,7 @@
     let g:quickui_show_tip = 1
     
     " hit space twice to open menu
-    noremap <Leader><Leader> :call quickui#menu#open()<cr>
+    noremap <silent> <Leader><Leader> :call quickui#menu#open()<cr>
 
     let g:quickui_border_style = 2
     let g:quickui_color_scheme = 'gruvbox'
@@ -209,3 +213,15 @@
 
 " markdown-preview.nvim
     let g:mkdp_auto_close = 0
+
+" vim-floaterm
+    let g:floaterm_type = 'floating'
+    let g:floaterm_position = 'bottomright'
+    let g:floaterm_width = 0.99
+    let g:floaterm_height = 0.5
+
+    " This plugin leaves an empty buffer on startify window
+    autocmd User Startified setlocal buflisted
+
+    nnoremap <silent> <M-=> :FloatermToggle<CR>
+    tnoremap <silent> <M-=> <C-\><C-N>:FloatermToggle<CR>

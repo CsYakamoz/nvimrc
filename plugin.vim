@@ -7,7 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+    Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
 
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
@@ -35,5 +35,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'dense-analysis/ale'
     Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'voldikss/vim-floaterm'
 call plug#end()
 
