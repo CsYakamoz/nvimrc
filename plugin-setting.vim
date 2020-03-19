@@ -225,3 +225,4 @@
 
     nnoremap <silent> <M-=> :FloatermToggle<CR>
     tnoremap <silent> <M-=> <C-\><C-N>:FloatermToggle<CR>
+    inoremap <silent> <M-=> <Esc>:FloatermToggle<CR>

@@ -38,7 +38,7 @@
 |              [tpope/vim-surround](https://github.com/tpope/vim-surround)              |                                           quoting/parenthesizing made simple                                            |
 |              [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)              |                                     A Git wrapper so awesome, it should be illegal                                      |
 |                   [tpope/vim-rsi](https://github.com/tpope/vim-rsi)                   |                                                Readline style insertion                                                 |
-|            [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)            |                                         A collection of language packs for Vim.                                         |
+|         [pangloss/vim-javascript](https://github.com/pangloss/vim-javascript)         |              JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.              |
 |            [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)            |                              Vim plugin, insert or delete brackets, parens, quotes in pair                              |
 |            [tmhedberg/simpylfold](https://github.com/tmhedberg/simpylfold)            |                                            No-BS Python code folding for Vim                                            |
 |          [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)          |                A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.                 |
