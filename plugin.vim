@@ -12,8 +12,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
 
+    Plug 'rizzatti/dash.vim', { 'on': 'Dash' }
     Plug 'machakann/vim-swap'
-    Plug 'terryma/vim-expand-region'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'

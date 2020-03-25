@@ -88,9 +88,3 @@
     nnoremap <Leader>o o<ESC>
     nnoremap <Leader>O O<ESC>
 
-    cnoremap <C-a> <Home>
-    cnoremap <C-b> <Left>
-    cnoremap <C-f> <Right>
-    cnoremap <C-e> <End>
-    cnoremap <C-d> <Del>
-    cnoremap <C-h> <BS>

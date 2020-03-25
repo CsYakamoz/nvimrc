@@ -32,8 +32,8 @@
 | [nathanaelkane/vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) |                               A Vim plugin for visually displaying indent levels in code                                |
 |    [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)    |                                          markdown preview plugin for (neo)vim                                           |
 |                [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)                |                                           A command-line fuzzy finder in vim                                            |
+|               [rizzatti/dash.vim](https://github.com/rizzatti/dash.vim)               |                                                Search Dash.app from Vim                                                 |
 |              [machakann/vim-swap](https://github.com/machakann/vim-swap)              |                                    A Vim text editor plugin to swap delimited items.                                    |
-|       [terryma/vim-expand-region](https://github.com/terryma/vim-expand-region)       |    Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.    |
 |                [tpope/vim-repeat](https://github.com/tpope/vim-repeat)                |                                     enable repeating supported plugin maps with "."                                     |
 |              [tpope/vim-surround](https://github.com/tpope/vim-surround)              |                                           quoting/parenthesizing made simple                                            |
 |              [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)              |                                     A Git wrapper so awesome, it should be illegal                                      |
