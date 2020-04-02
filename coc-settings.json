@@ -7,7 +7,7 @@
 
   "diagnostic.displayByAle": true,
 
-  "cSpell.words": ["wechat"],
+  "cSpell.words": ["wechat", "struct"],
 
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {

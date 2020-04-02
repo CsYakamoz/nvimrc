@@ -35,7 +35,7 @@ endfunction
 
 let s:cpr_config = {
     \ }
-let s:cpr_option_list = ['alpha', 'beta']
+let s:cpr_option_list = ['alpha', 'beta', 'alpha3']
 let s:cpr_current_target = 'alpha'
 
 function! s:CReset(item)
@@ -52,7 +52,7 @@ endfunction
 
 function! CpR()
     let l:root = getcwd()
-    if has_key(s:cpr_config, l:root)
+    if has_key(s:cpr_config, l:root) && has_key(s:cpr_config[l:root], s:cpr_current_target)
         let l:file = expand('%') 
         let l:relative_path = fnamemodify(expand("%"), ":~:.")
 

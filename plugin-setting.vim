@@ -31,7 +31,7 @@
     command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
-        \   fzf#vim#with_preview(), <bang>0)
+        \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
@@ -82,10 +82,39 @@
     let g:vista_executive_for = {
         \ 'sh': 'ctags',
         \ 'vim': 'ctags',
+        \ 'markdown': 'ctags',
         \ }
 
     " fzf - preview
     let g:vista_fzf_preview = ['right:50%']
+
+    let g:vista#renderer#icons = {
+    \   "keyword": "\uf1de",
+    \   "variable": "\ue79b",
+    \   "value": "\uf89f",
+    \   "operator": "\u03a8",
+    \   "function": "\u0192",
+    \   "reference": "\ufa46",
+    \   "constant": "\uf8fe",
+    \   "method": "\uf09a",
+    \   "struct": "\ufb44",
+    \   "class": "\uf0e8",
+    \   "interface": "\uf417",
+    \   "text": "\ue612",
+    \   "enum": "\uf435",
+    \   "enumMember": "\uf02b",
+    \   "module": "\uf40d",
+    \   "color": "\ue22b",
+    \   "property": "\ue624",
+    \   "field": "\uf9be",
+    \   "unit": "\uf475",
+    \   "event": "\ufacd",
+    \   "file": "\uf723",
+    \   "folder": "\uf114",
+    \   "snippet": "\ue60b",
+    \   "typeParameter": "\uf728",
+    \   "default": "\uf29c"
+    \  }
 
 " vim-javascript
     let g:javascript_plugin_jsdoc = 1
