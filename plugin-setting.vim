@@ -1,5 +1,6 @@
 " color-schema
     colorscheme gruvbox-material
+    " colorscheme xcodewwdc
     " colorscheme forest-night
 
 " indent_guides
@@ -75,8 +76,6 @@
           \ ]
 
 " Vista
-    nnoremap <Leader><F6> :Vista!!<CR>      
-
     " default executive
     let g:vista_default_executive="coc"
     let g:vista_executive_for = {
@@ -191,7 +190,7 @@
                 \ [ "&CpR", 'call CpR()' ],
                 \ [ "CpR-Reset", 'call CpRReset()' ],
                 \ [ "--", '' ],
-                \ [ "&VistaToogle\tF6", 'Vista!!' ],
+                \ [ "&VistaToogle", 'Vista!!' ],
                 \ [ "VistaFinder", 'Vista finder' ],
                 \ [ "--", '' ],
                 \ [ "&MarkdownPreview", 'MarkdownPreview' ],

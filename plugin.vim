@@ -1,6 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/gruvbox-material'
     Plug 'sainnhe/forest-night'
+    Plug 'arzg/vim-colors-xcode'
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
@@ -18,6 +19,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
+    Plug 'tpope/vim-sleuth'
+    Plug 'PeterRincker/vim-searchlight'
     Plug 'pangloss/vim-javascript'
     Plug 'jiangmiao/auto-pairs'
     Plug 'tmhedberg/simpylfold'

@@ -25,6 +25,7 @@
 | :-----------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: |
 |        [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)        |                                                      Color schema                                                       |
 |            [sainnhe/forest-night](https://github.com/sainnhe/forest-night)            |                                                      Color schema                                                       |
+|           [arzg/vim-colors-xcode](https://github.com/arzg/vim-colors-xcode)           |                                                      Color schema                                                       |
 |              [mhinz/vim-startify](https://github.com/mhinz/vim-startify)              |                                             The fancy start screen for Vim                                              |
 |          [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)          |   Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more    |
 |         [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)         |                                 lean & mean status/tabline for vim that's light as air                                  |
@@ -38,6 +39,8 @@
 |              [tpope/vim-surround](https://github.com/tpope/vim-surround)              |                                           quoting/parenthesizing made simple                                            |
 |              [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)              |                                     A Git wrapper so awesome, it should be illegal                                      |
 |                   [tpope/vim-rsi](https://github.com/tpope/vim-rsi)                   |                                                Readline style insertion                                                 |
+|                [tpope/vim-sleuth](https://github.com/tpope/vim-sleuth)                |                            automatically adjusts `shiftwidth` and `expandtab` heuristically                             |
+|    [PeterRincker/vim-searchlight](https://github.com/PeterRincker/vim-searchlight)    |                                           Highlights the current search match                                           |
 |         [pangloss/vim-javascript](https://github.com/pangloss/vim-javascript)         |              JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.              |
 |            [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)            |                              Vim plugin, insert or delete brackets, parens, quotes in pair                              |
 |            [tmhedberg/simpylfold](https://github.com/tmhedberg/simpylfold)            |                                            No-BS Python code folding for Vim                                            |
