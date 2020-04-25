@@ -39,5 +39,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'voldikss/vim-floaterm'
+
+    Plug 'bootleq/vim-cycle'
 call plug#end()
 

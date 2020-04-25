@@ -57,6 +57,7 @@
 |              [honza/vim-snippets](https://github.com/honza/vim-snippets)              |                              vim-snipmate default snippets (Previously snipmate-snippets)                               |
 |               [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)               |                 Intellisense engine for vim8 & neovim, full language server protocol support as VSCode                  |
 |           [voldikss/vim-floaterm](https://github.com/voldikss/vim-floaterm)           |                                      🌟 Play with the nvim/vim's built-in terminal                                      |
+|               [bootleq/vim-cycle](https://github.com/bootleq/vim-cycle)               |                                        Cycle text within predefined candidates.                                         |
 
 ## [Coc](https://github.com/neoclide/coc.nvim)
 

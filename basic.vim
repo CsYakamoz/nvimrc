@@ -18,10 +18,10 @@
     set shortmess+=c                    " Don't pass messages to |ins-completion-menu|
 
 " set the language
-    language en_US
+    language en_US.UTF-8
 
-" transparency background
-    hi Normal  ctermfg=252 ctermbg=none
+" transparency background (not working)
+    " hi Normal  ctermfg=252 ctermbg=none
 
 " only activated window has the highlight line & column
     autocmd WinEnter * set cursorline

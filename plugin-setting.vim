@@ -26,7 +26,7 @@
 
     " files preview
     command! -bang -nargs=? -complete=dir GFiles
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
     " Note: node_modules was ignored
     command! -bang -nargs=* Rg
@@ -254,3 +254,62 @@
     nnoremap <silent> <M-=> :FloatermToggle<CR>
     tnoremap <silent> <M-=> <C-\><C-N>:FloatermToggle<CR>
     inoremap <silent> <M-=> <Esc>:FloatermToggle<CR>
+
+" cycle.vim
+    let g:cycle_no_mappings = 1
+    noremap <silent> <Plug>CycleFallbackNext <C-A>
+    noremap <silent> <Plug>CycleFallbackPrev <C-X>
+    nmap <silent> <C-a> <Plug>CycleNext
+    nmap <silent> <C-x> <Plug>CyclePrev
+
+
+    let g:cycle_default_groups = [
+        \   [[',', '，']],
+        \   [[';', '；']],
+        \   [['.', '。']],
+        \   [['?', '？']],
+        \   [['(:)','（:）'], 'sub_pairs'],
+        \   [[' 是', ' 否']],
+        \   [['+', '-']],
+        \   [['++', '--']],
+        \   [['>', '<']],
+        \   [['||', '&&']],
+        \   [['===', '!==']],
+        \   [['==', '!=']],
+        \   [['true', 'false']],
+        \   [['yes', 'no']],
+        \   [['on', 'off']],
+        \   [['and', 'or']],
+        \   [["in", "out"]],
+        \   [["increase", "decrease"]],
+        \   [["up", "down"]],
+        \   [["min", "max"]],
+        \   [["get", "set"]],
+        \   [["add", "remove"]],
+        \   [["to", "from"]],
+        \   [["read", "write"]],
+        \   [["only", "except"]],
+        \   [['without', 'with']],
+        \   [["exclude", "include"]],
+        \   [["asc", "desc"]],
+        \   [["begin", "end"]],
+        \   [["first", "last"]],
+        \   [["slow", "fast"]],
+        \   [["small", "large"]],
+        \   [["push", "pull"]],
+        \   [["before", "after"]],
+        \   [["new", "delete"]],
+        \   [["while", "until"]],
+        \   [["left", "right"]],
+        \   [["top", "bottom"]],
+        \   [["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]],
+        \   [
+        \       ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        \       'hard_case', {'name': 'Days'}
+        \   ],
+        \   [
+        \       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        \       'hard_case', {'name': 'Months'}
+        \   ],
+        \ ]
+
