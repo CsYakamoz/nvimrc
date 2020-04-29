@@ -41,5 +41,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'voldikss/vim-floaterm'
 
     Plug 'bootleq/vim-cycle'
+    Plug 'psliwka/vim-smoothie'
+    Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 

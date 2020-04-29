@@ -176,7 +176,7 @@
     call quickui#menu#reset()
     
     call quickui#menu#install('&Tool', [
-                \ [ "&Startify\tF2", 'Startify' ],
+                \ [ "Startify\tF2", 'Startify' ],
                 \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
                 \ [ "--", '' ],
                 \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
@@ -201,8 +201,9 @@
                 \ [ '&diffsplit', 'Gdiffsplit'],
                 \ [ '&vdiffsplit', 'Gvdiffsplit'],
                 \ [ '&blame', 'Gblame'],
+                \ [ 'lo&g', '0Glog'],
                 \ [ "--", '' ],
-                \ [ '&status', 'Gstatus'],
+                \ [ '&status', 'aboveleft Gstatus'],
                 \ [ '&commit', 'Gcommit'],
                 \ [ "--", '' ],
                 \ [ '&read(checkout)', 'Gread'],
@@ -313,3 +314,5 @@
         \   ],
         \ ]
 
+" editorconfig-vim
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*']

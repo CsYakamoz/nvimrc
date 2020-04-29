@@ -16,6 +16,8 @@
     set foldlevelstart=10               " not yet understood
     set updatetime=300                  " you will have bad experience for diagnostic messages when it's default 4000.
     set shortmess+=c                    " Don't pass messages to |ins-completion-menu|
+    set splitright                      " splitting a window will put the new window right of the current
+    set splitbelow                      " splitting a window will put the new window below of the current
 
 " set the language
     language en_US.UTF-8

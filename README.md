@@ -12,12 +12,13 @@
 
   > version as high as possible
 
+- [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder
+
 ### Option
 
 - [bat](https://github.com/sharkdp/bat): A cat(1) clone with wings.
 - [im-select](https://github.com/daipeihust/im-select): Switch your input method from terminal
 - [nerd fonts](https://github.com/ryanoasis/nerd-fonts): 🔡 Iconic font aggregator, collection, and patcher. 40+ patched fonts, over 3,600 glyph/icons, includes popular collections such as Font Awesome & fonts
-- [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder
 
 ## Plugin List
 
@@ -58,6 +59,8 @@
 |               [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)               |                 Intellisense engine for vim8 & neovim, full language server protocol support as VSCode                  |
 |           [voldikss/vim-floaterm](https://github.com/voldikss/vim-floaterm)           |                                      🌟 Play with the nvim/vim's built-in terminal                                      |
 |               [bootleq/vim-cycle](https://github.com/bootleq/vim-cycle)               |                                        Cycle text within predefined candidates.                                         |
+|            [psliwka/vim-smoothie](https://github.com/psliwka/vim-smoothie)            |                                          Smooth scrolling for Vim done right🥤                                          |
+|   [editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)   |                                   EditorConfig plugin for Vim http://editorconfig.org                                   |
 
 ## [Coc](https://github.com/neoclide/coc.nvim)
 
