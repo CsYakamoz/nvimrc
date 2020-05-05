@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/gruvbox-material'
     Plug 'sainnhe/forest-night'
     Plug 'arzg/vim-colors-xcode'
+    Plug 'ayu-theme/ayu-vim'
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
@@ -10,7 +11,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
 
-    Plug '/usr/local/opt/fzf'
+    if has('mac')
+        Plug '/usr/local/opt/fzf'
+    else
+        Plug 'junegunn/fzf'
+    endif
     Plug 'junegunn/fzf.vim'
 
     Plug 'rizzatti/dash.vim', { 'on': 'Dash' }

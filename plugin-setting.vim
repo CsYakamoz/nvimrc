@@ -1,23 +1,33 @@
-" color-schema
+" colorscheme {{{ "
+    let g:gruvbox_material_enable_italic = 1
     colorscheme gruvbox-material
+
     " colorscheme xcodewwdc
+
     " colorscheme forest-night
 
-" indent_guides
+    " let ayucolor="light"
+    " colorscheme ayu
+" }}} colorscheme "
+
+" indent_guides {{{ "
     let g:indent_guides_guide_size = 1
     let g:indent_guides_enable_on_vim_startup = 1
+" }}} indent_guides "
 
-" airline
+" airline {{{ "
     let g:airline_theme='bubblegum'
     " let g:airline_theme='forest_night'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter' 
+" }}} airline "
 
-" simpylfold
+" simpylfold {{{ "
     let g:SimpylFold_docstring_preview = 1
+" }}} simpylfold "
 
-" fzf
+" fzf {{{ "
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :Rg<CR>
@@ -35,8 +45,9 @@
         \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+" }}} fzf "
 
-" nerdtree
+" nerdtree {{{ "
     " How can I open NERDTree automatically when vim starts up on opening a directory?
     " Note: Executing vim ~/some-directory will open NERDTree and a new edit window. exe 'cd '.argv()[0] sets the pwd of the new edit window to ~/some-directory
     autocmd StdinReadPre * let s:std_in=1
@@ -47,12 +58,14 @@
 
     nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
     nnoremap <silent> <F4> :NERDTreeFind<CR>
+" }}} nerdtree "
 
-" nerdcommenter
+" nerdcommenter {{{ "
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
+" }}} nerdcommenter "
 
-" Startify
+" startify {{{ "
     nnoremap <silent> <F2> :Startify<CR>
 
     " When opening a file or bookmark, don't change to its directory
@@ -75,7 +88,9 @@
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
 
-" Vista
+" }}} startify "
+
+" vista {{{ "
     " default executive
     let g:vista_default_executive="coc"
     let g:vista_executive_for = {
@@ -83,6 +98,7 @@
         \ 'vim': 'ctags',
         \ 'markdown': 'ctags',
         \ }
+    let g:airline#extensions#vista#enabled = 0
 
     " fzf - preview
     let g:vista_fzf_preview = ['right:50%']
@@ -114,16 +130,19 @@
     \   "typeParameter": "\uf728",
     \   "default": "\uf29c"
     \  }
+" }}} vista "
 
-" vim-javascript
+" vim-javascript {{{ "
     let g:javascript_plugin_jsdoc = 1
+" }}} vim-javascript "
 
-" ale
+" ale {{{ "
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '⚡'
     let g:airline#extensions#ale#enabled = 1
+" }}} ale "
 
-" Coc
+" coc.nvim {{{ "
     " make snippet completion work just like VSCode
     inoremap <silent><expr> <TAB>
         \ pumvisible() ? coc#_select_confirm() :
@@ -165,13 +184,15 @@
     " coc-ci
     nmap <silent> w <Plug>(coc-ci-w)
     nmap <silent> b <Plug>(coc-ci-b)
+" }}} coc.nvim "
 
-" vim-test
+" vim-test {{{ "
     let test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
     nnoremap <silent> <F6> :TestNearest<CR>
+" }}} vim-test "
 
-" vim-quickui
+" vim-quickui {{{ "
     " clear all the menus
     call quickui#menu#reset()
     
@@ -184,17 +205,19 @@
                 \ [ "TestFile\tF5", 'TestFile'],
                 \ [ "&TestNearest\tF6", 'TestNearest' ],
                 \ [ "--", '' ],
-                \ [ "&PmR", 'call PmR()' ],
-                \ [ "PmR-Reset", 'call PmRReset()' ],
+                \ [ "&PmR", 'CocCommand qtk.pmr.exec' ],
+                \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
                 \ [ "--", '' ],
-                \ [ "&CpR", 'call CpR()' ],
-                \ [ "CpR-Reset", 'call CpRReset()' ],
+                \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
+                \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
                 \ [ "--", '' ],
                 \ [ "&VistaToogle", 'Vista!!' ],
                 \ [ "VistaFinder", 'Vista finder' ],
                 \ [ "--", '' ],
                 \ [ "&MarkdownPreview", 'MarkdownPreview' ],
                 \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
+                \ [ "--", '' ],
+                \ [ "&Switching", "CocCommand qtk.switching" ]
                 \ ])
     
     call quickui#menu#install('&Git', [
@@ -236,14 +259,18 @@
 
     let g:quickui_border_style = 2
     let g:quickui_color_scheme = 'gruvbox'
+" }}} vim-quickui "
 
-" vim-gitgutter
+" vim-gitgutter {{{ "
     let g:gitgutter_preview_win_floating = 1
+    let g:airline#extensions#hunks#enabled = 0
+" }}} vim-gitgutter "
 
-" markdown-preview.nvim
+" markdown-preview.nvim {{{ "
     let g:mkdp_auto_close = 0
+" }}} markdown-preview.nvim "
 
-" vim-floaterm
+" vim-floaterm {{{ "
     let g:floaterm_type = 'floating'
     let g:floaterm_position = 'bottomright'
     let g:floaterm_width = 0.99
@@ -255,8 +282,9 @@
     nnoremap <silent> <M-=> :FloatermToggle<CR>
     tnoremap <silent> <M-=> <C-\><C-N>:FloatermToggle<CR>
     inoremap <silent> <M-=> <Esc>:FloatermToggle<CR>
+" }}} vim-floaterm "
 
-" cycle.vim
+" cycle.vim {{{ "
     let g:cycle_no_mappings = 1
     noremap <silent> <Plug>CycleFallbackNext <C-A>
     noremap <silent> <Plug>CycleFallbackPrev <C-X>
@@ -313,6 +341,12 @@
         \       'hard_case', {'name': 'Months'}
         \   ],
         \ ]
+" }}} cycle.vim "
 
-" editorconfig-vim
+" editorconfig-vim {{{ "
     let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" }}} editorconfig-vim "
+
+" fugitive.vim {{{ "
+    let g:airline#extensions#branch#enabled = 0
+" }}} fugitive.vim "

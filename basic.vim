@@ -1,4 +1,4 @@
-" common
+" common {{{ "
     set termguicolors                   " use true color
     set nowrap                          " don't wrap line    
     set hidden                          " allow jump buffer without saving
@@ -18,12 +18,8 @@
     set shortmess+=c                    " Don't pass messages to |ins-completion-menu|
     set splitright                      " splitting a window will put the new window right of the current
     set splitbelow                      " splitting a window will put the new window below of the current
-
-" set the language
-    language en_US.UTF-8
-
-" transparency background (not working)
-    " hi Normal  ctermfg=252 ctermbg=none
+    language en_US.UTF-8                " um... i just want to learn english
+" }}} common "
 
 " only activated window has the highlight line & column
     autocmd WinEnter * set cursorline
@@ -43,7 +39,7 @@
         set shell=/bin/bash
     endif
 
-" key remap
+" key-binding without plugin {{{ "
     " don't use arrow key in normal and insert mode
     map <Left> <Nop>
     map <Right> <Nop>
@@ -54,7 +50,9 @@
     imap <Left> <Nop>
     imap <Right> <Nop>
 
-    let mapleader = " "         " use space as the leader
+    " use space as the leader
+    let mapleader = " "
+
     nnoremap <Leader>w :w<CR>
     nnoremap <silent> <Leader>q :q<CR>
 
@@ -89,4 +87,5 @@
     " add new empty line in normal mode
     nnoremap <Leader>o o<ESC>
     nnoremap <Leader>O O<ESC>
+" }}} key-binding without plugin "
 
