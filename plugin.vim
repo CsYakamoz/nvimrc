@@ -13,12 +13,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     if has('mac')
         Plug '/usr/local/opt/fzf'
-    else
+    elseif executable('fzf') == 1
         Plug 'junegunn/fzf'
+    else
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     endif
     Plug 'junegunn/fzf.vim'
 
-    Plug 'rizzatti/dash.vim', { 'on': 'Dash' }
+    if has('mac')
+        Plug 'rizzatti/dash.vim', { 'on': 'Dash' }
+    else
+        Plug 'KabbAmine/zeavim.vim', { 'on': 'Zeavim' }
+    endif
     Plug 'machakann/vim-swap'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
