@@ -1,23 +1,9 @@
-" colorscheme {{{ "
-    let g:gruvbox_material_enable_italic = 1
-    colorscheme gruvbox-material
-
-    " colorscheme xcodewwdc
-
-    " colorscheme forest-night
-
-    " let ayucolor="light"
-    " colorscheme ayu
-" }}} colorscheme "
-
 " indent_guides {{{ "
     let g:indent_guides_guide_size = 1
     let g:indent_guides_enable_on_vim_startup = 1
 " }}} indent_guides "
 
 " airline {{{ "
-    let g:airline_theme='bubblegum'
-    " let g:airline_theme='forest_night'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter' 

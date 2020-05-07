@@ -16,5 +16,6 @@ if get(g:, 'plugin_level') == 1
     LoadScript plugin.vim
     LoadScript plugin-setting.vim
     LoadScript script.vim
+    LoadScript auto_change_colorschema.vim
 endif
 

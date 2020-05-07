@@ -13,7 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     if has('mac')
         Plug '/usr/local/opt/fzf'
-    elseif executable('fzf') == 1
+    elseif executable('fzf')
         Plug 'junegunn/fzf'
     else
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

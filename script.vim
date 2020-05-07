@@ -1,17 +1,39 @@
-" auto change input method, required im-select for MacOS
-" if used fcitx in Linux,
-" see https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
-let s:original_method = "com.apple.keylayout.ABC"
-function! ChangeInputMethodToEn()
-    let s:original_method = system("/usr/local/bin/im-select")
-    call system("/usr/local/bin/im-select com.apple.keylayout.ABC")
-endfunction
-autocmd InsertLeave * call ChangeInputMethodToEn()
+" MacOS: im-select
+" Unix: fcitx-remote, link: https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
+if has('mac') && executable('im-select')
+    let s:original_method = "com.apple.keylayout.ABC"
+    function! s:ChangeInputMethodToEn()
+        let s:original_method = system("/usr/local/bin/im-select")
+        call system("im-select com.apple.keylayout.ABC")
+    endfunction
+    autocmd InsertLeave * call <SID>ChangeInputMethodToEn()
+    
+    function! s:ChangeInputMethodToOriginal()
+        call system("im-select ".s:original_method)
+    endfunction
+    autocmd InsertEnter * call <SID>ChangeInputMethodToOriginal()
+elseif has('unix') && executable('fcitx-remote')
+    let s:input_toggle = 1
+    function! s:Fcitx2en()
+        let l:input_status = system("fcitx-remote")
+        if l:input_status == 2
+            let s:input_toggle = 1
+            let l:a = system("fcitx-remote -c")
+        endif
+    endfunction
+    
+    function! s:Fcitx2zh()
+        let l:input_status = system("fcitx-remote")
+        if l:input_status != 2 && g:input_toggle == 1
+            let l:a = system("fcitx-remote -o")
+            let s:input_toggle = 0
+        endif
+    endfunction
 
-function! ChangeInputMethodToOriginal()
-    call system("/usr/local/bin/im-select ".s:original_method)
-endfunction
-autocmd InsertEnter * call ChangeInputMethodToOriginal()
+    set ttimeoutlen=150
+    autocmd InsertLeave * call <SID>Fcitx2en()
+    autocmd InsertEnter * call <SID>Fcitx2zh()
+endif
 
 " Creates a floating window with a most recent buffer to be used
 " reference: https://github.com/camspiers/dotfiles/blob/master/files/.config/nvim/init.vim#L246
