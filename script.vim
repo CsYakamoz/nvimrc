@@ -18,14 +18,14 @@ elseif has('unix') && executable('fcitx-remote')
         let l:input_status = system("fcitx-remote")
         if l:input_status == 2
             let s:input_toggle = 1
-            let l:a = system("fcitx-remote -c")
+            call system("fcitx-remote -c")
         endif
     endfunction
     
     function! s:Fcitx2zh()
         let l:input_status = system("fcitx-remote")
-        if l:input_status != 2 && g:input_toggle == 1
-            let l:a = system("fcitx-remote -o")
+        if l:input_status != 2 && s:input_toggle == 1
+            call system("fcitx-remote -o")
             let s:input_toggle = 0
         endif
     endfunction
