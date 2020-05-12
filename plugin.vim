@@ -3,6 +3,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'sainnhe/forest-night'
     Plug 'arzg/vim-colors-xcode'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'dracula/vim', { 'as': 'dracula' }
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
