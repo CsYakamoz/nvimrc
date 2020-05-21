@@ -1,6 +1,6 @@
 function! s:GetTimeRange()
     let l:hour = strftime('%H')
-    if l:hour > 6 && l:hour < 12
+    if l:hour > 6 && l:hour < 15
         return 'light'
     else 
         return 'dark'

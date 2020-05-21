@@ -160,8 +160,7 @@
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gr <Plug>(coc-references)
 
-    " Use Prettier to format file
-    nnoremap <Leader>f :CocCommand prettier.formatFile<CR>
+    nnoremap <silent> <Leader>f :call CocAction('format')<CR>
 
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -170,6 +169,14 @@
     " coc-ci
     nmap <silent> w <Plug>(coc-ci-w)
     nmap <silent> b <Plug>(coc-ci-b)
+
+    augroup mygroup
+        autocmd!
+        " Setup formatexpr specified filetype(s).
+        autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+        " Update signature help on jump placeholder.
+        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
 " }}} coc.nvim "
 
 " vim-test {{{ "
@@ -191,7 +198,7 @@
                 \ [ "TestFile\tF5", 'TestFile'],
                 \ [ "&TestNearest\tF6", 'TestNearest' ],
                 \ [ "--", '' ],
-                \ [ "&PmR", 'CocCommand qtk.pmr.exec' ],
+                \ [ "&PmR", 'CocList pmr' ],
                 \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
                 \ [ "--", '' ],
                 \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
@@ -203,7 +210,9 @@
                 \ [ "&MarkdownPreview", 'MarkdownPreview' ],
                 \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
                 \ [ "--", '' ],
-                \ [ "&Switching", "CocCommand qtk.switching" ]
+                \ [ "&Switching", "CocCommand qtk.switching" ],
+                \ [ "--", '' ],
+                \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
                 \ ])
     
     call quickui#menu#install('&Git', [

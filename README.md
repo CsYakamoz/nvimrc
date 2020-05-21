@@ -48,6 +48,7 @@
 |                [tpope/vim-sleuth](https://github.com/tpope/vim-sleuth)                |                            automatically adjusts `shiftwidth` and `expandtab` heuristically                             |
 |    [PeterRincker/vim-searchlight](https://github.com/PeterRincker/vim-searchlight)    |                                           Highlights the current search match                                           |
 |         [pangloss/vim-javascript](https://github.com/pangloss/vim-javascript)         |              JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.              |
+|      [leafgarland/typescript-vim](https://github.com/leafgarland/typescript-vim)      |                                             Typescript syntax files for Vim                                             |
 |            [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs)            |                              Vim plugin, insert or delete brackets, parens, quotes in pair                              |
 |            [tmhedberg/simpylfold](https://github.com/tmhedberg/simpylfold)            |                                            No-BS Python code folding for Vim                                            |
 |          [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter)          |                A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.                 |

@@ -36,6 +36,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-sleuth'
     Plug 'PeterRincker/vim-searchlight'
     Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'tmhedberg/simpylfold'
     Plug 'airblade/vim-gitgutter'
