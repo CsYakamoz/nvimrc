@@ -40,6 +40,7 @@
 |                    [junegunn/fzf](https://github.com/junegunn/fzf)                    |                                             🌸 A command-line fuzzy finder                                              |
 |                [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)                |                                           A command-line fuzzy finder in vim                                            |
 |               [rizzatti/dash.vim](https://github.com/rizzatti/dash.vim)               |                                                Search Dash.app from Vim                                                 |
+|            [KabbAmine/zeavim.vim](https://github.com/KabbAmine/zeavim.vim)            |                                                      Zeal for Vim                                                       |
 |              [machakann/vim-swap](https://github.com/machakann/vim-swap)              |                                    A Vim text editor plugin to swap delimited items.                                    |
 |                [tpope/vim-repeat](https://github.com/tpope/vim-repeat)                |                                     enable repeating supported plugin maps with "."                                     |
 |              [tpope/vim-surround](https://github.com/tpope/vim-surround)              |                                           quoting/parenthesizing made simple                                            |

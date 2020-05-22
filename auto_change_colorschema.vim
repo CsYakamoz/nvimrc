@@ -8,12 +8,6 @@ function! s:GetTimeRange()
 endfunction
 
 function! s:Gruvbox()
-    let l:bgType = s:GetTimeRange()
-    if l:bgType == 'light'
-        set background=light
-        let g:gruvbox_material_background = 'hard'
-    endif
-
     let g:gruvbox_material_enable_italic = 1
     colorscheme gruvbox-material
     let g:airline_theme='gruvbox_material'

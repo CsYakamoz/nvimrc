@@ -58,5 +58,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'bootleq/vim-cycle'
     Plug 'psliwka/vim-smoothie'
     Plug 'editorconfig/editorconfig-vim'
+
+    Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
 call plug#end()
 
