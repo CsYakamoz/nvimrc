@@ -10,7 +10,7 @@ endfunction
 function! s:Gruvbox()
     let g:gruvbox_material_enable_italic = 1
     colorscheme gruvbox-material
-    let g:airline_theme='gruvbox_material'
+    let g:airline_theme='bubblegum'
 endfunction
 
 function! s:Xcode()
@@ -60,8 +60,9 @@ function! s:Ayu()
     colorscheme ayu
 endfunction
 
-function! s:Nord()
-    colorscheme nord
+function! s:Quantum()
+    let g:quantum_italics=1
+    colorscheme quantum
 endfunction
 
 function! s:Dracula()
@@ -74,8 +75,8 @@ let s:colorList = [
     \ function("<SID>Xcode"),
     \ function('<SID>Ayu'),
     \ function('<SID>Palenight'),
-    \ function('<SID>Nord'),
     \ function('<SID>Dracula'),
+    \ function('<SID>Quantum'),
     \ ]
 " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
 " 86400 millisecond is equal to 1 day

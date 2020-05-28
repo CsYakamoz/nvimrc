@@ -14,5 +14,5 @@ LoadScript basic.vim
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
 LoadScript script.vim
-LoadScript auto_change_colorschema.vim
+LoadScript auto-change-colorschema.vim
 

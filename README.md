@@ -29,8 +29,8 @@
 |           [arzg/vim-colors-xcode](https://github.com/arzg/vim-colors-xcode)           |                                                      Color schema                                                       |
 |               [ayu-theme/ayu-vim](https://github.com/ayu-theme/ayu-vim)               |                                                      Color schema                                                       |
 |   [drewtempelmeyer/palenight.vim](https://github.com/drewtempelmeyer/palenight.vim)   |                                                      Color schema                                                       |
-|        [arcticicestudio/nord-vim](https://github.com/arcticicestudio/nord-vim)        |                                                      Color schema                                                       |
 |                     [dracula/vim](https://github.com/dracula/vim)                     |                                                      Color schema                                                       |
+|    [tyrannicaltoucan/vim-quantum](https://github.com/tyrannicaltoucan/vim-quantum)    |                                                      Color schema                                                       |
 |              [mhinz/vim-startify](https://github.com/mhinz/vim-startify)              |                                             The fancy start screen for Vim                                              |
 |          [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)          |   Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more    |
 |         [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)         |                                 lean & mean status/tabline for vim that's light as air                                  |

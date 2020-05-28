@@ -14,6 +14,7 @@
 " }}} simpylfold "
 
 " fzf {{{ "
+    nnoremap <silent> <M-f> :FZF<CR>
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :Rg<CR>
