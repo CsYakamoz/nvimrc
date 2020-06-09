@@ -60,5 +60,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'editorconfig/editorconfig-vim'
 
     Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
+
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 

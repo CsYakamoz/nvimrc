@@ -3,12 +3,17 @@
   "prettier.statusItemText": "",
 
   "snippets.userSnippetsDirectory": "~/.config/coc/ultisnips",
+  "snippets.extends": {
+    "typescript": ["javascript"]
+  },
+
+  "clangd.semanticHighlighting": true,
 
   "yank.enableCompletion": false,
 
   "diagnostic.displayByAle": true,
 
-  "cSpell.words": ["wechat", "struct"],
+  "cSpell.words": ["wechat", "struct", "csyakamoz"],
   "cSpell.showStatus": false,
 
   "suggest.noselect": false,
