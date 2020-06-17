@@ -43,7 +43,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'liuchengxu/vista.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'janko/vim-test'
     Plug 'junegunn/vim-peekaboo'
 

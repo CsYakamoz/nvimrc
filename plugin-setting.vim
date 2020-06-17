@@ -130,6 +130,18 @@
 " }}} ale "
 
 " coc.nvim {{{ "
+    let g:coc_global_extensions = [
+        \ 'coc-yank',
+        \ 'coc-word',
+        \ 'coc-spell-checker',
+        \ 'coc-snippets',
+        \ 'coc-prettier',
+        \ 'coc-tsserver',
+        \ 'coc-json',
+        \ 'coc-ci',
+        \ 'coc-clangd',
+        \ ]
+
     " make snippet completion work just like VSCode
     inoremap <silent><expr> <TAB>
         \ pumvisible() ? coc#_select_confirm() :
@@ -159,9 +171,14 @@
     nmap <leader>rn <Plug>(coc-rename)
 
     nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
     nnoremap <silent> <Leader>f :call CocAction('format')<CR>
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)

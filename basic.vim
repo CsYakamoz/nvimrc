@@ -1,7 +1,7 @@
 " common {{{ "
     set termguicolors                   " use true color
     set nowrap                          " don't wrap line    
-    set hidden                          " allow jump buffer without saving
+    set hidden                          " allow jump other buffer without saving
     set signcolumn=yes                  " always show signcolumns
     set number                          " show line number
     set relativenumber                  " show relative number
@@ -19,6 +19,7 @@
     set splitright                      " splitting a window will put the new window right of the current
     set splitbelow                      " splitting a window will put the new window below of the current
     language en_US.UTF-8                " um... i just want to learn english
+    set synmaxcol=200                " Only highlight the first 200 columns.
 " }}} common "
 
 " only activated window has the highlight line & column
