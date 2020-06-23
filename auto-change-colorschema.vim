@@ -69,6 +69,15 @@ function! s:Dracula()
     colorscheme dracula
 endfunction
 
+fun! s:Solarized()
+    if l:bgType == 'light'
+        set background=light
+    else
+        set background=dark
+    endif
+    colorscheme solarized
+endf
+
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -77,6 +86,7 @@ let s:colorList = [
     \ function('<SID>Palenight'),
     \ function('<SID>Dracula'),
     \ function('<SID>Quantum'),
+    \ function('<SID>Solarized'),
     \ ]
 " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
 " 86400 millisecond is equal to 1 day

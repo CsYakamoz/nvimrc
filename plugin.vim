@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'tyrannicaltoucan/vim-quantum'
+    Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
