@@ -19,7 +19,7 @@
     set splitright                      " splitting a window will put the new window right of the current
     set splitbelow                      " splitting a window will put the new window below of the current
     language en_US.UTF-8                " um... i just want to learn english
-    set synmaxcol=200                " Only highlight the first 200 columns.
+    set synmaxcol=300                   " Only highlight the first 300 columns.
 " }}} common "
 
 " only activated window has the highlight line & column

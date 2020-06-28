@@ -69,7 +69,8 @@ function! s:Dracula()
     colorscheme dracula
 endfunction
 
-fun! s:Solarized()
+function! s:Solarized()
+    let l:bgType = s:GetTimeRange()
     if l:bgType == 'light'
         set background=light
     else
