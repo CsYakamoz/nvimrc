@@ -292,9 +292,9 @@
     " This plugin leaves an empty buffer on startify window
     autocmd User Startified setlocal buflisted
 
-    nnoremap <silent> <M-=> :FloatermToggle<CR>
-    tnoremap <silent> <M-=> <C-\><C-N>:FloatermToggle<CR>
-    inoremap <silent> <M-=> <Esc>:FloatermToggle<CR>
+    nnoremap <silent> <M-j> :FloatermToggle<CR>
+    tnoremap <silent> <M-j> <C-\><C-N>:FloatermToggle<CR>
+    inoremap <silent> <M-j> <Esc>:FloatermToggle<CR>
 " }}} vim-floaterm "
 
 " cycle.vim {{{ "
