@@ -2,7 +2,7 @@
   "prettier.eslintIntegration": true,
   "prettier.statusItemText": "",
 
-  "snippets.userSnippetsDirectory": "~/.config/coc/ultisnips",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
   "snippets.extends": {
     "typescript": ["javascript"]
   },
