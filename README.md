@@ -2,24 +2,22 @@
 
 ## Requirement
 
-- [neovim](https://github.com/neovim/neovim): Vim-fork focused on extensibility and usability
+> All requirements use the latest version by default
 
-  > version as high as possible
-
-- [vim-plug](https://github.com/junegunn/vim-plug): 🌺 Minimalist Vim Plugin Manager
-
-- [node.js](https://github.com/nodejs/node): Node.js JavaScript runtime ✨🐢🚀✨
-
-  > version as high as possible
-
-- [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder
+- [neovim](https://github.com/neovim/neovim): Vim-fork focused on extensibility and usability.
+- [vim-plug](https://github.com/junegunn/vim-plug): 🌺 Minimalist Vim Plugin Manager.
+- [node.js](https://github.com/nodejs/node): Node.js JavaScript runtime ✨🐢🚀✨.
+- [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder.
+- [ripgrep](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern.
+- [pynvim](https://github.com/neovim/pynvim): python client and plugin host for Nvim.
 
 ### Option
 
 - [bat](https://github.com/sharkdp/bat): A cat(1) clone with wings.
-- [im-select](https://github.com/daipeihust/im-select): Switch your input method from terminal
-- [nerd fonts](https://github.com/ryanoasis/nerd-fonts): Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more https://NerdFonts.com
+- [im-select](https://github.com/daipeihust/im-select): Switch your input method from terminal⌨️🖥.
+- [nerd fonts](https://github.com/ryanoasis/nerd-fonts): Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more https://NerdFonts.com.
 - [clangd](https://clangd.llvm.org/): clangd understands your C++ code and adds smart features to your editor: code completion, compile errors, go-to-definition and more.
+- [ctags](https://github.com/universal-ctags/ctags): A maintained ctags implementation.
 
 ## Plugin List
 

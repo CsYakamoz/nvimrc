@@ -362,4 +362,5 @@
 
 " fugitive.vim {{{ "
     let g:airline#extensions#branch#enabled = 0
+    let g:fugitive_pty = 0
 " }}} fugitive.vim "
