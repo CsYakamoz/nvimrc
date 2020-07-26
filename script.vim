@@ -83,9 +83,7 @@ function! CloseSpecificBuffer()
     \ })
 endfunction
 
-fun! s:CsRepl() range
-    let l:contentList = getline(a:firstline, a:lastline)
-
+fun! s:CsRepl(mode) range
     let l:mapping = {
     \   "javascript": "node",
     \   "python": "python3",
@@ -116,10 +114,12 @@ fun! s:CsRepl() range
         execute prev_window . 'wincmd w'
     endif
 
-    for content in l:contentList
-        execute 'FloatermSend --name=' . l:name . ' ' . content 
-    endfor
+    if a:mode == 0
+        execute 'FloatermSend --name=' . l:name
+    else
+        execute "'<,'>FloatermSend --name=" . l:name
+    endif
 endf
 
-nnoremap <silent> <Leader>x :call <SID>CsRepl()<CR>
-vnoremap <silent> <Leader>x :call <SID>CsRepl()<CR>
+nnoremap <silent> <Leader>x :call <SID>CsRepl(0)<CR>
+vnoremap <silent> <Leader>x :call <SID>CsRepl(1)<CR>
