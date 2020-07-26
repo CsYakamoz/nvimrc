@@ -67,8 +67,8 @@ endfunction
 
 function! CloseSpecificBuffer()
     " clean all unedited unnamed buffer
-    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
-    if !empty(buffers)
+    let l:buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
+    if !empty(l:buffers)
         exe 'bd '.join(buffers, ' ')
     endif
 
@@ -82,3 +82,44 @@ function! CloseSpecificBuffer()
     \   'window': 'call CreateCenteredFloatingWindow()' 
     \ })
 endfunction
+
+fun! s:CsRepl() range
+    let l:contentList = getline(a:firstline, a:lastline)
+
+    let l:mapping = {
+    \   "javascript": "node",
+    \   "python": "python3",
+    \ }
+    
+    let l:filetype = &filetype
+    if ! has_key(l:mapping, l:filetype)
+        echom 'no configure for this type(' . l:filetype . ')'
+        return
+    endif
+    let l:name = l:mapping[l:filetype]
+    
+    let l:found_bufnr = 0
+    for nr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
+        if getbufvar(nr, '&buftype') == 'terminal' && bufname(nr) == 'floaterm://' . l:name
+            let l:found_bufnr = nr
+        endif
+    endfor
+
+    if l:found_bufnr == 0
+        execute 'FloatermNew --width=0.5 --wintype=normal --position=right --name=' . l:name . ' ' . l:name
+        stopinsert
+
+        setlocal nonumber
+        setlocal norelativenumber
+
+        let prev_window = winnr('#')
+        execute prev_window . 'wincmd w'
+    endif
+
+    for content in l:contentList
+        execute 'FloatermSend --name=' . l:name . ' ' . content 
+    endfor
+endf
+
+nnoremap <silent> <Leader>x :call <SID>CsRepl()<CR>
+vnoremap <silent> <Leader>x :call <SID>CsRepl()<CR>

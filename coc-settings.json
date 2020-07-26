@@ -11,8 +11,6 @@
 
   "yank.enableCompletion": false,
 
-  "diagnostic.displayByAle": true,
-
   "cSpell.words": ["wechat", "struct", "csyakamoz"],
   "cSpell.showStatus": false,
 
