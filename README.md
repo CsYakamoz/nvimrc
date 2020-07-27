@@ -69,6 +69,9 @@
 |                            [psliwka/vim-smoothie](https://github.com/psliwka/vim-smoothie)                            |                                          Smooth scrolling for Vim done right🥤                                          |
 |                   [editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)                   |                                   EditorConfig plugin for Vim http://editorconfig.org                                   |
 |                [jackguo380/vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)                |                      Vim plugin for C/C++/ObjC semantic highlighting using cquery, ccls, or clangd                      |
+|                            [dhruvasagar/vim-zoom](https://github.com/dhruvasagar/vim-zoom)                            |                                    Toggle zoom in / out individual windows (splits)                                     |
+|                            [tommcdo/vim-exchange](https://github.com/tommcdo/vim-exchange)                            |                                           Easy text exchange operator for Vim                                           |
+|                        [mzlogin/vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)                        |                           A vim 7.4+ plugin to generate table of contents for Markdown files.                           |
 
 ## [Coc](https://github.com/neoclide/coc.nvim)
 

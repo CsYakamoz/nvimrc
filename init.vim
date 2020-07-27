@@ -5,6 +5,7 @@
 "   - https://github.com/jaywcjlove/vim-web
 "   - https://github.com/skywind3000/vim-init
 "   - https://github.com/hardcoreplayers/ThinkVim
+"   - https://github.com/chemzqm/vimrc
 
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 

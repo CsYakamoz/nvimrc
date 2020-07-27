@@ -20,6 +20,11 @@
     set splitbelow                      " splitting a window will put the new window below of the current
     language en_US.UTF-8                " um... i just want to learn english
     set synmaxcol=300                   " Only highlight the first 300 columns.
+    set lazyredraw
+    set pumheight=15                    " Maximum number of items to show in the popup menu
+    set undofile
+    set undodir=~/.vim_undodir
+    set fileformats=unix,dos
 " }}} common "
 
 " only activated window has the highlight line & column
@@ -88,5 +93,11 @@
     " add new empty line in normal mode
     nnoremap <Leader>o o<ESC>
     nnoremap <Leader>O O<ESC>
+
+    xnoremap < <gv
+    xnoremap > >gv
+
+    vnoremap gl g_
+    vnoremap gh ^
 " }}} key-binding without plugin "
 

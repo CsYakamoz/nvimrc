@@ -365,3 +365,14 @@
     let g:airline#extensions#branch#enabled = 0
     let g:fugitive_pty = 0
 " }}} fugitive.vim "
+
+" vim-zoom {{{ "
+    " like tmux,  prefix-z
+    nmap <Leader>z <Plug>(zoom-toggle)
+" }}} vim-zoom "
+
+" vim-exchange {{{ "
+    " i usually use 'd' to delete selected range in visual mode
+    " so 'x' is useless in visual mode
+    xmap x <Plug>(Exchange)
+" }}} vim-exchange "
