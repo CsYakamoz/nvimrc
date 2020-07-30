@@ -6,7 +6,7 @@
 " airline {{{ "
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#formatter = 'jsformatter' 
+    let g:airline#extensions#tabline#formatter = 'jsformatter'
 " }}} airline "
 
 " simpylfold {{{ "
@@ -148,7 +148,7 @@
         \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
-    
+
     function! s:check_back_space() abort
         let col = col('.') - 1
         return !col || getline('.')[col - 1]  =~# '\s'
@@ -206,7 +206,7 @@
 " vim-quickui {{{ "
     " clear all the menus
     call quickui#menu#reset()
-    
+
     call quickui#menu#install('&Tool', [
                 \ [ "Startify\tF2", 'Startify' ],
                 \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
@@ -229,10 +229,10 @@
                 \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
                 \ [ "--", '' ],
                 \ [ "&Switching", "CocCommand qtk.switching" ],
-                \ [ "--", '' ],
                 \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
+                \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
                 \ ])
-    
+
     call quickui#menu#install('&Git', [
                 \ [ '&diffsplit', 'Gdiffsplit'],
                 \ [ '&vdiffsplit', 'Gvdiffsplit'],
@@ -245,28 +245,28 @@
                 \ [ '&read(checkout)', 'Gread'],
                 \ [ '&write(add)', 'Gwrite'],
                 \ ])
-    
+
     " script inside %{...} will be evaluated and expanded in the string
     call quickui#menu#install("Option", [
-    			\ ['Set Spell %{&spell? "Off":"On"}', 'set spell!'],
-    			\ ['Enable mouse', 'set mouse=a'],
-    			\ ['Disable mouse', 'set mouse='],
-    			\ ['Set Paste %{&paste? "Off":"On"}', 'set paste!'],
-    			\ ])
-    
+                        \ ['Set Spell %{&spell? "Off":"On"}', 'set spell!'],
+                        \ ['Enable mouse', 'set mouse=a'],
+                        \ ['Disable mouse', 'set mouse='],
+                        \ ['Set Paste %{&paste? "Off":"On"}', 'set paste!'],
+                        \ ])
+
     " register HELP menu with weight 1000
     call quickui#menu#install('Help', [
-    			\ ["&Cheatsheet", 'help index', ''],
-    			\ ['T&ips', 'help tips', ''],
-    			\ ['--',''],
-    			\ ["&Tutorial", 'help tutor', ''],
-    			\ ['&Quick Reference', 'help quickref', ''],
-    			\ ['&Summary', 'help summary', ''],
-    			\ ], 10000)
-    
+                        \ ["&Cheatsheet", 'help index', ''],
+                        \ ['T&ips', 'help tips', ''],
+                        \ ['--',''],
+                        \ ["&Tutorial", 'help tutor', ''],
+                        \ ['&Quick Reference', 'help quickref', ''],
+                        \ ['&Summary', 'help summary', ''],
+                        \ ], 10000)
+
     " enable to display tips in the cmdline
     let g:quickui_show_tip = 1
-    
+
     " hit space twice to open menu
     noremap <silent> <Leader><Leader> :call quickui#menu#open()<cr>
 
@@ -372,7 +372,6 @@
 " }}} vim-zoom "
 
 " vim-exchange {{{ "
-    " i usually use 'd' to delete selected range in visual mode
-    " so 'x' is useless in visual mode
-    xmap x <Plug>(Exchange)
+    xmap <C-x>  <Plug>(Exchange)
 " }}} vim-exchange "
+

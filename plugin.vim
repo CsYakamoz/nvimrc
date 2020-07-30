@@ -25,9 +25,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/fzf.vim'
 
     if has('mac')
-        Plug 'rizzatti/dash.vim', { 'on': 'Dash' }
+        Plug 'rizzatti/dash.vim'
     else
-        Plug 'KabbAmine/zeavim.vim', { 'on': 'Zeavim' }
+        Plug 'KabbAmine/zeavim.vim'
     endif
     Plug 'machakann/vim-swap'
     Plug 'tpope/vim-repeat'
