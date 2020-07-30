@@ -1,6 +1,6 @@
 " common {{{ "
     set termguicolors                   " use true color
-    set nowrap                          " don't wrap line    
+    set nowrap                          " don't wrap line
     set ignorecase                      " ignore case when searching
     set expandtab                       " use spaces instead of tabs
     language en_US.UTF-8                " um... i just want to learn english

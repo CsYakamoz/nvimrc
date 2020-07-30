@@ -1,6 +1,6 @@
 " common {{{ "
     set termguicolors                   " use true color
-    set nowrap                          " don't wrap line    
+    set nowrap                          " don't wrap line
     set hidden                          " allow jump other buffer without saving
     set signcolumn=yes                  " always show signcolumns
     set number                          " show line number
@@ -88,7 +88,7 @@
     nnoremap <silent> <Leader>- <C-w>3-
     " > or < is increase or decrease current windows width
     nnoremap <silent> <Leader>> <C-w>5>
-    nnoremap <silent> <Leader>< <C-w>5< 
+    nnoremap <silent> <Leader>< <C-w>5<
 
     " add new empty line in normal mode
     nnoremap <Leader>o o<ESC>

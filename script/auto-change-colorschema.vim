@@ -1,11 +1,8 @@
-function! s:GetTimeRange()
-    let l:hour = strftime('%H')
-    if l:hour > 6 && l:hour < 15
-        return 'light'
-    else 
-        return 'dark'
-    endif
-endfunction
+if strftime('%H') > 6 && strftime('%H') < 15
+    let s:colorType = 'light'
+else
+    let s:colorType = 'dark'
+endif
 
 function! s:Gruvbox()
     let g:gruvbox_material_enable_italic = 1
@@ -21,8 +18,7 @@ function! s:Xcode()
     autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
     autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 
-    let l:bgType = s:GetTimeRange()
-    if l:bgType == 'light'
+    if s:colorType == 'light'
         let g:xcodeligh_temph_types=1
         let g:xcodeligh_emph_funcs=1
         let g:xcodeligh_emph_idents=1
@@ -50,8 +46,7 @@ function! s:ForestNight()
 endfunction
 
 function! s:Ayu()
-    let l:bgType = s:GetTimeRange()
-    if l:bgType == 'light'
+    if s:colorType == 'light'
         let g:ayucolor="light"
     else
         let g:ayucolor="mirage"
@@ -70,8 +65,7 @@ function! s:Dracula()
 endfunction
 
 function! s:Solarized()
-    let l:bgType = s:GetTimeRange()
-    if l:bgType == 'light'
+    if s:colorType == 'light'
         set background=light
     else
         set background=dark

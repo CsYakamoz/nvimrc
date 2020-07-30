@@ -7,13 +7,14 @@
 "   - https://github.com/hardcoreplayers/ThinkVim
 "   - https://github.com/chemzqm/vimrc
 
-let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let s:dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-command! -nargs=1 LoadScript exec 'source '.s:home.'/'.'<args>'
+command! -nargs=1 LoadScript exec 'source '.s:dir.'/'.'<args>'
 
 LoadScript basic.vim
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
-LoadScript script.vim
-LoadScript auto-change-colorschema.vim
 
+for s:path in split(glob('~/.config/nvim/script/*.vim'), "\n")
+    exe 'source ' . s:path
+endfor
