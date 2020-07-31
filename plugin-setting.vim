@@ -16,14 +16,12 @@
 " fzf {{{ "
     nnoremap <silent> <M-f> :FZF<CR>
     nnoremap <silent> <C-f> :GFiles<CR>
+    nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :Rg<CR>
+
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
-
-    " files preview
-    command! -bang -nargs=? -complete=dir GFiles
-      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
     " Note: node_modules was ignored
     command! -bang -nargs=* Rg
@@ -375,3 +373,12 @@
     xmap <C-x>  <Plug>(Exchange)
 " }}} vim-exchange "
 
+" indentLine {{{ "
+    let g:indentLine_char = '│'
+    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man']
+" }}} indentLine "
+
+" vim-browser-search {{{ "
+    nmap <silent> <Leader>s <Plug>SearchNormal
+    vmap <silent> <Leader>s <Plug>SearchVisual
+" }}} vim-browser-search "

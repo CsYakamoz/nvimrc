@@ -4,12 +4,21 @@ if exists('&cursorlineopt')
     set cursorline
 endif
 
+let s:black_buf_type_list = [
+    \ "nofile",
+    \ "nowrite",
+    \ "terminal",
+    \ "help",
+    \ ]
+let s:black_file_type_list = [
+    \ "startify"
+    \ ]
 function! RelativeNumberActivity(active)
     if &diff
         " For diffs, do nothing since we want relativenumbers in all windows.
         return
     endif
-    if &buftype == "nofile" || &buftype == "nowrite" || &buftype == 'terminal'
+    if index(s:black_buf_type_list, &buftype) != -1 || index(s:black_file_type_list, &filetype) != -1
         setlocal nonumber
     elseif a:active == v:true
         setlocal relativenumber

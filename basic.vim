@@ -8,6 +8,7 @@
     set cursorline                      " highlight current line
     set cursorcolumn                    " highlight current column
     set ignorecase                      " ignore case when searching
+    set smartcase                       " Override the 'ignorecase' option if the search pattern contains upper case characters
     set expandtab                       " use spaces instead of tabs
     set softtabstop=4                   " tab key indents by 4 spaces
     set shiftwidth=4                    " >> indents by 4 spaces
@@ -20,11 +21,22 @@
     set splitbelow                      " splitting a window will put the new window below of the current
     language en_US.UTF-8                " um... i just want to learn english
     set synmaxcol=300                   " Only highlight the first 300 columns.
-    set lazyredraw
     set pumheight=15                    " Maximum number of items to show in the popup menu
     set undofile
-    set undodir=~/.vim_undodir
+    set undodir=~/.cache/vim/undo
     set fileformats=unix,dos
+    set noswapfile
+    set scrolloff=5
+    set list
+    set showmatch
+    set listchars=tab:▸\ ,trail:·,extends:>,precedes:<
+    set matchtime=2
+    set matchpairs+=<:>
+    set matchpairs+=《:》
+    set matchpairs+=（:）
+    set matchpairs+=【:】
+    set matchpairs+=“:”
+    set matchpairs+=‘:’
 " }}} common "
 
 " only activated window has the highlight line & column
@@ -55,6 +67,9 @@
     imap <Down> <Nop>
     imap <Left> <Nop>
     imap <Right> <Nop>
+
+    " avoid to start ex mode
+    nnoremap Q <nop>
 
     " use space as the leader
     let mapleader = " "
@@ -99,5 +114,12 @@
 
     vnoremap gl g_
     vnoremap gh ^
+
+    nnoremap n nzz
+    nnoremap N Nzz
+    nnoremap * *zz
+    nnoremap # #zz
+
+    nnoremap <silent> <Leader>m :messages<CR>
 " }}} key-binding without plugin "
 
