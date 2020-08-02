@@ -18,7 +18,9 @@
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
-    nnoremap <silent> <C-g> :Rg<CR>
+    " vim registers <C-/> as <C-_>
+    " use <C-/> to trigger 'Rg' Command
+    nnoremap <silent> <C-_> :Rg<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
@@ -206,61 +208,53 @@
     call quickui#menu#reset()
 
     call quickui#menu#install('&Tool', [
-                \ [ "Startify\tF2", 'Startify' ],
-                \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
-                \ [ "--", '' ],
-                \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
-                \ [ "--", '' ],
-                \ [ "TestFile\tF5", 'TestFile'],
-                \ [ "&TestNearest\tF6", 'TestNearest' ],
-                \ [ "--", '' ],
-                \ [ "&PmR", 'CocList pmr' ],
-                \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
-                \ [ "--", '' ],
-                \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
-                \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
-                \ [ "--", '' ],
-                \ [ "&VistaToogle", 'Vista!!' ],
-                \ [ "VistaFinder", 'Vista finder' ],
-                \ [ "--", '' ],
-                \ [ "&MarkdownPreview", 'MarkdownPreview' ],
-                \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
-                \ [ "--", '' ],
-                \ [ "&Switching", "CocCommand qtk.switching" ],
-                \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
-                \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
-                \ ])
+        \ [ "Startify\tF2", 'Startify' ],
+        \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
+        \ [ "--", '' ],
+        \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
+        \ [ "--", '' ],
+        \ [ "TestFile\tF5", 'TestFile'],
+        \ [ "&TestNearest\tF6", 'TestNearest' ],
+        \ [ "--", '' ],
+        \ [ "&PmR", 'CocList pmr' ],
+        \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
+        \ [ "--", '' ],
+        \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
+        \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
+        \ [ "--", '' ],
+        \ [ "&VistaToogle", 'Vista!!' ],
+        \ [ "VistaFinder", 'Vista finder' ],
+        \ [ "--", '' ],
+        \ [ "&MarkdownPreview", 'MarkdownPreview' ],
+        \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
+        \ [ "--", '' ],
+        \ [ "&Switching", "CocCommand qtk.switching" ],
+        \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
+        \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
+        \ ])
 
     call quickui#menu#install('&Git', [
-                \ [ '&diffsplit', 'Gdiffsplit'],
-                \ [ '&vdiffsplit', 'Gvdiffsplit'],
-                \ [ '&blame', 'Gblame'],
-                \ [ 'lo&g', '0Glog'],
-                \ [ "--", '' ],
-                \ [ '&status', 'aboveleft Gstatus'],
-                \ [ '&commit', 'Gcommit'],
-                \ [ "--", '' ],
-                \ [ '&read(checkout)', 'Gread'],
-                \ [ '&write(add)', 'Gwrite'],
-                \ ])
-
-    " script inside %{...} will be evaluated and expanded in the string
-    call quickui#menu#install("Option", [
-                        \ ['Set Spell %{&spell? "Off":"On"}', 'set spell!'],
-                        \ ['Enable mouse', 'set mouse=a'],
-                        \ ['Disable mouse', 'set mouse='],
-                        \ ['Set Paste %{&paste? "Off":"On"}', 'set paste!'],
-                        \ ])
+        \ [ '&diffsplit', 'Gdiffsplit'],
+        \ [ '&vdiffsplit', 'Gvdiffsplit'],
+        \ [ '&blame', 'Gblame'],
+        \ [ 'lo&g', '0Glog'],
+        \ [ "--", '' ],
+        \ [ '&status', 'aboveleft Gstatus'],
+        \ [ '&commit', 'Gcommit'],
+        \ [ "--", '' ],
+        \ [ '&read(checkout)', 'Gread'],
+        \ [ '&write(add)', 'Gwrite'],
+        \ ])
 
     " register HELP menu with weight 1000
     call quickui#menu#install('Help', [
-                        \ ["&Cheatsheet", 'help index', ''],
-                        \ ['T&ips', 'help tips', ''],
-                        \ ['--',''],
-                        \ ["&Tutorial", 'help tutor', ''],
-                        \ ['&Quick Reference', 'help quickref', ''],
-                        \ ['&Summary', 'help summary', ''],
-                        \ ], 10000)
+        \ ["&Cheatsheet", 'help index', ''],
+        \ ['T&ips', 'help tips', ''],
+        \ ['--',''],
+        \ ["&Tutorial", 'help tutor', ''],
+        \ ['&Quick Reference', 'help quickref', ''],
+        \ ['&Summary', 'help summary', ''],
+        \ ], 10000)
 
     " enable to display tips in the cmdline
     let g:quickui_show_tip = 1
@@ -375,7 +369,7 @@
 
 " indentLine {{{ "
     let g:indentLine_char = '│'
-    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man']
+    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help']
 " }}} indentLine "
 
 " vim-browser-search {{{ "

@@ -8,11 +8,14 @@
     set cursorline                      " highlight current line
     set cursorcolumn                    " highlight current column
     set ignorecase                      " ignore case when searching
+    set smarttab
     set smartcase                       " Override the 'ignorecase' option if the search pattern contains upper case characters
-    set expandtab                       " use spaces instead of tabs
-    set softtabstop=4                   " tab key indents by 4 spaces
     set shiftwidth=4                    " >> indents by 4 spaces
+    set tabstop=4
+    set expandtab                       " use spaces instead of tabs
     set shiftround                      " >> indents to next multiple of shiftwidth
+    set softtabstop=4                   " tab key indents by 4 spaces
+    set autoindent
     set foldmethod=indent               " the kind of folding used for the current window.
     set foldlevelstart=10               " not yet understood
     set updatetime=300                  " you will have bad experience for diagnostic messages when it's default 4000.
@@ -26,17 +29,18 @@
     set undodir=~/.cache/vim/undo
     set fileformats=unix,dos
     set noswapfile
-    set scrolloff=5
+    set scrolloff=3
     set list
     set showmatch
-    set listchars=tab:▸\ ,trail:·,extends:>,precedes:<
-    set matchtime=2
+    set listchars=tab:▸\ ,trail:·,extends:>
+    set matchtime=1
     set matchpairs+=<:>
     set matchpairs+=《:》
     set matchpairs+=（:）
     set matchpairs+=【:】
     set matchpairs+=“:”
     set matchpairs+=‘:’
+    set autoread
 " }}} common "
 
 " only activated window has the highlight line & column
@@ -121,5 +125,11 @@
     nnoremap # #zz
 
     nnoremap <silent> <Leader>m :messages<CR>
+
+    " Do NOT rewrite register after paste
+    xnoremap p "_dP
+
+    nnoremap <C-n> gt
+    nnoremap <C-p> gT
 " }}} key-binding without plugin "
 

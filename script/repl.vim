@@ -1,26 +1,26 @@
 " require: vim-floaterm
 fun! s:CsRepl(mode) range
-    let l:mapping = {
+    let mapping = {
     \   "javascript": "node",
     \   "python": "python3",
     \ }
 
-    let l:filetype = &filetype
-    if ! has_key(l:mapping, l:filetype)
-        echom 'no configure for this type(' . l:filetype . ')'
+    let filetype = &filetype
+    if ! has_key(mapping, filetype)
+        echom 'no configure for this type(' . filetype . ')'
         return
     endif
-    let l:name = l:mapping[l:filetype]
+    let name = mapping[filetype]
 
-    let l:found_bufnr = 0
+    let found_bufnr = 0
     for nr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
-        if getbufvar(nr, '&buftype') == 'terminal' && bufname(nr) == 'floaterm://' . l:name
-            let l:found_bufnr = nr
+        if getbufvar(nr, '&buftype') == 'terminal' && bufname(nr) == 'floaterm://' . name
+            let found_bufnr = nr
         endif
     endfor
 
-    if l:found_bufnr == 0
-        execute 'FloatermNew --width=0.5 --wintype=normal --position=right --name=' . l:name . ' ' . l:name
+    if found_bufnr == 0
+        execute 'FloatermNew --width=0.5 --wintype=normal --position=right --name=' . name . ' ' . name
         stopinsert
 
         setlocal nonumber
@@ -31,9 +31,9 @@ fun! s:CsRepl(mode) range
     endif
 
     if a:mode == 0
-        execute 'FloatermSend --name=' . l:name
+        execute 'FloatermSend --name=' . name
     else
-        execute "'<,'>FloatermSend --name=" . l:name
+        execute "'<,'>FloatermSend --name=" . name
     endif
 endf
 

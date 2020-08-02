@@ -16,16 +16,16 @@ if has('mac') && executable('im-select')
 elseif has('unix') && executable('fcitx-remote')
     let s:input_toggle = 1
     function! s:Fcitx2en()
-        let l:input_status = system("fcitx-remote")
-        if l:input_status == 2
+        let input_status = system("fcitx-remote")
+        if input_status == 2
             let s:input_toggle = 1
             call system("fcitx-remote -c")
         endif
     endfunction
 
     function! s:Fcitx2zh()
-        let l:input_status = system("fcitx-remote")
-        if l:input_status != 2 && s:input_toggle == 1
+        let input_status = system("fcitx-remote")
+        if input_status != 2 && s:input_toggle == 1
             call system("fcitx-remote -o")
             let s:input_toggle = 0
         endif
