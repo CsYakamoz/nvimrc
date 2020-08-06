@@ -11,7 +11,8 @@ let s:black_buf_type_list = [
     \ "help",
     \ ]
 let s:black_file_type_list = [
-    \ "startify"
+    \ "startify",
+    \ "diff",
     \ ]
 function! RelativeNumberActivity(active)
     if &diff

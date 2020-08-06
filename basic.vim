@@ -131,5 +131,9 @@
 
     nnoremap <C-n> gt
     nnoremap <C-p> gT
+
+    " <C-p> <C-n> has been used in Insert Mode
+    inoremap <C-k> <Up>
+    inoremap <C-j> <Down>
 " }}} key-binding without plugin "
 

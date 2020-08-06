@@ -73,6 +73,11 @@ function! s:Solarized()
     colorscheme solarized
 endf
 
+function! s:OneDark()
+    let g:onedark_terminal_italics = 1
+    colorscheme onedark
+endfunction
+
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -82,6 +87,7 @@ let s:colorList = [
     \ function('<SID>Dracula'),
     \ function('<SID>Quantum'),
     \ function('<SID>Solarized'),
+    \ function('<SID>OneDark'),
     \ ]
 " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
 " 86400 millisecond is equal to 1 day

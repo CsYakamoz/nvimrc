@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'dracula/vim', { 'as': 'dracula' }
         Plug 'tyrannicaltoucan/vim-quantum'
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
+        Plug 'joshdick/onedark.vim'
     " }}} colorschema "
 
     " appearance {{{ "
@@ -68,6 +69,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'kristijanhusak/vim-carbon-now-sh'
         Plug 'voldikss/vim-browser-search'
         Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
+        Plug 'junegunn/goyo.vim'
     " }}} tool "
 
     " self {{{ "
