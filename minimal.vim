@@ -21,11 +21,11 @@
     nnoremap <silent> <Leader>q :q<CR>
 
     " yarn to system, paste from system
-    vnoremap <silent> <Leader>y "+y
+    xnoremap <silent> <Leader>y "+y
     nnoremap <silent> <Leader>p "+p
     nnoremap <silent> <Leader>P "+P
-    vnoremap <silent> <Leader>p "+p
-    vnoremap <silent> <Leader>P "+P
+    xnoremap <silent> <Leader>p "+p
+    xnoremap <silent> <Leader>P "+P
 
     nnoremap <silent> <Leader><BackSpace> :nohl<CR>
 
@@ -39,5 +39,10 @@
     nnoremap <silent> <C-j> <C-w>j
     nnoremap <silent> <C-k> <C-w>k
     nnoremap <silent> <C-l> <C-w>l
+
+    nnoremap n nzz
+    nnoremap N Nzz
+    nnoremap * *zz
+    nnoremap # #zz
 " }}} key-binding without plugin "
 

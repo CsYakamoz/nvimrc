@@ -82,11 +82,11 @@
     nnoremap <silent> <Leader>q :q<CR>
 
     " yarn to system, paste from system
-    vnoremap <silent> <Leader>y "+y
+    xnoremap <silent> <Leader>y "+y
     nnoremap <silent> <Leader>p "+p
     nnoremap <silent> <Leader>P "+P
-    vnoremap <silent> <Leader>p "+p
-    vnoremap <silent> <Leader>P "+P
+    xnoremap <silent> <Leader>p "+p
+    xnoremap <silent> <Leader>P "+P
 
     nnoremap <silent> <Leader><BackSpace> :nohl<CR>
 
@@ -116,8 +116,8 @@
     xnoremap < <gv
     xnoremap > >gv
 
-    vnoremap gl g_
-    vnoremap gh ^
+    xnoremap gl g_
+    xnoremap gh ^
 
     nnoremap n nzz
     nnoremap N Nzz
@@ -128,6 +128,7 @@
 
     " Do NOT rewrite register after paste
     xnoremap p "_dP
+    xnoremap P "_dP
 
     nnoremap <C-n> gt
     nnoremap <C-p> gT

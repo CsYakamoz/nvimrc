@@ -9,6 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tyrannicaltoucan/vim-quantum'
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
         Plug 'joshdick/onedark.vim'
+        Plug 'hardcoreplayers/oceanic-material'
     " }}} colorschema "
 
     " appearance {{{ "

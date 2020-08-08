@@ -23,3 +23,45 @@ function! s:MouseToggle()
     endif
 endfunction
 command! -nargs=0 Mouse :call s:MouseToggle()
+
+let s:autoSelectToggle = 1
+fun! s:AutoSelectTextAfterPasteToggle()
+    if s:autoSelectToggle == 1
+        nunmap <Leader>p
+        nunmap <Leader>P
+        xunmap <Leader>p
+        xunmap <Leader>P
+        xunmap p
+        xunmap P
+
+        nnoremap p p`[v`]
+        nnoremap P P`[v`]
+
+        nnoremap <silent> <Leader>p "+p`[v`]
+        nnoremap <silent> <Leader>P "+P`[v`]
+        xnoremap <silent> <Leader>p "+p`[v`]
+        xnoremap <silent> <Leader>P "+P`[v`]
+        xnoremap p "_dP`[v`]
+        xnoremap P "_dP`[v`]
+        let s:autoSelectToggle = 0
+    else
+        nunmap <Leader>p
+        nunmap <Leader>P
+        xunmap <Leader>p
+        xunmap <Leader>P
+        xunmap p
+        xunmap P
+
+        nunmap p
+        nunmap P
+
+        nnoremap <silent> <Leader>p "+p
+        nnoremap <silent> <Leader>P "+P
+        xnoremap <silent> <Leader>p "+p
+        xnoremap <silent> <Leader>P "+P
+        xnoremap p "_dP
+        xnoremap P "_dP
+        let s:autoSelectToggle = 1
+    endif
+endf
+command! -nargs=0 AutoSelectTextAfterPasteToggle :call s:AutoSelectTextAfterPasteToggle()

@@ -38,5 +38,5 @@ fun! s:CsRepl(mode) range
 endf
 
 nnoremap <silent> <Leader>x :call <SID>CsRepl(0)<CR>
-vnoremap <silent> <Leader>x :call <SID>CsRepl(1)<CR>
+xnoremap <silent> <Leader>x :call <SID>CsRepl(1)<CR>
 

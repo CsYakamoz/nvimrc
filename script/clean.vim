@@ -16,4 +16,4 @@ function! s:Clean()
     call winrestview(view)
 endfunction
 
-nnoremap <Leader>cl :call <SID>Clean()<CR>
+command! -nargs=0 Clean :call s:Clean()

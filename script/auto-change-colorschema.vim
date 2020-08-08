@@ -78,6 +78,13 @@ function! s:OneDark()
     colorscheme onedark
 endfunction
 
+function! s:OceanicMaterial()
+    set background=dark
+    colorscheme oceanic_material
+    let g:airline_theme='bubblegum'
+endfunction
+
+let s:Target = ''
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -88,10 +95,16 @@ let s:colorList = [
     \ function('<SID>Quantum'),
     \ function('<SID>Solarized'),
     \ function('<SID>OneDark'),
+    \ function('<SID>OceanicMaterial'),
     \ ]
-" 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
-" 86400 millisecond is equal to 1 day
-let s:dayNumFrom1970 = (localtime() + 28800) / 86400
-let s:idx = s:dayNumFrom1970 % len(s:colorList)
-let s:ChangeFun = s:colorList[s:idx]
-call s:ChangeFun()
+
+if s:Target == ''
+    " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
+    " 86400 millisecond is equal to 1 day
+    let s:dayNumFrom1970 = (localtime() + 28800) / 86400
+    let s:idx = s:dayNumFrom1970 % len(s:colorList)
+    let s:ChangeFun = s:colorList[s:idx]
+    call s:ChangeFun()
+else
+    call s:Target()
+endif
