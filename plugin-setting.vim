@@ -18,9 +18,10 @@
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
+    nnoremap <silent> <C-g> :Rg<CR>
     " vim registers <C-/> as <C-_>
-    " use <C-/> to trigger 'Rg' Command
-    nnoremap <silent> <C-_> :Rg<CR>
+    " use <C-/> to trigger 'BLines' Command
+    nnoremap <silent> <C-_> :BLines<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1

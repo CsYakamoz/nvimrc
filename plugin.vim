@@ -23,7 +23,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'pangloss/vim-javascript'
         Plug 'leafgarland/typescript-vim'
         Plug 'PeterRincker/vim-searchlight'
-        Plug 'tmhedberg/simpylfold'
+        Plug 'elzr/vim-json'
     " }}} appearance "
 
     " tool {{{ "
@@ -71,6 +71,9 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'voldikss/vim-browser-search'
         Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
         Plug 'junegunn/goyo.vim'
+        Plug 'terryma/vim-expand-region'
+        Plug 'tmhedberg/simpylfold'
+        Plug 'Konfekt/FastFold'
     " }}} tool "
 
     " self {{{ "
