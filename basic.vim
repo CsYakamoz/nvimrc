@@ -30,6 +30,7 @@
     set fileformats=unix,dos
     set noswapfile
     set scrolloff=3
+    set sidescrolloff=3
     set list
     set showmatch
     set listchars=tab:▸\ ,trail:·,extends:>

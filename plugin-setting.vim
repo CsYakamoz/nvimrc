@@ -139,7 +139,6 @@
         \ 'coc-prettier',
         \ 'coc-tsserver',
         \ 'coc-json',
-        \ 'coc-ci',
         \ 'coc-clangd',
         \ ]
 
@@ -184,10 +183,6 @@
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-    " coc-ci
-    nmap <silent> w <Plug>(coc-ci-w)
-    nmap <silent> b <Plug>(coc-ci-b)
 
     augroup mygroup
         autocmd!
@@ -241,7 +236,7 @@
         \ [ 'lo&g', '0Glog'],
         \ [ "--", '' ],
         \ [ '&status', 'aboveleft Gstatus'],
-        \ [ '&commit', 'Gcommit'],
+        \ [ '&commit', 'CsConfirm Gcommit'],
         \ [ "--", '' ],
         \ [ '&read(checkout)', 'Gread'],
         \ [ '&write(add)', 'Gwrite'],
