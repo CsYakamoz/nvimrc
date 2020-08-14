@@ -7,6 +7,7 @@
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter'
+    let g:airline#extensions#tabline#tab_nr_type = 1
 " }}} airline "
 
 " simpylfold {{{ "
@@ -75,7 +76,6 @@
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
-
 " }}} startify "
 
 " vista {{{ "

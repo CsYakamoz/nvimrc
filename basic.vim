@@ -42,6 +42,8 @@
     set matchpairs+=“:”
     set matchpairs+=‘:’
     set autoread
+    set complete-=i                     " disable scanning included files
+    set complete-=t                     " disable searching tags
 " }}} common "
 
 " only activated window has the highlight line & column
@@ -111,8 +113,8 @@
     nnoremap <silent> <Leader>< <C-w>5<
 
     " add new empty line in normal mode
-    nnoremap <Leader>o o<ESC>
-    nnoremap <Leader>O O<ESC>
+    nnoremap <Leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+    nnoremap <Leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 
     xnoremap < <gv
     xnoremap > >gv

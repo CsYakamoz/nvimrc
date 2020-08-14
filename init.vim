@@ -13,6 +13,7 @@ let s:dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 command! -nargs=1 LoadScript exec 'source '.s:dir.'/'.'<args>'
 
 LoadScript basic.vim
+LoadScript abbr.vim
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
 

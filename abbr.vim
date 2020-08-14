@@ -1,0 +1,2 @@
+iabbr cosnt const
+

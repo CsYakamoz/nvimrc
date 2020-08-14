@@ -84,7 +84,6 @@ function! s:OceanicMaterial()
     let g:airline_theme='bubblegum'
 endfunction
 
-let s:Target = ''
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -98,7 +97,9 @@ let s:colorList = [
     \ function('<SID>OceanicMaterial'),
     \ ]
 
-if s:Target == ''
+" let s:target = s:colorList[0]
+
+if !exists('s:target')
     " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
     " 86400 millisecond is equal to 1 day
     let s:dayNumFrom1970 = (localtime() + 28800) / 86400
@@ -106,5 +107,5 @@ if s:Target == ''
     let s:ChangeFun = s:colorList[s:idx]
     call s:ChangeFun()
 else
-    call s:Target()
+    call s:target()
 endif
