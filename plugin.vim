@@ -74,6 +74,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'terryma/vim-expand-region'
         Plug 'tmhedberg/simpylfold'
         Plug 'Konfekt/FastFold'
+        Plug 'hotoo/pangu.vim'
     " }}} tool "
 
     " self {{{ "

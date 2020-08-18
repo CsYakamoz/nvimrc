@@ -83,6 +83,7 @@
 
     nnoremap <Leader>w :w<CR>
     nnoremap <silent> <Leader>q :q<CR>
+    nnoremap <silent> <Leader>Q :qa<CR>
 
     " yarn to system, paste from system
     xnoremap <silent> <Leader>y "+y

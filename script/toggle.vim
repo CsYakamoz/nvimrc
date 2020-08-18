@@ -1,6 +1,6 @@
 " reference: https://github.com/chemzqm/vimrc/blob/64f4cdfc1b/leadermap.vim#L104-L106
 function! s:NumberToggle()
-    if(&number == 1) | set nu! | set rnu! | else | set rnu | set nu | endif
+    if(&number == 1 || &relativenumber == 1) | set nonu | set nornu | else | set rnu | set nu | endif
 endfunction
 nnoremap <Leader>nu :call <SID>NumberToggle()<CR>
 

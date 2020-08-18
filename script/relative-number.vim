@@ -15,7 +15,7 @@ let s:black_file_type_list = [
     \ "diff",
     \ ]
 function! RelativeNumberActivity(active)
-    if &diff
+    if &diff || &number == 0
         " For diffs, do nothing since we want relativenumbers in all windows.
         return
     endif
