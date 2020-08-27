@@ -41,16 +41,18 @@
     set matchpairs+=【:】
     set matchpairs+=“:”
     set matchpairs+=‘:’
-    set autoread
     set complete-=i                     " disable scanning included files
     set complete-=t                     " disable searching tags
 " }}} common "
 
 " only activated window has the highlight line & column
-    autocmd WinEnter * set cursorline
-    autocmd WinLeave * set nocursorline
-    autocmd WinEnter * set cursorcolumn
-    autocmd WinLeave * set nocursorcolumn
+    augroup highlight_line_column
+        autocmd!
+        autocmd WinEnter * set cursorline
+        autocmd WinLeave * set nocursorline
+        autocmd WinEnter * set cursorcolumn
+        autocmd WinLeave * set nocursorcolumn
+    augroup end
 
 " restore cursor position when opening file(if opened)
     autocmd BufReadPost *
@@ -131,8 +133,9 @@
     nnoremap <silent> <Leader>m :messages<CR>
 
     " Do NOT rewrite register after paste
-    xnoremap p "_dP
-    xnoremap P "_dP
+    " reference: https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
+    xnoremap <silent> p p:let @"=@0<CR>
+    xnoremap <silent> P P:let @"=@0<CR>
 
     nnoremap <C-n> gt
     nnoremap <C-p> gT
@@ -140,5 +143,8 @@
     " <C-p> <C-n> has been used in Insert Mode
     inoremap <C-k> <Up>
     inoremap <C-j> <Down>
+
+    " select current buffer
+    nnoremap <Leader>a ggVG
 " }}} key-binding without plugin "
 
