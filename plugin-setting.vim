@@ -19,7 +19,7 @@
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
-    nnoremap <silent> <C-g> :Rg<CR>
+    nnoremap <silent> <C-g> :RG<CR>
     " vim registers <C-/> as <C-_>
     " use <C-/> to trigger 'BLines' Command
     nnoremap <silent> <C-_> :BLines<CR>
@@ -32,6 +32,15 @@
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
         \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+    function! RipgrepFzf(query, fullscreen)
+      let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+      let initial_command = printf(command_fmt, shellescape(a:query))
+      let reload_command = printf(command_fmt, '{q}')
+      let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    endfunction
+    command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 " }}} fzf "
