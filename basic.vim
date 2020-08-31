@@ -146,5 +146,8 @@
 
     " select current buffer
     nnoremap <Leader>a ggVG
+
+    " remove all trailing whitespace
+    nnoremap <Leader>rt :%s/\s\+$//e<CR>
 " }}} key-binding without plugin "
 

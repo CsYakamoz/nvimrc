@@ -18,15 +18,17 @@ nnoremap <Leader>bg :call <SID>BackgroundToggle()<CR>
 function! s:MouseToggle()
     if empty(&mouse)
       set mouse=a
+      echo 'enable mouse'
     else
       set mouse=
+      echo 'disable mouse'
     endif
 endfunction
 command! -nargs=0 Mouse :call s:MouseToggle()
 
-let s:autoSelectToggle = 1
+let s:autoSelectToggle = 0
 fun! s:AutoSelectTextAfterPasteToggle()
-    if s:autoSelectToggle == 1
+    if s:autoSelectToggle == 0
         nunmap <Leader>p
         nunmap <Leader>P
         xunmap <Leader>p
@@ -43,7 +45,8 @@ fun! s:AutoSelectTextAfterPasteToggle()
         xnoremap <silent> <Leader>P "+P`[v`]
         xnoremap p "_dP`[v`]
         xnoremap P "_dP`[v`]
-        let s:autoSelectToggle = 0
+        let s:autoSelectToggle = 1
+        echo 'enable auto select text after paste'
     else
         nunmap <Leader>p
         nunmap <Leader>P
@@ -61,7 +64,8 @@ fun! s:AutoSelectTextAfterPasteToggle()
         xnoremap <silent> <Leader>P "+P
         xnoremap p "_dP
         xnoremap P "_dP
-        let s:autoSelectToggle = 1
+        let s:autoSelectToggle = 0
+        echo 'disable auto select text after paste'
     endif
 endf
 command! -nargs=0 AutoSelectTextAfterPasteToggle :call s:AutoSelectTextAfterPasteToggle()

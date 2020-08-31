@@ -1,7 +1,10 @@
-if strftime('%H') > 6 && strftime('%H') < 15
-    let s:colorType = 'light'
-else
-    let s:colorType = 'dark'
+" let s:colorType = 'dark'
+if !exists('s:colorType')
+    if strftime('%H') > 6 && strftime('%H') < 15
+        let s:colorType = 'light'
+    else
+        let s:colorType = 'dark'
+    endif
 endif
 
 function! s:Gruvbox()
@@ -98,7 +101,6 @@ let s:colorList = [
     \ ]
 
 " let s:target = s:colorList[0]
-
 if !exists('s:target')
     " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
     " 86400 millisecond is equal to 1 day
