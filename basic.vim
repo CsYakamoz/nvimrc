@@ -149,5 +149,8 @@
 
     " remove all trailing whitespace
     nnoremap <Leader>rt :%s/\s\+$//e<CR>
+
+    " reference: https://vim.fandom.com/wiki/Search_for_visually_selected_text
+    xnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
 " }}} key-binding without plugin "
 

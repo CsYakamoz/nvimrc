@@ -285,7 +285,7 @@
     let g:floaterm_type = 'floating'
     let g:floaterm_position = 'bottomright'
     let g:floaterm_width = 0.99
-    let g:floaterm_height = 0.5
+    let g:floaterm_height = 0.6
 
     " This plugin leaves an empty buffer on startify window
     autocmd User Startified setlocal buflisted
