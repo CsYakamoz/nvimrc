@@ -52,10 +52,16 @@
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
     " ignore directories
-    let NERDTreeIgnore = ['node_modules']
+    let g:NERDTreeIgnore = ['node_modules']
 
     nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
     nnoremap <silent> <F4> :NERDTreeFind<CR>
+
+    " prefer to use trash-cli if possible
+    if executable('trash-put')
+        let g:NERDTreeRemoveFileCmd = 'trash-put '
+        let g:NERDTreeRemoveDirCmd = 'trash-put '
+    endif
 " }}} nerdtree "
 
 " nerdcommenter {{{ "
@@ -203,7 +209,7 @@
 " }}} coc.nvim "
 
 " vim-test {{{ "
-    let test#strategy = "neovim"
+    let g:test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
     nnoremap <silent> <F6> :TestNearest<CR>
 " }}} vim-test "
