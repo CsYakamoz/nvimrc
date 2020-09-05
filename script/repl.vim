@@ -1,16 +1,25 @@
 " require: vim-floaterm
-fun! s:CsRepl(mode) range
-    let mapping = {
-    \   "javascript": "node",
-    \   "python": "python3",
-    \ }
+let s:config = {
+\   "javascript": {
+    \   "name": "node",
+    \   "preloading": [
+        \   "const R = require('ramda');const trace = R.tap(console.log);const DayJs = require('dayjs');",
+        \ ],
+    \ },
+\   "python": {
+    \   "name": "python3",
+    \   "preloading": [],
+    \ },
+\ }
 
+fun! s:CsRepl(mode) range
     let filetype = &filetype
-    if ! has_key(mapping, filetype)
-        echom 'no configure for this type(' . filetype . ')'
+    if ! has_key(s:config, filetype)
+        echom 'no configure for this filetype(' . filetype . ')'
         return
     endif
-    let name = mapping[filetype]
+
+    let name = s:config[filetype].name
 
     let found_bufnr = 0
     for nr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
@@ -28,6 +37,18 @@ fun! s:CsRepl(mode) range
 
         let prev_window = winnr('#')
         execute prev_window . 'wincmd w'
+
+        let preloading = s:config[filetype]
+        if len(preloading) != 0
+            sleep 100m
+            for input in s:config[filetype].preloading
+                if strlen(input) == 0
+                    continue
+                endif
+
+                execute 'FloatermSend --name=' . name . ' ' . input
+            endfor
+        endif
     endif
 
     if a:mode == 0

@@ -18,7 +18,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'Yggdroot/indentLine'
-        Plug 'lukas-reineke/indent-blankline.nvim'
+        " FIXME: remove this if statement when fixing a bug
+        if ! has('mac')
+            Plug 'lukas-reineke/indent-blankline.nvim'
+        endif
         Plug 'jackguo380/vim-lsp-cxx-highlight'
         Plug 'pangloss/vim-javascript'
         Plug 'leafgarland/typescript-vim'
