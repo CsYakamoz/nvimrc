@@ -7,6 +7,7 @@
     set relativenumber                  " show relative number
     set cursorline                      " highlight current line
     set cursorcolumn                    " highlight current column
+    let &colorcolumn="80,120"
     set ignorecase                      " ignore case when searching
     set smarttab
     set smartcase                       " Override the 'ignorecase' option if the search pattern contains upper case characters
@@ -32,9 +33,9 @@
     set scrolloff=3
     set sidescrolloff=3
     set list
-    set showmatch
     set listchars=tab:▸\ ,trail:·,extends:>
-    set matchtime=1
+    set showmatch
+    set matchtime=2
     set matchpairs+=<:>
     set matchpairs+=《:》
     set matchpairs+=（:）
@@ -116,9 +117,11 @@
     nnoremap <silent> <Leader>< <C-w>5<
 
     " add new empty line in normal mode
+    " reference: https://github.com/mhinz/vim-galore#quickly-add-empty-lines
     nnoremap <Leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
     nnoremap <Leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 
+    " reference: https://github.com/mhinz/vim-galore#dont-lose-selection-when-shifting-sidewards
     xnoremap < <gv
     xnoremap > >gv
 
@@ -137,6 +140,7 @@
     xnoremap <silent> p p:let @"=@0<CR>
     xnoremap <silent> P P:let @"=@0<CR>
 
+    " go to next/previous tabpage
     nnoremap <C-n> gt
     nnoremap <C-p> gT
 
@@ -152,5 +156,15 @@
 
     " reference: https://vim.fandom.com/wiki/Search_for_visually_selected_text
     xnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
+
+    " reference: https://github.com/mhinz/vim-galore#quickly-move-current-line
+    nnoremap <M-S-j>  :<c-u>execute 'move +'. v:count1<cr>
+    nnoremap <M-S-k>  :<c-u>execute 'move -1-'. v:count1<cr>
+
+    " reference: https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+    nnoremap <expr> n  'Nn'[v:searchforward]
+    xnoremap <expr> n  'Nn'[v:searchforward]
+    nnoremap <expr> N  'nN'[v:searchforward]
+    xnoremap <expr> N  'nN'[v:searchforward]
 " }}} key-binding without plugin "
 
