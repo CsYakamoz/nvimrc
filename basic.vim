@@ -7,7 +7,7 @@
     set relativenumber                  " show relative number
     set cursorline                      " highlight current line
     set cursorcolumn                    " highlight current column
-    let &colorcolumn="80,120"
+    set colorcolumn=80,120
     set ignorecase                      " ignore case when searching
     set smarttab
     set smartcase                       " Override the 'ignorecase' option if the search pattern contains upper case characters
@@ -99,8 +99,6 @@
 
     " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
     inoremap <C-c> <ESC>
-    " neovim terminal - To map <Esc> to exit terminal-mode
-    :tnoremap <Esc> <C-\><C-n>
 
     " using `Ctrl + {h, j, k, l}` to navigate windows
     nnoremap <silent> <C-h> <C-w>h
@@ -160,11 +158,5 @@
     " reference: https://github.com/mhinz/vim-galore#quickly-move-current-line
     nnoremap <M-S-j>  :<c-u>execute 'move +'. v:count1<cr>
     nnoremap <M-S-k>  :<c-u>execute 'move -1-'. v:count1<cr>
-
-    " reference: https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-    nnoremap <expr> n  'Nn'[v:searchforward]
-    xnoremap <expr> n  'Nn'[v:searchforward]
-    nnoremap <expr> N  'nN'[v:searchforward]
-    xnoremap <expr> N  'nN'[v:searchforward]
 " }}} key-binding without plugin "
 
