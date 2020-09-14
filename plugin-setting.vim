@@ -219,11 +219,8 @@
     call quickui#menu#reset()
 
     call quickui#menu#install('&Tool', [
-        \ [ "Startify\tF2", 'Startify' ],
-        \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
-        \ [ "--", '' ],
-        \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
         \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
+        \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
         \ [ "--", '' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
@@ -241,8 +238,10 @@
         \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
         \ [ "--", '' ],
         \ [ "&Switching", "CocCommand qtk.switching" ],
+        \ [ "--", '' ],
         \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
+        \ [ "Coc&Restart", "CocRestart" ],
         \ ])
 
     call quickui#menu#install('&Git', [

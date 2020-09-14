@@ -23,7 +23,7 @@ fun! s:CsRepl(mode) range
 
     let found_bufnr = 0
     for nr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
-        if getbufvar(nr, '&buftype') == 'terminal' && bufname(nr) == 'floaterm://' . name
+        if getbufvar(nr, '&buftype') == 'terminal' && matchstr(bufname(nr), 'term://.*//\d\+:' . name) != ''
             let found_bufnr = nr
         endif
     endfor

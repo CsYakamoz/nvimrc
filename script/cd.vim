@@ -5,7 +5,9 @@ fun! s:CD()
         return
     endif
 
-    execute 'FloatermSend cd ' . path
-    execute 'FloatermShow'
+    execute 'FloatermNew --name=csyakamoz_path'
+    execute 'FloatermToggle'
+    execute 'FloatermSend --name=csyakamoz_path cd ' . path
+    execute 'FloatermToggle'
 endf
 command! -nargs=0 CD :call s:CD()
