@@ -387,3 +387,8 @@
     nmap <silent> <Leader>s <Plug>SearchNormal
     vmap <silent> <Leader>s <Plug>SearchVisual
 " }}} vim-browser-search "
+
+" linediff.vim {{{ "
+    nnoremap <Leader>l :Linediff<CR>
+    xnoremap <Leader>l :Linediff<CR>
+" }}} linediff.vim "

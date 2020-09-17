@@ -78,6 +78,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tmhedberg/simpylfold'
         Plug 'Konfekt/FastFold'
         Plug 'hotoo/pangu.vim'
+        Plug 'AndrewRadev/linediff.vim'
     " }}} tool "
 
     " self {{{ "

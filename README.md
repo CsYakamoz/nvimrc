@@ -81,6 +81,7 @@
 |                            [tmhedberg/simpylfold](https://github.com/tmhedberg/simpylfold)                            |                                                     No-BS Python code folding for Vim                                                     |
 |                                [Konfekt/FastFold](https://github.com/Konfekt/FastFold)                                |                                           Speed up Vim by updating folds only when called-for.                                            |
 |                                 [hotoo/pangu.vim](https://github.com/hotoo/pangu.vim)                                 |                                                 『盘古之白』中文排版自动规范化的 Vim 插件                                                 |
+|                        [AndrewRadev/linediff.vim](https://github.com/AndrewRadev/linediff.vim)                        |                                              A vim plugin to perform diffs on blocks of code                                              |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 
