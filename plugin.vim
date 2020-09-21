@@ -53,10 +53,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tpope/vim-sleuth'
         Plug 'jiangmiao/auto-pairs'
         Plug 'airblade/vim-gitgutter'
-        Plug 'liuchengxu/vista.vim'
+        Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
         Plug 'scrooloose/nerdtree'
         Plug 'scrooloose/nerdcommenter'
-        Plug 'janko/vim-test'
+        Plug 'janko/vim-test', { 'on': ['TestFile', 'TestNearest'] }
         Plug 'junegunn/vim-peekaboo'
         Plug 'skywind3000/vim-quickui'
         Plug 'kkoomen/vim-doge'
@@ -70,15 +70,15 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'dhruvasagar/vim-zoom'
         Plug 'tommcdo/vim-exchange'
         Plug 'mzlogin/vim-markdown-toc'
-        Plug 'kristijanhusak/vim-carbon-now-sh'
+        Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
         Plug 'voldikss/vim-browser-search'
         Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
-        Plug 'junegunn/goyo.vim'
+        Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
         Plug 'terryma/vim-expand-region'
-        Plug 'tmhedberg/simpylfold'
+        Plug 'tmhedberg/simpylfold', { 'for': 'python' }
         Plug 'Konfekt/FastFold'
-        Plug 'hotoo/pangu.vim'
-        Plug 'AndrewRadev/linediff.vim'
+        Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
+        Plug 'AndrewRadev/linediff.vim', { 'on': 'Linediff' }
     " }}} tool "
 
     " self {{{ "
