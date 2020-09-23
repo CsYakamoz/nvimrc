@@ -219,6 +219,9 @@
     call quickui#menu#reset()
 
     call quickui#menu#install('&Tool', [
+        \ [ "Startify\tF2", 'Startify' ],
+        \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
+        \ [ "--", '' ],
         \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
         \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
         \ [ "--", '' ],
@@ -227,17 +230,15 @@
         \ [ "--", '' ],
         \ [ "&PmR", 'CocList pmr' ],
         \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
-        \ [ "--", '' ],
         \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
         \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
+        \ [ "&Switching", "CocCommand qtk.switching" ],
         \ [ "--", '' ],
         \ [ "&VistaToogle", 'Vista!!' ],
         \ [ "VistaFinder", 'Vista finder' ],
         \ [ "--", '' ],
         \ [ "&MarkdownPreview", 'MarkdownPreview' ],
         \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
-        \ [ "--", '' ],
-        \ [ "&Switching", "CocCommand qtk.switching" ],
         \ [ "--", '' ],
         \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
@@ -380,7 +381,7 @@
 
 " indentLine {{{ "
     let g:indentLine_char = '│'
-    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help']
+    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown']
 " }}} indentLine "
 
 " vim-browser-search {{{ "

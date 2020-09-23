@@ -72,6 +72,7 @@ function! s:Solarized()
         set background=light
     else
         set background=dark
+        let g:airline_theme='atomic'
     endif
     colorscheme solarized
 endf
