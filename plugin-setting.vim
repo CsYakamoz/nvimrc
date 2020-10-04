@@ -43,6 +43,8 @@
     command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+
+    let g:fzf_history_dir = '~/.local/share/fzf-history'
 " }}} fzf "
 
 " nerdtree {{{ "
