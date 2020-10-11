@@ -395,3 +395,9 @@
     nnoremap <Leader>l :Linediff<CR>
     xnoremap <Leader>l :Linediff<CR>
 " }}} linediff.vim "
+
+" vim-carbon-now-sh {{{ "
+    let g:carbon_now_sh_options = {
+        \ 'fm': 'Source Code Pro'
+        \ }
+" }}} vim-carbon-now-sh "

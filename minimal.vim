@@ -31,8 +31,6 @@
 
     " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
     inoremap <C-c> <ESC>
-    " neovim terminal - To map <Esc> to exit terminal-mode
-    :tnoremap <Esc> <C-\><C-n>
 
     " using `Ctrl + {h, j, k, l}` to navigate windows
     nnoremap <silent> <C-h> <C-w>h
