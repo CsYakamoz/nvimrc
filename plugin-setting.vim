@@ -208,6 +208,8 @@
         " Update signature help on jump placeholder.
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
+
+    autocmd WinLeave * call coc#util#clear_pos_matches('^HighlightedyankRegion')
 " }}} coc.nvim "
 
 " vim-test {{{ "
@@ -245,6 +247,7 @@
         \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
         \ [ "Coc&Restart", "CocRestart" ],
+        \ [ "CocClose&Floats", "call coc#util#close_floats()" ],
         \ ])
 
     call quickui#menu#install('&Git', [
