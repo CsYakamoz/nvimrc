@@ -146,8 +146,8 @@
     inoremap <C-k> <Up>
     inoremap <C-j> <Down>
 
-    " select current buffer
-    nnoremap <Leader>a ggVG
+    " visual current buffer
+    nnoremap <Leader>vb ggVG
 
     " remove all trailing whitespace
     nnoremap <Leader>rt :%s/\s\+$//e<CR>

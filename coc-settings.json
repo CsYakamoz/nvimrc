@@ -11,8 +11,10 @@
 
   "yank.enableCompletion": false,
 
-  "cSpell.words": ["wechat", "struct", "csyakamoz"],
+  "cSpell.words": ["wechat", "struct", "csyakamoz", "leetcode"],
   "cSpell.showStatus": false,
+
+  "coc.preferences.promptInput": false,
 
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
