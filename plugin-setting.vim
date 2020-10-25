@@ -157,6 +157,7 @@
         \ 'coc-tsserver',
         \ 'coc-json',
         \ 'coc-clangd',
+        \ 'coc-go',
         \ ]
 
     " make snippet completion work just like VSCode
@@ -219,7 +220,7 @@
     nmap <leader>ac  <Plug>(coc-codeaction)
 
     " Apply AutoFix to problem on the current line.
-    nmap <leader>qf  <Plug>(coc-fix-current)
+    nmap <leader>af  <Plug>(coc-fix-current)
 
     " Map function and class text objects
     " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -240,6 +241,10 @@
     let g:test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
     nnoremap <silent> <F6> :TestNearest<CR>
+
+    let test#go#gotest#options = {
+    \   'all':   '-v',
+    \ }
 " }}} vim-test "
 
 " vim-quickui {{{ "
@@ -294,7 +299,6 @@
         \ ['--',''],
         \ ["&Tutorial", 'help tutor', ''],
         \ ['&Quick Reference', 'help quickref', ''],
-        \ ['&Summary', 'help summary', ''],
         \ ], 10000)
 
     " enable to display tips in the cmdline

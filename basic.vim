@@ -68,6 +68,12 @@
     endif
 
 " key-binding without plugin {{{ "
+    " force myself to use <C-c> or <C-[> for leaving Insert Mode
+    inoremap <Esc> <Nop>
+
+    " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+    inoremap <C-c> <ESC>
+
     " don't use arrow key in normal and insert mode
     map <Left> <Nop>
     map <Right> <Nop>
@@ -96,9 +102,6 @@
     xnoremap <silent> <Leader>P "+P
 
     nnoremap <silent> <Leader><BackSpace> :nohl<CR>
-
-    " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-    inoremap <C-c> <ESC>
 
     " using `Ctrl + {h, j, k, l}` to navigate windows
     nnoremap <silent> <C-h> <C-w>h
