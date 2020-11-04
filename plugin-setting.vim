@@ -235,6 +235,8 @@
 
     " coc-yank
     autocmd WinLeave * call coc#util#clear_pos_matches('^HighlightedyankRegion')
+
+    let g:coc_disable_transparent_cursor=1
 " }}} coc.nvim "
 
 " vim-test {{{ "

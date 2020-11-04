@@ -59,7 +59,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'janko/vim-test', { 'on': ['TestFile', 'TestNearest'] }
         Plug 'junegunn/vim-peekaboo'
         Plug 'skywind3000/vim-quickui'
-        Plug 'kkoomen/vim-doge'
+        Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
         Plug 'dense-analysis/ale'
         Plug 'honza/vim-snippets'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
