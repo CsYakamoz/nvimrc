@@ -27,6 +27,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'leafgarland/typescript-vim'
         Plug 'PeterRincker/vim-searchlight'
         Plug 'elzr/vim-json'
+        Plug 'kristijanhusak/defx-git'
+        Plug 'kristijanhusak/defx-icons'
     " }}} appearance "
 
     " tool {{{ "
@@ -54,7 +56,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'jiangmiao/auto-pairs'
         Plug 'airblade/vim-gitgutter'
         Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
-        Plug 'scrooloose/nerdtree'
         Plug 'scrooloose/nerdcommenter'
         Plug 'janko/vim-test', { 'on': ['TestFile', 'TestNearest'] }
         Plug 'junegunn/vim-peekaboo'
@@ -79,6 +80,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'Konfekt/FastFold'
         Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
         Plug 'AndrewRadev/linediff.vim', { 'on': 'Linediff' }
+        Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     " }}} tool "
 
     " self {{{ "

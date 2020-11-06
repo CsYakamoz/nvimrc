@@ -47,25 +47,6 @@
     let g:fzf_history_dir = '~/.local/share/fzf-history'
 " }}} fzf "
 
-" nerdtree {{{ "
-    " How can I open NERDTree automatically when vim starts up on opening a directory?
-    " Note: Executing vim ~/some-directory will open NERDTree and a new edit window. exe 'cd '.argv()[0] sets the pwd of the new edit window to ~/some-directory
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-    " ignore directories
-    let g:NERDTreeIgnore = ['node_modules']
-
-    nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
-    nnoremap <silent> <F4> :NERDTreeFind<CR>
-
-    " prefer to use trash-cli if possible
-    if executable('trash-put')
-        let g:NERDTreeRemoveFileCmd = 'trash-put '
-        let g:NERDTreeRemoveDirCmd = 'trash-put '
-    endif
-" }}} nerdtree "
-
 " nerdcommenter {{{ "
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
@@ -77,11 +58,11 @@
     " When opening a file or bookmark, don't change to its directory
     let g:startify_change_to_dir = 0
 
-    " How do I get both NERDTree and Startify working at startup?~
+    " How do I get both Defx and Startify working at startup?~
     autocmd VimEnter *
             \   if !argc()
             \ |   Startify
-            \ |   NERDTree
+            \ |   Defx
             \ |   wincmd w
             \ | endif
 
@@ -255,7 +236,7 @@
 
     call quickui#menu#install('&Tool', [
         \ [ "Startify\tF2", 'Startify' ],
-        \ [ "&NERDTreeFind\tF4", 'NERDTreeFind' ],
+        \ [ "&DefxFind", "DefxFind" ],
         \ [ "--", '' ],
         \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
         \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
@@ -434,3 +415,196 @@
         \ 'fm': 'Source Code Pro'
         \ }
 " }}} vim-carbon-now-sh "
+
+" defx {{{ "
+    " reference:
+    "   1. :help defx
+    "   2. https://github.com/hardcoreplayers/ThinkVim/blob/62f75d5ae1722ba5839de8ea50bb7ad2871e7593/modules/module-defx.vim
+    nnoremap <silent> <Leader>e :Defx<CR>
+    command! -nargs=0 DefxFind :call <SID>defx_find()
+    nnoremap <silent> <F4> :DefxFind<CR>
+
+    let g:defx_icons_parent_icon = "\uf113"
+    let g:defx_icons_column_length = 2
+
+    call defx#custom#option('_',{
+        \ 'columns'   : 'indent:git:icons:filename',
+        \ 'split'     : 'vertical',
+        \ 'direction' : 'topleft',
+        \ 'winwidth'  : 25,
+        \ 'show_ignored_files': 0,
+        \ 'buffer_name': '[defx]',
+        \ 'auto_cd': 0,
+        \ 'toggle': 1,
+        \ 'resume': 1,
+        \ 'ignored_files': ".*,node_modules",
+        \ 'root_marker': '[in]: ',
+        \ })
+
+    call defx#custom#column('git', {
+        \   'indicators': {
+        \     'Modified'  : '•',
+        \     'Staged'    : '✚',
+        \     'Untracked' : 'ᵁ',
+        \     'Renamed'   : '➜',
+        \     'Unmerged'  : '',
+        \     'Ignored'   : 'ⁱ',
+        \     'Deleted'   : '✖',
+        \     'Unknown'   : ''
+        \   }
+        \ })
+
+    augroup ft_defx
+        autocmd!
+        autocmd FileType defx call <SID>defx_settings()
+        autocmd WinLeave * if &filetype == 'defx' | wincmd = | endif
+    augroup end
+
+    " reference NERDTree
+    " How can I open Defx automatically when vim starts up on opening a directory?
+    " Note: Executing vim ~/some-directory will open Defx and a new edit window. exe 'cd '.argv()[0] sets the pwd of the new edit window to ~/some-directory
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'Defx' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+    func! s:defx_find() abort
+        let nr = 0
+        for i in range(1, winnr('$'))
+            if getwinvar(i, '&filetype') == 'defx'
+                let nr = i
+            endif
+        endfor
+
+        if nr == winnr()
+            return
+        endif
+
+        let path = expand('%:p')
+        if nr == 0
+            execute 'Defx'
+        else
+            execute nr . 'wincmd w'
+        endif
+
+        call defx#call_action('search', path)
+    endf
+
+    func! s:defx_jump_dirty(dir) abort
+        " Jump to the next position with defx-git dirty symbols
+        let l:icons = get(g:, 'defx_git_indicators', {})
+        let l:icons_pattern = join(values(l:icons), '\|')
+
+        if ! empty(l:icons_pattern)
+            let l:direction = a:dir > 0 ? 'w' : 'bw'
+            return search(printf('\(%s\)', l:icons_pattern), l:direction)
+        endif
+    endf
+
+    func! s:defx_cd() abort
+        let dirPath = ''
+        if defx#is_directory()
+            let dirPath = defx#get_candidate().action__path
+        else
+            let dirPath = fnamemodify(defx#get_candidate().action__path, ':p:h')
+        endif
+
+        execute 'cd ' . dirPath
+        echo "Defx: CWD is now: " . dirPath
+    endf
+
+    func! s:defx_drop_operation(arg) abort
+        if defx#is_directory()
+            return
+        endif
+
+        return defx#do_action('drop', a:arg)
+    endf
+
+    func! s:defx_change_root() abort
+        if !defx#is_directory()
+            return
+        endif
+
+        let dirPath = defx#get_candidate().action__path
+        return defx#do_action('cd', [dirPath])
+    endf
+
+    func! s:defx_jump_tree_root() abort
+        let paths = b:defx.paths
+        if len(paths) != 1
+            echo 'unexpected paths ' . paths
+            return
+        endif
+
+        return defx#do_action('search', paths[0])
+    endf
+
+    func! s:defx_remove() abort
+        let trash_cmd = "trash-put"
+        if !executable(trash_cmd)
+            echo 'no such cmd: ' . trash_cmd . ', abort'
+            return
+        endif
+
+        let candidate = defx#get_candidate()
+        let choice = confirm(candidate.action__path . ", delete it?", "&Yes\n&No", 2)
+        if choice == 1
+            execute  'silent !' . trash_cmd . ' ' . candidate.action__path
+            echo candidate.action__path . ' was successfully deleted'
+        endif
+    endf
+
+    func! s:defx_settings() abort
+        setlocal nonumber
+        setlocal norelativenumber
+
+        " defx-git jump
+        nnoremap <silent><buffer>  [c :<C-u>call <SID>defx_jump_dirty(-1)<CR>
+        nnoremap <silent><buffer>  ]c :<C-u>call <SID>defx_jump_dirty(1)<CR>
+
+        nnoremap <silent><buffer><expr> o
+            \ defx#is_directory() ?
+            \ defx#do_action('open_or_close_tree') :
+            \ defx#do_action('drop')
+        nmap <silent><buffer> <CR> o
+        nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
+        nnoremap <silent><buffer><expr> i <SID>defx_drop_operation('split')
+        nnoremap <silent><buffer><expr> t <SID>defx_drop_operation('tabe')
+        nnoremap <silent><buffer><expr> x defx#do_action('close_tree')
+        nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
+        nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
+        nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
+        nnoremap <silent><buffer><expr> cd <SID>defx_cd()
+        nnoremap <silent><buffer><expr> C <SID>defx_change_root()
+        nnoremap <silent><buffer><expr> p defx#do_action(
+            \ 'search',
+            \ fnamemodify(defx#get_candidate().action__path, ':h')
+            \ )
+        nnoremap <silent><buffer><expr> P <SID>defx_jump_tree_root()
+        nnoremap <silent><buffer><expr> <C-r> defx#do_action('redraw')
+        nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
+        nnoremap <silent><buffer><expr> q defx#do_action('quit')
+        nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
+        nnoremap <silent><buffer><expr> t defx#do_action(
+            \ 'toggle_columns',
+            \ 'indent:mark:filename:type:size:time'
+            \ )
+        nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
+        nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
+        nnoremap <silent><buffer><expr> c defx#do_action('copy')
+        nnoremap <silent><buffer><expr> m defx#do_action('move')
+        nnoremap <silent><buffer> dd :call <SID>defx_remove()<CR>
+        nnoremap <silent><buffer><expr> <Leader>p defx#do_action('paste')
+        nnoremap <silent><buffer><expr> r defx#do_action('rename')
+        nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
+        nnoremap <silent><buffer><expr> N defx#do_action('new_file')
+        nnoremap <silent><buffer><expr> <Leader>o defx#do_action('execute_system')
+        nnoremap <silent><buffer><expr> > defx#do_action(
+            \ 'resize',
+            \ defx#get_context().winwidth + &columns / 4
+            \ )
+        nnoremap <silent><buffer><expr> < defx#do_action(
+            \ 'resize',
+            \ defx#get_context().winwidth - &columns / 4
+            \ )
+    endf
+" }}} defx "
