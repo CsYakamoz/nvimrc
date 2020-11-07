@@ -6,7 +6,7 @@
 "   - https://github.com/skywind3000/vim-init
 "   - https://github.com/hardcoreplayers/ThinkVim
 "   - https://github.com/chemzqm/vimrc
-"   - https://github.com/voldikss/configs/tree/master/home/.config/nvim
+"   - https://github.com/voldikss/dotfiles/tree/master/home/.config/nvim
 
 let s:dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 

@@ -50,6 +50,9 @@
 " nerdcommenter {{{ "
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
+
+    " Enable trimming of trailing whitespace when uncommenting
+    let g:NERDTrimTrailingWhitespace = 1
 " }}} nerdcommenter "
 
 " startify {{{ "
@@ -439,6 +442,10 @@
         \ 'resume': 1,
         \ 'ignored_files': ".*,node_modules",
         \ 'root_marker': '[in]: ',
+        \ 'floating_preview': 1,
+        \ 'vertical_preview': 1,
+        \ 'preview_width': &columns > 80 ? 80 : float2nr(&columns * 0.618),
+        \ 'preview_height': float2nr(&lines * 0.618),
         \ })
 
     call defx#custom#column('git', {
@@ -659,5 +666,6 @@
         nnoremap <silent><buffer><expr> <C-k> <SID>defx_next_sibling(-1)
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
+        nnoremap <silent><buffer><expr> <C-p> defx#do_action('preview')
     endf
 " }}} defx "
