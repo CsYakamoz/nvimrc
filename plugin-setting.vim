@@ -553,6 +553,55 @@
         endif
     endf
 
+    func! s:defx_get_cursor_info() abort
+        let candidate = defx#get_candidate()
+        let parent = fnamemodify(candidate.action__path, ':h')
+        let dirList = filter(
+            \ split(execute('!ls -p ' . parent . " | grep -E '/$' | sort -f"), "\n")[1:],
+            \ 'v:val != ""'
+            \ )
+        let fileList = filter(
+            \ split(execute('!ls -p ' . parent . " | grep -vE '/$' | sort -f"), "\n")[1:],
+            \ 'v:val != ""'
+            \ )
+        let list = dirList + fileList
+
+        return { 'candidate': candidate, 'list': list, 'parent': parent, 'dirList': dirList, 'fileList': fileList }
+    endf
+
+    func! s:defx_first_last_child(direction) abort
+        let info = <SID>defx_get_cursor_info()
+        let parent = info.parent
+        let list = info.list
+        let listLen = len(list)
+
+        if a:direction == 1
+            return defx#do_action('search', parent . '/' . list[listLen - 1])
+        else
+            return defx#do_action('search', parent . '/' . list[0])
+        endif
+    endf
+
+    " TODO: support ignored_files
+    func! s:defx_next_sibling(direction) abort
+        let info = <SID>defx_get_cursor_info()
+        let parent = info.parent
+        let candidate = info.candidate
+        let list = info.list
+
+        let idx = index(list, candidate.word)
+        if idx == -1
+            return
+        endif
+
+        let listLen = len(list)
+        let idx = (idx + a:direction + listLen) % listLen
+        if idx >= 0 && idx < listLen
+            let path = parent . '/' . list[idx]
+            return defx#do_action('search', path)
+        endif
+    endf
+
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -566,20 +615,14 @@
             \ defx#do_action('open_or_close_tree') :
             \ defx#do_action('drop')
         nmap <silent><buffer> <CR> o
-        nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
-        nnoremap <silent><buffer><expr> i <SID>defx_drop_operation('split')
-        nnoremap <silent><buffer><expr> t <SID>defx_drop_operation('tabe')
         nnoremap <silent><buffer><expr> x defx#do_action('close_tree')
         nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
         nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
         nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
-        nnoremap <silent><buffer><expr> cd <SID>defx_cd()
-        nnoremap <silent><buffer><expr> C <SID>defx_change_root()
         nnoremap <silent><buffer><expr> p defx#do_action(
             \ 'search',
             \ fnamemodify(defx#get_candidate().action__path, ':h')
             \ )
-        nnoremap <silent><buffer><expr> P <SID>defx_jump_tree_root()
         nnoremap <silent><buffer><expr> <C-r> defx#do_action('redraw')
         nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
         nnoremap <silent><buffer><expr> q defx#do_action('quit')
@@ -592,7 +635,6 @@
         nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
         nnoremap <silent><buffer><expr> c defx#do_action('copy')
         nnoremap <silent><buffer><expr> m defx#do_action('move')
-        nnoremap <silent><buffer> dd :call <SID>defx_remove()<CR>
         nnoremap <silent><buffer><expr> <Leader>p defx#do_action('paste')
         nnoremap <silent><buffer><expr> r defx#do_action('rename')
         nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
@@ -606,5 +648,16 @@
             \ 'resize',
             \ defx#get_context().winwidth - &columns / 4
             \ )
+        nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
+        nnoremap <silent><buffer><expr> i <SID>defx_drop_operation('split')
+        nnoremap <silent><buffer><expr> t <SID>defx_drop_operation('tabe')
+        nnoremap <silent><buffer><expr> cd <SID>defx_cd()
+        nnoremap <silent><buffer><expr> C <SID>defx_change_root()
+        nnoremap <silent><buffer><expr> P <SID>defx_jump_tree_root()
+        nnoremap <silent><buffer> dd :call <SID>defx_remove()<CR>
+        nnoremap <silent><buffer><expr> <C-j> <SID>defx_next_sibling(1)
+        nnoremap <silent><buffer><expr> <C-k> <SID>defx_next_sibling(-1)
+        nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
+        nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
     endf
 " }}} defx "
