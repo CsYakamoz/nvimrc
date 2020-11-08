@@ -589,6 +589,25 @@
         endif
     endf
 
+    func! s:defx_preview() abort
+        let candidate = defx#get_candidate()
+        if candidate.is_directory
+            return
+        endif
+
+        let extList = [
+            \ 'jpg', 'jpeg', 'png', 'gif',
+            \ 'webp', 'svg', 'svgz', 'pdf',
+            \ ]
+
+        let ext = fnamemodify(candidate.action__path, ":e")
+        if index(extList, ext) != -1
+            return defx#do_action('execute_system')
+        else
+            return defx#do_action('preview')
+        endif
+    endf
+
     " TODO: support ignored_files
     func! s:defx_next_sibling(direction) abort
         let info = <SID>defx_get_cursor_info()
@@ -666,6 +685,6 @@
         nnoremap <silent><buffer><expr> <C-k> <SID>defx_next_sibling(-1)
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
-        nnoremap <silent><buffer><expr> <C-p> defx#do_action('preview')
+        nnoremap <silent><buffer><expr> <C-p> <SID>defx_preview()
     endf
 " }}} defx "
