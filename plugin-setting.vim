@@ -436,7 +436,7 @@
         \ 'direction' : 'topleft',
         \ 'winwidth'  : 25,
         \ 'show_ignored_files': 0,
-        \ 'buffer_name': '[defx]',
+        \ 'buffer_name': 'defx-' . tabpagenr(),
         \ 'auto_cd': 0,
         \ 'toggle': 1,
         \ 'resume': 1,
@@ -465,6 +465,7 @@
         autocmd!
         autocmd FileType defx call <SID>defx_settings()
         autocmd WinLeave * if &filetype == 'defx' | wincmd = | endif
+        autocmd BufHidden * if exists('t:defx_column_maximal') && t:defx_column_maximal | let t:defx_column_maximal = v:false | endif
     augroup end
 
     " reference NERDTree
@@ -628,6 +629,20 @@
         endif
     endf
 
+    func! s:defx_column_zoom() abort
+        if !exists('t:defx_column_maximal')
+            let t:defx_column_maximal = v:false
+        endif
+
+        if t:defx_column_maximal
+            let t:defx_column_maximal = v:false
+            return defx#do_action('resize', 25)
+        else
+            let t:defx_column_maximal = v:true
+            return defx#do_action('resize', &columns / 2 + 25)
+        endif
+    endf
+
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -666,14 +681,8 @@
         nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
         nnoremap <silent><buffer><expr> N defx#do_action('new_file')
         nnoremap <silent><buffer><expr> <Leader>o defx#do_action('execute_system')
-        nnoremap <silent><buffer><expr> > defx#do_action(
-            \ 'resize',
-            \ defx#get_context().winwidth + &columns / 4
-            \ )
-        nnoremap <silent><buffer><expr> < defx#do_action(
-            \ 'resize',
-            \ defx#get_context().winwidth - &columns / 4
-            \ )
+
+        nnoremap <silent><buffer><expr> A <SID>defx_column_zoom()
         nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
         nnoremap <silent><buffer><expr> i <SID>defx_drop_operation('split')
         nnoremap <silent><buffer><expr> t <SID>defx_drop_operation('tabe')
