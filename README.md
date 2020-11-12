@@ -96,5 +96,5 @@
 - coc-prettier
 - coc-tsserver
 - coc-json
-- ~~coc-ci~~
 - coc-clangd
+- coc-go

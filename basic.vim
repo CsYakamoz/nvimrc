@@ -44,6 +44,7 @@
     set matchpairs+=‘:’
     set complete-=i                     " disable scanning included files
     set complete-=t                     " disable searching tags
+    set autoread
 " }}} common "
 
 " only activated window has the highlight line & column

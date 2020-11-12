@@ -1,8 +1,3 @@
-" indent_guides {{{ "
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_enable_on_vim_startup = 1
-" }}} indent_guides "
-
 " airline {{{ "
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
@@ -53,6 +48,9 @@
 
     " Enable trimming of trailing whitespace when uncommenting
     let g:NERDTrimTrailingWhitespace = 1
+
+    " Specifies the default alignment to use when inserting comments.
+    let g:NERDDefaultAlign = 'left'
 " }}} nerdcommenter "
 
 " startify {{{ "
@@ -239,10 +237,12 @@
 
     call quickui#menu#install('&Tool', [
         \ [ "Startify\tF2", 'Startify' ],
-        \ [ "&DefxFind", "DefxFind" ],
+        \ [ "DefxFi&nd\tF4", "DefxFind" ],
         \ [ "--", '' ],
         \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
         \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
+        \ [ "Cs&Glow-Float", 'exec "CsGlow 1"' ],
+        \ [ "CsGlow-Normal", 'exec "CsGlow 2"' ],
         \ [ "--", '' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
@@ -558,6 +558,7 @@
         if choice == 1
             execute  'silent !' . trash_cmd . ' ' . candidate.action__path
             echo candidate.action__path . ' was successfully deleted'
+            call defx#call_action('redraw')
         endif
     endf
 
@@ -668,7 +669,7 @@
         nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
         nnoremap <silent><buffer><expr> q defx#do_action('quit')
         nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
-        nnoremap <silent><buffer><expr> t defx#do_action(
+        nnoremap <silent><buffer><expr> <Leader>t defx#do_action(
             \ 'toggle_columns',
             \ 'indent:mark:filename:type:size:time'
             \ )
@@ -678,7 +679,7 @@
         nnoremap <silent><buffer><expr> m defx#do_action('move')
         nnoremap <silent><buffer><expr> <Leader>p defx#do_action('paste')
         nnoremap <silent><buffer><expr> r defx#do_action('rename')
-        nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
+        nnoremap <silent><buffer><expr> M defx#do_action('new_directory')
         nnoremap <silent><buffer><expr> N defx#do_action('new_file')
         nnoremap <silent><buffer><expr> <Leader>o defx#do_action('execute_system')
 
