@@ -10,7 +10,7 @@
 " }}} simpylfold "
 
 " fzf {{{ "
-    nnoremap <silent> <M-f> :FZF<CR>
+    nnoremap <silent> <M-f> :Files<CR>
     nnoremap <silent> <C-f> :GFiles<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
@@ -29,11 +29,12 @@
         \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
     function! RipgrepFzf(query, fullscreen)
-      let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-      let initial_command = printf(command_fmt, shellescape(a:query))
-      let reload_command = printf(command_fmt, '{q}')
-      let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+        let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+        let initial_command = printf(command_fmt, shellescape(a:query))
+        let reload_command = printf(command_fmt, '{q}')
+        let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+        " fzf#vim#with_preview: https://github.com/junegunn/fzf.vim/issues/975
+        call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec, 'right:50%', 'ctrl-/'), a:fullscreen)
     endfunction
     command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
@@ -214,9 +215,6 @@
     omap ic <Plug>(coc-classobj-i)
     xmap ac <Plug>(coc-classobj-a)
     omap ac <Plug>(coc-classobj-a)
-
-    " coc-yank
-    autocmd WinLeave * call coc#util#clear_pos_matches('^HighlightedyankRegion')
 
     let g:coc_disable_transparent_cursor=1
 " }}} coc.nvim "
@@ -644,6 +642,25 @@
         endif
     endf
 
+    func! s:defx_fzf_file_helper(parent, item) abort
+        call defx#call_action('search', a:parent . '/' . a:item)
+    endf
+
+    func! s:defx_fzf_file() abort
+        let candidate = defx#get_candidate()
+        let parent = candidate.action__path
+        if !candidate.is_directory || !candidate.is_opened_tree
+            let parent = fnamemodify(candidate.action__path, ':h')
+        endif
+
+        call fzf#run({
+            \ 'name': 'files',
+            \ 'window': 'call CreateCenteredFloatingWindow()',
+            \ 'sink': function('<SID>defx_fzf_file_helper', [parent]),
+            \ 'dir': parent,
+            \ })
+    endf
+
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -675,7 +692,7 @@
             \ )
         nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
         nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
-        nnoremap <silent><buffer><expr> c defx#do_action('copy')
+        nnoremap <silent><buffer><expr> C defx#do_action('copy')
         nnoremap <silent><buffer><expr> m defx#do_action('move')
         nnoremap <silent><buffer><expr> <Leader>p defx#do_action('paste')
         nnoremap <silent><buffer><expr> r defx#do_action('rename')
@@ -696,5 +713,6 @@
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
         nnoremap <silent><buffer><expr> <C-p> <SID>defx_preview()
+        nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
     endf
 " }}} defx "
