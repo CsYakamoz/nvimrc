@@ -11,7 +11,7 @@
 
 " fzf {{{ "
     nnoremap <silent> <M-f> :Files<CR>
-    nnoremap <silent> <C-f> :GFiles<CR>
+    nnoremap <silent> <C-f> :call <SID>CsFiles()<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :RG<CR>
@@ -26,7 +26,7 @@
     command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
-        \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+        \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', 'ctrl-/'), <bang>0)
 
     function! RipgrepFzf(query, fullscreen)
         let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -37,6 +37,15 @@
         call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec, 'right:50%', 'ctrl-/'), a:fullscreen)
     endfunction
     command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+    func! s:CsFiles() abort
+        silent! !git rev-parse --is-inside-work-tree
+        if v:shell_error == 0
+            execute 'GFiles'
+        else
+            execute 'Files'
+        endif
+    endf
 
     let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
@@ -649,16 +658,57 @@
     func! s:defx_fzf_file() abort
         let candidate = defx#get_candidate()
         let parent = candidate.action__path
-        if !candidate.is_directory || !candidate.is_opened_tree
+        if !candidate.is_directory
             let parent = fnamemodify(candidate.action__path, ':h')
         endif
 
-        call fzf#run({
-            \ 'name': 'files',
-            \ 'window': 'call CreateCenteredFloatingWindow()',
-            \ 'sink': function('<SID>defx_fzf_file_helper', [parent]),
-            \ 'dir': parent,
-            \ })
+        " https://github.com/junegunn/fzf.vim/issues/676
+        call fzf#run(fzf#vim#with_preview(
+            \ fzf#wrap({
+                \ 'name': 'files',
+                \ 'window': 'call CreateCenteredFloatingWindow()',
+                \ 'sink': function('<SID>defx_fzf_file_helper', [parent]),
+                \ 'dir': parent,
+                \ }
+            \ ),
+            \ 'right:50%',
+            \ 'ctrl-/'
+            \ ))
+    endf
+
+    func! s:defx_file_operate() abort
+        let choice = confirm(
+            \ "choose operation:",
+            \ "&Copy\n&Move\n&Paste\n&Rename\n&Open\nNew&File\nNew&Directory",
+            \ 0
+            \ )
+        let operation = [
+            \ '',
+            \ defx#do_action('copy'),
+            \ defx#do_action('move'),
+            \ defx#do_action('paste'),
+            \ defx#do_action('rename'),
+            \ defx#do_action('execute_system'),
+            \ defx#do_action('new_file'),
+            \ defx#do_action('new_directory'),
+            \ ]
+
+        return operation[choice]
+    endf
+
+    func! s:defx_rg() abort
+        let candidate = defx#get_candidate()
+        let parent = candidate.action__path
+        if !candidate.is_directory
+            let parent = fnamemodify(candidate.action__path, ':h')
+        endif
+
+        command! -bang -nargs=* DefxRg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
+            \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..', 'dir': parent}, 'right:50%', 'ctrl-/'), <bang>0)
+
+        execute 'DefxRg'
     endf
 
     func! s:defx_settings() abort
@@ -674,6 +724,7 @@
             \ defx#do_action('open_or_close_tree') :
             \ defx#do_action('drop')
         nmap <silent><buffer> <CR> o
+        nnoremap <silent><buffer><expr> O defx#do_action('open_tree', 'recursive')
         nnoremap <silent><buffer><expr> x defx#do_action('close_tree')
         nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
         nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
@@ -690,15 +741,8 @@
             \ 'toggle_columns',
             \ 'indent:mark:filename:type:size:time'
             \ )
-        nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
+        nnoremap <silent><buffer><expr> <Leader>p defx#do_action('print')
         nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
-        nnoremap <silent><buffer><expr> C defx#do_action('copy')
-        nnoremap <silent><buffer><expr> m defx#do_action('move')
-        nnoremap <silent><buffer><expr> <Leader>p defx#do_action('paste')
-        nnoremap <silent><buffer><expr> r defx#do_action('rename')
-        nnoremap <silent><buffer><expr> M defx#do_action('new_directory')
-        nnoremap <silent><buffer><expr> N defx#do_action('new_file')
-        nnoremap <silent><buffer><expr> <Leader>o defx#do_action('execute_system')
 
         nnoremap <silent><buffer><expr> A <SID>defx_column_zoom()
         nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
@@ -714,5 +758,7 @@
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
         nnoremap <silent><buffer><expr> <C-p> <SID>defx_preview()
         nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
+        nnoremap <silent><buffer><expr> m <SID>defx_file_operate()
+        nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
     endf
 " }}} defx "
