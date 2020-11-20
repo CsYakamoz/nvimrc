@@ -77,13 +77,27 @@
             \ |   wincmd w
             \ | endif
 
+    " returns all modified files of the current git repo
+    " `2>/dev/null` makes the command fail quietly, so that when we are not
+    " in a git repo, the list will be empty
+    function! s:gitModified()
+        let files = systemlist('git ls-files -m 2>/dev/null')
+        return map(files, "{'line': v:val, 'path': v:val}")
+    endfunction
+
+    " same as above, but show untracked files, honouring .gitignore
+    function! s:gitUntracked()
+        let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+        return map(files, "{'line': v:val, 'path': v:val}")
+    endfunction
+
     " change order
     let g:startify_lists = [
           \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   MRU']            },
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+          \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+          \ { 'type': 'files',     'header': ['   MRU']            },
           \ ]
 " }}} startify "
 
@@ -676,24 +690,28 @@
             \ ))
     endf
 
-    func! s:defx_file_operate() abort
-        let choice = confirm(
-            \ "choose operation:",
-            \ "&Copy\n&Move\n&Paste\n&Rename\n&Open\nNew&File\nNew&Directory",
-            \ 0
-            \ )
-        let operation = [
-            \ '',
-            \ defx#do_action('copy'),
-            \ defx#do_action('move'),
-            \ defx#do_action('paste'),
-            \ defx#do_action('rename'),
-            \ defx#do_action('execute_system'),
-            \ defx#do_action('new_file'),
-            \ defx#do_action('new_directory'),
-            \ ]
+    func! s:defx_menu()
+        try
+            let choice = confirm(
+                \ "choose operation:",
+                \ "&Copy\n&Move\n&Paste\n&Rename\n&Open\nNew&File\nNew&Directory",
+                \ 0
+                \ )
+            let operation = [
+                \ '',
+                \ defx#do_action('copy'),
+                \ defx#do_action('move'),
+                \ defx#do_action('paste'),
+                \ defx#do_action('rename'),
+                \ defx#do_action('execute_system'),
+                \ defx#do_action('new_file'),
+                \ defx#do_action('new_directory'),
+                \ ]
 
-        return operation[choice]
+            return operation[choice]
+        catch /^Vim:Interrupt$/
+            return
+        endtry
     endf
 
     func! s:defx_rg() abort
@@ -703,7 +721,7 @@
             let parent = fnamemodify(candidate.action__path, ':h')
         endif
 
-        command! -bang -nargs=* DefxRg
+        command! -bang -buffer -nargs=* DefxRg
             \ call fzf#vim#grep(
             \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..', 'dir': parent}, 'right:50%', 'ctrl-/'), <bang>0)
@@ -758,7 +776,7 @@
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
         nnoremap <silent><buffer><expr> <C-p> <SID>defx_preview()
         nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
-        nnoremap <silent><buffer><expr> m <SID>defx_file_operate()
+        nnoremap <silent><buffer><expr> m <SID>defx_menu()
         nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
     endf
 " }}} defx "
