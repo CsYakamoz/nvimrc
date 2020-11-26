@@ -106,7 +106,7 @@
     let g:vista_default_executive="coc"
     let g:vista_executive_for = {
         \ 'sh': 'ctags',
-        \ 'vim': 'ctags',
+        \ 'vim': 'coc',
         \ 'markdown': 'ctags',
         \ }
     let g:airline#extensions#vista#enabled = 0
@@ -164,6 +164,8 @@
         \ 'coc-json',
         \ 'coc-clangd',
         \ 'coc-go',
+        \ 'coc-vimlsp',
+        \ 'coc-highlight',
         \ ]
 
     " make snippet completion work just like VSCode
@@ -195,6 +197,7 @@
     endfunction
 
     nmap <leader>rn <Plug>(coc-rename)
+    nmap <leader>rf <Plug>(coc-refactor)
 
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
@@ -421,7 +424,7 @@
 
 " indentLine {{{ "
     let g:indentLine_char = '│'
-    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown']
+    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown', 'tutor']
 " }}} indentLine "
 
 " vim-browser-search {{{ "
