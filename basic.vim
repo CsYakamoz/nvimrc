@@ -160,7 +160,13 @@
     xnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
 
     " reference: https://github.com/mhinz/vim-galore#quickly-move-current-line
-    nnoremap <M-S-j>  :<c-u>execute 'move +'. v:count1<cr>
-    nnoremap <M-S-k>  :<c-u>execute 'move -1-'. v:count1<cr>
+    nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+    nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+
+    " reference: https://github.com/tpope/vim-unimpaired
+    nnoremap ]q :cnext<CR>
+    nnoremap [q :cprevious<CR>
+    nnoremap ]ow :set wrap!<cr>
+    nmap [ow ]ow
 " }}} key-binding without plugin "
 
