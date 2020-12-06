@@ -84,6 +84,7 @@
 |                                 [hotoo/pangu.vim](https://github.com/hotoo/pangu.vim)                                 |                                                 『盘古之白』中文排版自动规范化的 Vim 插件                                                 |
 |                        [AndrewRadev/linediff.vim](https://github.com/AndrewRadev/linediff.vim)                        |                                              A vim plugin to perform diffs on blocks of code                                              |
 |                                [Shougo/defx.nvim](https://github.com/Shougo/defx.nvim)                                |                                             📁 The dark powered file explorer implementation                                              |
+|                              [glacambre/firenvim](https://github.com/glacambre/firenvim)                              |                                                       Embed Neovim in your browser.                                                       |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 

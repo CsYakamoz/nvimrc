@@ -81,6 +81,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
         Plug 'AndrewRadev/linediff.vim', { 'on': 'Linediff' }
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
     " }}} tool "
 
     " self {{{ "

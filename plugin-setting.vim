@@ -783,3 +783,40 @@
         nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
     endf
 " }}} defx "
+
+" firenvim {{{ "
+    let g:firenvim_config = {
+        \ 'globalSettings': {
+            \ 'alt': 'all',
+        \  },
+        \ 'localSettings': {
+        \ }
+    \ }
+
+    let fc = g:firenvim_config['localSettings']
+    let fc['.*'] = { 'takeover': 'never' }
+
+    function! s:IsFirenvimActive(event) abort
+        if !exists('*nvim_get_chan_info')
+            return 0
+        endif
+        let l:ui = nvim_get_chan_info(a:event.chan)
+        return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
+            \ l:ui.client.name =~? 'Firenvim'
+    endfunction
+
+    function! OnUIEnter(event) abort
+        if s:IsFirenvimActive(a:event)
+            set laststatus=0
+            execute 'Defx'
+
+            if &lines < 24
+                set lines=24
+            endif
+            if &columns < 80
+                set columns=80
+            endif
+        endif
+    endfunction
+    autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+" }}} firenvim "
