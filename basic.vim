@@ -154,7 +154,7 @@
     nnoremap <Leader>vb ggVG
 
     " remove all trailing whitespace
-    nnoremap <Leader>rt :%s/\s\+$//e<CR>
+    nnoremap <Leader>rt :%s/\s\+$//e<CR>:nohl<CR>
 
     " reference: https://vim.fandom.com/wiki/Search_for_visually_selected_text
     xnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
@@ -170,3 +170,4 @@
     nmap [ow ]ow
 " }}} key-binding without plugin "
 
+" vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

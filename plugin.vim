@@ -10,6 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
         Plug 'joshdick/onedark.vim'
         Plug 'hardcoreplayers/oceanic-material'
+        Plug 'ulwlu/elly.vim'
     " }}} colorschema "
 
     " appearance {{{ "
@@ -89,3 +90,4 @@ call plug#begin('~/.local/share/nvim/plugged')
     " }}} self "
 call plug#end()
 
+" vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

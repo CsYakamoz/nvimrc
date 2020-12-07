@@ -833,3 +833,5 @@
     endfunction
     autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
 " }}} firenvim "
+
+" vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:
