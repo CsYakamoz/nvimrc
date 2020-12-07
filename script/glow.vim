@@ -35,6 +35,15 @@ func! s:CsGlow(type) abort
 
     nnoremap <silent><buffer> q :FloatermKill floaterm-glow-preview<CR>
     nmap <silent><buffer> <Leader>q q
+    nmap <silent><buffer> <CR> q
+    nnoremap <silent><buffer> <C-j> <Nop>
+    nnoremap <silent><buffer> <C-k> <Nop>
+    nnoremap <silent><buffer> <C-h> <Nop>
+    nnoremap <silent><buffer> <C-l> <Nop>
+    nnoremap <silent><buffer> i <Nop>
+    nnoremap <silent><buffer> I <Nop>
+    nnoremap <silent><buffer> a <Nop>
+    nnoremap <silent><buffer> A <Nop>
 endf
 
 command! -nargs=1 CsGlow :call <SID>CsGlow(<args>)
