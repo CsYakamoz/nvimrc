@@ -91,7 +91,7 @@
     " use space as the leader
     let mapleader = " "
 
-    nnoremap <Leader>w :w<CR>
+    nnoremap <silent> <Leader>w :w<CR>
     nnoremap <silent> <Leader>q :q<CR>
     nnoremap <silent> <Leader>Q :qa<CR>
 
@@ -120,8 +120,8 @@
 
     " add new empty line in normal mode
     " reference: https://github.com/mhinz/vim-galore#quickly-add-empty-lines
-    nnoremap <Leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-    nnoremap <Leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+    nnoremap <silent> <Leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+    nnoremap <silent> <Leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 
     " reference: https://github.com/mhinz/vim-galore#dont-lose-selection-when-shifting-sidewards
     xnoremap < <gv
@@ -154,20 +154,20 @@
     nnoremap <Leader>vb ggVG
 
     " remove all trailing whitespace
-    nnoremap <Leader>rt :%s/\s\+$//e<CR>:nohl<CR>
+    nnoremap <silent> <Leader>rt :%s/\s\+$//e<CR>:nohl<CR>
 
     " reference: https://vim.fandom.com/wiki/Search_for_visually_selected_text
-    xnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
+    xnoremap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
 
     " reference: https://github.com/mhinz/vim-galore#quickly-move-current-line
-    nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
-    nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+    nnoremap <silent> ]e  :<c-u>execute 'move +'. v:count1<cr>
+    nnoremap <silent> [e  :<c-u>execute 'move -1-'. v:count1<cr>
 
     " reference: https://github.com/tpope/vim-unimpaired
-    nnoremap ]q :cnext<CR>
-    nnoremap [q :cprevious<CR>
-    nnoremap ]ow :set wrap!<cr>
-    nmap [ow ]ow
+    nnoremap <silent> ]q :cnext<CR>
+    nnoremap <silent> [q :cprevious<CR>
+    nnoremap <silent> ]ow :set wrap!<cr>
+    nmap <silent> [ow ]ow
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

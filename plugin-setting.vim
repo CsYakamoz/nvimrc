@@ -280,6 +280,7 @@
         \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
         \ [ "Cs&Glow-Float", 'exec "CsGlow 1"' ],
         \ [ "CsGlow-Normal", 'exec "CsGlow 2"' ],
+        \ [ "IndentLineToggle", "call IndentLineToggle()" ],
         \ [ "--", '' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
@@ -446,8 +447,8 @@
 " }}} vim-browser-search "
 
 " linediff.vim {{{ "
-    nnoremap <Leader>l :Linediff<CR>
-    xnoremap <Leader>l :Linediff<CR>
+    nnoremap <silent> <Leader>l :Linediff<CR>
+    xnoremap <silent> <Leader>l :Linediff<CR>
 " }}} linediff.vim "
 
 " vim-carbon-now-sh {{{ "

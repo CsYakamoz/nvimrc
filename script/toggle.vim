@@ -69,3 +69,10 @@ fun! s:AutoSelectTextAfterPasteToggle()
     endif
 endf
 command! -nargs=0 AutoSelectTextAfterPasteToggle :call s:AutoSelectTextAfterPasteToggle()
+
+function! IndentLineToggle() abort
+    execute 'IndentLinesToggle'
+    if exists(':IndentBlanklineToggle')
+        execute 'IndentBlanklineToggle'
+    endif
+endfunction
