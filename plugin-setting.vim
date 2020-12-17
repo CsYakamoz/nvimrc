@@ -651,9 +651,10 @@
                 endif
             endif
 
-            let buf_content = readfile(candidate.action__path)
-            let buf = nvim_create_buf(v:false, v:true)
-            call nvim_buf_set_lines(buf, 0, -1, v:true, buf_content)
+            let bufnr = bufadd(candidate.action__path)
+            call bufload(bufnr)
+            let buf_content = getbufline(bufnr, 1, "$")
+
             let col = winwidth(win_getid())
             if col >= float2nr(&columns * 0.618)
                 let width = float2nr(&columns * 0.6)
@@ -661,18 +662,19 @@
             else
                 let width = float2nr((&columns - col) * 0.618)
             endif
+
             let opts = {
                 \ 'relative': 'win',
                 \ 'width': width,
-                \ 'height': min([float2nr(&lines * 0.618), len(buf_content)]),
-                \ 'col': col,
+                \ 'height': max([min([float2nr(&lines * 0.618), len(buf_content)]), 1]),
+                \ 'col': col + 2,
                 \ 'win': win_getid(),
                 \ 'row': 1,
                 \ 'anchor': 'NW',
                 \ }
-            let s:defx_preview_win_id = nvim_open_win(buf, 1, opts)
+            let s:defx_preview_win_id = nvim_open_win(bufnr, 1, opts)
             call nvim_win_set_var(s:defx_preview_win_id, 'csyakamoz_defx_path', candidate.action__path)
-            execute 'wincmd P'
+            execute 'wincmd p'
         endif
     endf
 
