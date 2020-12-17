@@ -601,11 +601,11 @@
         let candidate = defx#get_candidate()
         let parent = fnamemodify(candidate.action__path, ':h')
         let dirList = filter(
-            \ split(execute('!ls -p ' . parent . " | grep -E '/$' | sort -fg"), "\n")[1:],
+            \ split(execute('!ls -p ' . parent . " | grep -E '/$' | sort -f"), "\n")[1:],
             \ 'v:val != ""'
             \ )
         let fileList = filter(
-            \ split(execute('!ls -p ' . parent . " | grep -vE '/$' | sort -fg"), "\n")[1:],
+            \ split(execute('!ls -p ' . parent . " | grep -vE '/$' | sort -f"), "\n")[1:],
             \ 'v:val != ""'
             \ )
         let list = dirList + fileList
@@ -641,7 +641,7 @@
         if index(extList, ext) != -1
             call defx#call_action('execute_system')
         else
-            if exists('s:defx_preview_win_id')
+            if exists('s:defx_preview_win_id') && nvim_win_is_valid(s:defx_preview_win_id)
                 let path = nvim_win_get_var(s:defx_preview_win_id, 'csyakamoz_defx_path')
                 call nvim_win_close(s:defx_preview_win_id, v:false)
 
@@ -651,20 +651,28 @@
                 endif
             endif
 
+            let buf_content = readfile(candidate.action__path)
             let buf = nvim_create_buf(v:false, v:true)
-            call nvim_buf_set_lines(buf, 0, -1, v:true, readfile(candidate.action__path))
+            call nvim_buf_set_lines(buf, 0, -1, v:true, buf_content)
             let col = winwidth(win_getid())
+            if col >= float2nr(&columns * 0.618)
+                let width = float2nr(&columns * 0.6)
+                let col = float2nr(&columns * 0.3)
+            else
+                let width = float2nr((&columns - col) * 0.618)
+            endif
             let opts = {
                 \ 'relative': 'win',
-                \ 'width': float2nr((&columns - col) * 0.618),
-                \ 'height': float2nr(&lines * 0.618),
+                \ 'width': width,
+                \ 'height': min([float2nr(&lines * 0.618), len(buf_content)]),
                 \ 'col': col,
                 \ 'win': win_getid(),
                 \ 'row': 1,
                 \ 'anchor': 'NW',
                 \ }
-            let s:defx_preview_win_id = nvim_open_win(buf, 0, opts)
+            let s:defx_preview_win_id = nvim_open_win(buf, 1, opts)
             call nvim_win_set_var(s:defx_preview_win_id, 'csyakamoz_defx_path', candidate.action__path)
+            execute 'wincmd P'
         endif
     endf
 
@@ -673,7 +681,7 @@
         let info = <SID>defx_get_cursor_info()
         let parent = info.parent
         let candidate = info.candidate
-        let list = info.list
+        let list = filter(info.list, 'v:val !~ "node_modules"')
 
         let idx = index(list, candidate.word)
         if idx == -1
@@ -767,23 +775,15 @@
     endf
 
     func! s:defx_view_in_explorer() abort
-        if has('mac')
-            let open = 'open '
-        elseif has('windows')
-            let open = 'start '
-        elseif has('unix')
-            let open = 'xdg-open '
-        else
-            echo 'unknown system, ignore...'
-            return
-        endif
-
         let candidate = defx#get_candidate()
+
         if candidate.is_directory
-            call system(open . candidate.action__path)
+            call defx#call_action('execute_system')
         else
             let parent = fnamemodify(candidate.action__path, ':h')
-            call system(open . parent)
+            call defx#call_action('search', parent)
+            call defx#call_action('execute_system')
+            call defx#call_action('search', candidate.action__path)
         endif
     endf
 
@@ -836,7 +836,7 @@
         nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
         nnoremap <silent><buffer><expr> m <SID>defx_menu()
         nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
-        nnoremap <silent><buffer><expr> <Leader>o <SID>defx_view_in_explorer()
+        nnoremap <silent><buffer> <Leader>o :call <SID>defx_view_in_explorer()<CR>
     endf
 " }}} defx "
 
