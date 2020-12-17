@@ -218,6 +218,7 @@
     nmap <silent> gr <Plug>(coc-references)
 
     nnoremap <silent> <Leader>f :call CocAction('format')<CR>
+    xmap <leader>f  <Plug>(coc-format-selected)
 
     " Highlight the symbol and its references when holding the cursor.
     autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -480,10 +481,6 @@
         \ 'resume': 1,
         \ 'ignored_files': ".*,node_modules",
         \ 'root_marker': '[in]: ',
-        \ 'floating_preview': 1,
-        \ 'vertical_preview': 1,
-        \ 'preview_width': &columns > 80 ? 80 : float2nr(&columns * 0.618),
-        \ 'preview_height': float2nr(&lines * 0.618),
         \ })
 
     call defx#custom#column('git', {
@@ -604,11 +601,11 @@
         let candidate = defx#get_candidate()
         let parent = fnamemodify(candidate.action__path, ':h')
         let dirList = filter(
-            \ split(execute('!ls -p ' . parent . " | grep -E '/$' | sort -f"), "\n")[1:],
+            \ split(execute('!ls -p ' . parent . " | grep -E '/$' | sort -fg"), "\n")[1:],
             \ 'v:val != ""'
             \ )
         let fileList = filter(
-            \ split(execute('!ls -p ' . parent . " | grep -vE '/$' | sort -f"), "\n")[1:],
+            \ split(execute('!ls -p ' . parent . " | grep -vE '/$' | sort -fg"), "\n")[1:],
             \ 'v:val != ""'
             \ )
         let list = dirList + fileList
@@ -642,9 +639,32 @@
 
         let ext = fnamemodify(candidate.action__path, ":e")
         if index(extList, ext) != -1
-            return defx#do_action('execute_system')
+            call defx#call_action('execute_system')
         else
-            return defx#do_action('preview')
+            if exists('s:defx_preview_win_id')
+                let path = nvim_win_get_var(s:defx_preview_win_id, 'csyakamoz_defx_path')
+                call nvim_win_close(s:defx_preview_win_id, v:false)
+
+                if path == candidate.action__path
+                    unlet s:defx_preview_win_id
+                    return
+                endif
+            endif
+
+            let buf = nvim_create_buf(v:false, v:true)
+            call nvim_buf_set_lines(buf, 0, -1, v:true, readfile(candidate.action__path))
+            let col = winwidth(win_getid())
+            let opts = {
+                \ 'relative': 'win',
+                \ 'width': float2nr((&columns - col) * 0.618),
+                \ 'height': float2nr(&lines * 0.618),
+                \ 'col': col,
+                \ 'win': win_getid(),
+                \ 'row': 1,
+                \ 'anchor': 'NW',
+                \ }
+            let s:defx_preview_win_id = nvim_open_win(buf, 0, opts)
+            call nvim_win_set_var(s:defx_preview_win_id, 'csyakamoz_defx_path', candidate.action__path)
         endif
     endf
 
@@ -746,6 +766,27 @@
         execute 'DefxRg'
     endf
 
+    func! s:defx_view_in_explorer() abort
+        if has('mac')
+            let open = 'open '
+        elseif has('windows')
+            let open = 'start '
+        elseif has('unix')
+            let open = 'xdg-open '
+        else
+            echo 'unknown system, ignore...'
+            return
+        endif
+
+        let candidate = defx#get_candidate()
+        if candidate.is_directory
+            call system(open . candidate.action__path)
+        else
+            let parent = fnamemodify(candidate.action__path, ':h')
+            call system(open . parent)
+        endif
+    endf
+
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -791,10 +832,11 @@
         nnoremap <silent><buffer><expr> <C-k> <SID>defx_next_sibling(-1)
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
-        nnoremap <silent><buffer><expr> <C-p> <SID>defx_preview()
+        nnoremap <silent><buffer> <C-p> :call <SID>defx_preview()<CR>
         nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
         nnoremap <silent><buffer><expr> m <SID>defx_menu()
         nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
+        nnoremap <silent><buffer><expr> <Leader>o <SID>defx_view_in_explorer()
     endf
 " }}} defx "
 

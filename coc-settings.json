@@ -1,5 +1,4 @@
 {
-  "prettier.eslintIntegration": true,
   "prettier.statusItemText": "",
 
   "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",

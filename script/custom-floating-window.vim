@@ -1,5 +1,5 @@
 " Creates a floating window with a most recent buffer to be used
-" reference: https://github.com/camspiers/dotfiles/blob/master/files/.config/nvim/init.vim#L246
+" reference: https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
 function! CreateCenteredFloatingWindow()
     let width = float2nr(&columns * 1)
     let height = float2nr(&lines * 0.85)
