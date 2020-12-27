@@ -257,6 +257,17 @@
     omap ac <Plug>(coc-classobj-a)
 
     let g:coc_disable_transparent_cursor=1
+
+    " coc-smartf
+    nmap f <Plug>(coc-smartf-forward)
+    nmap F <Plug>(coc-smartf-backward)
+    nmap ; <Plug>(coc-smartf-repeat)
+    nmap , <Plug>(coc-smartf-repeat-opposite)
+
+    augroup Smartf
+        autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#89f298
+        autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+    augroup end
 " }}} coc.nvim "
 
 " vim-test {{{ "
@@ -878,5 +889,9 @@
     endfunction
     autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
 " }}} firenvim "
+
+" vim-smoothie {{{ "
+    let g:smoothie_experimental_mappings = v:true
+" }}} vim-smoothie "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

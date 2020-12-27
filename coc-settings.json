@@ -13,7 +13,7 @@
   "cSpell.words": ["wechat", "struct", "csyakamoz", "leetcode", "curr", "defx"],
   "cSpell.showStatus": false,
 
-  "coc.preferences.promptInput": false,
+  "smartf.timeout": 1500,
 
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {

@@ -33,6 +33,7 @@
 | [frankier/neovim-colors-solarized-truecolor-only](https://github.com/frankier/neovim-colors-solarized-truecolor-only) |                                                               Color schema                                                                |
 |                            [joshdick/onedark.vim](https://github.com/joshdick/onedark.vim)                            |                                                               Color schema                                                                |
 |                [hardcoreplayers/oceanic-material](https://github.com/hardcoreplayers/oceanic-material)                |                                                               Color schema                                                                |
+|                                  [ulwlu/elly.vim](https://github.com/ulwlu/elly.vim)                                  |                                                               Color schema                                                                |
 |                              [mhinz/vim-startify](https://github.com/mhinz/vim-startify)                              |                                                      The fancy start screen for Vim                                                       |
 |                          [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)                          |            Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more             |
 |                         [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)                         |                                          lean & mean status/tabline for vim that's light as air                                           |
@@ -99,3 +100,5 @@
 - coc-json
 - coc-clangd
 - coc-go
+- coc-vimlsp
+- coc-highlight

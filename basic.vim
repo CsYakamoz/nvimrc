@@ -69,9 +69,6 @@
     endif
 
 " key-binding without plugin {{{ "
-    " force myself to use <C-c> or <C-[> for leaving Insert Mode
-    inoremap <Esc> <Nop>
-
     " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
     inoremap <C-c> <ESC>
 
