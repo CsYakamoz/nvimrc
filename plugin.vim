@@ -83,6 +83,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'AndrewRadev/linediff.vim', { 'on': 'Linediff' }
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+        Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
     " }}} tool "
 
     " self {{{ "

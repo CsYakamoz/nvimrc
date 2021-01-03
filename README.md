@@ -86,6 +86,7 @@
 |                        [AndrewRadev/linediff.vim](https://github.com/AndrewRadev/linediff.vim)                        |                                              A vim plugin to perform diffs on blocks of code                                              |
 |                                [Shougo/defx.nvim](https://github.com/Shougo/defx.nvim)                                |                                             📁 The dark powered file explorer implementation                                              |
 |                              [glacambre/firenvim](https://github.com/glacambre/firenvim)                              |                                                       Embed Neovim in your browser.                                                       |
+|                            [antoinemadec/coc-fzf](https://github.com/antoinemadec/coc-fzf)                            |                                                              fzf ❤️ coc.nvim                                                              |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 
@@ -102,3 +103,4 @@
 - coc-go
 - coc-vimlsp
 - coc-highlight
+- coc-smartf

@@ -179,6 +179,7 @@
         \ 'coc-go',
         \ 'coc-vimlsp',
         \ 'coc-highlight',
+        \ 'coc-smartf',
         \ ]
 
     " make snippet completion work just like VSCode
