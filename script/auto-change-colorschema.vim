@@ -93,6 +93,11 @@ fun! s:Elly()
     let g:airline_theme='elly'
 endf
 
+fun! s:Janah()
+    colorscheme janah
+    let g:airline_theme='forest_night'
+endf
+
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -105,6 +110,7 @@ let s:colorList = [
     \ function('<SID>OneDark'),
     \ function('<SID>OceanicMaterial'),
     \ function('<SID>Elly'),
+    \ function('<SID>Janah'),
     \ ]
 
 " let s:target = s:colorList[0]

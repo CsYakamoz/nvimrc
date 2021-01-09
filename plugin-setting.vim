@@ -112,6 +112,22 @@
           \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
           \ { 'type': 'files',     'header': ['   MRU']            },
           \ ]
+
+    " copy from https://github.com/glepnir/dashboard-nvim/blob/master/autoload/dashboard/header.vim#L100
+    let g:startify_header_doraemon = [
+        \'         ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣶⣶⣶⠶⣶⣤⣤⣀⠀⠀⠀⠀⠀⠀ ',
+        \'       ⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠁⠀⢀⠈⢿⢀⣀⠀⠹⣿⣿⣿⣦⣄⠀⠀⠀ ',
+        \'       ⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⠿⠀⠀⣟⡇⢘⣾⣽⠀⠀⡏⠉⠙⢛⣿⣷⡖⠀ ',
+        \'       ⠀⠀⠀⠀⠀⣾⣿⣿⡿⠿⠷⠶⠤⠙⠒⠀⠒⢻⣿⣿⡷⠋⠀⠴⠞⠋⠁⢙⣿⣄ ',
+        \'       ⠀⠀⠀⠀⢸⣿⣿⣯⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⠉⢹⡄⠀⠀⠀⠛⠛⠋⠉⠹⡇ ',
+        \'       ⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣼⣇⣀⣀⣀⣛⣛⣒⣲⢾⡷ ',
+        \'       ⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃ ',
+        \'       ⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀ ',
+        \'       ⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀ ',
+        \'       ⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁    ',
+        \ ]
+    let g:startify_custom_header =
+          \ 'startify#pad(startify#fortune#boxed() + g:startify_header_doraemon)'
 " }}} startify "
 
 " vista {{{ "
@@ -123,6 +139,8 @@
         \ 'markdown': 'ctags',
         \ }
     let g:airline#extensions#vista#enabled = 0
+
+    nnoremap <silent> <Leader>vf :<C-u>Vista finder<CR>
 
     " fzf - preview
     let g:vista_fzf_preview = ['right:50%']
@@ -164,6 +182,7 @@
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '⚡'
     let g:airline#extensions#ale#enabled = 1
+    let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 " }}} ale "
 
 " coc.nvim {{{ "
@@ -385,10 +404,11 @@
         \   [['?', '？']],
         \   [[';', '；']],
         \   [[':', '：']],
-        \   [['(:)','（:）'], 'sub_pairs'],
         \   [['是', '否']],
-        \   [['+', '-']],
+        \   [['{:}', '[:]', '(:)'], 'sub_pairs'],
         \   [['++', '--']],
+        \   [['+', '-']],
+        \   [['"', "'"]],
         \   [['>', '<']],
         \   [['||', '&&']],
         \   [['===', '!==']],
@@ -419,6 +439,8 @@
         \   [["while", "until"]],
         \   [["left", "right"]],
         \   [["top", "bottom"]],
+        \   [["prefix", "suffix"]],
+        \   [["allow", "deny"]],
         \   [["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]],
         \   [
         \       ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -835,6 +857,7 @@
         nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
 
         nnoremap <silent><buffer><expr> A <SID>defx_column_zoom()
+        nmap <silent><buffer> <C-a> A
         nnoremap <silent><buffer><expr> s <SID>defx_drop_operation('vsplit')
         nnoremap <silent><buffer><expr> i <SID>defx_drop_operation('split')
         nnoremap <silent><buffer><expr> t <SID>defx_drop_operation('tabe')
@@ -894,5 +917,22 @@
 " vim-smoothie {{{ "
     let g:smoothie_experimental_mappings = v:true
 " }}} vim-smoothie "
+
+" vim-projectionist {{{ "
+    let g:projectionist_heuristics = {
+        \ '*': {
+        \     '*.go': {
+        \       'alternate': '{}_test.go',
+        \       'type': 'source',
+        \       },
+        \     '*_test.go': {
+        \       'alternate': '{}.go',
+        \       'type': 'test',
+        \       },
+        \     }
+        \ }
+
+    nnoremap <Leader>, :AV<CR>
+" }}} vim-projectionist "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

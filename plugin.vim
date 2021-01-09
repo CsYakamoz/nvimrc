@@ -11,6 +11,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'joshdick/onedark.vim'
         Plug 'hardcoreplayers/oceanic-material'
         Plug 'ulwlu/elly.vim'
+        Plug 'mhinz/vim-janah'
     " }}} colorschema "
 
     " appearance {{{ "
@@ -84,6 +85,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
         Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+        Plug 'andymass/vim-matchup'
+        Plug 'tpope/vim-projectionist'
+        Plug 'kana/vim-textobj-user'
+        Plug 'sgur/vim-textobj-parameter'
     " }}} tool "
 
     " self {{{ "
