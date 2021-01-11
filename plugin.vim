@@ -12,6 +12,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'hardcoreplayers/oceanic-material'
         Plug 'ulwlu/elly.vim'
         Plug 'mhinz/vim-janah'
+        Plug 'junegunn/seoul256.vim'
     " }}} colorschema "
 
     " appearance {{{ "
@@ -60,7 +61,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
         Plug 'scrooloose/nerdcommenter'
         Plug 'janko/vim-test', { 'on': ['TestFile', 'TestNearest'] }
-        Plug 'junegunn/vim-peekaboo'
         Plug 'skywind3000/vim-quickui'
         Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
         Plug 'dense-analysis/ale'

@@ -1,6 +1,6 @@
 " let s:colorType = 'dark'
 if !exists('s:colorType')
-    if strftime('%H') > 6 && strftime('%H') < 15
+    if strftime('%H') > 6 && strftime('%H') < 18
         let s:colorType = 'light'
     else
         let s:colorType = 'dark'
@@ -98,6 +98,16 @@ fun! s:Janah()
     let g:airline_theme='forest_night'
 endf
 
+fun! s:Seoul256()
+    if s:colorType == 'light'
+        colorscheme seoul256-light
+        let g:airline_theme='solarized'
+    else
+        colorscheme seoul256
+        let g:airline_theme='bubblegum'
+    endif
+endf
+
 let s:colorList = [
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
@@ -111,6 +121,7 @@ let s:colorList = [
     \ function('<SID>OceanicMaterial'),
     \ function('<SID>Elly'),
     \ function('<SID>Janah'),
+    \ function('<SID>Seoul256'),
     \ ]
 
 " let s:target = s:colorList[0]

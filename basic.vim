@@ -148,7 +148,7 @@
     inoremap <C-j> <Down>
 
     " visual current buffer
-    nnoremap <Leader>vb ggVG
+    nnoremap <Leader>vb GVgg
 
     " remove all trailing whitespace
     nnoremap <silent> <Leader>rt :%s/\s\+$//e<CR>:nohl<CR>
@@ -165,6 +165,20 @@
     nnoremap <silent> [q :cprevious<CR>
     nnoremap <silent> ]ow :set wrap!<cr>
     nmap <silent> [ow ]ow
+
+    " reference: https://www.reddit.com/r/vim/comments/ksix5c/replacing_text_my_favorite_remap/
+    nnoremap <Leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left><C-r><C-w>
+
+    function! s:horizontalNav(nav) abort
+        let movement = float2nr(winwidth(0) / 4)
+        if a:nav == 'left'
+            execute "normal " . movement . "zh"
+        else
+            execute "normal " . movement . "zl"
+        endif
+    endfunction
+    nnoremap <silent> zH :call <SID>horizontalNav('left')<CR>
+    nnoremap <silent> zL :call <SID>horizontalNav('right')<CR>
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

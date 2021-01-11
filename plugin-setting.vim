@@ -16,8 +16,8 @@
     nnoremap <silent> <C-b> :Buffers<CR>
     nnoremap <silent> <C-g> :RG<CR>
     " vim registers <C-/> as <C-_>
-    " use <C-/> to trigger 'BLines' Command
-    nnoremap <silent> <C-_> :BLines<CR>
+    " use <C-/> to trigger Search history Command
+    nnoremap <silent> <C-_> :History/<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
@@ -63,6 +63,11 @@
         \ 'ctrl-s': 'split',
         \ 'ctrl-v': 'vsplit'
         \ }
+
+    " fzf-mru
+    let g:fzf_mru_relative = 1
+    let g:fzf_mru_no_sort = 1
+    noremap <silent> <C-p> :FZFMru<cr>
 " }}} fzf "
 
 " nerdcommenter {{{ "
