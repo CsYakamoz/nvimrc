@@ -11,7 +11,7 @@ func! s:CsGlow(type) abort
         let optionList = [
             \ '--name=floaterm-glow-preview',
             \ '--title=floaterm-glow-preview',
-            \ '--wintype=floating',
+            \ '--wintype=float',
             \ '--position=center',
             \ '--width=0.99',
             \ '--height=0.99',

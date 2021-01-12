@@ -375,6 +375,7 @@
 " vim-gitgutter {{{ "
     let g:gitgutter_preview_win_floating = 1
     let g:airline#extensions#hunks#enabled = 0
+    let g:gitgutter_max_signs = 999
 " }}} vim-gitgutter "
 
 " markdown-preview.nvim {{{ "
@@ -382,8 +383,8 @@
 " }}} markdown-preview.nvim "
 
 " vim-floaterm {{{ "
-    let g:floaterm_type = 'floating'
-    let g:floaterm_position = 'bottomright'
+    let g:floaterm_type = 'float'
+    let g:floaterm_position = 'bottom'
     let g:floaterm_width = 0.99
     let g:floaterm_height = 0.6
 
@@ -939,5 +940,9 @@
 
     nnoremap <Leader>, :AV<CR>
 " }}} vim-projectionist "
+
+" auto-pairs {{{ "
+    let g:AutoPairsShortcutBackInsert = ''
+" }}} auto-pairs "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

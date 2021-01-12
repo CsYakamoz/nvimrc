@@ -93,6 +93,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     " self {{{ "
         Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
+        Plug 'CsYakamoz/fzf-mru.vim', { 'branch': 'preview-window' }
     " }}} self "
 call plug#end()
 
