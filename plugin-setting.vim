@@ -67,7 +67,7 @@
     " fzf-mru
     let g:fzf_mru_relative = 1
     let g:fzf_mru_no_sort = 1
-    noremap <silent> <C-p> :FZFMru<cr>
+    noremap <silent> <Leader>u :FZFMru<cr>
 " }}} fzf "
 
 " nerdcommenter {{{ "

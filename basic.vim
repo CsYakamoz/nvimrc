@@ -109,11 +109,11 @@
 
     " change windows size
     " + or - is increase or decrease current windows height
-    nnoremap <silent> <Leader>+ <C-w>3+
+    nnoremap <silent> <Leader>= <C-w>3+
     nnoremap <silent> <Leader>- <C-w>3-
-    " > or < is increase or decrease current windows width
-    nnoremap <silent> <Leader>> <C-w>5>
-    nnoremap <silent> <Leader>< <C-w>5<
+    " ] or [ is increase or decrease current windows width
+    nnoremap <silent> <Leader>] <C-w>5>
+    nnoremap <silent> <Leader>[ <C-w>5<
 
     " add new empty line in normal mode
     " reference: https://github.com/mhinz/vim-galore#quickly-add-empty-lines
