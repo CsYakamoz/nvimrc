@@ -35,13 +35,7 @@
     set list
     set listchars=tab:▸\ ,trail:·,extends:>
     set showmatch
-    set matchtime=2
-    set matchpairs+=<:>
-    set matchpairs+=《:》
-    set matchpairs+=（:）
-    set matchpairs+=【:】
-    set matchpairs+=“:”
-    set matchpairs+=‘:’
+    set matchtime=1
     set complete-=i                     " disable scanning included files
     set complete-=t                     " disable searching tags
     set autoread

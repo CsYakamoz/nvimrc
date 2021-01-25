@@ -88,11 +88,6 @@ function! s:OceanicMaterial()
     let g:airline_theme='bubblegum'
 endfunction
 
-fun! s:Elly()
-    colorscheme elly
-    let g:airline_theme='elly'
-endf
-
 fun! s:Janah()
     colorscheme janah
     let g:airline_theme='forest_night'
@@ -119,7 +114,6 @@ let s:colorList = [
     \ function('<SID>Solarized'),
     \ function('<SID>OneDark'),
     \ function('<SID>OceanicMaterial'),
-    \ function('<SID>Elly'),
     \ function('<SID>Janah'),
     \ function('<SID>Seoul256'),
     \ ]

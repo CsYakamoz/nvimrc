@@ -10,7 +10,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
         Plug 'joshdick/onedark.vim'
         Plug 'hardcoreplayers/oceanic-material'
-        Plug 'ulwlu/elly.vim'
         Plug 'mhinz/vim-janah'
         Plug 'junegunn/seoul256.vim'
     " }}} colorschema "
