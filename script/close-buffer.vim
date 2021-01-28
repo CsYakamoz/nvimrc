@@ -12,11 +12,14 @@ function! s:CloseSpecificBuffer()
     let list = filter(range(1, bufnr('$')), 'buflisted(v:val) && getbufvar(v:val, "&filetype") != "qf"')
     let named_list = map(list, 'bufname(v:val)')
 
-    call fzf#run({
+    call fzf#run(fzf#vim#with_preview({
     \   'source': named_list,
     \   'sink': function('<SID>CloseBuffer'),
     \   'options': '--multi',
     \   'window': 'call CreateCenteredFloatingWindow()'
-    \ })
+    \ },
+    \ 'right:50%',
+    \ 'ctrl-/',
+    \ ))
 endfunction
 command! -nargs=0 CloseSpecificBuffer :call s:CloseSpecificBuffer()

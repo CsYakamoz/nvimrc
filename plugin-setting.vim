@@ -23,7 +23,7 @@
     command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
-        \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', 'ctrl-/'), <bang>0)
+        \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:50%', 'ctrl-/'), <bang>0)
 
     function! RipgrepFzf(query, fullscreen)
         let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -31,7 +31,7 @@
         let reload_command = printf(command_fmt, '{q}')
         let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
         " fzf#vim#with_preview: https://github.com/junegunn/fzf.vim/issues/975
-        call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec, 'right:50%', 'ctrl-/'), a:fullscreen)
+        call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec, 'up:50%', 'ctrl-/'), a:fullscreen)
     endfunction
     command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
@@ -122,7 +122,7 @@
     nnoremap <silent> <Leader>vf :<C-u>Vista finder<CR>
 
     " fzf - preview
-    let g:vista_fzf_preview = ['right:50%']
+    let g:vista_fzf_preview = ['up:50%']
 
     let g:vista#renderer#icons = {
     \   "keyword": "\uf1de",
@@ -779,7 +779,7 @@
         command! -bang -buffer -nargs=* DefxRg
             \ call fzf#vim#grep(
             \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
-            \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..', 'dir': parent}, 'right:50%', 'ctrl-/'), <bang>0)
+            \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..', 'dir': parent}, 'up:50%', 'ctrl-/'), <bang>0)
 
         execute 'DefxRg'
     endf
