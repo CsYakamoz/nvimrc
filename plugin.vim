@@ -24,7 +24,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         if ! has('mac')
             Plug 'lukas-reineke/indent-blankline.nvim'
         endif
-        Plug 'jackguo380/vim-lsp-cxx-highlight'
+        Plug 'jackguo380/vim-lsp-cxx-highlight', { 'for': ['cpp', 'c'] }
         Plug 'pangloss/vim-javascript'
         Plug 'leafgarland/typescript-vim'
         Plug 'PeterRincker/vim-searchlight'
@@ -71,7 +71,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'editorconfig/editorconfig-vim'
         Plug 'dhruvasagar/vim-zoom'
         Plug 'tommcdo/vim-exchange'
-        Plug 'mzlogin/vim-markdown-toc'
         Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
         Plug 'voldikss/vim-browser-search'
         Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
@@ -88,6 +87,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tpope/vim-projectionist'
         Plug 'kana/vim-textobj-user'
         Plug 'sgur/vim-textobj-parameter'
+        Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
+        Plug 'andymass/vim-tradewinds'
     " }}} tool "
 
     " self {{{ "

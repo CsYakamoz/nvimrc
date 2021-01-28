@@ -1,8 +1,5 @@
 " airline {{{ "
     let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#formatter = 'jsformatter'
-    let g:airline#extensions#tabline#tab_nr_type = 1
 " }}} airline "
 
 " simpylfold {{{ "
@@ -87,34 +84,10 @@
     " When opening a file or bookmark, don't change to its directory
     let g:startify_change_to_dir = 0
 
-    " How do I get both Defx and Startify working at startup?~
-    autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   Defx
-            \ |   wincmd w
-            \ | endif
-
-    " returns all modified files of the current git repo
-    " `2>/dev/null` makes the command fail quietly, so that when we are not
-    " in a git repo, the list will be empty
-    function! s:gitModified()
-        let files = systemlist('git ls-files -m 2>/dev/null')
-        return map(files, "{'line': v:val, 'path': v:val}")
-    endfunction
-
-    " same as above, but show untracked files, honouring .gitignore
-    function! s:gitUntracked()
-        let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-        return map(files, "{'line': v:val, 'path': v:val}")
-    endfunction
-
     " change order
     let g:startify_lists = [
           \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-          \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
           \ { 'type': 'files',     'header': ['   MRU']            },
           \ ]
 
@@ -133,6 +106,7 @@
         \ ]
     let g:startify_custom_header =
           \ 'startify#pad(startify#fortune#boxed() + g:startify_header_doraemon)'
+    let g:startify_files_number = 5
 " }}} startify "
 
 " vista {{{ "
@@ -542,12 +516,6 @@
         autocmd WinLeave * if &filetype == 'defx' | wincmd = | endif
         autocmd BufHidden * if exists('t:defx_column_maximal') && t:defx_column_maximal | let t:defx_column_maximal = v:false | endif
     augroup end
-
-    " reference NERDTree
-    " How can I open Defx automatically when vim starts up on opening a directory?
-    " Note: Executing vim ~/some-directory will open Defx and a new edit window. exe 'cd '.argv()[0] sets the pwd of the new edit window to ~/some-directory
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'Defx' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
     func! s:defx_find() abort
         let nr = 0

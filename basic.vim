@@ -134,8 +134,8 @@
     xnoremap <silent> P P:let @"=@0<CR>
 
     " go to next/previous tabpage
-    nnoremap <C-n> gt
-    nnoremap <C-p> gT
+    nnoremap <silent> <C-n> gt
+    nnoremap <silent> <C-p> gT
 
     " <C-p> <C-n> has been used in Insert Mode
     inoremap <C-k> <Up>
