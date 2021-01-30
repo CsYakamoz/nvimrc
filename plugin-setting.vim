@@ -19,18 +19,27 @@
 
 " fzf {{{ "
     nnoremap <silent> <M-f> :Files<CR>
-    nnoremap <silent> <C-f> :call <SID>CsFiles()<CR>
+    nnoremap <silent> <C-f><C-f> :call <SID>CsFiles(0)<CR>
+    nnoremap <silent> <C-f><C-w> :call <SID>CsFiles(1)<CR>
     nnoremap <silent> <C-s> :GFiles?<CR>
     nnoremap <silent> <C-b> :Buffers<CR>
-    nnoremap <silent> <C-g> :RG<CR>
+    nnoremap <silent> <C-g><C-g> :RG<CR>
+    nnoremap <silent> <C-g><C-w> :RG <C-r><C-w><CR>
+    nnoremap <silent> <C-g><C-v> :RG <C-r><C-w><CR>
+    vnoremap <silent> <C-g><C-v> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
+
     " vim registers <C-/> as <C-_>
-    " use <C-/> to trigger Search history Command
-    nnoremap <silent> <C-_> :History/<CR>
+    " use <C-/> to trigger Search Current Buffer Line
+    nnoremap <silent> <C-_> :BLines<CR>
+    nnoremap <silent> <C-h>; :History:<CR>
+    nnoremap <silent> <C-h>/ :History/<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
 
     " Note: node_modules was ignored
+    " Rg will ignore filename
+    " see https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
     command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
         \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!node_modules" '.shellescape(<q-args>), 1,
@@ -46,12 +55,21 @@
     endfunction
     command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-    func! s:CsFiles() abort
+    func! s:CsFiles(flag) abort
         silent! !git rev-parse --is-inside-work-tree
-        if v:shell_error == 0
-            execute 'GFiles'
+        if a:flag == 0
+            if v:shell_error == 0
+                execute 'GFiles'
+            else
+                execute 'Files'
+            endif
         else
-            execute 'Files'
+            let spec = {'options': '-q '.shellescape(expand('<cword>'))}
+            if v:shell_error == 0
+                call fzf#vim#gitfiles('', spec)
+            else
+                call fzf#vim#files('', spec)
+            endif
         endif
     endf
 
@@ -76,6 +94,22 @@
     let g:fzf_mru_relative = 1
     let g:fzf_mru_no_sort = 1
     noremap <silent> <Leader>u :FZFMru<cr>
+
+    " reference: https://stackoverflow.com/questions/47994025/vim-fzf-get-selected-word-as-query-parameter
+    function! s:getVisualSelection()
+        let [line_start, column_start] = getpos("'<")[1:2]
+        let [line_end, column_end] = getpos("'>")[1:2]
+        let lines = getline(line_start, line_end)
+
+        if len(lines) == 0
+            return ""
+        endif
+
+        let lines[-1] = lines[-1][:column_end - (&selection == "inclusive" ? 1 : 2)]
+        let lines[0] = lines[0][column_start - 1:]
+
+        return join(lines, "\n")
+    endfunction
 " }}} fzf "
 
 " nerdcommenter {{{ "
@@ -188,7 +222,6 @@
         \ 'coc-go',
         \ 'coc-vimlsp',
         \ 'coc-highlight',
-        \ 'coc-smartf',
         \ ]
 
     " make snippet completion work just like VSCode
@@ -268,12 +301,6 @@
 
     let g:coc_disable_transparent_cursor=1
 
-    " coc-smartf
-    nmap f <Plug>(coc-smartf-forward)
-    nmap F <Plug>(coc-smartf-backward)
-    nmap ; <Plug>(coc-smartf-repeat)
-    nmap , <Plug>(coc-smartf-repeat-opposite)
-
     augroup Smartf
         autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#89f298
         autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
@@ -295,34 +322,27 @@
     call quickui#menu#reset()
 
     call quickui#menu#install('&Tool', [
-        \ [ "Startify\tF2", 'Startify' ],
-        \ [ "DefxFi&nd\tF4", "DefxFind" ],
-        \ [ "--", '' ],
         \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
         \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
         \ [ "Cs&Glow-Float", 'exec "CsGlow 1"' ],
         \ [ "CsGlow-Normal", 'exec "CsGlow 2"' ],
         \ [ "IndentLineToggle", "call IndentLineToggle()" ],
-        \ [ "--", '' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
-        \ [ "--", '' ],
         \ [ "&PmR", 'CocList pmr' ],
         \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
         \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
         \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
         \ [ "&Switching", "CocCommand qtk.switching" ],
-        \ [ "--", '' ],
         \ [ "&VistaToogle", 'Vista!!' ],
         \ [ "VistaFinder", 'Vista finder' ],
-        \ [ "--", '' ],
         \ [ "&MarkdownPreview", 'MarkdownPreview' ],
         \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
-        \ [ "--", '' ],
         \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
         \ [ "Coc&Restart", "CocRestart" ],
         \ [ "CocClose&Floats", "call coc#util#close_floats()" ],
+        \ [ "LinediffReset", "LinediffReset" ],
         \ ])
 
     call quickui#menu#install('&Git', [
@@ -459,7 +479,7 @@
 " }}} vim-zoom "
 
 " vim-exchange {{{ "
-    xmap <C-x>  <Plug>(Exchange)
+    xmap <C-x> <Plug>(Exchange)
 " }}} vim-exchange "
 
 " indentLine {{{ "

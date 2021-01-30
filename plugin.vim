@@ -79,7 +79,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tmhedberg/simpylfold', { 'for': 'python' }
         Plug 'Konfekt/FastFold'
         Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
-        Plug 'AndrewRadev/linediff.vim', { 'on': 'Linediff' }
+        Plug 'AndrewRadev/linediff.vim', { 'on': ['Linediff', 'LinediffReset'] }
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
         Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
