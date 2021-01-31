@@ -62,6 +62,13 @@
         set shell=/bin/bash
     endif
 
+" HostProg:
+    if has('mac')
+        let g:python3_host_prog='/usr/local/bin/python3'
+    elseif has('unix')
+        let g:python3_host_prog='/usr/bin/python3'
+    endif
+
 " key-binding without plugin {{{ "
     " ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
     inoremap <C-c> <ESC>

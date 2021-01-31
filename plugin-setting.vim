@@ -31,8 +31,14 @@
     " vim registers <C-/> as <C-_>
     " use <C-/> to trigger Search Current Buffer Line
     nnoremap <silent> <C-_> :BLines<CR>
-    nnoremap <silent> <C-h>; :History:<CR>
-    nnoremap <silent> <C-h>/ :History/<CR>
+    nnoremap <silent> <Leader>hh :call quickui#listbox#open(
+        \ [
+            \ [ '&Mru for current pwd', 'FZFMru' ],
+            \ [ '&Command', 'History:' ],
+            \ [ '&Search', 'History/' ],
+        \ ],
+        \ {'title': 'Fzf History'}
+        \ )<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
