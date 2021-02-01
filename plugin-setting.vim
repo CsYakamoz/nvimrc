@@ -27,6 +27,7 @@
     nnoremap <silent> <C-g><C-g> :RG<CR>
     nnoremap <silent> <C-g><C-w> :RG <C-r><C-w><CR>
     nnoremap <silent> <C-g><C-v> :RG <C-r><C-w><CR>
+    vnoremap <silent> <C-g><C-w> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
     vnoremap <silent> <C-g><C-v> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
 
     " vim registers <C-/> as <C-_>
@@ -138,7 +139,7 @@
 
     " change order
     let g:startify_lists = [
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'sessions',  'header': ['   Sessions'], 'indices': map(range(char2nr('A'),char2nr('Z')),'nr2char(v:val)') },
           \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
           \ { 'type': 'files',     'header': ['   MRU']            },
           \ ]

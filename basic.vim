@@ -193,6 +193,9 @@
     nnoremap <Leader>8 8gt
     nnoremap <Leader>9 9gt
     nnoremap <Leader>0 10gt
+
+    nnoremap <C-f> <Nop>
+    nnoremap <C-g> <Nop>
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:
