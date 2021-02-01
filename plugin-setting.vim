@@ -5,12 +5,13 @@
     let g:airline#extensions#tabline#tab_nr_type = 1
     let g:airline#extensions#tabline#show_tab_type = 0
     let g:airline#extensions#tabline#show_splits = 0
-    let g:airline#extensions#tabline#formatter = 'jsformatter'
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
     let g:airline#extensions#tabline#left_sep = ''
     let g:airline#extensions#tabline#left_alt_sep = ''
     let g:airline#extensions#tabline#right_sep = ''
     let g:airline#extensions#tabline#right_alt_sep = ''
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+    let g:airline#extensions#tabline#show_close_button = 0
 " }}} airline "
 
 " simpylfold {{{ "
@@ -514,6 +515,7 @@
     "   1. :help defx
     "   2. https://github.com/hardcoreplayers/ThinkVim/blob/62f75d5ae1722ba5839de8ea50bb7ad2871e7593/modules/module-defx.vim
     nnoremap <silent> <Leader>e :Defx<CR>
+    nnoremap <silent> <C-f><C-e> :call <SID>defx_floating()<CR>
     command! -nargs=0 DefxFind :call <SID>defx_find()
     nnoremap <silent> <F4> :DefxFind<CR>
 
@@ -521,7 +523,7 @@
     let g:defx_icons_column_length = 2
 
     call defx#custom#option('_',{
-        \ 'columns'   : 'indent:git:icons:filename',
+        \ 'columns'   : 'icons:indent:git:filename',
         \ 'split'     : 'vertical',
         \ 'direction' : 'topleft',
         \ 'winwidth'  : 25,
@@ -552,7 +554,26 @@
         autocmd FileType defx call <SID>defx_settings()
         autocmd WinLeave * if &filetype == 'defx' | wincmd = | endif
         autocmd BufHidden * if exists('t:defx_column_maximal') && t:defx_column_maximal | let t:defx_column_maximal = v:false | endif
+        autocmd BufEnter * call s:open_defx_if_directory()
     augroup end
+
+    " reference: https://github.com/Shougo/defx.nvim/issues/175
+    function! s:open_defx_if_directory()
+        " This throws an error if the buffer name contains unusual characters like
+        " [[buffergator]]. Desired behavior in those scenarios is to consider the
+        " buffer not to be a directory.
+        try
+            let l:full_path = expand(expand('%:p'))
+        catch
+            return
+        endtry
+
+        " If the path is a directory, delete the (useless) buffer and open defx for
+        " that directory instead.
+        if isdirectory(l:full_path)
+            execute "Defx `expand('%:p')` | bd " . expand('%:r')
+        endif
+    endfunction
 
     func! s:defx_find() abort
         let nr = 0
@@ -834,6 +855,20 @@
         endif
     endf
 
+    function! s:defx_floating() abort
+        let width = float2nr(&columns * 1)
+        let height = float2nr(&lines * 0.85)
+        let top = ((&lines - height) / 2) - 1
+        let left = (&columns - width) / 2
+
+        execute 'Defx -split=floating'.
+            \ ' -winwidth=' . string(width-4) .
+            \ ' -winheight='. string(height-2) .
+            \ ' -winrow='. string(top+1) .
+            \ ' -wincol=' . string(left+2)
+            \ ' -columns=icons:indent:git:filename:type:size:time'
+    endfunction
+
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -862,7 +897,7 @@
         nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
         nnoremap <silent><buffer><expr> <Leader>t defx#do_action(
             \ 'toggle_columns',
-            \ 'indent:mark:filename:type:size:time'
+            \ 'icons:indent:git:filename:type:size:time'
             \ )
         nnoremap <silent><buffer><expr> <Leader>p defx#do_action('print')
         nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
@@ -881,9 +916,9 @@
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
         nnoremap <silent><buffer> <C-p> :call <SID>defx_preview()<CR>
-        nnoremap <silent><buffer> <C-f> :call <SID>defx_fzf_file()<CR>
+        nnoremap <silent><buffer> <C-f><C-f> :call <SID>defx_fzf_file()<CR>
         nnoremap <silent><buffer><expr> m <SID>defx_menu()
-        nnoremap <silent><buffer> <C-g> :call <SID>defx_rg()<CR>
+        nnoremap <silent><buffer> <C-g><C-g> :call <SID>defx_rg()<CR>
         nnoremap <silent><buffer> <Leader>o :call <SID>defx_view_in_explorer()<CR>
     endf
 " }}} defx "
@@ -912,7 +947,6 @@
     function! OnUIEnter(event) abort
         if s:IsFirenvimActive(a:event)
             set laststatus=0
-            execute 'Defx'
 
             if &lines < 24
                 set lines=24
