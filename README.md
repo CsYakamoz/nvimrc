@@ -108,4 +108,3 @@
 - coc-go
 - coc-vimlsp
 - coc-highlight
-- coc-smartf

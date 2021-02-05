@@ -133,6 +133,7 @@
 
 " startify {{{ "
     nnoremap <silent> <F2> :Startify<CR>
+    nnoremap <silent> <M-2> :Startify<CR>
 
     " When opening a file or bookmark, don't change to its directory
     let g:startify_change_to_dir = 0
@@ -308,17 +309,14 @@
     omap ac <Plug>(coc-classobj-a)
 
     let g:coc_disable_transparent_cursor=1
-
-    augroup Smartf
-        autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#89f298
-        autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
-    augroup end
 " }}} coc.nvim "
 
 " vim-test {{{ "
     let g:test#strategy = "neovim"
     nnoremap <silent> <F5> :TestFile<CR>
+    nnoremap <silent> <M-5> :TestFile<CR>
     nnoremap <silent> <F6> :TestNearest<CR>
+    nnoremap <silent> <M-6> :TestNearest<CR>
 
     let test#go#gotest#options = {
     \   'all':   '-v',
@@ -389,6 +387,8 @@
     let g:gitgutter_preview_win_floating = 1
     let g:airline#extensions#hunks#enabled = 0
     let g:gitgutter_max_signs = 999
+    nmap ]c <Plug>(GitGutterNextHunk)zz
+    nmap [c <Plug>(GitGutterPrevHunk)zz
 " }}} vim-gitgutter "
 
 " markdown-preview.nvim {{{ "
@@ -519,6 +519,7 @@
     nnoremap <silent> <C-f><C-e> :call <SID>defx_floating()<CR>
     command! -nargs=0 DefxFind :call <SID>defx_find()
     nnoremap <silent> <F4> :DefxFind<CR>
+    nnoremap <silent> <M-4> :DefxFind<CR>
 
     let g:defx_icons_parent_icon = "\uf113"
     let g:defx_icons_column_length = 2

@@ -44,10 +44,8 @@
 " only activated window has the highlight line & column
     augroup highlight_line_column
         autocmd!
-        autocmd WinEnter * set cursorline
-        autocmd WinLeave * set nocursorline
-        autocmd WinEnter * set cursorcolumn
-        autocmd WinLeave * set nocursorcolumn
+        au WinLeave * set nocursorline nocursorcolumn
+        au WinEnter * set cursorline cursorcolumn
     augroup end
 
 " restore cursor position when opening file(if opened)
@@ -130,8 +128,9 @@
 
     nnoremap n nzz
     nnoremap N Nzz
-    nnoremap * *zz
-    nnoremap # #zz
+    " reference: https://vim.fandom.com/wiki/Searching
+    nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>zz
+    nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>zz
 
     nnoremap <silent> <Leader>m :messages<CR>
 
@@ -143,6 +142,28 @@
     " go to next/previous tabpage
     nnoremap <silent> <C-n> gt
     nnoremap <silent> <C-p> gT
+    function! s:move_tab(direction) abort
+        let count = tabpagenr('$')
+        if count == 1
+            return
+        endif
+
+        if a:direction == 0
+            if tabpagenr() == 1
+                execute 'tabmove $'
+            else
+                execute 'tabmove -'
+            endif
+        else
+            if tabpagenr() == count
+                execute 'tabmove 0'
+            else
+                execute 'tabmove +'
+            endif
+        endif
+    endfunction
+    nnoremap <silent> <M-h> :call <SID>move_tab(0)<CR>
+    nnoremap <silent> <M-l> :call <SID>move_tab(1)<CR>
 
     " <C-p> <C-n> has been used in Insert Mode
     inoremap <C-k> <Up>
@@ -196,6 +217,9 @@
 
     nnoremap <C-f> <Nop>
     nnoremap <C-g> <Nop>
+
+    " reference: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches
+    nnoremap z/ :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:
