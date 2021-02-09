@@ -92,6 +92,8 @@
 |                      [sgur/vim-textobj-parameter](https://github.com/sgur/vim-textobj-parameter)                      |                                                     A fork of textobj-parameter 0.1.0                                                     |
 |                        [dstein64/vim-startuptime](https://github.com/dstein64/vim-startuptime)                        |                                             ⏲️ A Vim plugin for profiling Vim's startup time.                                             |
 |                         [andymass/vim-tradewinds](https://github.com/andymass/vim-tradewinds)                         |                                                        the missing window movement                                                        |
+|                              [justinmk/vim-sneak](https://github.com/justinmk/vim-sneak)                              |                                             Jump to any location specified by two characters.                                             |
+|                 [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object)                 |    Vim plugin that defines a new text object representing lines of code at the same indent level. Useful for python/vim scripts, etc.     |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 

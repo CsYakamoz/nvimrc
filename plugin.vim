@@ -89,6 +89,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'sgur/vim-textobj-parameter'
         Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
         Plug 'andymass/vim-tradewinds'
+        Plug 'justinmk/vim-sneak'
+        Plug 'michaeljsmith/vim-indent-object'
     " }}} tool "
 
     " self {{{ "
