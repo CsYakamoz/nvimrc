@@ -27,6 +27,7 @@
     nnoremap <silent> <C-g><C-g> :RG<CR>
     nnoremap <silent> <C-g><C-w> :RG <C-r><C-w><CR>
     nnoremap <silent> <C-g><C-v> :RG <C-r><C-w><CR>
+    vnoremap <silent> <C-g><C-g> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
     vnoremap <silent> <C-g><C-w> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
     vnoremap <silent> <C-g><C-v> <Esc>:RG <C-R>=<SID>getVisualSelection()<CR><CR>
 
@@ -265,8 +266,6 @@
     nmap <leader>rf <Plug>(coc-refactor)
 
     nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> <leader>gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
     nnoremap <silent> <Leader>f :call CocAction('format')<CR>
@@ -925,42 +924,6 @@
     endf
 " }}} defx "
 
-" firenvim {{{ "
-    let g:firenvim_config = {
-        \ 'globalSettings': {
-            \ 'alt': 'all',
-        \  },
-        \ 'localSettings': {
-        \ }
-    \ }
-
-    let fc = g:firenvim_config['localSettings']
-    let fc['.*'] = { 'takeover': 'never' }
-
-    function! s:IsFirenvimActive(event) abort
-        if !exists('*nvim_get_chan_info')
-            return 0
-        endif
-        let l:ui = nvim_get_chan_info(a:event.chan)
-        return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
-            \ l:ui.client.name =~? 'Firenvim'
-    endfunction
-
-    function! OnUIEnter(event) abort
-        if s:IsFirenvimActive(a:event)
-            set laststatus=0
-
-            if &lines < 24
-                set lines=24
-            endif
-            if &columns < 80
-                set columns=80
-            endif
-        endif
-    endfunction
-    autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
-" }}} firenvim "
-
 " vim-smoothie {{{ "
     let g:smoothie_experimental_mappings = v:true
 " }}} vim-smoothie "
@@ -979,7 +942,7 @@
         \     }
         \ }
 
-    nnoremap <Leader>, :AV<CR>
+    nnoremap <silent> <Leader>, :AV<CR>
 " }}} vim-projectionist "
 
 " auto-pairs {{{ "

@@ -81,7 +81,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
         Plug 'AndrewRadev/linediff.vim', { 'on': ['Linediff', 'LinediffReset'] }
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
         Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
         Plug 'andymass/vim-matchup'
         Plug 'tpope/vim-projectionist'
@@ -91,10 +90,11 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'andymass/vim-tradewinds'
         Plug 'justinmk/vim-sneak'
         Plug 'michaeljsmith/vim-indent-object'
+        Plug 'tpope/vim-abolish'
     " }}} tool "
 
     " self {{{ "
-        Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
+        " Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
         Plug 'CsYakamoz/fzf-mru.vim', { 'branch': 'preview-window' }
     " }}} self "
 call plug#end()

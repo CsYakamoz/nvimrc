@@ -10,6 +10,7 @@
 - [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder.
 - [ripgrep](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern.
 - [pynvim](https://github.com/neovim/pynvim): python client and plugin host for Nvim.
+- [neovim](https://github.com/neovim/node-client): Nvim Node.js client and plugin host
 
 ### Option
 
@@ -84,7 +85,6 @@
 |                                 [hotoo/pangu.vim](https://github.com/hotoo/pangu.vim)                                 |                                                 『盘古之白』中文排版自动规范化的 Vim 插件                                                 |
 |                        [AndrewRadev/linediff.vim](https://github.com/AndrewRadev/linediff.vim)                        |                                              A vim plugin to perform diffs on blocks of code                                              |
 |                                [Shougo/defx.nvim](https://github.com/Shougo/defx.nvim)                                |                                             📁 The dark powered file explorer implementation                                              |
-|                              [glacambre/firenvim](https://github.com/glacambre/firenvim)                              |                                                       Embed Neovim in your browser.                                                       |
 |                            [antoinemadec/coc-fzf](https://github.com/antoinemadec/coc-fzf)                            |                                                              fzf ❤️ coc.nvim                                                              |
 |                            [andymass/vim-matchup](https://github.com/andymass/vim-matchup)                            |             vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen replacement             |
 |                         [tpope/vim-projectionist](https://github.com/tpope/vim-projectionist)                         |                                             projectionist.vim: Granular project configuration                                             |
@@ -94,6 +94,7 @@
 |                         [andymass/vim-tradewinds](https://github.com/andymass/vim-tradewinds)                         |                                                        the missing window movement                                                        |
 |                              [justinmk/vim-sneak](https://github.com/justinmk/vim-sneak)                              |                                             Jump to any location specified by two characters.                                             |
 |                 [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object)                 |    Vim plugin that defines a new text object representing lines of code at the same indent level. Useful for python/vim scripts, etc.     |
+|                               [tpope/vim-abolish](https://github.com/tpope/vim-abolish)                               |                          abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word                           |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 
