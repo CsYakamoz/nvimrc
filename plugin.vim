@@ -6,7 +6,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'ayu-theme/ayu-vim'
         Plug 'drewtempelmeyer/palenight.vim'
         Plug 'dracula/vim', { 'as': 'dracula' }
-        Plug 'tyrannicaltoucan/vim-quantum'
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
         Plug 'joshdick/onedark.vim'
         Plug 'hardcoreplayers/oceanic-material'
@@ -54,7 +53,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tpope/vim-surround'
         Plug 'tpope/vim-fugitive'
         Plug 'tpope/vim-rsi'
-        Plug 'tpope/vim-sleuth'
         Plug 'jiangmiao/auto-pairs'
         Plug 'airblade/vim-gitgutter'
         Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }

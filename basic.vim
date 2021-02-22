@@ -41,13 +41,6 @@
     set autoread
 " }}} common "
 
-" only activated window has the highlight line & column
-    augroup highlight_line_column
-        autocmd!
-        au WinLeave * set nocursorline nocursorcolumn
-        au WinEnter * set cursorline cursorcolumn
-    augroup end
-
 " restore cursor position when opening file(if opened)
     autocmd BufReadPost *
         \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -187,8 +180,8 @@
     nnoremap <silent> [q :cprevious<CR>
     nnoremap <silent> ]ow :set wrap!<cr>
     nmap <silent> [ow ]ow
-    nnoremap <silent> ]p :set paste!<CR>
-    nmap <silent> [p ]p
+    nnoremap <silent> ]op :set paste!<CR>
+    nmap <silent> [op ]op
 
     " reference: https://www.reddit.com/r/vim/comments/ksix5c/replacing_text_my_favorite_remap/
     nnoremap <Leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left><C-r><C-w>

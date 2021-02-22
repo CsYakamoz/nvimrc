@@ -351,6 +351,9 @@
         \ ])
 
     call quickui#menu#install('&Git', [
+        \ [ 'git diff', 'tab Git diff'],
+        \ [ 'git diff --staged', 'tab Git diff --staged'],
+        \ [ "--", '' ],
         \ [ '&diffsplit', 'Gdiffsplit'],
         \ [ '&vdiffsplit', 'Gvdiffsplit'],
         \ [ '&blame', 'Gblame'],

@@ -58,11 +58,6 @@ function! s:Ayu()
     colorscheme ayu
 endfunction
 
-function! s:Quantum()
-    let g:quantum_italics=1
-    colorscheme quantum
-endfunction
-
 function! s:Dracula()
     colorscheme dracula
 endfunction
@@ -110,7 +105,6 @@ let s:colorList = [
     \ function('<SID>Ayu'),
     \ function('<SID>Palenight'),
     \ function('<SID>Dracula'),
-    \ function('<SID>Quantum'),
     \ function('<SID>Solarized'),
     \ function('<SID>OneDark'),
     \ function('<SID>OceanicMaterial'),

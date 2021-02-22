@@ -29,7 +29,7 @@ fun! s:CsRepl(mode) range
     endfor
 
     if found_bufnr == 0
-        execute 'FloatermNew --width=0.5 --wintype=normal --position=right --name=' . name . ' ' . name
+        execute 'FloatermNew --width=0.5 --wintype=vsplit --position=botright --name=' . name . ' ' . name
         stopinsert
 
         setlocal nonumber
