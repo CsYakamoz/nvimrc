@@ -36,12 +36,6 @@ function! s:Xcode()
     endif
 endfunction
 
-function! s:Palenight()
-    colorscheme palenight
-    let g:airline_theme = "palenight"
-    let g:palenight_terminal_italics=1
-endfunction
-
 function! s:ForestNight()
     let g:forest_night_enable_italic = 1
     colorscheme forest-night
@@ -58,10 +52,6 @@ function! s:Ayu()
     colorscheme ayu
 endfunction
 
-function! s:Dracula()
-    colorscheme dracula
-endfunction
-
 function! s:Solarized()
     if s:colorType == 'light'
         set background=light
@@ -72,26 +62,17 @@ function! s:Solarized()
     colorscheme solarized
 endf
 
-function! s:OneDark()
-    let g:onedark_terminal_italics = 1
-    colorscheme onedark
-endfunction
-
 function! s:OceanicMaterial()
     set background=dark
     colorscheme oceanic_material
     let g:airline_theme='bubblegum'
 endfunction
 
-fun! s:Janah()
-    colorscheme janah
-    let g:airline_theme='forest_night'
-endf
-
 fun! s:Seoul256()
     if s:colorType == 'light'
         colorscheme seoul256-light
         let g:airline_theme='solarized'
+        let $BAT_THEME="Solarized (light)"
     else
         colorscheme seoul256
         let g:airline_theme='bubblegum'
@@ -103,12 +84,8 @@ let s:colorList = [
     \ function('<SID>ForestNight'),
     \ function("<SID>Xcode"),
     \ function('<SID>Ayu'),
-    \ function('<SID>Palenight'),
-    \ function('<SID>Dracula'),
     \ function('<SID>Solarized'),
-    \ function('<SID>OneDark'),
     \ function('<SID>OceanicMaterial'),
-    \ function('<SID>Janah'),
     \ function('<SID>Seoul256'),
     \ ]
 

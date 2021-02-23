@@ -4,12 +4,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'sainnhe/forest-night'
         Plug 'arzg/vim-colors-xcode'
         Plug 'ayu-theme/ayu-vim'
-        Plug 'drewtempelmeyer/palenight.vim'
-        Plug 'dracula/vim', { 'as': 'dracula' }
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
-        Plug 'joshdick/onedark.vim'
         Plug 'hardcoreplayers/oceanic-material'
-        Plug 'mhinz/vim-janah'
         Plug 'junegunn/seoul256.vim'
     " }}} colorschema "
 
