@@ -27,6 +27,7 @@ function! s:Xcode()
         let g:xcodeligh_emph_idents=1
         colorscheme xcodelight
         let g:airline_theme='solarized'
+        let $BAT_THEME="Solarized (light)"
     else
         let g:xcodedark_temph_types=1
         let g:xcodedark_emph_funcs=1
@@ -45,6 +46,7 @@ endfunction
 function! s:Ayu()
     if s:colorType == 'light'
         let g:ayucolor="light"
+        let $BAT_THEME="Solarized (light)"
     else
         let g:ayucolor="mirage"
     endif
@@ -55,6 +57,7 @@ endfunction
 function! s:Solarized()
     if s:colorType == 'light'
         set background=light
+        let $BAT_THEME="Solarized (light)"
     else
         set background=dark
         let g:airline_theme='atomic'
