@@ -1,12 +1,3 @@
-" let s:colorType = 'dark'
-if !exists('s:colorType')
-    if strftime('%H') > 6 && strftime('%H') < 18
-        let s:colorType = 'light'
-    else
-        let s:colorType = 'dark'
-    endif
-endif
-
 function! s:Gruvbox()
     let g:gruvbox_material_enable_italic = 1
     colorscheme gruvbox-material
@@ -83,16 +74,25 @@ fun! s:Seoul256()
 endf
 
 let s:colorList = [
+    \ function('<SID>Seoul256'),
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
     \ function("<SID>Xcode"),
     \ function('<SID>Ayu'),
     \ function('<SID>Solarized'),
     \ function('<SID>OceanicMaterial'),
-    \ function('<SID>Seoul256'),
     \ ]
 
-" let s:target = s:colorList[0]
+let s:colorType = 'light'
+if !exists('s:colorType')
+    if strftime('%H') > 6 && strftime('%H') < 18
+        let s:colorType = 'light'
+    else
+        let s:colorType = 'dark'
+    endif
+endif
+
+let s:target = s:colorList[0]
 if !exists('s:target')
     " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
     " 86400 millisecond is equal to 1 day

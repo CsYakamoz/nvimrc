@@ -119,11 +119,11 @@
     xnoremap gl g_
     xnoremap gh ^
 
-    nnoremap n nzz
-    nnoremap N Nzz
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
     " reference: https://vim.fandom.com/wiki/Searching
-    nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>zz
-    nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>zz
+    nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>zzzv
+    nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>zzzv
 
     nnoremap <silent> <Leader>m :messages<CR>
 
@@ -169,7 +169,7 @@
     nnoremap <silent> <Leader>rt :%s/\s\+$//e<CR>:nohl<CR>
 
     " reference: https://vim.fandom.com/wiki/Search_for_visually_selected_text
-    xnoremap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>zz
+    xnoremap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>zzzv
 
     " reference: https://github.com/mhinz/vim-galore#quickly-move-current-line
     nnoremap <silent> ]e  :<c-u>execute 'move +'. v:count1<cr>
