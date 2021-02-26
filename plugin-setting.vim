@@ -34,14 +34,6 @@
     " vim registers <C-/> as <C-_>
     " use <C-/> to trigger Search Current Buffer Line
     nnoremap <silent> <C-_> :BLines<CR>
-    nnoremap <silent> <Leader>hh :call quickui#listbox#open(
-        \ [
-            \ [ '&Mru for current pwd', 'FZFMru' ],
-            \ [ '&Command', 'History:' ],
-            \ [ '&Search', 'History/' ],
-        \ ],
-        \ {'title': 'Fzf History'}
-        \ )<CR>
 
     " [Buffers] Jump to the existing window if possible
     let g:fzf_buffers_jump = 1
@@ -100,9 +92,9 @@
         \ }
 
     " fzf-mru
-    let g:fzf_mru_relative = 1
-    let g:fzf_mru_no_sort = 1
-    noremap <silent> <Leader>u :FZFMru<cr>
+    " let g:fzf_mru_relative = 1
+    " let g:fzf_mru_no_sort = 1
+    " noremap <silent> <Leader>u :FZFMru<cr>
 
     " reference: https://stackoverflow.com/questions/47994025/vim-fzf-get-selected-word-as-query-parameter
     function! s:getVisualSelection()
@@ -518,7 +510,6 @@
     "   1. :help defx
     "   2. https://github.com/hardcoreplayers/ThinkVim/blob/62f75d5ae1722ba5839de8ea50bb7ad2871e7593/modules/module-defx.vim
     nnoremap <silent> <Leader>e :Defx<CR>
-    nnoremap <silent> <C-f><C-e> :call <SID>defx_floating()<CR>
     command! -nargs=0 DefxFind :call <SID>defx_find()
     nnoremap <silent> <F4> :DefxFind<CR>
     nnoremap <silent> <M-4> :DefxFind<CR>
@@ -859,20 +850,6 @@
         endif
     endf
 
-    function! s:defx_floating() abort
-        let width = float2nr(&columns * 1)
-        let height = float2nr(&lines * 0.85)
-        let top = ((&lines - height) / 2) - 1
-        let left = (&columns - width) / 2
-
-        execute 'Defx -split=floating'.
-            \ ' -winwidth=' . string(width-4) .
-            \ ' -winheight='. string(height-2) .
-            \ ' -winrow='. string(top+1) .
-            \ ' -wincol=' . string(left+2)
-            \ ' -columns=icons:indent:git:filename:type:size:time'
-    endfunction
-
     func! s:defx_settings() abort
         setlocal nonumber
         setlocal norelativenumber
@@ -951,5 +928,18 @@
 " auto-pairs {{{ "
     let g:AutoPairsShortcutBackInsert = ''
 " }}} auto-pairs "
+
+" LeaderF {{{ "
+    let g:Lf_HideHelp = 1
+    let g:Lf_IgnoreCurrentBufferName = 1
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>']}
+    noremap <silent> <leader>u :LeaderfMruCwd<CR>
+
+    nnoremap <silent> <C-f><C-e> :Leaderf filer<CR>
+    let g:Lf_FilerShowPromptPath = 1
+    let g:Lf_FilerInsertMap = { '<Tab>': 'open_current', '<CR>': 'open_current', '<BS>': 'open_parent_or_backspace' }
+" }}} LeaderF "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

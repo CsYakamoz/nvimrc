@@ -85,11 +85,13 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'justinmk/vim-sneak'
         Plug 'michaeljsmith/vim-indent-object'
         Plug 'tpope/vim-abolish'
+        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+        Plug 'tamago324/LeaderF-filer'
     " }}} tool "
 
     " self {{{ "
         " Plug 'CsYakamoz/coc-qubao-tool-kit', { 'do': 'yarn install --frozen-lockfile' }
-        Plug 'CsYakamoz/fzf-mru.vim', { 'branch': 'preview-window' }
+        " Plug 'CsYakamoz/fzf-mru.vim', { 'branch': 'preview-window' }
     " }}} self "
 call plug#end()
 

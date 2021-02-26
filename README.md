@@ -89,6 +89,8 @@
 |                              [justinmk/vim-sneak](https://github.com/justinmk/vim-sneak)                              |                                             Jump to any location specified by two characters.                                             |
 |                 [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object)                 |    Vim plugin that defines a new text object representing lines of code at the same indent level. Useful for python/vim scripts, etc.     |
 |                               [tpope/vim-abolish](https://github.com/tpope/vim-abolish)                               |                          abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word                           |
+|                                [Yggdroot/LeaderF](https://github.com/Yggdroot/LeaderF)                                |           An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.            |
+|                         [tamago324/LeaderF-filer](https://github.com/tamago324/LeaderF-filer)                         |                                                         📂 LeaderF file explorer                                                          |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 

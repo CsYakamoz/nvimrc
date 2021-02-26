@@ -74,12 +74,12 @@ fun! s:Seoul256()
 endf
 
 let s:colorList = [
+    \ function('<SID>Solarized'),
     \ function('<SID>Seoul256'),
+    \ function('<SID>Ayu'),
+    \ function("<SID>Xcode"),
     \ function("<SID>Gruvbox"),
     \ function('<SID>ForestNight'),
-    \ function("<SID>Xcode"),
-    \ function('<SID>Ayu'),
-    \ function('<SID>Solarized'),
     \ function('<SID>OceanicMaterial'),
     \ ]
 
