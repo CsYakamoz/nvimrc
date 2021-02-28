@@ -14,6 +14,7 @@
   "cSpell.showStatus": false,
 
   "suggest.noselect": false,
+  "suggest.minTriggerInputLength": 2,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",

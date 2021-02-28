@@ -135,8 +135,16 @@
     let g:startify_lists = [
           \ { 'type': 'sessions',  'header': ['   Sessions'], 'indices': map(range(char2nr('A'),char2nr('Z')),'nr2char(v:val)') },
           \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
           \ { 'type': 'files',     'header': ['   MRU']            },
           \ ]
+
+    let g:startify_commands = [
+        \ {'ch': ['Check Health', ':checkhealth']},
+        \ {'pi': ['Install Vim Plugins', ':PlugInstall']},
+        \ {'pu': ['Update Vim Plugins',':PlugUpdate']},
+        \ {'cu': ['Update Coc extensions', ':CocUpdate']},
+        \ ]
 
     " copy from https://github.com/glepnir/dashboard-nvim/blob/master/autoload/dashboard/header.vim#L100
     let g:startify_header_doraemon = [
@@ -351,8 +359,8 @@
         \ [ '&blame', 'Gblame'],
         \ [ 'lo&g', '0Glog'],
         \ [ "--", '' ],
-        \ [ '&status', 'aboveleft Gstatus'],
-        \ [ '&commit', 'CsConfirm Gcommit'],
+        \ [ '&status', 'tab Gstatus'],
+        \ [ '&commit', 'CsConfirm Git commit'],
         \ [ "--", '' ],
         \ [ '&read(checkout)', 'Gread'],
         \ [ '&write(add)', 'Gwrite'],
@@ -454,6 +462,7 @@
         \   [["top", "bottom"]],
         \   [["prefix", "suffix"]],
         \   [["allow", "deny"]],
+        \   [["light", "dark"]],
         \   [["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]],
         \   [
         \       ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -939,7 +948,12 @@
 
     nnoremap <silent> <C-f><C-e> :Leaderf filer<CR>
     let g:Lf_FilerShowPromptPath = 1
-    let g:Lf_FilerInsertMap = { '<Tab>': 'open_current', '<CR>': 'open_current', '<BS>': 'open_parent_or_backspace' }
+    let g:Lf_FilerInsertMap = {
+        \ '<CR>': 'open_current',
+        \ '<BS>': 'open_parent_or_backspace',
+        \ '<C-v>': 'accept_vertical',
+        \ '<C-s>': 'accept_horizontal',
+        \ }
 " }}} LeaderF "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:
