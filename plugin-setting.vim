@@ -949,8 +949,14 @@
     nnoremap <silent> <C-f><C-e> :Leaderf filer<CR>
     let g:Lf_FilerShowPromptPath = 1
     let g:Lf_FilerInsertMap = {
+        \ '<Tab>': 'open_current',
         \ '<CR>': 'open_current',
         \ '<BS>': 'open_parent_or_backspace',
+        \ '<C-h>': 'backspace',
+        \ '<C-f>': 'right',
+        \ '<C-b>': 'left',
+        \ '<C-a>': 'home',
+        \ '<C-d>': 'delete',
         \ '<C-v>': 'accept_vertical',
         \ '<C-s>': 'accept_horizontal',
         \ }

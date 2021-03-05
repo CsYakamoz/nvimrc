@@ -92,7 +92,7 @@ if !exists('s:colorType')
     endif
 endif
 
-let s:target = s:colorList[0]
+let s:target = s:colorList[2]
 if !exists('s:target')
     " 28800 millisecond is equal to 8 hour, because China timezone is GMT+8
     " 86400 millisecond is equal to 1 day
