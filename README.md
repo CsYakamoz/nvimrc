@@ -91,6 +91,7 @@
 |                               [tpope/vim-abolish](https://github.com/tpope/vim-abolish)                               |                          abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word                           |
 |                                [Yggdroot/LeaderF](https://github.com/Yggdroot/LeaderF)                                |           An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.            |
 |                         [tamago324/LeaderF-filer](https://github.com/tamago324/LeaderF-filer)                         |                                                         📂 LeaderF file explorer                                                          |
+|                             [dkarter/bullets.vim](https://github.com/dkarter/bullets.vim)                             |                                     🔫 Bullets.vim is a Vim/NeoVim plugin for automated bullet lists.                                     |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 

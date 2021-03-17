@@ -87,6 +87,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'tpope/vim-abolish'
         Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
         Plug 'tamago324/LeaderF-filer'
+        Plug 'dkarter/bullets.vim'
     " }}} tool "
 
     " self {{{ "

@@ -418,6 +418,9 @@
     nmap <silent> <C-a> <Plug>CycleNext
     nmap <silent> <C-x> <Plug>CyclePrev
 
+    let g:cycle_default_groups_for_javascript = [
+        \ [['var', 'let', 'const']],
+        \ ]
 
     let g:cycle_default_groups = [
         \   [[',', '，']],
