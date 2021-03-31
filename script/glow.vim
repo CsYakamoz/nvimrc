@@ -1,5 +1,5 @@
 " TODO: being in normal mode when returning from another buffer
-func! s:CsGlow(type) abort
+func! CsGlow(type) abort
     if &filetype != 'markdown'
         echo 'not a markdown file, ignore...'
         return
@@ -45,5 +45,3 @@ func! s:CsGlow(type) abort
     nnoremap <silent><buffer> a <Nop>
     nnoremap <silent><buffer> A <Nop>
 endf
-
-command! -nargs=1 CsGlow :call <SID>CsGlow(<args>)

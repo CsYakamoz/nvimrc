@@ -327,11 +327,9 @@
     call quickui#menu#reset()
 
     call quickui#menu#install('&Tool', [
-        \ [ "&AutoSelectTextAfterPasteToggle", 'exec "AutoSelectTextAfterPasteToggle"' ],
-        \ [ "CloseSpecific&Buffer", 'exec "CloseSpecificBuffer"' ],
-        \ [ "Cs&Glow-Float", 'exec "CsGlow 1"' ],
-        \ [ "CsGlow-Normal", 'exec "CsGlow 2"' ],
-        \ [ "IndentLineToggle", "call IndentLineToggle()" ],
+        \ [ "CloseSpecific&Buffer", 'call CloseSpecificBuffer()' ],
+        \ [ "Cs&Glow-Float", 'call CsGlow(1)' ],
+        \ [ "CsGlow-Normal", 'call CsGlow(2)' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
         \ [ "&PmR", 'CocList pmr' ],
@@ -498,7 +496,7 @@
 
 " indentLine {{{ "
     let g:indentLine_char = '│'
-    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown', 'tutor']
+    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown', 'tutor', 'floaterm']
 " }}} indentLine "
 
 " vim-browser-search {{{ "

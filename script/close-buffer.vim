@@ -2,7 +2,7 @@ function! s:CloseBuffer(item)
     execute 'bdelete ' . a:item
 endfunction
 
-function! s:CloseSpecificBuffer()
+function! CloseSpecificBuffer()
     " clean all unedited unnamed buffer
     let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
     if !empty(buffers)
@@ -22,4 +22,3 @@ function! s:CloseSpecificBuffer()
     \ 'ctrl-/',
     \ ))
 endfunction
-command! -nargs=0 CloseSpecificBuffer :call s:CloseSpecificBuffer()

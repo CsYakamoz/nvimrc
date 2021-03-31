@@ -1,8 +1,10 @@
+nnoremap <Leader>to :call Toggle
+
 " reference: https://github.com/chemzqm/vimrc/blob/64f4cdfc1b/leadermap.vim#L104-L106
 function! s:NumberToggle()
     if(&number == 1 || &relativenumber == 1) | set nonu | set nornu | else | set rnu | set nu | endif
 endfunction
-nnoremap <Leader>nu :call <SID>NumberToggle()<CR>
+nnoremap <silent> <Leader>nu :call <SID>NumberToggle()<CR>
 
 " reference: https://github.com/chemzqm/vimrc/blob/64f4cdfc1b/leadermap.vim#L95-L102
 function! s:BackgroundToggle()
@@ -12,10 +14,10 @@ function! s:BackgroundToggle()
       set background=light
     endif
 endfunction
-nnoremap <Leader>bg :call <SID>BackgroundToggle()<CR>
+nnoremap <silent> <Leader>bg :call <SID>BackgroundToggle()<CR>
 
 " reference: https://github.com/chemzqm/vimrc/blob/64f4cdfc1b/command.vim#L35-L41
-function! s:MouseToggle()
+function! ToggleMouse()
     if empty(&mouse)
       set mouse=a
       echo 'enable mouse'
@@ -24,10 +26,9 @@ function! s:MouseToggle()
       echo 'disable mouse'
     endif
 endfunction
-command! -nargs=0 Mouse :call s:MouseToggle()
 
 let s:autoSelectToggle = 0
-fun! s:AutoSelectTextAfterPasteToggle()
+fun! ToggleAutoSelectTextAfterPaste()
     if s:autoSelectToggle == 0
         nunmap <Leader>p
         nunmap <Leader>P
@@ -68,11 +69,20 @@ fun! s:AutoSelectTextAfterPasteToggle()
         echo 'disable auto select text after paste'
     endif
 endf
-command! -nargs=0 AutoSelectTextAfterPasteToggle :call s:AutoSelectTextAfterPasteToggle()
 
-function! IndentLineToggle() abort
+function! ToggleIndentLine() abort
     execute 'IndentLinesToggle'
     if exists(':IndentBlanklineToggle')
         execute 'IndentBlanklineToggle'
+    endif
+endfunction
+
+function! ToggleSmoothie() abort
+    if g:smoothie_enabled == 1
+        let g:smoothie_enabled = 0
+        echo 'disable vim-smoothie plugin'
+    else 
+        let g:smoothie_enabled = 1
+        echo 'enable vim-smoothie plugin'
     endif
 endfunction
