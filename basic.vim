@@ -213,6 +213,10 @@
 
     " reference: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches
     nnoremap z/ :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+    " reference: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
+    " try replacing vim-zoom
+    nnoremap <silent> <Leader>z :tab split<CR>
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

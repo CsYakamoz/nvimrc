@@ -63,7 +63,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'bootleq/vim-cycle'
         Plug 'psliwka/vim-smoothie'
         Plug 'editorconfig/editorconfig-vim'
-        Plug 'dhruvasagar/vim-zoom'
+        " Plug 'dhruvasagar/vim-zoom'
         Plug 'tommcdo/vim-exchange'
         Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
         Plug 'voldikss/vim-browser-search'

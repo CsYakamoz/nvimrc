@@ -487,7 +487,7 @@
 
 " vim-zoom {{{ "
     " like tmux,  prefix-z
-    nmap <Leader>z <Plug>(zoom-toggle)
+    " nmap <Leader>z <Plug>(zoom-toggle)
 " }}} vim-zoom "
 
 " vim-exchange {{{ "
@@ -528,7 +528,7 @@
     let g:defx_icons_column_length = 2
 
     call defx#custom#option('_',{
-        \ 'columns'   : 'icons:indent:git:filename',
+        \ 'columns'   : 'indent:git:icons:filename',
         \ 'split'     : 'vertical',
         \ 'direction' : 'topleft',
         \ 'winwidth'  : 25,
