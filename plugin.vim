@@ -88,6 +88,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
         Plug 'tamago324/LeaderF-filer'
         Plug 'dkarter/bullets.vim'
+        Plug 'ron89/thesaurus_query.vim'
+        Plug 'junegunn/vim-after-object'
     " }}} tool "
 
     " self {{{ "

@@ -4,7 +4,7 @@
     let g:airline#extensions#tabline#tab_min_count = 2
     let g:airline#extensions#tabline#tab_nr_type = 1
     let g:airline#extensions#tabline#show_tab_type = 0
-    let g:airline#extensions#tabline#show_splits = 0
+    let g:airline#extensions#tabline#show_splits = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
     let g:airline#extensions#tabline#left_sep = ''
     let g:airline#extensions#tabline#left_alt_sep = ''
@@ -496,7 +496,12 @@
 
 " indentLine {{{ "
     let g:indentLine_char = '│'
-    let g:indentLine_fileTypeExclude = ['startify', 'vista', 'json', 'jsonc', 'man', 'help', 'markdown', 'tutor', 'floaterm']
+    let g:indentLine_fileTypeExclude = [
+        \ 'startify', 'vista', 'json',
+        \ 'jsonc', 'man', 'help',
+        \ 'markdown', 'tutor', 'floaterm',
+        \ 'defx',
+        \ ]
 " }}} indentLine "
 
 " vim-browser-search {{{ "
@@ -906,7 +911,7 @@
         nnoremap <silent><buffer><expr> <C-k> <SID>defx_next_sibling(-1)
         nnoremap <silent><buffer><expr> J <SID>defx_first_last_child(1)
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
-        nnoremap <silent><buffer> <C-p> :call <SID>defx_preview()<CR>
+        " nnoremap <silent><buffer> <C-p> :call <SID>defx_preview()<CR>
         nnoremap <silent><buffer> <C-f><C-f> :call <SID>defx_fzf_file()<CR>
         nnoremap <silent><buffer><expr> m <SID>defx_menu()
         nnoremap <silent><buffer> <C-g><C-g> :call <SID>defx_rg()<CR>
@@ -962,5 +967,15 @@
         \ '<C-s>': 'accept_horizontal',
         \ }
 " }}} LeaderF "
+
+" thesaurus_query {{{ "
+    let g:tq_map_keys=0
+    nnoremap <Leader>th :ThesaurusQueryReplaceCurrentWord<CR>
+    vnoremap <Leader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
+" }}} thesaurus_query "
+
+" vim-after-object {{{ "
+    autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+" }}} vim-after-object "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

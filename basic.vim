@@ -217,6 +217,14 @@
     " reference: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
     " try replacing vim-zoom
     nnoremap <silent> <Leader>z :tab split<CR>
+
+    " reference: https://stackoverflow.com/questions/2119754/switch-to-last-active-tab-in-vim
+    if !exists('g:lasttab')
+        let g:lasttab = 1
+    endif
+    " <M-w> was used by my tmux to switch to last active window
+    nnoremap <silent> <M-S-w> :exe "tabn ".g:lasttab<CR>
+    au TabLeave * let g:lasttab = tabpagenr()
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

@@ -83,7 +83,7 @@ let s:colorList = [
     \ function('<SID>OceanicMaterial'),
     \ ]
 
-let s:colorType = 'light'
+let s:colorType = 'dark'
 if !exists('s:colorType')
     if strftime('%H') > 6 && strftime('%H') < 18
         let s:colorType = 'light'
