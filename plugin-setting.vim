@@ -978,4 +978,8 @@
     autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 " }}} vim-after-object "
 
+" vim-oscyank {{{ "
+    autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
+" }}} vim-oscyank "
+
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

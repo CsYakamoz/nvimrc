@@ -90,6 +90,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'dkarter/bullets.vim'
         Plug 'ron89/thesaurus_query.vim'
         Plug 'junegunn/vim-after-object'
+        Plug 'ojroques/vim-oscyank'
     " }}} tool "
 
     " self {{{ "
