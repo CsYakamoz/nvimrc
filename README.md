@@ -10,7 +10,7 @@
 - [fzf](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder.
 - [ripgrep](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern.
 - [pynvim](https://github.com/neovim/pynvim): python client and plugin host for Nvim.
-- [neovim](https://github.com/neovim/node-client): Nvim Node.js client and plugin host
+- [npm-neovim](https://github.com/neovim/node-client): Nvim Node.js client and plugin host
 
 ### Option
 
@@ -25,7 +25,7 @@
 |                                                         Name                                                          |                                                                 Effection                                                                 |
 | :-------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
 |                        [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)                        |                                                               Color schema                                                                |
-|                            [sainnhe/forest-night](https://github.com/sainnhe/forest-night)                            |                                                               Color schema                                                                |
+|                              [sainnhe/everforest](https://github.com/sainnhe/everforest)                              |                                                               Color schema                                                                |
 |                           [arzg/vim-colors-xcode](https://github.com/arzg/vim-colors-xcode)                           |                                                               Color schema                                                                |
 |                               [ayu-theme/ayu-vim](https://github.com/ayu-theme/ayu-vim)                               |                                                               Color schema                                                                |
 | [frankier/neovim-colors-solarized-truecolor-only](https://github.com/frankier/neovim-colors-solarized-truecolor-only) |                                                               Color schema                                                                |
@@ -92,6 +92,9 @@
 |                                [Yggdroot/LeaderF](https://github.com/Yggdroot/LeaderF)                                |           An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.            |
 |                         [tamago324/LeaderF-filer](https://github.com/tamago324/LeaderF-filer)                         |                                                         📂 LeaderF file explorer                                                          |
 |                             [dkarter/bullets.vim](https://github.com/dkarter/bullets.vim)                             |                                     🔫 Bullets.vim is a Vim/NeoVim plugin for automated bullet lists.                                     |
+|                       [ron89/thesaurus_query.vim](https://github.com/ron89/thesaurus_query.vim)                       |                                   Multi-language Thesaurus Query and Replacement plugin for Vim/NeoVim                                    |
+|                       [junegunn/vim-after-object](https://github.com/junegunn/vim-after-object)                       |                                   Defines text objects to target text after the designated characters.                                    |
+|                            [ojroques/vim-oscyank](https://github.com/ojroques/vim-oscyank)                            |                                            A Vim plugin to copy text from anywhere with OSC52                                             |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 

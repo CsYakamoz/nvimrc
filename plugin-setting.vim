@@ -232,6 +232,7 @@
         \ 'coc-go',
         \ 'coc-vimlsp',
         \ 'coc-highlight',
+        \ 'coc-phpls',
         \ ]
 
     " make snippet completion work just like VSCode
@@ -542,7 +543,7 @@
         \ 'auto_cd': 0,
         \ 'toggle': 1,
         \ 'resume': 1,
-        \ 'ignored_files': ".*,node_modules",
+        \ 'ignored_files': ".*,node_modules,vendor",
         \ 'root_marker': '[in]: ',
         \ })
 

@@ -1,7 +1,13 @@
 function! s:Gruvbox()
+    if s:colorType == 'light'
+        set background=light
+    else
+        set background=dark
+    endif
+
     let g:gruvbox_material_enable_italic = 1
     colorscheme gruvbox-material
-    let g:airline_theme='bubblegum'
+    let g:airline_theme='gruvbox_material'
 endfunction
 
 function! s:Xcode()
@@ -28,10 +34,16 @@ function! s:Xcode()
     endif
 endfunction
 
-function! s:ForestNight()
-    let g:forest_night_enable_italic = 1
-    colorscheme forest-night
-    let g:airline_theme='forest_night'
+function! s:EverForest()
+    if s:colorType == 'light'
+        set background=light
+    else
+        set background=dark
+    endif
+
+    let g:everforest_enable_italic = 1
+    colorscheme everforest
+    let g:airline_theme='everforest'
 endfunction
 
 function! s:Ayu()
@@ -79,11 +91,11 @@ let s:colorList = [
     \ function('<SID>Ayu'),
     \ function("<SID>Xcode"),
     \ function("<SID>Gruvbox"),
-    \ function('<SID>ForestNight'),
+    \ function('<SID>EverForest'),
     \ function('<SID>OceanicMaterial'),
     \ ]
 
-let s:colorType = 'dark'
+let s:colorType = 'light'
 if !exists('s:colorType')
     if strftime('%H') > 6 && strftime('%H') < 18
         let s:colorType = 'light'

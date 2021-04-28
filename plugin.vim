@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
     " colorschema {{{ "
         Plug 'sainnhe/gruvbox-material'
-        Plug 'sainnhe/forest-night'
+        Plug 'sainnhe/everforest'
         Plug 'arzg/vim-colors-xcode'
         Plug 'ayu-theme/ayu-vim'
         Plug 'frankier/neovim-colors-solarized-truecolor-only'
