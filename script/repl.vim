@@ -2,12 +2,19 @@
 let s:config = {
 \   "javascript": {
     \   "name": "node",
+    \   "executor": "node",
     \   "preloading": [
         \   "const R = require('ramda');const trace = R.tap(console.log);const DayJs = require('dayjs');",
         \ ],
     \ },
 \   "python": {
     \   "name": "python3",
+    \   "executor": "python3",
+    \   "preloading": [],
+    \ },
+\   "php": {
+    \   "name": "php",
+    \   "executor": "php -a",
     \   "preloading": [],
     \ },
 \ }
@@ -20,6 +27,7 @@ fun! s:CsRepl(mode) range
     endif
 
     let name = s:config[filetype].name
+    let executor = s:config[filetype].executor
 
     let found_bufnr = 0
     for nr in filter(range(1, bufnr('$')), 'bufexists(v:val)')
@@ -29,7 +37,7 @@ fun! s:CsRepl(mode) range
     endfor
 
     if found_bufnr == 0
-        execute 'FloatermNew --width=0.5 --wintype=vsplit --position=botright --name=' . name . ' ' . name
+        execute 'FloatermNew --width=0.5 --wintype=vsplit --position=botright --name=' . name . ' ' . executor
         stopinsert
 
         setlocal nonumber
