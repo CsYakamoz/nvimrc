@@ -91,6 +91,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'ron89/thesaurus_query.vim'
         Plug 'junegunn/vim-after-object'
         Plug 'ojroques/vim-oscyank'
+        Plug 'junegunn/vim-easy-align'
+        Plug 'AndrewRadev/inline_edit.vim'
     " }}} tool "
 
     " self {{{ "

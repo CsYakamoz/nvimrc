@@ -983,4 +983,8 @@
     autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
 " }}} vim-oscyank "
 
+" vim-easy-align {{{ "
+    xmap ga <Plug>(EasyAlign)
+" }}} vim-easy-align "
+
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

@@ -95,6 +95,8 @@
 |                       [ron89/thesaurus_query.vim](https://github.com/ron89/thesaurus_query.vim)                       |                                   Multi-language Thesaurus Query and Replacement plugin for Vim/NeoVim                                    |
 |                       [junegunn/vim-after-object](https://github.com/junegunn/vim-after-object)                       |                                   Defines text objects to target text after the designated characters.                                    |
 |                            [ojroques/vim-oscyank](https://github.com/ojroques/vim-oscyank)                            |                                            A Vim plugin to copy text from anywhere with OSC52                                             |
+|                         [junegunn/vim-easy-align](https://github.com/junegunn/vim-easy-align)                         |                                                A simple, easy-to-use Vim alignment plugin.                                                |
+|                     [AndrewRadev/inline_edit.vim](https://github.com/AndrewRadev/inline_edit.vim)                     |                                                Edit code that's embedded within other code                                                |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 
@@ -111,3 +113,4 @@
 - coc-go
 - coc-vimlsp
 - coc-highlight
+- coc-phpls
