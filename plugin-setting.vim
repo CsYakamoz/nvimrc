@@ -309,6 +309,11 @@
     omap ac <Plug>(coc-classobj-a)
 
     let g:coc_disable_transparent_cursor=1
+
+    " coc-fzf
+    nnoremap <M-a> :CocFzfList diagnostics<CR>
+    nnoremap <M-b> :CocFzfList diagnostics --current-buf<CR>
+    let g:coc_fzf_preview_toggle_key = 'Ctrl-/'
 " }}} coc.nvim "
 
 " vim-test {{{ "
@@ -338,7 +343,7 @@
         \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
         \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
         \ [ "&Switching", "CocCommand qtk.switching" ],
-        \ [ "&VistaToogle", 'Vista!!' ],
+        \ [ "&VistaToggle", 'Vista!!' ],
         \ [ "VistaFinder", 'Vista finder' ],
         \ [ "&MarkdownPreview", 'MarkdownPreview' ],
         \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],

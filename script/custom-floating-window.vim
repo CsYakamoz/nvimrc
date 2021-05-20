@@ -2,7 +2,7 @@
 " reference: https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
 function! CreateCenteredFloatingWindow()
     let width = float2nr(&columns * 1)
-    let height = float2nr(&lines * 0.85)
+    let height = float2nr(&lines * 0.95)
     let top = ((&lines - height) / 2) - 1
     let left = (&columns - width) / 2
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}

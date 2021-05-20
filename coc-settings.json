@@ -8,6 +8,8 @@
 
   "clangd.semanticHighlighting": true,
 
+  "diagnostic.displayByAle": true,
+
   "yank.enableCompletion": false,
 
   "cSpell.words": ["wechat", "struct", "csyakamoz", "leetcode", "curr", "defx"],
