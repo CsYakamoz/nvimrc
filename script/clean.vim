@@ -3,7 +3,8 @@
 let s:effectiveFileType = [
     \ 'javascript',
     \ 'sh',
-    \ 'vim'
+    \ 'vim',
+    \ 'php',
     \ ]
 function! s:Clean()
     let view = winsaveview()
