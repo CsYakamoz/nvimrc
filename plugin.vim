@@ -93,6 +93,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'ojroques/vim-oscyank'
         Plug 'junegunn/vim-easy-align'
         Plug 'AndrewRadev/inline_edit.vim'
+        Plug 'mzlogin/vim-markdown-toc'
+        " Plug 'wellle/context.vim'
     " }}} tool "
 
     " self {{{ "

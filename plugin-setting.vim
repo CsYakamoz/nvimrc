@@ -217,6 +217,7 @@
     let g:ale_sign_warning = '⚡'
     let g:airline#extensions#ale#enabled = 1
     let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+    let g:ale_floating_preview = 1
 " }}} ale "
 
 " coc.nvim {{{ "
@@ -338,19 +339,14 @@
         \ [ "CsGlow-Normal", 'call CsGlow(2)' ],
         \ [ "TestFile\tF5", 'TestFile'],
         \ [ "&TestNearest\tF6", 'TestNearest' ],
-        \ [ "&PmR", 'CocList pmr' ],
-        \ [ "PmR-Reset", 'CocCommand qtk.pmr.reset' ],
-        \ [ "&CpR", 'CocCommand qtk.cpr.exec' ],
-        \ [ "CpR-Reset", 'CocCommand qtk.cpr.reset' ],
-        \ [ "&Switching", "CocCommand qtk.switching" ],
         \ [ "&VistaToggle", 'Vista!!' ],
         \ [ "VistaFinder", 'Vista finder' ],
         \ [ "&MarkdownPreview", 'MarkdownPreview' ],
         \ [ "MarkdownPreviewStop", 'MarkdownPreviewStop' ],
+        \ [ "MultipleLineTo&SingleLine", 'Ml2Sl' ],
         \ [ "&OR", "call CocAction('runCommand', 'editor.action.organizeImport')" ],
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
         \ [ "Coc&Restart", "CocRestart" ],
-        \ [ "CocClose&Floats", "call coc#util#close_floats()" ],
         \ [ "LinediffReset", "LinediffReset" ],
         \ ])
 
@@ -991,5 +987,9 @@
 " vim-easy-align {{{ "
     xmap ga <Plug>(EasyAlign)
 " }}} vim-easy-align "
+
+" vim-markdown-toc {{{ "
+    let g:vmt_cycle_list_item_markers = 1
+" }}} vim-markdown-toc "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:

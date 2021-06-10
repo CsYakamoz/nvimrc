@@ -1,0 +1,29 @@
+snippet pml "print mark line" b
+echo '<======================================>' . PHP_EOL;
+endsnippet
+
+snippet eo "echo statement" b
+echo ${1} . PHP_EOL;
+endsnippet
+
+snippet php "php tags" b
+<?php
+${1}
+?>
+endsnippet
+
+snippet kv "key => value" w
+'${1}' => ${2},
+endsnippet
+
+snippet func "function (Type $args) use ($vars): void {...}" w
+function ${1:func_name}(${2:Type} ${3:$args}) ${4:use ($vars)}${5:: void}
+{
+    ${6}
+}
+
+endsnippet
+
+snippet eol "PHP_EOL" w
+PHP_EOL
+endsnippet
