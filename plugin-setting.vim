@@ -466,6 +466,7 @@
         \   [["prefix", "suffix"]],
         \   [["allow", "deny"]],
         \   [["light", "dark"]],
+        \   [["public", "protected", "private"]],
         \   [["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]],
         \   [
         \       ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],

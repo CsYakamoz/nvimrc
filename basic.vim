@@ -225,6 +225,22 @@
     " <M-w> was used by my tmux to switch to last active window
     nnoremap <silent> <M-S-w> :exe "tabn ".g:lasttab<CR>
     au TabLeave * let g:lasttab = tabpagenr()
+
+    " reference: https://vim.fandom.com/wiki/Search_only_over_a_visual_range
+    function! RangeSearch(direction)
+        call inputsave()
+        let g:srchstr = input(a:direction)
+        call inputrestore()
+        if strlen(g:srchstr) > 0
+            let g:srchstr = g:srchstr.
+                \ '\%>'.(line("'<")-1).'l'.
+                \ '\%<'.(line("'>")+1).'l'
+        else
+            let g:srchstr = ''
+        endif
+    endfunction
+    vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
+    vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
 " }}} key-binding without plugin "
 
 " vim: set sw=4 ts=4 sts=4 et foldmarker={{{,}}} foldmethod=marker foldlevel=0:
