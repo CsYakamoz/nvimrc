@@ -14,9 +14,18 @@ command! -nargs=1 LoadScript exec 'source '.s:dir.'/'.'<args>'
 
 LoadScript basic.vim
 LoadScript abbr.vim
+
+if filereadable(s:dir . '/before-plugin.vim')
+    exe 'source ' . s:dir . '/before-plugin.vim'
+endif
+
 LoadScript plugin.vim
 LoadScript plugin-setting.vim
 
-for s:path in split(glob('~/.config/nvim/script/*.vim'), "\n")
+if filereadable(s:dir . '/after-plugin.vim')
+    exe 'source ' . s:dir . '/after-plugin.vim'
+endif
+
+for s:path in split(glob(s:dir . '/script/*.vim'), "\n")
     exe 'source ' . s:path
 endfor

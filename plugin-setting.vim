@@ -873,8 +873,8 @@
         setlocal norelativenumber
 
         " defx-git jump
-        nnoremap <silent><buffer>  [c :<C-u>call <SID>defx_jump_dirty(-1)<CR>
-        nnoremap <silent><buffer>  ]c :<C-u>call <SID>defx_jump_dirty(1)<CR>
+        nnoremap <silent><buffer>  [[ :<C-u>call <SID>defx_jump_dirty(-1)<CR>
+        nnoremap <silent><buffer>  ]] :<C-u>call <SID>defx_jump_dirty(1)<CR>
 
         nnoremap <silent><buffer><expr> o
             \ defx#is_directory() ?
