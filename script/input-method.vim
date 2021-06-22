@@ -1,6 +1,6 @@
 " reference: https://stackoverflow.com/questions/60922620/shell-script-to-check-if-running-in-windows-when-using-wsl
 function! s:isWSL() abort
-    let output = system("uname -r | sed -n 's/.*\\( *Microsoft *\\).*/\1/ip'")
+    let output = system('uname -r | sed -n "s/.*\\( *Microsoft *\\).*/\1/ip"')
 
     return output != ''
 endfunction
