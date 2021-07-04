@@ -174,7 +174,7 @@
         \ }
     let g:airline#extensions#vista#enabled = 0
 
-    nnoremap <silent> <F10> :<C-u>Vista finder<CR>
+    nnoremap <silent> <M-o> :<C-u>Vista finder<CR>
 
     " fzf - preview
     let g:vista_fzf_preview = ['up:50%']
