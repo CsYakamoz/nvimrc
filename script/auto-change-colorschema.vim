@@ -1,6 +1,7 @@
 function! s:Gruvbox()
     if s:colorType == 'light'
         set background=light
+        let $BAT_THEME="Solarized (light)"
     else
         set background=dark
     endif
@@ -37,6 +38,7 @@ endfunction
 function! s:EverForest()
     if s:colorType == 'light'
         set background=light
+        let $BAT_THEME="Solarized (light)"
     else
         set background=dark
     endif
