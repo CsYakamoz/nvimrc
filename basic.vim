@@ -39,6 +39,7 @@
     set complete-=i                     " disable scanning included files
     set complete-=t                     " disable searching tags
     set autoread
+    set jumpoptions=stack
 " }}} common "
 
 " restore cursor position when opening file(if opened)
@@ -215,7 +216,6 @@
     nnoremap z/ :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
     " reference: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
-    " try replacing vim-zoom
     nnoremap <silent> <Leader>z :tab split<CR>
 
     " reference: https://stackoverflow.com/questions/2119754/switch-to-last-active-tab-in-vim

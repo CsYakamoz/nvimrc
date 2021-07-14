@@ -15,10 +15,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'Yggdroot/indentLine'
-        " FIXME: remove this if statement when fixing a bug
-        if ! has('mac')
-            Plug 'lukas-reineke/indent-blankline.nvim'
-        endif
         Plug 'jackguo380/vim-lsp-cxx-highlight', { 'for': ['cpp', 'c'] }
         Plug 'pangloss/vim-javascript'
         Plug 'leafgarland/typescript-vim'
@@ -63,7 +59,6 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'bootleq/vim-cycle'
         Plug 'psliwka/vim-smoothie'
         Plug 'editorconfig/editorconfig-vim'
-        " Plug 'dhruvasagar/vim-zoom'
         Plug 'tommcdo/vim-exchange'
         Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
         Plug 'voldikss/vim-browser-search'
@@ -95,6 +90,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'AndrewRadev/inline_edit.vim'
         Plug 'mzlogin/vim-markdown-toc'
         " Plug 'wellle/context.vim'
+        Plug 'kshenoy/vim-signature'
     " }}} tool "
 
     " self {{{ "

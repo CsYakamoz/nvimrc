@@ -488,11 +488,6 @@
     let g:fugitive_pty = 0
 " }}} fugitive.vim "
 
-" vim-zoom {{{ "
-    " like tmux,  prefix-z
-    " nmap <Leader>z <Plug>(zoom-toggle)
-" }}} vim-zoom "
-
 " vim-exchange {{{ "
     xmap <C-x> <Plug>(Exchange)
 " }}} vim-exchange "
