@@ -268,6 +268,7 @@
     nmap <leader>rf <Plug>(coc-refactor)
 
     nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> <leader>gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
     nnoremap <silent> <Leader>f :call CocAction('format')<CR>
@@ -391,6 +392,7 @@
     let g:gitgutter_max_signs = 999
     nmap ]c <Plug>(GitGutterNextHunk)zz
     nmap [c <Plug>(GitGutterPrevHunk)zz
+    command! Gqf GitGutterQuickFix | copen
 " }}} vim-gitgutter "
 
 " markdown-preview.nvim {{{ "

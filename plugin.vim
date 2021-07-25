@@ -91,6 +91,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'mzlogin/vim-markdown-toc'
         " Plug 'wellle/context.vim'
         Plug 'kshenoy/vim-signature'
+        Plug 'kevinhwang91/nvim-bqf'
     " }}} tool "
 
     " self {{{ "
