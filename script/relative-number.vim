@@ -34,9 +34,9 @@ function! RelativeNumberActivity(active)
     endif
 endfunction
 
-augroup CustomWindowActivity
-    autocmd!
-    autocmd WinEnter * call RelativeNumberActivity(v:true)
-    autocmd WinLeave * call RelativeNumberActivity(v:false)
-augroup END
+" augroup CustomWindowActivity
+"     autocmd!
+"     autocmd WinEnter * call RelativeNumberActivity(v:true)
+"     autocmd WinLeave * call RelativeNumberActivity(v:false)
+" augroup END
 

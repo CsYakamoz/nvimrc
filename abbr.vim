@@ -2,6 +2,7 @@ iabbr cosnt const
 iabbr thsi this
 iabbr mian main
 iabbr gril girl
+iabbr ture true
 
 " reference: https://github.com/chemzqm/vimrc/blob/master/abbr.vim
 function! SetupCommandAbbrs(from, to)

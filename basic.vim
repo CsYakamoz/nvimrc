@@ -4,7 +4,7 @@
     set hidden                          " allow jump other buffer without saving
     set signcolumn=yes                  " always show signcolumns
     set number                          " show line number
-    set relativenumber                  " show relative number
+    " set relativenumber                  " show relative number
     set cursorline                      " highlight current line
     set cursorcolumn                    " highlight current column
     set colorcolumn=80,120
