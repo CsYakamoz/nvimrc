@@ -250,6 +250,7 @@
 
     let g:coc_snippet_next = '<Tab>'
     let g:coc_snippet_prev = '<S-Tab>'
+    vmap <Tab> <Plug>(coc-snippets-select)
 
     " Use K to show documentation in preview window
     nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -360,7 +361,7 @@
         \ [ '&blame', 'Gblame'],
         \ [ 'lo&g', '0Glog'],
         \ [ "--", '' ],
-        \ [ '&status', 'tab Gstatus'],
+        \ [ '&status', 'tab Git'],
         \ [ '&commit', 'CsConfirm Git commit'],
         \ [ "--", '' ],
         \ [ '&read(checkout)', 'Gread'],
@@ -488,6 +489,7 @@
 " fugitive.vim {{{ "
     let g:airline#extensions#branch#enabled = 0
     let g:fugitive_pty = 0
+    command! -nargs=0 Gblame :Git blame
 " }}} fugitive.vim "
 
 " vim-exchange {{{ "

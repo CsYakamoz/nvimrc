@@ -98,6 +98,7 @@
 |                        [mzlogin/vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)                        |                                    A vim 7.4+ plugin to generate table of contents for Markdown files.                                    |
 |                              [wellle/context.vim](https://github.com/wellle/context.vim)                              |                                Vim plugin that shows the context of the currently visible buffer contents                                 |
 |                           [kshenoy/vim-signature](https://github.com/kshenoy/vim-signature)                           |                                               Plugin to toggle, display and navigate marks                                                |
+|                           [kevinhwang91/nvim-bqf](https://github.com/kevinhwang91/nvim-bqf)                           |                                       Better quickfix window in Neovim, polish old quickfix window.                                       |
 
 ## [Coc.nvim](https://github.com/neoclide/coc.nvim)
 
