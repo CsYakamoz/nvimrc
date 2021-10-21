@@ -915,7 +915,7 @@
         nnoremap <silent><buffer><expr> K <SID>defx_first_last_child(-1)
         " nnoremap <silent><buffer> <C-p> :call <SID>defx_preview()<CR>
         nnoremap <silent><buffer> <C-f><C-f> :call <SID>defx_fzf_file()<CR>
-        nnoremap <silent><buffer><expr> m <SID>defx_menu()
+        nnoremap <silent><buffer><expr> M <SID>defx_menu()
         nnoremap <silent><buffer> <C-g><C-g> :call <SID>defx_rg()<CR>
         nnoremap <silent><buffer> <Leader>o :call <SID>defx_view_in_explorer()<CR>
     endf
