@@ -350,6 +350,8 @@
         \ [ "&ExchangeClear", "execute 'normal \<Plug>(ExchangeClear)'" ],
         \ [ "Coc&Restart", "CocRestart" ],
         \ [ "LinediffReset", "LinediffReset" ],
+        \ [ "&Cpr", "CocCommand qtk.cpr.exec" ],
+        \ [ "Cpr-Reset", "CocCommand qtk.cpr.reset" ],
         \ ])
 
     call quickui#menu#install('&Git', [
@@ -432,7 +434,7 @@
         \   [[';', '；']],
         \   [[':', '：']],
         \   [['是', '否']],
-        \   [['{:}', '[:]', '(:)'], 'sub_pairs'],
+        \   [['(:)', '[:]', '{:}'], 'sub_pairs'],
         \   [['++', '--']],
         \   [['+', '-']],
         \   [['"', "'"]],

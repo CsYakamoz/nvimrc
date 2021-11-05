@@ -5,8 +5,8 @@
     set signcolumn=yes                  " always show signcolumns
     set number                          " show line number
     " set relativenumber                  " show relative number
-    set cursorline                      " highlight current line
-    set cursorcolumn                    " highlight current column
+    " set cursorline                      " highlight current line
+    " set cursorcolumn                    " highlight current column
     set colorcolumn=80,120
     set ignorecase                      " ignore case when searching
     set smarttab
