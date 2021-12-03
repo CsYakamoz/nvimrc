@@ -508,11 +508,6 @@
         \ ]
 " }}} indentLine "
 
-" vim-browser-search {{{ "
-    nmap <silent> <Leader>s <Plug>SearchNormal
-    vmap <silent> <Leader>s <Plug>SearchVisual
-" }}} vim-browser-search "
-
 " linediff.vim {{{ "
     nnoremap <silent> <Leader>l :Linediff<CR>
     xnoremap <silent> <Leader>l :Linediff<CR>
@@ -971,16 +966,6 @@
         \ '<C-s>': 'accept_horizontal',
         \ }
 " }}} LeaderF "
-
-" thesaurus_query {{{ "
-    let g:tq_map_keys=0
-    nnoremap <Leader>th :ThesaurusQueryReplaceCurrentWord<CR>
-    vnoremap <Leader>th "ky:ThesaurusQueryReplace <C-r>k<CR>
-" }}} thesaurus_query "
-
-" vim-after-object {{{ "
-    autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
-" }}} vim-after-object "
 
 " vim-oscyank {{{ "
     autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif

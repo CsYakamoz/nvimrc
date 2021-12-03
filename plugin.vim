@@ -1,12 +1,12 @@
 call plug#begin('~/.local/share/nvim/plugged')
     " colorschema {{{ "
-        Plug 'sainnhe/gruvbox-material'
+        " Plug 'sainnhe/gruvbox-material'
         Plug 'sainnhe/everforest'
-        Plug 'arzg/vim-colors-xcode'
-        Plug 'ayu-theme/ayu-vim'
-        Plug 'frankier/neovim-colors-solarized-truecolor-only'
-        Plug 'hardcoreplayers/oceanic-material'
-        Plug 'junegunn/seoul256.vim'
+        " Plug 'arzg/vim-colors-xcode'
+        " Plug 'ayu-theme/ayu-vim'
+        " Plug 'frankier/neovim-colors-solarized-truecolor-only'
+        " Plug 'hardcoreplayers/oceanic-material'
+        " Plug 'junegunn/seoul256.vim'
     " }}} colorschema "
 
     " appearance {{{ "
@@ -19,7 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'pangloss/vim-javascript'
         Plug 'leafgarland/typescript-vim'
         Plug 'PeterRincker/vim-searchlight'
-        Plug 'elzr/vim-json'
+        Plug 'elzr/vim-json', { 'for': ['json'] }
         Plug 'kristijanhusak/defx-git'
         Plug 'kristijanhusak/defx-icons'
     " }}} appearance "
@@ -61,11 +61,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'editorconfig/editorconfig-vim'
         Plug 'tommcdo/vim-exchange'
         Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
-        Plug 'voldikss/vim-browser-search'
         Plug 'iamcco/markdown-preview.nvim', {  'do': 'cd app & yarn install', 'for': 'markdown'  }
-        Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-        Plug 'terryma/vim-expand-region'
-        Plug 'tmhedberg/simpylfold', { 'for': 'python' }
         Plug 'Konfekt/FastFold'
         Plug 'hotoo/pangu.vim', { 'on': 'Pangu' }
         Plug 'AndrewRadev/linediff.vim', { 'on': ['Linediff', 'LinediffReset'] }
@@ -76,21 +72,15 @@ call plug#begin('~/.local/share/nvim/plugged')
         Plug 'kana/vim-textobj-user'
         Plug 'sgur/vim-textobj-parameter'
         Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
-        Plug 'andymass/vim-tradewinds'
         Plug 'justinmk/vim-sneak'
         Plug 'michaeljsmith/vim-indent-object'
         Plug 'tpope/vim-abolish'
         Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
         Plug 'tamago324/LeaderF-filer'
         Plug 'dkarter/bullets.vim'
-        Plug 'ron89/thesaurus_query.vim'
-        Plug 'junegunn/vim-after-object'
         Plug 'ojroques/vim-oscyank'
         Plug 'junegunn/vim-easy-align'
-        Plug 'AndrewRadev/inline_edit.vim'
         Plug 'mzlogin/vim-markdown-toc'
-        " Plug 'wellle/context.vim'
-        Plug 'kshenoy/vim-signature'
         Plug 'kevinhwang91/nvim-bqf'
     " }}} tool "
 
