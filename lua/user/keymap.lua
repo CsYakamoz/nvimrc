@@ -1,15 +1,15 @@
-local export = {}
+local M = {}
 local empty_opts = {}
 local silent_opts = { silent = true }
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 local bmap = vim.api.nvim_buf_set_keymap
 
-export.empty_opts = empty_opts
-export.silent_opts = silent_opts
-export.opts = opts
-export.map = map
-export.bmap = bmap
+M.empty_opts = empty_opts
+M.silent_opts = silent_opts
+M.opts = opts
+M.map = map
+M.bmap = bmap
 
 --Remap space as leader key
 map('', '<Space>', '<Nop>', opts)
@@ -92,4 +92,4 @@ map('n', '#', "?\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
 -- Highlight matches without moving: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
 map('n', 'z/', ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>", opts)
 
-return export
+return M

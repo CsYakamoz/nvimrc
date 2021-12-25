@@ -1,14 +1,13 @@
-vim.cmd [[
-autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-]]
+-- Reference: LunarVim/Neovim-from-scratch
 
+require "user.basic"
 require "user.option"
 require "user.keymap"
 require "user.plugin"
 require "user.colorscheme"
+require "user.cmp"
+require "user.lsp"
+
 require "user.nvim-tree"
 require "user.lualine"
 require "user.treesitter"
