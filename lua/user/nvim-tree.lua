@@ -49,7 +49,7 @@ nvim_tree.setup {
         auto_open = true,
     },
     diagnostics = {
-        enable = false,
+        enable = true,
         icons = {
             hint = "",
             info = "",
