@@ -14,7 +14,7 @@ local optionList = {
 
     -- time
     updatetime = 300,
-    timeoutlen = 100,
+    timeoutlen = 400,
     jumpoptions = 'stack',
 
     -- match

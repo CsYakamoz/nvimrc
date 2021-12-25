@@ -90,6 +90,7 @@ nvim_tree.setup {
                 { key = "u",         cb = tree_cb("dir_up") },
 
                 { key = "o",         cb = tree_cb("edit") },
+                { key = "<CR>",      cb = tree_cb("edit") },
                 { key = "i",         cb = tree_cb("split") },
                 { key = "s",         cb = tree_cb("vsplit") },
                 { key = "t",         cb = tree_cb("tabnew") },
@@ -103,7 +104,7 @@ nvim_tree.setup {
                 { key = "a",         cb = tree_cb("create") },
                 { key = "dd",        cb = tree_cb("trash") },
                 { key = "c",         cb = tree_cb("copy") },
-                { key = "<Leader>x",         cb = tree_cb("cut") },
+                { key = "<Leader>x", cb = tree_cb("cut") },
                 { key = "<Leader>p", cb = tree_cb("paste") },
                 { key = "r",         cb = tree_cb("rename") },
 
@@ -118,6 +119,7 @@ nvim_tree.setup {
                 { key = "H",         cb = tree_cb("toggle_dotfiles") },
                 { key = "g?",        cb = tree_cb("toggle_help") },
 
+                { key = "<Tab>",     cb = tree_cb("preview") },
                 { key = "<Leader>o", cb = tree_cb("system_open") },
             },
         },

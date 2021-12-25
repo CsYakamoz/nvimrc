@@ -96,12 +96,8 @@ telescope.setup {
     },
 }
 
-local keymap = require('user.keymap')
-
 _G.project_files = function()
     local opts = {}
     local ok = pcall(require"telescope.builtin".git_files, opts)
     if not ok then require"telescope.builtin".find_files(opts) end
 end
-
-keymap.map('n', '<C-f><C-f>', '<cmd>lua project_files()<CR>', keymap.opts)

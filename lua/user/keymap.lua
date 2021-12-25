@@ -83,7 +83,7 @@ map('n', '<Leader>o', ':<C-u>put =repeat(nr2char(10), v:count1)<CR>', opts)
 map('n', '<Leader>O', ":<C-u>put! =repeat(nr2char(10), v:count1)<CR>'[", opts)
 
 -- Search for visually selected text: https://vim.fandom.com/wiki/Search_for_visually_selected_text
-map('v', '*', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>", opts) 
+map('v', '*', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>", opts)
 
 -- Search current word: https://vim.fandom.com/wiki/Searching#Case_sensitivity
 map('n', '*', "/\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
