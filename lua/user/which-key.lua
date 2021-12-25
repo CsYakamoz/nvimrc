@@ -85,6 +85,7 @@ local mappings = {
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["d"] = { "<cmd>lua require('neogen').generate()<CR><CR>", "Neogen" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    ["f"] = { "<cmd>lua project_files()<CR>", "Find (Git) files" },
     ["S"] = { "<cmd>tab Git<cr>", "Gstatus" },
 
     P = {
@@ -98,9 +99,44 @@ local mappings = {
 
     g = {
         name = "Git",
-        s = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        -- TODO
         b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
+        r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+        s = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+    },
+
+    -- TODO: prefix
+    l = {
+        name = "LSP",
+        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        d = {
+            "<cmd>Telescope lsp_document_diagnostics<cr>",
+            "Document Diagnostics",
+        },
+        w = {
+            "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+            "Workspace Diagnostics",
+        },
+        f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+        i = { "<cmd>LspInfo<cr>", "Info" },
+        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+        j = {
+            "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+            "Next Diagnostic",
+        },
+        k = {
+            "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+            "Prev Diagnostic",
+        },
+        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+        S = {
+            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+            "Workspace Symbols",
+        },
     },
 
     s = {
