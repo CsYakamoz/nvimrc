@@ -54,6 +54,7 @@ cmp.setup {
     mapping = {
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+        ["<CR>"] = cmp.mapping.confirm(),
         ["<Tab>"] = cmp.mapping(
             function(fallback)
                 if cmp.visible() then
