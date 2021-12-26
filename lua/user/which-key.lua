@@ -83,8 +83,8 @@ local mappings = {
     ["b"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    ["f"] = { "<cmd>lua project_files()<CR>", "Find (Git) files" },
-    ["S"] = { "<cmd>tab Git<cr>", "Gstatus" },
+    ["f"] = { "<cmd>Format<CR>", "Format" },
+    ['S']= { "<cmd>Telescope git_status<cr>", "Open changed file" },
 
     u = {
         name = 'utool',
@@ -104,11 +104,11 @@ local mappings = {
 
     g = {
         name = "Git",
-        -- TODO
         b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
         r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-        s = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        s = { "<cmd>tab Git<cr>", "Gstatus" },
+        w = { "<cmd>Gwrite<cr>", "Open changed file" },
     },
 
     l = {
