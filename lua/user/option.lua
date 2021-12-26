@@ -11,6 +11,7 @@ local optionList = {
     colorcolumn = { 80, 120 },
     signcolumn = 'yes',
     list = true,
+    completeopt = 'menuone,noselect',
 
     -- time
     updatetime = 300,
@@ -22,8 +23,8 @@ local optionList = {
     matchtime = 1,
 
     -- undo
-    -- undofile = true,
-    -- undodir = "~/.cache/vim/undo",
+    undofile = true,
+    undodir = vim.fn.stdpath('config') .. '/.undo',
 
     -- scrolloff
     scrolloff = 3,
