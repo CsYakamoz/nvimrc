@@ -14,6 +14,7 @@ telescope.setup {
 
         mappings = {
             i = {
+                ["<C-w>"] = function() vim.api.nvim_input "<c-s-w>" end,
                 ["<C-n>"] = actions.cycle_history_next,
                 ["<C-p>"] = actions.cycle_history_prev,
 
@@ -40,7 +41,6 @@ telescope.setup {
                 ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
                 ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
                 ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-                ["<C-l>"] = actions.complete_tag,
                 ["<C-_>"] = actions.which_key,
                 ["<M-p>"] = action_layout.toggle_preview,
             },
