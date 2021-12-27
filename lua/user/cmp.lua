@@ -52,8 +52,8 @@ cmp.setup {
         end,
     },
     mapping = {
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-3), { "i", "c" }),
+        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(3), { "i", "c" }),
         ["<CR>"] = cmp.mapping.confirm(),
         ["<Tab>"] = cmp.mapping(
             function(fallback)
@@ -66,7 +66,7 @@ cmp.setup {
                 elseif check_backspace() then
                     fallback()
                 else
-                    fallback()
+                    cmp.complete()
                 end
             end,
             { "i", "s" }

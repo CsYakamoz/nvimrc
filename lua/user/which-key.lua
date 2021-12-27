@@ -20,7 +20,7 @@ local setup = {
             windows = true, -- default bindings on <c-w>
             nav = true, -- misc bindings to work with windows
             z = true, -- bindings for folds, spelling and others prefixed with z
-            g = true, -- bindings for prefixed with g
+            g = false, -- bindings for prefixed with g
         },
     },
     -- add operators that will trigger motion and text object completion
@@ -81,16 +81,17 @@ local opts = {
 local mappings = {
     ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
     ["b"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-    ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    ["c"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
     ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     ["f"] = { "<cmd>Format<CR>", "Format" },
-    ['S']= { "<cmd>Telescope git_status<cr>", "Open changed file" },
+    ['S'] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 
     u = {
         name = 'utool',
         a = { "<cmd>ArgWrap<cr>", "ArgWrap" },
+        d = { "<cmd>DogeGenerate<cr>", "Doge Generate" },
+        e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
         l = { "<cmd>Linediff<cr>", "Line Diff"},
-        d = { "<cmd>lua require('neogen').generate()<CR><CR>", "Neogen" },
     },
 
     P = {
@@ -105,6 +106,7 @@ local mappings = {
     g = {
         name = "Git",
         b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+        c = { "<cmd>Git commit<cr>", "Gcommit" },
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
         r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
         s = { "<cmd>tab Git<cr>", "Gstatus" },

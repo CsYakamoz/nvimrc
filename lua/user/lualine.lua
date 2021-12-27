@@ -17,37 +17,32 @@ local diagnostics = {
 	always_visible = true,
 }
 
+local function trailing_space()
+    local space = vim.fn.search([[\s\+$]], 'nwc')
+    return space ~= 0 and string.format("[%d]trailing", space) or ""
+end
+
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+	symbols = { added = " ", modified = " ", removed = " " },
     cond = hide_in_width,
-}
-
-local filetype = {
-	"filetype",
-	icons_enabled = false,
-	icon = nil,
 }
 
 lualine.setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = '|',
-        section_separators = { left = '', right = '' },
         disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
         always_divide_middle = true,
     },
     sections = {
-        lualine_a = {
-            { 'mode', separator = { left = '' }, right_padding = 2 },
-        },
-        lualine_b = { diagnostics },
-        lualine_c = { },
-        lualine_x = { diff },
-        lualine_y = { filetype, 'encoding', 'progress' },
-        lualine_z = { { 'location', separator = { right = '' }, left_padding = 2 } },
+        lualine_a = { {'mode', fmt = function(str) return str:sub(1,1) end }},
+        lualine_b = { 'filename', diff },
+        lualine_c = {},
+        lualine_x = { { trailing_space, color = "WarningMsg" }, diagnostics },
+        lualine_y = { 'filetype', 'encoding', 'progress' },
+        lualine_z = { 'location', },
     },
     inactive_sections = {
         lualine_a = {},

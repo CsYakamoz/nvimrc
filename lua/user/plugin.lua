@@ -54,13 +54,15 @@ return packer.startup(function(use)
     use { "moll/vim-bbye", cmd = 'Bdelete' }
     use { 'AndrewRadev/linediff.vim', cmd = 'Linediff'}
     use 'tomtom/tcomment_vim'
-    use { 'junegunn/vim-easy-align', keys = { mode = 'v', map = 'ga' }}
+    use 'junegunn/vim-easy-align'
     use 'machakann/vim-sandwich'
     use 'andymass/vim-matchup'
     use { 'ojroques/vim-oscyank', cmd = 'OSCYankReg' }
     use { 'FooSoft/vim-argwrap', cmd = 'ArgWrap' }
     use { 'mbbill/undotree', cmd = 'UndotreeToggle' }
     use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
+    use { 'machakann/vim-swap', keys = { 'gs' }}
+    use  'tommcdo/vim-exchange'
 
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
@@ -72,7 +74,7 @@ return packer.startup(function(use)
     use "folke/which-key.nvim"
     use 'karb94/neoscroll.nvim'
     use 'kevinhwang91/nvim-bqf'
-    use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter" }
+    use { "kkoomen/vim-doge", run = ":call doge#install()", cmd = "DogeGenerate" }
     use { 'lukas-reineke/headlines.nvim', ft = { 'markdown', 'rmd', 'vimwiki' }}
     use "windwp/nvim-autopairs"
     use { 'gelguy/wilder.nvim', run = ":UpdateRemotePlugins"}
@@ -100,10 +102,7 @@ return packer.startup(function(use)
 
     -- Git
     use "lewis6991/gitsigns.nvim"
-    use {
-        "tpope/vim-fugitive",
-        cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull', 'Gwrite', 'Gread' },
-    }
+    use { "tpope/vim-fugitive", cmd = { 'Git', 'Gwrite', 'Gread' } }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
