@@ -92,6 +92,7 @@ local mappings = {
         d = { "<cmd>DogeGenerate<cr>", "Doge Generate" },
         e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
         l = { "<cmd>Linediff<cr>", "Line Diff"},
+        u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle"},
     },
 
     P = {

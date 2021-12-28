@@ -39,9 +39,8 @@ packer.init {
 }
 
 return packer.startup(function(use)
-    use "wbthomason/packer.nvim"
-
     -- basic
+    use "wbthomason/packer.nvim"
     use "lewis6991/impatient.nvim"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
@@ -49,19 +48,24 @@ return packer.startup(function(use)
     -- Colorscheme
     use { "sainnhe/everforest" }
 
-    use "tpope/vim-rsi"
-    use "tpope/vim-repeat"
+    -- lazy load
     use { "moll/vim-bbye", cmd = 'Bdelete' }
-    use { 'AndrewRadev/linediff.vim', cmd = 'Linediff'}
-    use 'tomtom/tcomment_vim'
-    use 'junegunn/vim-easy-align'
-    use 'machakann/vim-sandwich'
-    use 'andymass/vim-matchup'
+    use { 'AndrewRadev/linediff.vim', cmd = 'Linediff' }
     use { 'ojroques/vim-oscyank', cmd = 'OSCYankReg' }
     use { 'FooSoft/vim-argwrap', cmd = 'ArgWrap' }
     use { 'mbbill/undotree', cmd = 'UndotreeToggle' }
     use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
     use { 'machakann/vim-swap', keys = { 'gs' }}
+    use { "kkoomen/vim-doge", run = ":call doge#install()", cmd = "DogeGenerate", config = [[vim.g.doge_enable_mappings = 0]] }
+    use { 'lukas-reineke/headlines.nvim', ft = { 'markdown', 'rmd', 'vimwiki' }, config = function() require('headlines').setup() end }
+    use { "tpope/vim-fugitive", cmd = { 'Git', 'Gwrite', 'Gread' } }
+
+    use "tpope/vim-rsi"
+    use "tpope/vim-repeat"
+    use 'tomtom/tcomment_vim'
+    use 'junegunn/vim-easy-align'
+    use 'machakann/vim-sandwich'
+    use 'andymass/vim-matchup'
     use  'tommcdo/vim-exchange'
 
     use "kyazdani42/nvim-web-devicons"
@@ -74,12 +78,11 @@ return packer.startup(function(use)
     use "folke/which-key.nvim"
     use 'karb94/neoscroll.nvim'
     use 'kevinhwang91/nvim-bqf'
-    use { "kkoomen/vim-doge", run = ":call doge#install()", cmd = "DogeGenerate" }
-    use { 'lukas-reineke/headlines.nvim', ft = { 'markdown', 'rmd', 'vimwiki' }}
     use "windwp/nvim-autopairs"
-    use { 'gelguy/wilder.nvim', run = ":UpdateRemotePlugins"}
+    use { 'gelguy/wilder.nvim', run = ":UpdateRemotePlugins" }
     use "p00f/nvim-ts-rainbow"
     use 'kevinhwang91/nvim-hlslens'
+    use "lewis6991/gitsigns.nvim"
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -99,10 +102,6 @@ return packer.startup(function(use)
 
     use "nvim-telescope/telescope.nvim"
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-
-    -- Git
-    use "lewis6991/gitsigns.nvim"
-    use { "tpope/vim-fugitive", cmd = { 'Git', 'Gwrite', 'Gread' } }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
