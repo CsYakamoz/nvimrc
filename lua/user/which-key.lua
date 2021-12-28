@@ -87,12 +87,18 @@ local mappings = {
     ['S'] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 
     u = {
-        name = 'utool',
+        name = 'Utool',
         a = { "<cmd>ArgWrap<cr>", "ArgWrap" },
         d = { "<cmd>DogeGenerate<cr>", "Doge Generate" },
         e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
         l = { "<cmd>Linediff<cr>", "Line Diff"},
         u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle"},
+    },
+
+    m = {
+        name = "Makrdown",
+        p = { "<cmd>MarkdownPreview<cr>", "Preview"},
+        s = { "<cmd>MarkdownPreviewStop<cr>", "Stop"},
     },
 
     P = {

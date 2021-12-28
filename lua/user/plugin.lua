@@ -59,6 +59,9 @@ return packer.startup(function(use)
     use { "kkoomen/vim-doge", run = ":call doge#install()", cmd = "DogeGenerate", config = [[vim.g.doge_enable_mappings = 0]] }
     use { 'lukas-reineke/headlines.nvim', ft = { 'markdown', 'rmd', 'vimwiki' }, config = function() require('headlines').setup() end }
     use { "tpope/vim-fugitive", cmd = { 'Git', 'Gwrite', 'Gread' } }
+    -- TODO: lazy load markdown-preview
+    use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+
 
     use "tpope/vim-rsi"
     use "tpope/vim-repeat"
