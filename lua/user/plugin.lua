@@ -64,11 +64,12 @@ return packer.startup(function(use)
 
     use "tpope/vim-rsi"
     use "tpope/vim-repeat"
-    use 'tomtom/tcomment_vim'
+    use { 'preservim/nerdcommenter', config=[[require('user.comment')]]}
     use 'junegunn/vim-easy-align'
     use 'machakann/vim-sandwich'
     use 'andymass/vim-matchup'
-    use  'tommcdo/vim-exchange'
+    use 'tommcdo/vim-exchange'
+    use { 'jiangmiao/auto-pairs', config = [[vim.g.AutoPairsShortcutBackInsert = '']]}
 
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
@@ -80,7 +81,6 @@ return packer.startup(function(use)
     use "folke/which-key.nvim"
     use 'karb94/neoscroll.nvim'
     use 'kevinhwang91/nvim-bqf'
-    use "windwp/nvim-autopairs"
     use { 'gelguy/wilder.nvim', run = ":UpdateRemotePlugins" }
     use "p00f/nvim-ts-rainbow"
     use 'kevinhwang91/nvim-hlslens'
@@ -103,7 +103,10 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer"
 
     use "nvim-telescope/telescope.nvim"
+
+    -- treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
