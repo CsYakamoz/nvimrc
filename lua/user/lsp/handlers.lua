@@ -24,12 +24,12 @@ M.setup = function()
         underline = true,
         severity_sort = true,
         float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
+            focusable = false,
+            style = "minimal",
+            border = "rounded",
+            source = "always",
+            header = "",
+            prefix = "",
         },
     }
 
@@ -81,11 +81,12 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
-    end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
+
+    require "lsp_signature".on_attach({
+        hi_parameter = "IncSearch"
+    }, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

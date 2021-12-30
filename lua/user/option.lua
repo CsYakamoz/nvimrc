@@ -12,6 +12,9 @@ local optionList = {
     signcolumn = 'yes',
     list = true,
     completeopt = 'menuone,noselect',
+    pumheight = 15,
+    foldmethod = 'indent',
+    foldlevelstart = 10,
 
     -- time
     updatetime = 300,

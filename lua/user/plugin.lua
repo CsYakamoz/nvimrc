@@ -101,6 +101,7 @@ return packer.startup(function(use)
     -- lsp
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"
+    use "ray-x/lsp_signature.nvim"
 
     use "nvim-telescope/telescope.nvim"
 
