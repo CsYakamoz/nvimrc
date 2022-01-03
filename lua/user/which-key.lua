@@ -93,6 +93,8 @@ local mappings = {
         e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
         l = { "<cmd>Linediff<cr>", "Line Diff"},
         u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle"},
+        t = { "<cmd>TestNearest<cr>", "TestNearest"},
+        T = { "<cmd>TestFile<cr>", "TestFile"},
     },
 
     m = {

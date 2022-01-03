@@ -59,6 +59,8 @@ map('n', '<C-p>', 'gT', opts)
 -- Unimpaired.vim
 map('n', ']q', ':cnext<CR>', opts)
 map('n', '[q', ':cprevious<CR>', opts)
+map('n', ']e', ":<c-u>execute 'move +'. v:count1<cr>", opts)
+map('n', '[e', ":<c-u>execute 'move -1-'. v:count1<cr>", opts)
 map('n', ']ow', ':set wrap!<CR>', opts)
 map('n', '[ow', ']ow', empty_opts)
 map('n', ']op', ':set paste!<CR>', opts)
