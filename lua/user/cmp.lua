@@ -54,6 +54,19 @@ cmp.setup({
 	mapping = {
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-3), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(3), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.close()
+			end
+			fallback()
+		end),
+		["<C-k>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.close()
+			end
+
+			fallback()
+		end),
 		["<CR>"] = cmp.mapping.confirm(),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -67,7 +80,7 @@ cmp.setup({
 			else
 				cmp.complete()
 			end
-		end, { "i", "s", "c" }),
+		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
@@ -112,6 +125,7 @@ cmp.setup({
 	-- always choose first item
 	completion = {
 		completeopt = "menu,menuone,noinsert",
+		keyword_length = 2,
 	},
 })
 

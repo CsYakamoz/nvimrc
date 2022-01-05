@@ -39,8 +39,8 @@ map("n", "Q", "<Nop>", opts)
 map("i", "<C-c>", "<Esc>", opts)
 
 -- Like j,k in normal mode
-map("i", "<C-k>", "<Up>", empty_opts)
-map("i", "<C-j>", "<Down>", empty_opts)
+map("i", "<C-k>", "<Up>", opts)
+map("i", "<C-j>", "<Down>", opts)
 
 -- Focus the current split: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
 map("n", "<Leader>z", ":tab split<CR>", opts)
