@@ -83,7 +83,6 @@ local mappings = {
 	["b"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
 	["x"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	["f"] = { "<cmd>Format<CR>", "Format" },
 	["S"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 
 	u = {
@@ -133,11 +132,10 @@ local mappings = {
 			"<cmd>Telescope diagnostics<cr>",
 			"Workspace Diagnostics",
 		},
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",

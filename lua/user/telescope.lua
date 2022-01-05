@@ -84,12 +84,9 @@ telescope.setup({
 		find_files = { theme = "ivy" },
 		git_files = { theme = "ivy" },
 		live_grep = { theme = "ivy" },
-		lsp_references = { theme = "ivy" },
 		buffers = { theme = "ivy" },
 		oldfiles = { theme = "ivy" },
 		keymaps = { theme = "ivy" },
-		lsp_document_symbols = { theme = "ivy" },
-		lsp_workspace_symbols = { theme = "ivy" },
 		diagnostics = { theme = "ivy" },
 		git_status = { theme = "ivy" },
 		commands = { theme = "ivy" },
@@ -97,6 +94,12 @@ telescope.setup({
 		help_tags = { theme = "ivy" },
 		man_pages = { theme = "ivy" },
 		registers = { theme = "ivy" },
+
+		-- lsp
+		lsp_references = { theme = "ivy" },
+		lsp_definitions = { theme = "ivy" },
+		lsp_document_symbols = { theme = "ivy" },
+		lsp_workspace_symbols = { theme = "ivy" },
 	},
 	extensions = {
 		-- Your extension configuration goes here:

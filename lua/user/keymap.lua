@@ -29,6 +29,8 @@ map("n", "<Leader>w", ":w<CR>", opts)
 map("n", "<Leader>q", ":q<CR>", opts)
 map("n", "<Leader>Q", ":qa<CR>", opts)
 map("n", "<Leader><BackSpace>", ":nohl<CR>", opts)
+map("v", "gl", "g_", opts)
+map("v", "gh", "^", opts)
 
 -- Avoid to start ex mode
 map("n", "Q", "<Nop>", opts)

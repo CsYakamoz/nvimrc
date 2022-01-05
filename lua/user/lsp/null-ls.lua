@@ -22,6 +22,8 @@ null_ls.setup({
 			prefer_local = "node_modules/.bin",
 		}),
 		diagnostics.shellcheck,
-		-- diagnostics.cspell,
+		-- diagnostics.cspell.with({
+		--     prefer_local = "node_modules/.bin"
+		-- }),
 	},
 })
