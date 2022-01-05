@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -7,4 +7,4 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Specifies the default alignment to use when inserting comments.
 let g:NERDDefaultAlign = 'left'
-]]
+]])

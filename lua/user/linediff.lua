@@ -1,3 +1,3 @@
-local keymap = require('user.keymap')
+local keymap = require("user.keymap")
 
-keymap.map('x', '<Leader>ul', ':Linediff<CR>', keymap.opts)
+keymap.map("x", "<Leader>ul", ":Linediff<CR>", keymap.opts)
