@@ -17,6 +17,9 @@ null_ls.setup({
 		}),
 		formatting.goimports,
 		formatting.stylua,
+		formatting.shfmt.with({
+			extra_args = { "-i", "2", "-ci" }
+		}),
 
 		diagnostics.eslint.with({
 			prefer_local = "node_modules/.bin",
