@@ -80,7 +80,16 @@ local function lsp_keymaps(bufnr)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
+local disable_formating_list = { "tsserver", "gopls" }
+
 M.on_attach = function(client, bufnr)
+    for k,v in pairs(disable_formating_list) do
+        if client.name == v then
+            client.resolved_capabilities.document_formatting = false
+            break
+        end
+    end
+
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
 
