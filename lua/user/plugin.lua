@@ -82,6 +82,7 @@ return packer.startup(function(use)
 	use("andymass/vim-matchup")
 	use("tommcdo/vim-exchange")
 	use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
@@ -93,7 +94,6 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("karb94/neoscroll.nvim")
 	use("kevinhwang91/nvim-bqf")
-	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 	use("p00f/nvim-ts-rainbow")
 	use("kevinhwang91/nvim-hlslens")
 	use("lewis6991/gitsigns.nvim")
@@ -106,8 +106,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use("L3MON4D3/LuaSnip")
+	-- use("rafamadriz/friendly-snippets")
+	use("honza/vim-snippets")
 
 	-- lsp
 	use("neovim/nvim-lspconfig")

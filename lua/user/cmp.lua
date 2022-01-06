@@ -8,7 +8,9 @@ if not snip_status_ok then
 	return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
+luasnip.filetype_extend("all", { "_" })
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -48,7 +50,7 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	mapping = {
