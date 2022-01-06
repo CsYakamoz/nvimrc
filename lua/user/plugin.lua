@@ -73,6 +73,8 @@ return packer.startup(function(use)
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
 	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("user.test")]] })
+	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
+	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
 
 	use("tpope/vim-rsi")
 	use("tpope/vim-repeat")
