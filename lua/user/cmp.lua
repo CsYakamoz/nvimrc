@@ -54,26 +54,13 @@ cmp.setup({
 	mapping = {
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-3), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(3), { "i", "c" }),
-		["<C-j>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.close()
-			end
-			fallback()
-		end),
-		["<C-k>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.close()
-			end
-
-			fallback()
-		end),
 		["<CR>"] = cmp.mapping.confirm(),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm()
 			elseif luasnip.expandable() then
 				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
+			elseif luasnip.expand_or_locally_jumpable() then
 				luasnip.expand_or_jump()
 			elseif check_backspace() then
 				fallback()
