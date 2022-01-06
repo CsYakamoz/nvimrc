@@ -93,7 +93,7 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("karb94/neoscroll.nvim")
 	use("kevinhwang91/nvim-bqf")
-	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
+	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 	use("p00f/nvim-ts-rainbow")
 	use("kevinhwang91/nvim-hlslens")
 	use("lewis6991/gitsigns.nvim")
@@ -102,7 +102,6 @@ return packer.startup(function(use)
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 
