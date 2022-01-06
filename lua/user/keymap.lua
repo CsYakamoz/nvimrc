@@ -32,6 +32,9 @@ map("n", "<Leader><BackSpace>", ":nohl<CR>", opts)
 map("v", "gl", "g_", opts)
 map("v", "gh", "^", opts)
 
+-- Start Insert mode when press <C-h> in Select mode, refer: coc-snippets
+map("s", "<C-h>", "<C-g>c", opts)
+
 -- Avoid to start ex mode
 map("n", "Q", "<Nop>", opts)
 
