@@ -25,3 +25,5 @@ require("user.easy-align")
 require("user.hlslens")
 require("user.exchange")
 require("user.which-key")
+
+require("user.input-method")
