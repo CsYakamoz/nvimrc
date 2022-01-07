@@ -20,7 +20,7 @@ local setup = {
 			windows = true, -- default bindings on <c-w>
 			nav = true, -- misc bindings to work with windows
 			z = true, -- bindings for folds, spelling and others prefixed with z
-			g = false, -- bindings for prefixed with g
+			g = true, -- bindings for prefixed with g
 		},
 	},
 	-- add operators that will trigger motion and text object completion
@@ -153,7 +153,7 @@ local mappings = {
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+		r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 	},
 

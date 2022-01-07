@@ -37,3 +37,16 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
+
+vim.cmd([[
+function! s:CD()
+	let path = expand('%:p:h')
+	if !isdirectory(path)
+        echo 'path does not exist or is not a directory: ' . path
+        return
+    endif
+
+	execute 'ToggleTerm dir=' . path . ' direction=float'
+endfunction
+command! -nargs=0 CD :call <SID>CD()
+]])
