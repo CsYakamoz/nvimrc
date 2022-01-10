@@ -21,7 +21,7 @@ bufferline.setup({
 		tab_size = 21,
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,
-		diagnostics_indicator = function(count, level, diagnostics_dict, context)
+		diagnostics_indicator = function(_, _, diagnostics_dict, context)
 			if context.buffer:current() then
 				return ""
 			end

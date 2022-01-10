@@ -84,6 +84,7 @@ local mappings = {
 	["x"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["S"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+	["M"] = { "<cmd>message<cr>", "See Message" },
 
 	u = {
 		name = "Utool",
@@ -100,6 +101,7 @@ local mappings = {
 		name = "Makrdown",
 		p = { "<cmd>MarkdownPreview<cr>", "Preview" },
 		s = { "<cmd>MarkdownPreviewStop<cr>", "Stop" },
+		f = { "<cmd>Pangu<cr>", "Pangu" },
 	},
 
 	P = {

@@ -1,4 +1,6 @@
--- Reference: LunarVim/Neovim-from-scratch
+-- Reference List
+-- 1. LunarVim/Neovim-from-scratch
+-- 2. https://github.com/jdhao/nvim-config
 
 require("user.option")
 require("user.autocmd")
@@ -6,6 +8,7 @@ require("user.keymap")
 require("user.plugin")
 require("user.colorscheme")
 require("user.cmp")
+require("user.autopairs")
 require("user.lsp")
 require("user.telescope")
 require("user.treesitter")
@@ -16,14 +19,9 @@ require("user.indentline")
 require("user.alpha")
 require("user.bufferline")
 require("user.gitsigns")
-require("user.impatient")
 require("user.toggleterm")
 require("user.neoscroll")
-require("user.oscyank")
-require("user.linediff")
-require("user.easy-align")
 require("user.hlslens")
-require("user.exchange")
 require("user.which-key")
 
 require("user.input-method")

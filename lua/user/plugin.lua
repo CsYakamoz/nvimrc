@@ -40,8 +40,8 @@ packer.init({
 
 return packer.startup(function(use)
 	-- basic
+	use({ "lewis6991/impatient.nvim", config = [[require("user.impatient")]] })
 	use("wbthomason/packer.nvim")
-	use("lewis6991/impatient.nvim")
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
@@ -50,8 +50,8 @@ return packer.startup(function(use)
 
 	-- lazy load
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
-	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
-	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
+	use({ "AndrewRadev/linediff.vim", cmd = "Linediff", config = [[require("user.linediff")]] })
+	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg", config = [[require("user.oscyank")]] })
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
@@ -75,15 +75,17 @@ return packer.startup(function(use)
 	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("user.test")]] })
 	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
 	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
+	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
+	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("user.cycle")]] })
 
 	use("tpope/vim-rsi")
 	use("tpope/vim-repeat")
 	use({ "preservim/nerdcommenter", config = [[require('user.comment')]] })
-	use("junegunn/vim-easy-align")
+	use({ "junegunn/vim-easy-align", config = [[require("user.easy-align")]] })
 	use("machakann/vim-sandwich")
 	use("andymass/vim-matchup")
-	use("tommcdo/vim-exchange")
-	use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({ "tommcdo/vim-exchange", config = [[require("user.exchange")]] })
+	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 
 	use("kyazdani42/nvim-web-devicons")
@@ -106,6 +108,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- path completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+	use("windwp/nvim-autopairs")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip")

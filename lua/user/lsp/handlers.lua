@@ -75,7 +75,7 @@ end
 local disable_formatting_list = { "tsserver", "gopls" }
 
 M.on_attach = function(client, bufnr)
-	for k, v in pairs(disable_formatting_list) do
+	for _, v in pairs(disable_formatting_list) do
 		if client.name == v then
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false

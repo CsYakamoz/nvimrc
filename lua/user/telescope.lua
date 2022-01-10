@@ -14,6 +14,7 @@ telescope.setup({
 
 		mappings = {
 			i = {
+				["<esc>"] = actions.close,
 				["<C-w>"] = function()
 					vim.api.nvim_input("<c-s-w>")
 				end,
