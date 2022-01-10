@@ -51,7 +51,7 @@ return packer.startup(function(use)
 	-- lazy load
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
 	use({ "AndrewRadev/linediff.vim", cmd = "Linediff", config = [[require("user.linediff")]] })
-	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg", config = [[require("user.oscyank")]] })
+	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
