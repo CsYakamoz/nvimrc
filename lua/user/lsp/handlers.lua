@@ -48,12 +48,15 @@ local function lsp_highlight_document(client)
 	if client.resolved_capabilities.document_highlight then
 		vim.api.nvim_exec(
 			[[
-        augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]],
+		augroup lsp_document_highlight
+			autocmd! * <buffer>
+			autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+
+			autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ scope = "cursor" })
+		augroup END
+		]],
 			false
 		)
 	end
@@ -64,12 +67,12 @@ local function lsp_keymap(bufnr)
 	keymap.bmap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", keymap.opts)
 	keymap.bmap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", keymap.opts)
 	keymap.bmap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", keymap.opts)
-	keymap.bmap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", keymap.opts)
+	keymap.bmap(bufnr, "n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", keymap.opts)
 	keymap.bmap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", keymap.opts)
 	keymap.bmap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", keymap.opts)
-	keymap.bmap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', keymap.opts)
-	keymap.bmap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', keymap.opts)
-	keymap.bmap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', keymap.opts)
+	keymap.bmap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", keymap.opts)
+	keymap.bmap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", keymap.opts)
+	keymap.bmap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", keymap.opts)
 end
 
 local disable_formatting_list = { "tsserver", "gopls" }

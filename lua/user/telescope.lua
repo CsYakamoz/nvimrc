@@ -101,6 +101,7 @@ telescope.setup({
 		lsp_definitions = { theme = "ivy" },
 		lsp_document_symbols = { theme = "ivy" },
 		lsp_workspace_symbols = { theme = "ivy" },
+		lsp_implementations = { theme = "ivy" },
 	},
 	extensions = {
 		-- Your extension configuration goes here:
