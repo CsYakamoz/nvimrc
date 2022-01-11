@@ -69,105 +69,125 @@ local setup = {
 	},
 }
 
-local opts = {
-	mode = "n", -- NORMAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+local normal = {
+	opts = {
+		mode = "n", -- NORMAL mode
+		prefix = "<leader>",
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = true, -- use `nowait` when creating keymaps
+	},
+	mappings = {
+		["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+		["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+		["x"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
+		["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+		["S"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		["M"] = { "<cmd>message<cr>", "See Message" },
+
+		u = {
+			name = "Utool",
+			a = { "<cmd>ArgWrap<cr>", "ArgWrap" },
+			d = { "<cmd>DogeGenerate<cr>", "Doge Generate" },
+			e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
+			l = { "<cmd>Linediff<cr>", "Line Diff" },
+			u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle" },
+			t = { "<cmd>TestNearest<cr>", "TestNearest" },
+			T = { "<cmd>TestFile<cr>", "TestFile" },
+		},
+
+		m = {
+			name = "Makrdown",
+			p = { "<cmd>MarkdownPreview<cr>", "Preview" },
+			s = { "<cmd>MarkdownPreviewStop<cr>", "Stop" },
+			f = { "<cmd>Pangu<cr>", "Pangu" },
+		},
+
+		P = {
+			name = "Packer",
+			c = { "<cmd>PackerCompile<cr>", "Compile" },
+			i = { "<cmd>PackerInstall<cr>", "Install" },
+			s = { "<cmd>PackerSync<cr>", "Sync" },
+			S = { "<cmd>PackerStatus<cr>", "Status" },
+			u = { "<cmd>PackerUpdate<cr>", "Update" },
+		},
+
+		g = {
+			name = "Git",
+			b = { "<cmd>G blame<cr>", "Blame" },
+			c = { "<cmd>Git commit<cr>", "Gcommit" },
+			d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
+			r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+			s = { "<cmd>tab Git<cr>", "Gstatus" },
+			w = { "<cmd>Gwrite<cr>", "Open changed file" },
+		},
+
+		l = {
+			name = "LSP",
+			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+			d = {
+				"<cmd>Telescope diagnostics bufnr=0<cr>",
+				"Document Diagnostics",
+			},
+			w = {
+				"<cmd>Telescope diagnostics<cr>",
+				"Workspace Diagnostics",
+			},
+			i = { "<cmd>LspInfo<cr>", "Info" },
+			I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+			l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
+			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+			S = {
+				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+				"Workspace Symbols",
+			},
+		},
+
+		s = {
+			name = "Search",
+			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+			c = { "<cmd>Telescope commands<cr>", "Commands" },
+			f = { "<cmd>lua project_files()<CR>", "Find (Git) files" },
+			F = { "<cmd>Telescope find_files<CR>", "Find files" },
+			g = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
+			h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+			m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+			r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
+			R = { "<cmd>Telescope registers<cr>", "Registers" },
+		},
+
+		t = {
+			name = "Terminal",
+			n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+			p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+			f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+			h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+			v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+		},
+	},
 }
 
-local mappings = {
-	["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-	["b"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-	["x"] = { "<cmd>Bdelete<CR>", "Close Buffer" },
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	["S"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-	["M"] = { "<cmd>message<cr>", "See Message" },
-
-	u = {
-		name = "Utool",
-		a = { "<cmd>ArgWrap<cr>", "ArgWrap" },
-		d = { "<cmd>DogeGenerate<cr>", "Doge Generate" },
-		e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
-		l = { "<cmd>Linediff<cr>", "Line Diff" },
-		u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle" },
-		t = { "<cmd>TestNearest<cr>", "TestNearest" },
-		T = { "<cmd>TestFile<cr>", "TestFile" },
+local visual = {
+	opts = {
+		mode = "v",
+		prefix = "<leader>",
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = true, -- use `nowait` when creating keymaps
 	},
-
-	m = {
-		name = "Makrdown",
-		p = { "<cmd>MarkdownPreview<cr>", "Preview" },
-		s = { "<cmd>MarkdownPreviewStop<cr>", "Stop" },
-		f = { "<cmd>Pangu<cr>", "Pangu" },
-	},
-
-	P = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		S = { "<cmd>PackerStatus<cr>", "Status" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
-	},
-
-	g = {
-		name = "Git",
-		b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-		c = { "<cmd>Git commit<cr>", "Gcommit" },
-		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-		r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>tab Git<cr>", "Gstatus" },
-		w = { "<cmd>Gwrite<cr>", "Open changed file" },
-	},
-
-	l = {
-		name = "LSP",
-		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = {
-			"<cmd>Telescope diagnostics bufnr=0<cr>",
-			"Document Diagnostics",
+	mappings = {
+		u = {
+			name = "Utool",
+			l = { ":Linediff<cr>", "Line Diff" },
 		},
-		w = {
-			"<cmd>Telescope diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
-		i = { "<cmd>LspInfo<cr>", "Info" },
-		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		S = {
-			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			"Workspace Symbols",
-		},
-	},
-
-	s = {
-		name = "Search",
-		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-		c = { "<cmd>Telescope commands<cr>", "Commands" },
-		f = { "<cmd>lua project_files()<CR>", "Find (Git) files" },
-		F = { "<cmd>Telescope find_files<CR>", "Find files" },
-		g = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-		m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-		r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
-		R = { "<cmd>Telescope registers<cr>", "Registers" },
-	},
-
-	t = {
-		name = "Terminal",
-		n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-		p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 	},
 }
 
 which_key.setup(setup)
-which_key.register(mappings, opts)
+for _, config in pairs({ normal, visual }) do
+	which_key.register(config.mappings, config.opts)
+end

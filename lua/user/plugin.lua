@@ -50,7 +50,7 @@ return packer.startup(function(use)
 
 	-- lazy load
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
-	use({ "AndrewRadev/linediff.vim", cmd = "Linediff", config = [[require("user.linediff")]] })
+	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
 	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
@@ -62,6 +62,20 @@ return packer.startup(function(use)
 		cmd = "DogeGenerate",
 		config = [[vim.g.doge_enable_mappings = 0]],
 	})
+	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
+	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("user.test")]] })
+	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
+	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
+	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("user.cycle")]] })
+	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("user.exchange")]] })
+	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("user.easy-align")]] })
+	use({
+		"preservim/nerdcommenter",
+		keys = { { "n", "<leader>cc" }, { "x", "<leader>cc" }, { "x", "<leader>cs" } },
+		config = [[require('user.comment')]],
+	})
+	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
+	use({ "plasticboy/vim-markdown", ft = { "markdown" } })
 	use({
 		"lukas-reineke/headlines.nvim",
 		ft = { "markdown", "rmd", "vimwiki" },
@@ -69,22 +83,13 @@ return packer.startup(function(use)
 			require("headlines").setup()
 		end,
 	})
-	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
-	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("user.test")]] })
-	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
-	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
-	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
-	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("user.cycle")]] })
 
 	use("tpope/vim-rsi")
 	use("tpope/vim-repeat")
-	use({ "preservim/nerdcommenter", config = [[require('user.comment')]] })
-	use({ "junegunn/vim-easy-align", config = [[require("user.easy-align")]] })
 	use("machakann/vim-sandwich")
 	use("andymass/vim-matchup")
-	use({ "tommcdo/vim-exchange", config = [[require("user.exchange")]] })
 	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 
