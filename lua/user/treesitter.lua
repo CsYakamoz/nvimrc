@@ -12,7 +12,7 @@ configs.setup({
 		disable = { "" }, -- list of language that will be disabled
 		additional_vim_regex_highlighting = true,
 	},
-	indent = { enable = true, disable = { "yaml" } },
+	indent = { enable = true, disable = { "yaml", "php" } },
 	rainbow = {
 		enable = true,
 		extended_mode = true,
