@@ -1,7 +1,4 @@
-local status_ok, hlslens = pcall(require, "hlslens")
-if not status_ok then
-	return
-end
+local hlslens = require("hlslens")
 
 hlslens.setup({
 	override_lens = function(render, plist, nearest, idx, r_idx)

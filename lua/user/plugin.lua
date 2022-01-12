@@ -56,7 +56,7 @@ return packer.startup(function(use)
 
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
 	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
-	use({ "ojroques/vim-oscyank", event = "TextYankPost", config = [[require('user.oscyank')]] })
+	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
@@ -98,17 +98,17 @@ return packer.startup(function(use)
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 
 	use("kyazdani42/nvim-web-devicons")
-	use("kyazdani42/nvim-tree.lua")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("goolord/alpha-nvim")
-	use("nvim-lualine/lualine.nvim")
-	use("akinsho/bufferline.nvim")
-	use("akinsho/toggleterm.nvim")
-	use("folke/which-key.nvim")
-	use("karb94/neoscroll.nvim")
-	use("kevinhwang91/nvim-bqf")
-	use("kevinhwang91/nvim-hlslens")
-	use("lewis6991/gitsigns.nvim")
+	use({ "kyazdani42/nvim-tree.lua", config = [[require('user.file-explorer')]] })
+	use({ "lukas-reineke/indent-blankline.nvim", config = [[require('user.indentline')]] })
+	use({ "goolord/alpha-nvim", config = [[require('user.alpha')]] })
+	use({ "nvim-lualine/lualine.nvim", config = [[require('user.statusline')]] })
+	use({ "akinsho/bufferline.nvim", config = [[require('user.tabline')]] })
+	use({ "akinsho/toggleterm.nvim", config = [[require('user.toggleterm')]] })
+	use({ "folke/which-key.nvim", config = [[require('user.which_key')]] })
+	use({ "karb94/neoscroll.nvim", config = [[require('user.neoscroll')]] })
+	use({ "kevinhwang91/nvim-bqf", config = [[]] })
+	use({ "kevinhwang91/nvim-hlslens", config = [[require('user.hlslens')]] })
+	use({ "lewis6991/gitsigns.nvim", config = [[require('user.gitsigns')]] })
 
 	-- snippets engine
 	use("L3MON4D3/LuaSnip")
@@ -129,7 +129,7 @@ return packer.startup(function(use)
 	use({ "ray-x/lsp_signature.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
-		after = { "cmp-nvim-lsp" },
+		after = { "cmp-nvim-lsp", "null-ls.nvim", "lsp_signature.nvim" },
 		config = [[require("user.lsp")]],
 	})
 

@@ -1,3 +1,9 @@
+vim.cmd([[
+let g:is_win = (has('win32') || has('win64')) ? v:true : v:false
+let g:is_linux = (has('unix') && !has('macunix')) ? v:true : v:false
+let g:is_mac = has('macunix') ? v:true : v:false
+]])
+
 _G.project_files = function()
 	vim.cmd([[
 		silent! !git rev-parse --is-inside-work-tree

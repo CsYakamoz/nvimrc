@@ -1,3 +1,7 @@
+vim.cmd([[
+language en_US.UTF-8
+]])
+
 local optionList = {
 	wrap = false,
 	number = true,
