@@ -111,11 +111,3 @@ telescope.setup({
 		-- please take a look at the readme of the extension you want to configure
 	},
 })
-
-_G.project_files = function()
-	local opts = {}
-	local ok = pcall(require("telescope.builtin").git_files, opts)
-	if not ok then
-		require("telescope.builtin").find_files(opts)
-	end
-end

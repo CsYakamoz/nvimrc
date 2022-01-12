@@ -39,19 +39,24 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	-- basic
-	use({ "lewis6991/impatient.nvim", config = [[require("user.impatient")]] })
+	-- impatient needs to be setup before any other lua plugin is loaded
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient").enable_profile()
+		end,
+	})
+
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
-	-- Colorscheme
+	-- colorscheme
 	use({ "sainnhe/everforest" })
 
-	-- lazy load
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
 	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
-	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
+	use({ "ojroques/vim-oscyank", event = "TextYankPost", config = [[require('user.oscyank')]] })
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
@@ -71,7 +76,7 @@ return packer.startup(function(use)
 	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("user.easy-align")]] })
 	use({
 		"preservim/nerdcommenter",
-		keys = { { "n", "<leader>cc" }, { "x", "<leader>cc" }, { "x", "<leader>cs" } },
+		keys = { { "n", "<leader>c<leader>" }, { "x", "<leader>c<leader>" }, { "x", "<leader>cs" } },
 		config = [[require('user.comment')]],
 	})
 	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
@@ -86,11 +91,10 @@ return packer.startup(function(use)
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
 
-	use("tpope/vim-rsi")
-	use("tpope/vim-repeat")
-	use("machakann/vim-sandwich")
-	use("andymass/vim-matchup")
-	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({ "tpope/vim-rsi", event = "VimEnter" })
+	use({ "tpope/vim-repeat", event = "VimEnter" })
+	use({ "machakann/vim-sandwich", event = "VimEnter" })
+	use({ "andymass/vim-matchup", event = "VimEnter" })
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
 
 	use("kyazdani42/nvim-web-devicons")
@@ -103,33 +107,43 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("karb94/neoscroll.nvim")
 	use("kevinhwang91/nvim-bqf")
-	use("p00f/nvim-ts-rainbow")
 	use("kevinhwang91/nvim-hlslens")
 	use("lewis6991/gitsigns.nvim")
 
-	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lsp")
-	use("windwp/nvim-autopairs")
-
-	-- snippets
+	-- snippets engine
 	use("L3MON4D3/LuaSnip")
-	use("rafamadriz/friendly-snippets")
+	use({ "rafamadriz/friendly-snippets", after = "LuaSnip" })
+
+	-- cmp plugins
+	use({ "hrsh7th/nvim-cmp", after = "LuaSnip", config = [[require("user.cmp")]] })
+	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+
+	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("user.autopairs")]] })
 
 	-- lsp
-	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("ray-x/lsp_signature.nvim")
+	use({ "williamboman/nvim-lsp-installer" })
+	use({ "jose-elias-alvarez/null-ls.nvim" })
+	use({ "ray-x/lsp_signature.nvim" })
+	use({
+		"neovim/nvim-lspconfig",
+		after = { "cmp-nvim-lsp" },
+		config = [[require("user.lsp")]],
+	})
 
-	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope.nvim", cmd = "Telescope", config = [[require("user.telescope")]] })
 
 	-- treesitter
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+	use({ "p00f/nvim-ts-rainbow" })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		requires = { { "nvim-lua/plenary.nvim" } },
+		run = ":TSUpdate",
+		config = [[require("user.treesitter")]],
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

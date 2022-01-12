@@ -15,6 +15,7 @@ configs.setup({
 	indent = { enable = true, disable = { "yaml", "php" } },
 	rainbow = {
 		enable = true,
+		disable = {},
 		extended_mode = true,
 		max_file_lines = nil,
 	},
