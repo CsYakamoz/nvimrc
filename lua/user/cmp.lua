@@ -49,10 +49,14 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm()
-			elseif vim.api.nvim_get_mode().mode == "i" and has_words_before() then
-				cmp.complete()
 			else
-				cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+				cmp_ultisnips_mappings.expand_or_jump_forwards(function()
+					if has_words_before() then
+						cmp.cpmplete()
+					else
+						fallback()
+					end
+				end)
 			end
 		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
