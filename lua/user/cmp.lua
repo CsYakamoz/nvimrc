@@ -1,11 +1,9 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
-require("luasnip/loaders/from_vscode").lazy_load()
-
-local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 --   פּ ﯟ   some other good icons
@@ -41,7 +39,7 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
+			vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
 	mapping = {
@@ -51,22 +49,14 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm()
-			elseif luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_locally_jumpable() then
-				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
-			else
+			elseif vim.api.nvim_get_mode().mode == "i" and has_words_before() then
 				cmp.complete()
+			else
+				cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
 			end
 		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
+			cmp_ultisnips_mappings.jump_backwards(fallback)
 		end, { "i", "s" }),
 	},
 	formatting = {
@@ -77,7 +67,7 @@ cmp.setup({
 			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
-				luasnip = "[Snippet]",
+				ultisnips = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
 			})[entry.source.name]
@@ -87,7 +77,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "ultisnips" },
 		{ name = "buffer" },
 		{ name = "path" },
 	},

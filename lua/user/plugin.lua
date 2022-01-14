@@ -110,16 +110,27 @@ return packer.startup(function(use)
 	use({ "kevinhwang91/nvim-hlslens", config = [[require('user.hlslens')]] })
 	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('user.gitsigns')]] })
 
-	-- snippets engine
-	use("L3MON4D3/LuaSnip")
-	use({ "rafamadriz/friendly-snippets", after = "LuaSnip" })
+	-- Snippet engine and snippet template
+	use({ "SirVer/ultisnips" })
+	use({ "honza/vim-snippets", after = "ultisnips" })
+	use({
+		"quangnguyen30192/cmp-nvim-ultisnips",
+		after = { "ultisnips" },
+		config = function()
+			require("cmp_nvim_ultisnips").setup({})
+		end,
+	})
 
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp", after = "LuaSnip", config = [[require("user.cmp")]] })
+	use({
+		"hrsh7th/nvim-cmp",
+		after = "cmp-nvim-ultisnips",
+		config = [[require("user.cmp")]],
+		requires = "quangnguyen30192/cmp-nvim-ultisnips",
+	})
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
 
 	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("user.autopairs")]] })
 
