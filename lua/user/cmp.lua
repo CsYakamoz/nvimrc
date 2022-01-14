@@ -52,7 +52,7 @@ cmp.setup({
 			else
 				cmp_ultisnips_mappings.expand_or_jump_forwards(function()
 					if has_words_before() then
-						cmp.cpmplete()
+						cmp.complete()
 					else
 						fallback()
 					end
