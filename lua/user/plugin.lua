@@ -68,16 +68,16 @@ return packer.startup(function(use)
 		config = [[vim.g.doge_enable_mappings = 0]],
 	})
 	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
-	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("user.test")]] })
+	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("plugin.test")]] })
 	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
 	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
-	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("user.cycle")]] })
-	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("user.exchange")]] })
-	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("user.easy-align")]] })
+	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("plugin.cycle")]] })
+	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("plugin.exchange")]] })
+	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("plugin.easy-align")]] })
 	use({
 		"preservim/nerdcommenter",
 		keys = { { "n", "<leader>c<leader>" }, { "x", "<leader>c<leader>" }, { "x", "<leader>cs" } },
-		config = [[require('user.comment')]],
+		config = [[require('plugin.comment')]],
 	})
 	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
 	use({ "plasticboy/vim-markdown", ft = { "markdown" } })
@@ -95,17 +95,17 @@ return packer.startup(function(use)
 	use({ "tpope/vim-repeat", event = "VimEnter" })
 	use({ "machakann/vim-sandwich", event = "VimEnter" })
 	use({ "andymass/vim-matchup", event = "VimEnter" })
-	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("user.wilder")]] })
+	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("plugin.wilder")]] })
 
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
-	use({ "kyazdani42/nvim-tree.lua", event = "VimEnter", config = [[require('user.file-explorer')]] })
-	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('user.indent_line')]] })
-	use({ "goolord/alpha-nvim", event = "VimEnter", config = [[require('user.alpha')]] })
-	use({ "nvim-lualine/lualine.nvim", event = "VimEnter", config = [[require('user.statusline')]] })
-	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('user.tabline')]] })
-	use({ "akinsho/toggleterm.nvim", keys = { "<M-j>" }, config = [[require('user.toggleterm')]] })
-	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('user.which_key')]] })
-	use({ "karb94/neoscroll.nvim", config = [[require('user.neoscroll')]] })
+	use({ "kyazdani42/nvim-tree.lua", event = "VimEnter", config = [[require('plugin.file-explorer')]] })
+	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('plugin.indent_line')]] })
+	use({ "goolord/alpha-nvim", event = "VimEnter", config = [[require('plugin.alpha')]] })
+	use({ "nvim-lualine/lualine.nvim", event = "VimEnter", config = [[require('plugin.statusline')]] })
+	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('plugin.tabline')]] })
+	use({ "akinsho/toggleterm.nvim", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
+	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
+	use({ "karb94/neoscroll.nvim", config = [[require('plugin.neoscroll')]] })
 	use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[]] })
 	use({
 		"kevinhwang91/nvim-hlslens",
@@ -119,9 +119,9 @@ return packer.startup(function(use)
 			{ "v", "/" },
 			{ "v", "?" },
 		},
-		config = [[require('user.hlslens')]],
+		config = [[require('plugin.hlslens')]],
 	})
-	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('user.gitsigns')]] })
+	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('plugin.gitsigns')]] })
 
 	-- Snippet engine and snippet template
 	use({ "SirVer/ultisnips" })
@@ -138,14 +138,14 @@ return packer.startup(function(use)
 	use({
 		"hrsh7th/nvim-cmp",
 		after = "cmp-nvim-ultisnips",
-		config = [[require("user.cmp")]],
+		config = [[require("plugin.cmp")]],
 		requires = "quangnguyen30192/cmp-nvim-ultisnips",
 	})
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 
-	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("user.autopairs")]] })
+	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
 
 	-- lsp
 	use({ "williamboman/nvim-lsp-installer" })
@@ -154,10 +154,10 @@ return packer.startup(function(use)
 	use({
 		"neovim/nvim-lspconfig",
 		after = { "cmp-nvim-lsp", "null-ls.nvim", "lsp_signature.nvim" },
-		config = [[require("user.lsp")]],
+		config = [[require("plugin.lsp")]],
 	})
 
-	use({ "nvim-telescope/telescope.nvim", cmd = "Telescope", config = [[require("user.telescope")]] })
+	use({ "nvim-telescope/telescope.nvim", cmd = "Telescope", config = [[require("plugin.telescope")]] })
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
@@ -166,7 +166,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		requires = { { "nvim-lua/plenary.nvim" } },
 		run = ":TSUpdate",
-		config = [[require("user.treesitter")]],
+		config = [[require("plugin.treesitter")]],
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim

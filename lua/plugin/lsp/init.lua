@@ -1,6 +1,6 @@
-require("user.lsp.lsp-installer")
-require("user.lsp.handlers").setup()
-require("user.lsp.null_ls")
+require("plugin.lsp.lsp-installer")
+require("plugin.lsp.handlers").setup()
+require("plugin.lsp.null_ls")
 
 local keymap = require("user.keymap")
 
