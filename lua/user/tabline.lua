@@ -16,21 +16,7 @@ bufferline.setup({
 		max_name_length = 30,
 		max_prefix_length = 30,
 		tab_size = 21,
-		diagnostics = "nvim_lsp",
-		diagnostics_update_in_insert = false,
-		diagnostics_indicator = function(_, _, diagnostics_dict, context)
-			if context.buffer:current() then
-				return ""
-			end
-
-			local s = " "
-			for e, n in pairs(diagnostics_dict) do
-				local sym = e == "error" and " " or (e == "warning" and " " or "")
-				s = s .. n .. sym
-			end
-
-			return s
-		end,
+		diagnostics = false,
 		offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },
 		show_buffer_icons = true,
 		show_buffer_close_icons = true,
@@ -40,6 +26,17 @@ bufferline.setup({
 		separator_style = "thin",
 		enforce_regular_tabs = true,
 		always_show_bufferline = true,
+		custom_filter = function(bufnr)
+			local exclude_ft = { "qf", "fugitive", "git" }
+			local cur_ft = vim.bo[bufnr].filetype
+			local should_filter = vim.tbl_contains(exclude_ft, cur_ft)
+
+			if should_filter then
+				return false
+			end
+
+			return true
+		end,
 	},
 	highlights = {
 		fill = {

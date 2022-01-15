@@ -99,7 +99,7 @@ return packer.startup(function(use)
 
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
 	use({ "kyazdani42/nvim-tree.lua", event = "VimEnter", config = [[require('user.file-explorer')]] })
-	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('user.indentline')]] })
+	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('user.indent_line')]] })
 	use({ "goolord/alpha-nvim", event = "VimEnter", config = [[require('user.alpha')]] })
 	use({ "nvim-lualine/lualine.nvim", event = "VimEnter", config = [[require('user.statusline')]] })
 	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('user.tabline')]] })
@@ -107,7 +107,20 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('user.which_key')]] })
 	use({ "karb94/neoscroll.nvim", config = [[require('user.neoscroll')]] })
 	use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[]] })
-	use({ "kevinhwang91/nvim-hlslens", config = [[require('user.hlslens')]] })
+	use({
+		"kevinhwang91/nvim-hlslens",
+		keys = {
+			{ "n", "n" },
+			{ "n", "N" },
+			{ "n", "*" },
+			{ "n", "#" },
+			{ "v", "*" },
+			"z/",
+			{ "v", "/" },
+			{ "v", "?" },
+		},
+		config = [[require('user.hlslens')]],
+	})
 	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('user.gitsigns')]] })
 
 	-- Snippet engine and snippet template

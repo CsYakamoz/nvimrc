@@ -32,7 +32,7 @@ map("n", "<Leader><BackSpace>", ":nohl<CR>", opts)
 map("v", "gl", "g_", opts)
 map("v", "gh", "^", opts)
 
--- Start Insert mode when press <C-h> in Select mode, refer: coc-snippets
+-- Start Insert mode when press <C-h> in Select mode, ref: coc-snippets
 map("s", "<C-h>", "<C-g>c", opts)
 
 -- Avoid to start ex mode
@@ -92,6 +92,24 @@ map("n", "<Leader>O", ":<C-u>put! =repeat(nr2char(10), v:count1)<CR>'[", opts)
 
 -- Search for visually selected text: https://vim.fandom.com/wiki/Search_for_visually_selected_text
 map("v", "*", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>", opts)
+
+-- Search only over a visual range: https://vim.fandom.com/wiki/Search_only_over_a_visual_range
+vim.cmd([[
+function! RangeSearch(direction)
+	call inputsave()
+	let g:srchstr = input(a:direction)
+	call inputrestore()
+	if strlen(g:srchstr) > 0
+		let g:srchstr = g:srchstr.
+			\ '\%>'.(line("'<")-1).'l'.
+			\ '\%<'.(line("'>")+1).'l'
+	else
+		let g:srchstr = ''
+	endif
+endfunction
+vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
+vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
+]])
 
 -- Search current word: https://vim.fandom.com/wiki/Searching#Case_sensitivity
 map("n", "*", "/\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
