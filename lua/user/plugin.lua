@@ -158,7 +158,13 @@ return packer.startup(function(use)
 		config = [[require("plugin.lsp")]],
 	})
 
-	use({ "nvim-telescope/telescope.nvim", cmd = "Telescope", config = [[require("plugin.telescope")]] })
+	use({ "fhill2/telescope-ultisnips.nvim", event = "VimEnter" })
+	use({
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		config = [[require("plugin.telescope")]],
+		requires = { "telescope-ultisnips.nvim" },
+	})
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
