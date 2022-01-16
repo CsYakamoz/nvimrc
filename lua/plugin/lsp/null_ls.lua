@@ -8,6 +8,7 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	debug = false,
+	fallback_severity = vim.diagnostic.severity.INFO,
 	sources = {
 		formatting.prettier.with({
 			prefer_local = "node_modules/.bin",
@@ -22,8 +23,8 @@ null_ls.setup({
 			prefer_local = "node_modules/.bin",
 		}),
 		diagnostics.shellcheck,
-		-- diagnostics.cspell.with({
-		--     prefer_local = "node_modules/.bin"
-		-- }),
+		diagnostics.cspell.with({
+			prefer_local = "node_modules/.bin"
+		}),
 	},
 })
