@@ -145,7 +145,8 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 
-	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
+	-- use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
+	use({ "jiangmiao/auto-pairs", event = "InsertEnter", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
 	-- lsp
 	use({ "williamboman/nvim-lsp-installer" })
