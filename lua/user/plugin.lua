@@ -124,29 +124,18 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('plugin.gitsigns')]] })
 
 	-- Snippet engine and snippet template
-	use({ "SirVer/ultisnips" })
+	use({ "SirVer/ultisnips", event = "InsertEnter" })
 	use({ "honza/vim-snippets", after = "ultisnips" })
-	use({
-		"quangnguyen30192/cmp-nvim-ultisnips",
-		after = { "ultisnips" },
-		config = function()
-			require("cmp_nvim_ultisnips").setup({})
-		end,
-	})
 
 	-- cmp plugins
-	use({
-		"hrsh7th/nvim-cmp",
-		after = "cmp-nvim-ultisnips",
-		config = [[require("plugin.cmp")]],
-		requires = "quangnguyen30192/cmp-nvim-ultisnips",
-	})
+	use({ "hrsh7th/nvim-cmp", event = "BufEnter", config = [[require("plugin.cmp")]] })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "quangnguyen30192/cmp-nvim-ultisnips", after = { "ultisnips", "nvim-cmp" } })
 
-	-- use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
-	use({ "jiangmiao/auto-pairs", event = "InsertEnter", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
+	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
 	-- lsp
 	use({ "williamboman/nvim-lsp-installer" })
@@ -167,13 +156,22 @@ return packer.startup(function(use)
 	})
 
 	-- treesitter
-	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
-	use({ "p00f/nvim-ts-rainbow" })
+	use({ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter" })
+	use({ "p00f/nvim-ts-rainbow", event = "BufEnter" })
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"p00f/nvim-ts-rainbow",
+		},
 		run = ":TSUpdate",
 		config = [[require("plugin.treesitter")]],
+	})
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+		config = [[require("nvim-gps").setup()]],
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
