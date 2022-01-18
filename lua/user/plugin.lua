@@ -120,7 +120,11 @@ return packer.startup(function(use)
 	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('plugin.tabline')]] })
 	use({ "akinsho/toggleterm.nvim", cmd = "CD", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
 	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
-	use({ "karb94/neoscroll.nvim", config = [[require('plugin.neoscroll')]] })
+	use({
+		"karb94/neoscroll.nvim",
+		keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+		config = [[require('plugin.neoscroll')]],
+	})
 	use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[]] })
 	use({
 		"kevinhwang91/nvim-hlslens",
