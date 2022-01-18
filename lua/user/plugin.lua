@@ -56,7 +56,22 @@ return packer.startup(function(use)
 
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
 	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
-	use({ "ojroques/vim-oscyank", cmd = "OSCYankReg" })
+	use({
+		"ojroques/vim-oscyank",
+		setup = function()
+			vim.cmd([[
+				if !has('macunix')
+					augroup _non_mac_settings
+						autocmd TextYankPost *
+							\ if v:event.operator is 'y' && v:event.regname is '+' |
+							\   OSCYankReg + |
+							\ endif
+					augroup end
+				endif
+			]])
+		end,
+		cmd = "OSCYankReg",
+	})
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
@@ -103,7 +118,7 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim", event = "VimEnter", config = [[require('plugin.alpha')]] })
 	use({ "nvim-lualine/lualine.nvim", event = "VimEnter", config = [[require('plugin.statusline')]] })
 	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('plugin.tabline')]] })
-	use({ "akinsho/toggleterm.nvim", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
+	use({ "akinsho/toggleterm.nvim", cmd = "CD", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
 	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
 	use({ "karb94/neoscroll.nvim", config = [[require('plugin.neoscroll')]] })
 	use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[]] })
@@ -122,6 +137,16 @@ return packer.startup(function(use)
 		config = [[require('plugin.hlslens')]],
 	})
 	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('plugin.gitsigns')]] })
+	use({
+		"rlane/pounce.nvim",
+		keys = { { "n", "s" }, { "v", "s" } },
+		config = function()
+			vim.cmd([[
+			nmap s <cmd>Pounce<CR>
+			vmap s <cmd>Pounce<CR>
+		]])
+		end,
+	})
 
 	-- Snippet engine and snippet template
 	use({ "SirVer/ultisnips", event = "InsertEnter" })
