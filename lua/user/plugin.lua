@@ -39,7 +39,7 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	-- impatient needs to be setup before any other lua plugin is loaded
+	-- Improve startup time for Neovim, impatient needs to be setup before any other lua plugin is loaded
 	use({
 		"lewis6991/impatient.nvim",
 		config = function()
@@ -47,55 +47,86 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("wbthomason/packer.nvim")
-	use("nvim-lua/popup.nvim")
+	-- Packer can manage itself
+	use({ "wbthomason/packer.nvim" })
+
+	-- All the lua functions I don't want to write twice
 	use("nvim-lua/plenary.nvim")
+
+	-- An implementation of the Popup API from vim in Neovim
+	use({ "nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- colorscheme
 	use({ "sainnhe/everforest" })
 
+	-- Delete buffers and close files in Vim without closing your windows or messing up your layout.
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
+
+	-- A vim plugin to perform diffs on blocks of code
 	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
+
+	-- A Vim plugin to copy text through SSH with OSC52
 	use({
 		"ojroques/vim-oscyank",
-		setup = function()
-			vim.cmd([[
-				if !has('macunix')
-					augroup _non_mac_settings
-						autocmd TextYankPost *
-							\ if v:event.operator is 'y' && v:event.regname is '+' |
-							\   OSCYankReg + |
-							\ endif
-					augroup end
-				endif
-			]])
-		end,
+		setup = [[require('plugin.oscyank')]],
 		cmd = "OSCYankReg",
 	})
+
+	-- Wrap and unwrap function arguments, lists, and dictionaries in Vim
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
+
+	-- The undo history visualizer for VIM
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
+
+	-- A Vim plugin for profiling Vim's startup time.
 	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
+
+	-- Reorder delimited items.
 	use({ "machakann/vim-swap", keys = { "gs" } })
+
+	-- (Do)cumentation (Ge)nerator 10+ languages
 	use({
 		"kkoomen/vim-doge",
 		run = ":call doge#install()",
 		cmd = "DogeGenerate",
 		config = [[vim.g.doge_enable_mappings = 0]],
 	})
+
+	-- A Git wrapper so awesome, it should be illegal
 	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
+
+	-- Run your tests at the speed of thought
 	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("plugin.test")]] })
+
+	-- asily search for, substitute, and abbreviate multiple variants of a word
 	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
+
+	-- 『盘古之白』中文排版自动规范化的 Vim 插件
 	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
+
+	-- Cycle text within predefined candidates.
 	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("plugin.cycle")]] })
+
+	-- Easy text exchange operator for Vim
 	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("plugin.exchange")]] })
+
+	-- A simple, easy-to-use Vim alignment plugin.
 	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("plugin.easy-align")]] })
+
+	-- Vim plugin for intensely nerdy commenting powers
 	use({
 		"preservim/nerdcommenter",
 		keys = { { "n", "<leader>c<leader>" }, { "x", "<leader>c<leader>" }, { "x", "<leader>cs" } },
 		config = [[require('plugin.comment')]],
 	})
+
+	-- A vim 7.4+ plugin to generate table of contents for Markdown files.
 	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
+
+	-- Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 	use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+
+	-- This plugin adds 3 kind of horizontal highlights for text filetypes
 	use({
 		"lukas-reineke/headlines.nvim",
 		ft = { "markdown", "rmd", "vimwiki" },
@@ -103,29 +134,81 @@ return packer.startup(function(use)
 			require("headlines").setup()
 		end,
 	})
+
+	-- markdown preview plugin for (neo)vim
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
 
+	-- Readline style insertion
 	use({ "tpope/vim-rsi", event = "VimEnter" })
+
+	-- enable repeating supported plugin maps with "."
 	use({ "tpope/vim-repeat", event = "VimEnter" })
+
+	-- Set of operators and textobjects to search/select/edit sandwiched texts.
 	use({ "machakann/vim-sandwich", event = "VimEnter" })
+
+	-- match-up is a plugin that lets you highlight, navigate, and operate on sets of matching text.
 	use({ "andymass/vim-matchup", event = "VimEnter" })
+
+	-- A more adventurous wildmenu
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("plugin.wilder")]] })
 
+	-- lua `fork` of vim-web-devicons for neovim
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
-	use({ "kyazdani42/nvim-tree.lua", event = "VimEnter", config = [[require('plugin.file-explorer')]] })
+
+	-- A file explorer tree for neovim written in lua
+	use({
+		"kyazdani42/nvim-tree.lua",
+		event = "VimEnter",
+		config = [[require('plugin.file-explorer')]],
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})
+
+	-- Indent guides for Neovim
 	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('plugin.indent_line')]] })
-	use({ "goolord/alpha-nvim", event = "VimEnter", config = [[require('plugin.alpha')]] })
-	use({ "nvim-lualine/lualine.nvim", event = "VimEnter", config = [[require('plugin.statusline')]] })
-	use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('plugin.tabline')]] })
+
+	-- a lua powered greeter like vim-startify / dashboard-nvim
+	use({
+		"goolord/alpha-nvim",
+		event = "VimEnter",
+		config = [[require('plugin.alpha')]],
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})
+
+	-- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
+	use({
+		"nvim-lualine/lualine.nvim",
+		event = "VimEnter",
+		config = [[require('plugin.statusline')]],
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})
+
+	-- A snazzy bufferline for Neovim
+	use({
+		"akinsho/bufferline.nvim",
+		event = "VimEnter",
+		config = [[require('plugin.tabline')]],
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})
+
+	-- A neovim lua plugin to help easily manage multiple terminal windows
 	use({ "akinsho/toggleterm.nvim", cmd = "CD", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
+
+	-- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
+
+	-- Smooth scrolling neovim plugin written in lua
 	use({
 		"karb94/neoscroll.nvim",
 		keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
 		config = [[require('plugin.neoscroll')]],
 	})
-	use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[]] })
+
+	-- Better quickfix window in Neovim, polish old quickfix window.
+	use({ "kevinhwang91/nvim-bqf", event = "FileType qf" })
+
+	-- Hlsearch Lens for Neovim
 	use({
 		"kevinhwang91/nvim-hlslens",
 		keys = {
@@ -140,7 +223,16 @@ return packer.startup(function(use)
 		},
 		config = [[require('plugin.hlslens')]],
 	})
-	use({ "lewis6991/gitsigns.nvim", event = "BufEnter", config = [[require('plugin.gitsigns')]] })
+
+	-- Git integration for buffers
+	use({
+		"lewis6991/gitsigns.nvim",
+		event = "BufEnter",
+		config = [[require('plugin.gitsigns')]],
+		requires = "nvim-lua/plenary.nvim",
+	})
+
+	-- Incremental fuzzy search motion plugin for Neovim
 	use({
 		"rlane/pounce.nvim",
 		keys = { { "n", "s" }, { "v", "s" } },
@@ -153,7 +245,7 @@ return packer.startup(function(use)
 	})
 
 	-- Snippet engine and snippet template
-	use({ "SirVer/ultisnips", event = "InsertEnter" })
+	use({ "SirVer/ultisnips", event = "BufEnter" })
 	use({ "honza/vim-snippets", after = "ultisnips" })
 
 	-- cmp plugins
@@ -163,6 +255,7 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "quangnguyen30192/cmp-nvim-ultisnips", after = { "ultisnips", "nvim-cmp" } })
 
+	-- A super powerful autopair plugin for Neovim that supports multiple characters.
 	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
 	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
@@ -181,7 +274,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		config = [[require("plugin.telescope")]],
-		requires = { "telescope-ultisnips.nvim" },
+		requires = { "telescope-ultisnips.nvim", "nvim-lua/plenary.nvim" },
 	})
 
 	-- treesitter
@@ -190,7 +283,6 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		requires = {
-			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"p00f/nvim-ts-rainbow",
 		},
