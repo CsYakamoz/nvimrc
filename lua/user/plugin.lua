@@ -269,13 +269,13 @@ return packer.startup(function(use)
 		config = [[require("plugin.lsp")]],
 	})
 
-	use({ "fhill2/telescope-ultisnips.nvim", event = "VimEnter" })
 	use({
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		config = [[require("plugin.telescope")]],
-		requires = { "telescope-ultisnips.nvim", "nvim-lua/plenary.nvim" },
 	})
+	use({ "fhill2/telescope-ultisnips.nvim", after = "telescope.nvim" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", after = "telescope.nvim" })
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter" })

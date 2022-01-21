@@ -2,6 +2,29 @@ local telescope = require("telescope")
 
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
+local action_state = require("telescope.actions.state")
+
+local function multi_selection_open_tab(way)
+	return function(prompt_bufnr)
+		local picker = action_state.get_current_picker(prompt_bufnr)
+		local num_selections = #picker:get_multi_selection()
+		if not num_selections or num_selections <= 1 then
+			actions.add_selection(prompt_bufnr)
+		end
+
+		if way == 1 then
+			actions.send_selected_to_qflist(prompt_bufnr)
+		elseif way == 2 then
+			actions.send_to_qflist(prompt_bufnr)
+		else
+			print("unexpected way" .. way)
+		end
+
+		vim.cmd("tabnew")
+		vim.cmd("copen")
+		vim.cmd("cc")
+	end
+end
 
 telescope.setup({
 	defaults = {
@@ -39,8 +62,10 @@ telescope.setup({
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
+				["<M-q>"] = multi_selection_open_tab(2),
+				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<C-q>"] = multi_selection_open_tab(1),
 				["<C-_>"] = actions.which_key,
 				["<M-p>"] = action_layout.toggle_preview,
 			},
@@ -54,8 +79,10 @@ telescope.setup({
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
+				["<M-q>"] = multi_selection_open_tab(2),
+				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<C-q>"] = multi_selection_open_tab(1),
 
 				["j"] = actions.move_selection_next,
 				["k"] = actions.move_selection_previous,
@@ -92,6 +119,8 @@ telescope.setup({
 		help_tags = { theme = "ivy" },
 		man_pages = { theme = "ivy" },
 		registers = { theme = "ivy" },
+		jumplist = { theme = "ivy" },
+		current_buffer_fuzzy_find = { theme = "ivy" },
 
 		-- lsp
 		lsp_references = { theme = "ivy" },
@@ -101,12 +130,14 @@ telescope.setup({
 		lsp_implementations = { theme = "ivy" },
 	},
 	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
 	},
 })
 
 telescope.load_extension("ultisnips")
+telescope.load_extension("fzf")
