@@ -10,12 +10,6 @@ configs.setup({
 		additional_vim_regex_highlighting = true,
 	},
 	indent = { enable = true, disable = { "yaml", "php" } },
-	rainbow = {
-		enable = true,
-		disable = {},
-		extended_mode = true,
-		max_file_lines = nil,
-	},
 	matchup = {
 		enable = true,
 	},
@@ -29,18 +23,6 @@ configs.setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
-				["i,"] = "@parameter.inner",
-				["a,"] = "@parameter.outer",
-			},
-		},
-		move = {
-			enable = true,
-			set_jumps = true,
-			goto_next_start = {
-				["]z"] = "@parameter.inner",
-			},
-			goto_previous_start = {
-				["[z"] = "@parameter.inner",
 			},
 		},
 	},

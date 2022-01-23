@@ -274,23 +274,35 @@ return packer.startup(function(use)
 		cmd = "Telescope",
 		config = [[require("plugin.telescope")]],
 	})
-	use({ "fhill2/telescope-ultisnips.nvim", after = "telescope.nvim" })
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", after = "telescope.nvim" })
+	use({
+		"fhill2/telescope-ultisnips.nvim",
+		after = "telescope.nvim",
+		requires = "nvim-telescope/telescope.nvim",
+		config = [[require('telescope').load_extension("ultisnips")]],
+	})
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+		after = "telescope.nvim",
+		requires = "nvim-telescope/telescope.nvim",
+		config = [[require('telescope').load_extension("fzf")]],
+	})
 
 	-- treesitter
-	use({ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter" })
-	use({ "p00f/nvim-ts-rainbow", event = "BufEnter" })
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		requires = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"p00f/nvim-ts-rainbow",
-		},
+		event = "BufEnter",
 		run = ":TSUpdate",
 		config = [[require("plugin.treesitter")]],
 	})
 	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+	use({
 		"SmiteshP/nvim-gps",
+		after = "nvim-treesitter",
 		requires = "nvim-treesitter/nvim-treesitter",
 		config = [[require("nvim-gps").setup()]],
 	})

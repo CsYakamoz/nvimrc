@@ -12,9 +12,9 @@ local function multi_selection_open_tab(way)
 			actions.add_selection(prompt_bufnr)
 		end
 
-		if way == 1 then
+		if way == "selected" then
 			actions.send_selected_to_qflist(prompt_bufnr)
-		elseif way == 2 then
+		elseif way == "all" then
 			actions.send_to_qflist(prompt_bufnr)
 		else
 			print("unexpected way" .. way)
@@ -63,9 +63,9 @@ telescope.setup({
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = multi_selection_open_tab(2),
+				["<M-q>"] = multi_selection_open_tab("all"),
 				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-q>"] = multi_selection_open_tab(1),
+				["<C-q>"] = multi_selection_open_tab("selected"),
 				["<C-_>"] = actions.which_key,
 				["<M-p>"] = action_layout.toggle_preview,
 			},
@@ -80,9 +80,9 @@ telescope.setup({
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
 				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = multi_selection_open_tab(2),
+				["<M-q>"] = multi_selection_open_tab("all"),
 				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-q>"] = multi_selection_open_tab(1),
+				["<C-q>"] = multi_selection_open_tab("selected"),
 
 				["j"] = actions.move_selection_next,
 				["k"] = actions.move_selection_previous,
@@ -138,6 +138,3 @@ telescope.setup({
 		},
 	},
 })
-
-telescope.load_extension("ultisnips")
-telescope.load_extension("fzf")
