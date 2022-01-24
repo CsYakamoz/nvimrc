@@ -3,7 +3,9 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 local action_state = require("telescope.actions.state")
+local previewers = require("telescope.previewers")
 
+-- Refer: https://github.com/nvim-telescope/telescope.nvim/issues/1048
 local function multi_selection_open_tab(way)
 	return function(prompt_bufnr)
 		local picker = action_state.get_current_picker(prompt_bufnr)
@@ -24,6 +26,23 @@ local function multi_selection_open_tab(way)
 		vim.cmd("copen")
 		vim.cmd("cc")
 	end
+end
+
+-- Refer: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#ignore-files-bigger-than-a-threshold
+local new_maker = function(filepath, bufnr, opts)
+	opts = opts or {}
+
+	filepath = vim.fn.expand(filepath)
+	vim.loop.fs_stat(filepath, function(_, stat)
+		if not stat then
+			return
+		end
+		if stat.size > 100000 then
+			return
+		else
+			previewers.buffer_previewer_maker(filepath, bufnr, opts)
+		end
+	end)
 end
 
 telescope.setup({
@@ -104,6 +123,20 @@ telescope.setup({
 				["?"] = actions.which_key,
 			},
 		},
+
+		-- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#ripgrep-remove-indentation
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--trim",
+		},
+
+		buffer_previewer_maker = new_maker,
 	},
 	pickers = {
 		find_files = { theme = "ivy" },
@@ -120,7 +153,7 @@ telescope.setup({
 		man_pages = { theme = "ivy" },
 		registers = { theme = "ivy" },
 		jumplist = { theme = "ivy" },
-		current_buffer_fuzzy_find = { theme = "ivy" },
+		current_buffer_fuzzy_find = { theme = "ivy", previewer = false },
 
 		-- lsp
 		lsp_references = { theme = "ivy" },
