@@ -84,19 +84,16 @@ return packer.startup(function(use)
 	-- Reorder delimited items.
 	use({ "machakann/vim-swap", keys = { "gs" } })
 
-	-- (Do)cumentation (Ge)nerator 10+ languages
-	use({
-		"kkoomen/vim-doge",
-		run = ":call doge#install()",
-		cmd = "DogeGenerate",
-		config = [[vim.g.doge_enable_mappings = 0]],
-	})
-
 	-- A Git wrapper so awesome, it should be illegal
 	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
 
 	-- Run your tests at the speed of thought
-	use({ "vim-test/vim-test", cmd = { "TestFile", "TestNearest" }, config = [[require("plugin.test")]] })
+	use({
+		"vim-test/vim-test",
+		keys = { "<F5>", "<M-5>", "<F6>", "<M-6>" },
+		cmd = { "TestFile", "TestNearest" },
+		config = [[require("plugin.test")]],
+	})
 
 	-- asily search for, substitute, and abbreviate multiple variants of a word
 	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
