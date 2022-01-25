@@ -7,10 +7,10 @@ end
 
 local diagnostics = {
 	"diagnostics",
-	sources = { "nvim_diagnostic" },
+	sources = { "coc" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
-	colored = false,
+	colored = true,
 	update_in_insert = false,
 	always_visible = true,
 }
@@ -40,7 +40,7 @@ lualine.setup({
 				return str:sub(1, 1)
 			end,
 		} },
-		lualine_b = { "filename", diff },
+		lualine_b = { "filename", diff, diagnostics },
 		lualine_c = { { gps.get_location, cond = gps.is_available } },
 		lualine_x = { { trailing_space, color = "WarningMsg" } },
 		lualine_y = { "filetype", "encoding", "progress" },

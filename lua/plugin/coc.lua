@@ -1,16 +1,17 @@
-vim.cmd([[
-let g:coc_global_extensions = [
-    \ 'coc-word',
-    \ 'coc-spell-checker',
-    \ 'coc-snippets',
-    \ 'coc-prettier',
-    \ 'coc-json',
-    \ 'coc-tsserver',
-    \ 'coc-clangd',
-    \ 'coc-go',
-    \ 'coc-phpls',
-    \ ]
+vim.g.coc_global_extensions =  {
+	'coc-word',
+	'coc-spell-checker',
+	'coc-snippets',
+	'coc-eslint',
+	'coc-prettier',
+	'coc-json',
+	'coc-tsserver',
+	'coc-clangd',
+	'coc-phpls',
+	'coc-diagnostic',
+}
 
+vim.cmd([[
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :

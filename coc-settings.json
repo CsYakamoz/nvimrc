@@ -59,5 +59,47 @@
     "highlight": "Normal",
     "maxWidth": 100,
     "focusable": false
+  },
+
+  "diagnostic-languageserver.mergeConfig": true,
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      "args": ["-i", "2", "-ci", "-filename", "%filepath"]
+    },
+    "stylua": {
+      "command": "stylua",
+      "args": [
+        "--search-parent-directories",
+        "--stdin-filepath",
+        "%filepath",
+        "--",
+        "-"
+      ]
+    },
+    "goimports": {
+      "command": "goimports",
+      "args": ["-srcdir", "%dirname"]
+    }
+  },
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt",
+    "lua": "stylua",
+    "go": "goimports"
+  },
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "formatterPriority": 0,
+      "settings": {
+        "usePlaceholders": true
+      }
+    }
   }
 }
