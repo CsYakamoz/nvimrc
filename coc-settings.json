@@ -34,7 +34,7 @@
   },
 
   "diagnostic.errorSign": "",
-  "diagnostic.warningSign": "",
+  "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.floatConfig": {
@@ -98,7 +98,9 @@
       "filetypes": ["go"],
       "formatterPriority": 0,
       "settings": {
-        "usePlaceholders": true
+        "gopls": {
+          "usePlaceholders": true
+        }
       }
     }
   }
