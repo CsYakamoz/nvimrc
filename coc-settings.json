@@ -40,24 +40,20 @@
   "diagnostic.floatConfig": {
     "border": true,
     "highlight": "Normal",
-    "maxWidth": 100,
     "focusable": false
   },
   "diagnostic.signPriority": 20,
-  "diagnostic.enableHighlightLineNumber": false,
-  "diagnostic.locationlistUpdate": false,
+  "diagnostic.virtualText": true,
 
   "hover.floatConfig": {
     "border": true,
     "highlight": "Normal",
-    "maxWidth": 100,
     "focusable": false
   },
 
   "signature.floatConfig": {
     "border": true,
     "highlight": "Normal",
-    "maxWidth": 100,
     "focusable": false
   },
 

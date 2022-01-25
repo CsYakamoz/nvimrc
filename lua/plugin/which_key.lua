@@ -123,7 +123,7 @@ local normal = {
 		l = {
 			name = "LSP",
 			a = { "<cmd>Telescope coc line_code_actions theme=ivy<cr>", "Line Code Action" },
-			A = { "<cmd>Telescope coc code_actions theme=ivy<cr>", "File Code Action" },
+			A = { "<cmd>Telescope coc file_code_actions theme=ivy<cr>", "File Code Action" },
 			d = {
 				"<cmd>Telescope coc diagnostics theme=ivy<cr>",
 				"Document Diagnostics",
