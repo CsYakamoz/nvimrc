@@ -154,13 +154,6 @@ telescope.setup({
 		registers = { theme = "ivy" },
 		jumplist = { theme = "ivy" },
 		current_buffer_fuzzy_find = { theme = "ivy", previewer = false },
-
-		-- lsp
-		lsp_references = { theme = "ivy" },
-		lsp_definitions = { theme = "ivy" },
-		lsp_document_symbols = { theme = "ivy" },
-		lsp_workspace_symbols = { theme = "ivy" },
-		lsp_implementations = { theme = "ivy" },
 	},
 	extensions = {
 		fzf = {

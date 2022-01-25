@@ -122,19 +122,19 @@ local normal = {
 
 		l = {
 			name = "LSP",
-			a = { "<cmd>Telescope coc line_code_actions<cr>", "Line Code Action" },
-			A = { "<cmd>Telescope coc code_actions<cr>", "File Code Action" },
+			a = { "<cmd>Telescope coc line_code_actions theme=ivy<cr>", "Line Code Action" },
+			A = { "<cmd>Telescope coc code_actions theme=ivy<cr>", "File Code Action" },
 			d = {
-				"<cmd>Telescope coc diagnostics<cr>",
+				"<cmd>Telescope coc diagnostics theme=ivy<cr>",
 				"Document Diagnostics",
 			},
 			w = {
-				"<cmd>Telescope coc workspace_diagnostics<cr>",
+				"<cmd>Telescope coc workspace_diagnostics theme=ivy<cr>",
 				"Workspace Diagnostics",
 			},
-			s = { "<cmd>Telescope coc document_symbols<cr>", "Document Symbols" },
+			s = { "<cmd>Telescope coc document_symbols theme=ivy<cr>", "Document Symbols" },
 			S = {
-				"<cmd>Telescope coc workspace_symbols<cr>",
+				"<cmd>Telescope coc workspace_symbols theme=ivy<cr>",
 				"Workspace Symbols",
 			},
 		},
