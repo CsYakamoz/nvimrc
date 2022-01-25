@@ -42,7 +42,7 @@ lualine.setup({
 		} },
 		lualine_b = { "filename", diff },
 		lualine_c = { { gps.get_location, cond = gps.is_available } },
-		lualine_x = { { trailing_space, color = "WarningMsg" }, diagnostics },
+		lualine_x = { { trailing_space, color = "WarningMsg" } },
 		lualine_y = { "filetype", "encoding", "progress" },
 		lualine_z = { "location" },
 	},

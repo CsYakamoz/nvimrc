@@ -122,22 +122,19 @@ local normal = {
 
 		l = {
 			name = "LSP",
-			a = { "<cmd>Telescope lsp_code_actions<cr>", "Code Action" },
+			a = { "<cmd>Telescope coc line_code_actions<cr>", "Line Code Action" },
+			A = { "<cmd>Telescope coc code_actions<cr>", "File Code Action" },
 			d = {
-				"<cmd>Telescope diagnostics bufnr=0<cr>",
+				"<cmd>Telescope coc diagnostics<cr>",
 				"Document Diagnostics",
 			},
 			w = {
-				"<cmd>Telescope diagnostics<cr>",
+				"<cmd>Telescope coc workspace_diagnostics<cr>",
 				"Workspace Diagnostics",
 			},
-			i = { "<cmd>LspInfo<cr>", "Info" },
-			I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-			l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+			s = { "<cmd>Telescope coc document_symbols<cr>", "Document Symbols" },
 			S = {
-				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+				"<cmd>Telescope coc workspace_symbols<cr>",
 				"Workspace Symbols",
 			},
 		},

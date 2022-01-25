@@ -245,29 +245,9 @@ return packer.startup(function(use)
 	})
 
 	-- Snippet engine and snippet template
-	use({ "SirVer/ultisnips", event = "BufEnter" })
-	use({ "honza/vim-snippets", after = "ultisnips" })
+	use({ "honza/vim-snippets", event = "VimEnter" })
 
-	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp", event = "BufEnter", config = [[require("plugin.cmp")]] })
-	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "quangnguyen30192/cmp-nvim-ultisnips", after = { "ultisnips", "nvim-cmp" } })
-
-	-- A super powerful autopair plugin for Neovim that supports multiple characters.
-	use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = [[require("plugin.autopairs")]] })
-	-- use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
-
-	-- lsp
-	use({ "williamboman/nvim-lsp-installer" })
-	use({ "jose-elias-alvarez/null-ls.nvim" })
-	use({ "ray-x/lsp_signature.nvim" })
-	use({
-		"neovim/nvim-lspconfig",
-		after = { "cmp-nvim-lsp", "null-ls.nvim", "lsp_signature.nvim" },
-		config = [[require("plugin.lsp")]],
-	})
+	use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -275,17 +255,17 @@ return packer.startup(function(use)
 		config = [[require("plugin.telescope")]],
 	})
 	use({
-		"fhill2/telescope-ultisnips.nvim",
-		after = "telescope.nvim",
-		requires = "nvim-telescope/telescope.nvim",
-		config = [[require('telescope').load_extension("ultisnips")]],
-	})
-	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",
 		after = "telescope.nvim",
 		requires = "nvim-telescope/telescope.nvim",
 		config = [[require('telescope').load_extension("fzf")]],
+	})
+	use({
+		"fannheyward/telescope-coc.nvim",
+		after = "telescope.nvim",
+		requires = "nvim-telescope/telescope.nvim",
+		config = [[require('telescope').load_extension("coc")]],
 	})
 
 	-- treesitter
@@ -296,16 +276,13 @@ return packer.startup(function(use)
 		config = [[require("plugin.treesitter")]],
 	})
 	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
-		requires = "nvim-treesitter/nvim-treesitter",
-	})
-	use({
 		"SmiteshP/nvim-gps",
 		after = "nvim-treesitter",
 		requires = "nvim-treesitter/nvim-treesitter",
 		config = [[require("nvim-gps").setup()]],
 	})
+
+	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
