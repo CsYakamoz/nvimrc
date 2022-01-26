@@ -4,6 +4,7 @@
 
 require("user.gloabl")
 require("user.option")
+require("user.abbr")
 require("user.autocmd")
 require("user.keymap")
 
