@@ -41,9 +41,9 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 
-nmap <silent> gd :Telescope coc definitions<CR>
-nmap <silent> <leader>gi :Telescope coc implementations<CR>
-nmap <silent> gr :Telescope coc references<CR>
+nmap <silent> gd :Telescope coc definitions theme=ivy<CR>
+nmap <silent> <leader>gi :Telescope coc implementations theme=ivy<CR>
+nmap <silent> gr :Telescope coc references theme=ivy<CR>
 
 nmap <silent> <Leader>f :call CocAction('format')<CR>
 xmap <silent> <Leader>f  <Plug>(coc-format-selected)

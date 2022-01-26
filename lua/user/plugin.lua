@@ -30,13 +30,7 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+packer.init({ display = { open_cmd = "tabedit" } })
 
 return packer.startup(function(use)
 	-- Improve startup time for Neovim, impatient needs to be setup before any other lua plugin is loaded
@@ -260,8 +254,8 @@ return packer.startup(function(use)
 	})
 	use({
 		"fannheyward/telescope-coc.nvim",
-		after = "telescope.nvim",
-		requires = "nvim-telescope/telescope.nvim",
+		after = { "telescope.nvim", "coc.nvim" },
+		requires = { "nvim-telescope/telescope.nvim", "neoclide/coc.nvim" },
 		config = [[require('telescope').load_extension("coc")]],
 	})
 
@@ -274,7 +268,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"SmiteshP/nvim-gps",
-		after = "nvim-treesitter",
+		after = { "nvim-treesitter", "lualine.nvim" },
 		requires = "nvim-treesitter/nvim-treesitter",
 		config = [[require("nvim-gps").setup()]],
 	})
