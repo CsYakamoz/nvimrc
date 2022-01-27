@@ -98,6 +98,18 @@
           "usePlaceholders": true
         }
       }
+    },
+    "lua": {
+      "command": "lua-language-server",
+      "filetypes": ["lua"],
+      "settings": {
+        "Lua": {
+          "diagnostics": {
+            "enable": true,
+            "globals": ["vim"]
+          }
+        }
+      }
     }
   }
 }
