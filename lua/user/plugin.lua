@@ -270,7 +270,7 @@ return packer.startup(function(use)
 		"SmiteshP/nvim-gps",
 		after = { "nvim-treesitter", "lualine.nvim" },
 		requires = "nvim-treesitter/nvim-treesitter",
-		config = [[require("nvim-gps").setup()]],
+		config = [[require("plugin.gps")]],
 	})
 
 	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
