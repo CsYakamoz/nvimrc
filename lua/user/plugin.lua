@@ -151,7 +151,7 @@ return packer.startup(function(use)
 	-- A file explorer tree for neovim written in lua
 	use({
 		"kyazdani42/nvim-tree.lua",
-		event = "VimEnter",
+		after = "nvim-web-devicons",
 		config = [[require('plugin.file-explorer')]],
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
@@ -162,7 +162,7 @@ return packer.startup(function(use)
 	-- a lua powered greeter like vim-startify / dashboard-nvim
 	use({
 		"goolord/alpha-nvim",
-		event = "VimEnter",
+		after = "nvim-web-devicons",
 		config = [[require('plugin.alpha')]],
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
@@ -170,7 +170,7 @@ return packer.startup(function(use)
 	-- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
 	use({
 		"nvim-lualine/lualine.nvim",
-		event = "VimEnter",
+		after = "nvim-web-devicons",
 		config = [[require('plugin.statusline')]],
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
@@ -178,7 +178,7 @@ return packer.startup(function(use)
 	-- A snazzy bufferline for Neovim
 	use({
 		"akinsho/bufferline.nvim",
-		event = "VimEnter",
+		after = "nvim-web-devicons",
 		config = [[require('plugin.tabline')]],
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
@@ -238,7 +238,7 @@ return packer.startup(function(use)
 	-- Snippet engine and snippet template
 	use({ "honza/vim-snippets", event = "VimEnter" })
 
-	use({ "jiangmiao/auto-pairs", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({ "jiangmiao/auto-pairs", event = "VimEnter", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
 	use({
 		"nvim-telescope/telescope.nvim",
