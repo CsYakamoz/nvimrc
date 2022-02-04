@@ -1,14 +1,13 @@
-vim.g.coc_global_extensions =  {
-	'coc-word',
-	'coc-spell-checker',
-	'coc-snippets',
-	'coc-eslint',
-	'coc-prettier',
-	'coc-json',
-	'coc-tsserver',
-	'coc-clangd',
-	'coc-phpls',
-	'coc-diagnostic',
+vim.g.coc_global_extensions = {
+	"coc-word",
+	"coc-spell-checker",
+	"coc-snippets",
+	"coc-eslint",
+	"coc-prettier",
+	"coc-json",
+	"coc-tsserver",
+	"coc-clangd",
+	"coc-diagnostic",
 }
 
 vim.cmd([[

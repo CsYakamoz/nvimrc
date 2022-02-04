@@ -118,6 +118,15 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "progressOnInitialization": true
+    },
+    "intelephense": {
+      "command": "intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "progressOnInitialization": true,
+      "initializationOptions": {
+        "storagePath": "/tmp/intelephense"
+      }
     }
   },
 
