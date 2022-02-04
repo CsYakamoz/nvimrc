@@ -92,6 +92,7 @@
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"],
+      "progressOnInitialization": true,
       "formatterPriority": 0,
       "settings": {
         "gopls": {
@@ -102,6 +103,7 @@
     "lua": {
       "command": "lua-language-server",
       "filetypes": ["lua"],
+      "progressOnInitialization": true,
       "settings": {
         "Lua": {
           "diagnostics": {
@@ -114,7 +116,11 @@
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
-      "filetypes": ["sh"]
+      "filetypes": ["sh"],
+      "progressOnInitialization": true
     }
-  }
+  },
+
+  "prettier.statusItemText": "",
+  "cSpell.showStatus": false
 }

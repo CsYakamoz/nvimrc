@@ -1,9 +1,5 @@
 local lualine = require("lualine")
 
-local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
-end
-
 local diagnostics = {
 	"diagnostics",
 	sources = { "coc" },
@@ -20,8 +16,20 @@ end
 local diff = {
 	"diff",
 	colored = true,
-	cond = hide_in_width,
+	cond = function()
+		return vim.fn.winwidth(0) > 80
+	end,
 }
+
+local function coc_status()
+	local status = vim.g.coc_status
+
+	if status == nil then
+		return ""
+	end
+
+	return status:match("^%s*(.-)%s*$")
+end
 
 lualine.setup({
 	options = {
@@ -37,7 +45,7 @@ lualine.setup({
 				return str:sub(1, 1)
 			end,
 		} },
-		lualine_b = { "filename", diff },
+		lualine_b = { "filename", coc_status, diff },
 		lualine_c = {},
 		lualine_x = { { trailing_space, color = "WarningMsg" }, diagnostics },
 		lualine_y = { "filetype", "encoding", "progress" },
