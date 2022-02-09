@@ -13,3 +13,4 @@ require("user.plugin")
 
 require("user.colorscheme")
 require("user.input-method")
+require("user.move_tab")
