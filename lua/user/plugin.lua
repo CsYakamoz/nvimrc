@@ -235,11 +235,22 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Land on window you chose like tmux's 'display-pane'
+	use({
+		"t9md/vim-choosewin",
+		keys = "-",
+		config = function()
+			vim.cmd([[nmap  -  <Plug>(choosewin)]])
+		end,
+	})
+
 	-- Snippet engine and snippet template
 	use({ "honza/vim-snippets", event = "VimEnter" })
 
+	-- Vim plugin, insert or delete brackets, parens, quotes in pair
 	use({ "jiangmiao/auto-pairs", event = "VimEnter", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
 
+	-- Find, Filter, Preview, Pick. All lua, all the time.
 	use({
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -273,6 +284,7 @@ return packer.startup(function(use)
 		config = [[require("plugin.gps")]],
 	})
 
+	-- Make your Vim/Neovim as smart as VSCode.
 	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
 
 	-- Automatically set up your configuration after cloning packer.nvim
