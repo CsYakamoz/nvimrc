@@ -175,13 +175,8 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 
-	-- A snazzy bufferline for Neovim
-	use({
-		"akinsho/bufferline.nvim",
-		after = "nvim-web-devicons",
-		config = [[require('plugin.tabline')]],
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+	-- A minimal, configurable, neovim style tabline. Use your nvim tabs as workspace multiplexer.
+	use({ "nanozuki/tabby.nvim", config = [[require('plugin.tabline')]] })
 
 	-- A neovim lua plugin to help easily manage multiple terminal windows
 	use({ "akinsho/toggleterm.nvim", cmd = "CD", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
