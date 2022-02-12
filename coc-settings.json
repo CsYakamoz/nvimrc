@@ -2,6 +2,8 @@
   "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
   "snippets.extends": { "typescript": ["javascript"] },
 
+  "semanticTokens.filetypes": ["go", "javascript", "lua", "typescript"],
+
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
   "suggest.minTriggerInputLength": 2,
@@ -96,7 +98,8 @@
       "formatterPriority": 0,
       "settings": {
         "gopls": {
-          "usePlaceholders": true
+          "usePlaceholders": true,
+          "semanticTokens": true
         }
       }
     },
