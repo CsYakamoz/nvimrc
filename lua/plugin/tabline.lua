@@ -5,6 +5,9 @@ tabby.setup({
 	tabline = presets.tab_only,
 })
 
-vim.cmd([[
-cnoreabbrev tr TabRename
-]])
+-- TODO: update after supporting the feature
+-- https://github.com/nanozuki/tabby.nvim/issues/32
+vim.o.showtabline = 1
+
+local keymap = require("user.keymap")
+keymap.map("n", "<F2>", ":TabRename ", keymap.empty_opts)
