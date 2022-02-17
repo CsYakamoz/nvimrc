@@ -6,30 +6,27 @@ local action_state = require("telescope.actions.state")
 local previewers = require("telescope.previewers")
 
 -- Refer: https://github.com/nvim-telescope/telescope.nvim/issues/1048
-local function multi_selection_open_tab(way)
-	return function(prompt_bufnr)
-		local picker = action_state.get_current_picker(prompt_bufnr)
-		local num_selections = #picker:get_multi_selection()
-		if not num_selections or num_selections <= 1 then
-			actions.add_selection(prompt_bufnr)
-		end
+local function open_on_tab(prompt_bufnr)
+	local picker = action_state.get_current_picker(prompt_bufnr)
+	local num_selections = #picker:get_multi_selection()
+	local copen = true
+	if not num_selections or num_selections <= 1 then
+		actions.add_selection(prompt_bufnr)
+		copen = false
+	end
 
-		if way == "selected" then
-			actions.send_selected_to_qflist(prompt_bufnr)
-		elseif way == "all" then
-			actions.send_to_qflist(prompt_bufnr)
-		else
-			print("unexpected way" .. way)
-		end
-
+	if copen then
+		actions.send_selected_to_qflist(prompt_bufnr)
 		vim.cmd("tabnew")
 		vim.cmd("copen")
 		vim.cmd("cc")
+	else
+		actions.select_tab(prompt_bufnr)
 	end
 end
 
 -- Refer: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#ignore-files-bigger-than-a-threshold
-local new_maker = function(filepath, bufnr, opts)
+local buffer_previewer_maker = function(filepath, bufnr, opts)
 	opts = opts or {}
 
 	filepath = vim.fn.expand(filepath)
@@ -71,7 +68,7 @@ telescope.setup({
 				["<CR>"] = actions.select_default,
 				["<C-s>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<C-t>"] = open_on_tab,
 
 				["<C-u>"] = actions.preview_scrolling_up,
 				["<C-d>"] = actions.preview_scrolling_down,
@@ -79,12 +76,10 @@ telescope.setup({
 				["<PageUp>"] = actions.results_scrolling_up,
 				["<PageDown>"] = actions.results_scrolling_down,
 
+				["<C-g>"] = actions.toggle_all,
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = multi_selection_open_tab("all"),
-				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-q>"] = multi_selection_open_tab("selected"),
+
 				["<C-_>"] = actions.which_key,
 				["<M-p>"] = action_layout.toggle_preview,
 			},
@@ -94,14 +89,10 @@ telescope.setup({
 				["<CR>"] = actions.select_default,
 				["<C-s>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<C-t>"] = open_on_tab,
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				-- ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = multi_selection_open_tab("all"),
-				-- ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-q>"] = multi_selection_open_tab("selected"),
 
 				["j"] = actions.move_selection_next,
 				["k"] = actions.move_selection_previous,
@@ -136,7 +127,7 @@ telescope.setup({
 			"--trim",
 		},
 
-		buffer_previewer_maker = new_maker,
+		buffer_previewer_maker = buffer_previewer_maker,
 	},
 	pickers = {
 		find_files = { theme = "ivy" },
@@ -145,10 +136,9 @@ telescope.setup({
 		buffers = { theme = "ivy" },
 		oldfiles = { theme = "ivy" },
 		keymaps = { theme = "ivy" },
-		diagnostics = { theme = "ivy" },
 		git_status = { theme = "ivy" },
 		commands = { theme = "ivy" },
-		file_browser = { theme = "ivy" },
+		command_history = { theme = "ivy" },
 		help_tags = { theme = "ivy" },
 		man_pages = { theme = "ivy" },
 		registers = { theme = "ivy" },

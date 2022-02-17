@@ -127,7 +127,7 @@ local normal = {
 				"<cmd>Telescope coc diagnostics theme=ivy<cr>",
 				"Document Diagnostics",
 			},
-			w = {
+			D = {
 				"<cmd>Telescope coc workspace_diagnostics theme=ivy<cr>",
 				"Workspace Diagnostics",
 			},
@@ -143,15 +143,19 @@ local normal = {
 			b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffers" },
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>lua project_files()<CR>", "Find (Git) files" },
-			F = { "<cmd>Telescope find_files<CR>", "Find files" },
+			F = { ":Telescope find_files default_text=<C-r><C-w><CR>", "Find files" },
 			g = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
-			h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+			G = {
+				":Telescope live_grep default_text=<C-r><C-w><CR>",
+				"Grep Current-Word Text",
+			},
+			h = { "<cmd>Telescope command_history<cr>", "Command History" },
+			H = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 			j = { "<cmd>Telescope jumplist<cr>", "Jump List" },
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 			m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
 			R = { "<cmd>Telescope registers<cr>", "Registers" },
-			u = { "<cmd>Telescope ultisnips theme=ivy<cr>", "UltiSnips" },
 		},
 
 		t = {
