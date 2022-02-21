@@ -21,6 +21,19 @@ vim.g.nvim_tree_icons = {
 
 local nvim_tree = require("nvim-tree")
 
+local function resize()
+	local wider = 1 - (vim.b.cs_nvim_tree_resize or 0)
+
+	local columns = vim.o.columns
+	local col = math.floor(columns * 0.17)
+	if wider == 1 then
+		col = math.floor(vim.o.columns / 3)
+	end
+
+	nvim_tree.resize(col)
+	vim.api.nvim_buf_set_var(0, "cs_nvim_tree_resize", wider)
+end
+
 local mapping_list = {
 	{ key = "x",     action = "close_node" },
 	{ key = "<C-r>", action = "refresh" },
@@ -58,6 +71,8 @@ local mapping_list = {
 
 	{ key = "<Tab>",     action = "preview" },
 	{ key = "<Leader>o", action = "system_open" },
+
+	{ key = "<C-a>", action = "resize", action_cb = resize },
 }
 
 nvim_tree.setup({
