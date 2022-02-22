@@ -2,7 +2,7 @@ local tabby = require("tabby")
 local presets = require("tabby.presets")
 
 tabby.setup({
-	tabline = presets.tab_only,
+	tabline = presets.active_wins_at_tail,
 })
 
 -- TODO: update after supporting the feature
