@@ -1,21 +1,8 @@
+vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_icons = {
-	default = "",
-	symlink = "",
 	git = {
-		unstaged = "",
-		staged = "S",
-		unmerged = "",
-		renamed = "➜",
-		deleted = "",
-		untracked = "U",
-		ignored = "◌",
-	},
-	folder = {
-		default = "",
-		open = "",
-		empty = "",
-		empty_open = "",
-		symlink = "",
+		staged = "Ꮥ",
+		untracked = "Ü",
 	},
 }
 
@@ -76,67 +63,35 @@ local mapping_list = {
 }
 
 nvim_tree.setup({
-	disable_netrw = false,
 	hijack_netrw = false,
-	open_on_setup = false,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
 		"alpha",
 	},
-	auto_close = false,
-	open_on_tab = false,
-	hijack_cursor = false,
 	update_cwd = true,
-	update_to_buf_dir = {
-		enable = true,
-		auto_open = true,
-	},
-	update_focused_file = {
-		enable = false,
-		update_cwd = false,
-		ignore_list = {},
-	},
-	system_open = {
-		cmd = nil,
-		args = {},
-	},
 	filters = {
-		dotfiles = false,
 		custom = { "vendor", "node_modules" },
 	},
 	git = {
-		enable = true,
-		ignore = true,
 		timeout = 400,
 	},
 	view = {
 		width = "17%",
-		hide_root_folder = false,
 		side = "left",
-		auto_resize = true,
+		preserve_window_proportions = true,
 		mappings = {
 			custom_only = true,
 			list = mapping_list,
 		},
-		number = false,
-		relativenumber = false,
 		signcolumn = "no",
 	},
-	trash = {
-		cmd = "trash",
-		require_confirm = true,
-	},
-	quit_on_open = 0,
-	git_hl = 1,
-	disable_window_picker = 0,
-	root_folder_modifier = ":t",
-	show_icons = {
-		git = 1,
-		folders = 1,
-		files = 1,
-		folder_arrows = 1,
-		tree_width = 30,
+	actions = {
+		open_file = {
+			window_picker = {
+				chars = "ASDHJKL",
+			},
+		},
 	},
 })
 
