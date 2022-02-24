@@ -50,7 +50,7 @@
   "hover.floatConfig": {
     "border": true,
     "highlight": "Normal",
-    "focusable": false
+    "focusable": true
   },
 
   "signature.floatConfig": {
