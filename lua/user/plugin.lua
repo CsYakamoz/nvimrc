@@ -179,7 +179,12 @@ return packer.startup(function(use)
 	use({ "nanozuki/tabby.nvim", config = [[require('plugin.tabline')]] })
 
 	-- A neovim lua plugin to help easily manage multiple terminal windows
-	use({ "akinsho/toggleterm.nvim", cmd = "CD", keys = { "<M-j>" }, config = [[require('plugin.toggleterm')]] })
+	use({
+		"akinsho/toggleterm.nvim",
+		cmd = { "CD", "ToggleTerm" },
+		keys = { "<M-j>" },
+		config = [[require('plugin.toggleterm')]],
+	})
 
 	-- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
