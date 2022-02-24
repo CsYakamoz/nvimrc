@@ -54,7 +54,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-augroup mygroup
+augroup CocGroup
 	autocmd!
 	" Setup formatexpr specified filetype(s).
 	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
