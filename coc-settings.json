@@ -112,6 +112,9 @@
           "diagnostics": {
             "enable": true,
             "globals": ["vim"]
+          },
+          "telemetry": {
+            "enable": false
           }
         }
       }
