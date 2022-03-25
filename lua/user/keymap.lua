@@ -39,7 +39,8 @@ map("s", "<C-h>", "<C-g>c", opts)
 map("n", "Q", "<Nop>", opts)
 
 -- Ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead
-map("i", "<C-c>", "<Esc>", opts)
+-- map("i", "<C-c>", "<Esc>", opts)
+map("i", "<C-c>", "<Nop>", opts)
 
 -- Like j,k in normal mode
 map("i", "<C-k>", "<Up>", empty_opts)
