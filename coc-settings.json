@@ -113,16 +113,19 @@
             "enable": true,
             "globals": ["vim"]
           },
-          "telemetry": {
-            "enable": false
-          }
+          "telemetry": { "enable": false },
+          "completion": {
+            "callSnippet": "Replace",
+            "postfix": "."
+          },
+          "semantic": { "enable": true }
         }
       }
     },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
-      "filetypes": ["sh"],
+      "filetypes": ["sh", "zsh"],
       "progressOnInitialization": true
     },
     "intelephense": {
