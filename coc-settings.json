@@ -95,7 +95,7 @@
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"],
       "progressOnInitialization": true,
-      "formatterPriority": 0,
+      "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
       "settings": {
         "gopls": {
           "usePlaceholders": true,
@@ -107,6 +107,7 @@
       "command": "lua-language-server",
       "filetypes": ["lua"],
       "progressOnInitialization": true,
+      "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
       "settings": {
         "Lua": {
           "diagnostics": {
