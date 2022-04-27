@@ -223,6 +223,13 @@ return packer.startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 	})
 
+	-- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+	use({
+		"sindrets/diffview.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+	})
+
 	-- Incremental fuzzy search motion plugin for Neovim
 	use({
 		"rlane/pounce.nvim",
