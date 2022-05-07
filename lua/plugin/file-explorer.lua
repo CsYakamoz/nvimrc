@@ -44,6 +44,7 @@ local mapping_list = {
 	{ key = "<Leader>x", action = "cut" },
 	{ key = "<Leader>p", action = "paste" },
 	{ key = "r",         action = "rename" },
+    { key = ".",         action = "run_file_command" },
 
 	{ key = "y",  action = "copy_name" },
 	{ key = "Y",  action = "copy_path" },
@@ -54,6 +55,7 @@ local mapping_list = {
 
 	{ key = "I",  action = "toggle_ignored" },
 	{ key = "H",  action = "toggle_dotfiles" },
+    { key = "U",  action = "toggle_custom" },
 	{ key = "g?", action = "toggle_help" },
 
 	{ key = "<Tab>",     action = "preview" },
