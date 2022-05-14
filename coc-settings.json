@@ -47,6 +47,12 @@
   "diagnostic.signPriority": 20,
   "diagnostic.virtualText": true,
 
+  "tree.closedIcon": "",
+  "tree.openedIcon": "",
+  "tree.key.close": "<Leader>q",
+
+  "outline.keepWindow": true,
+
   "hover.floatConfig": {
     "border": true,
     "highlight": "Normal",

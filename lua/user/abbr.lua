@@ -15,4 +15,5 @@ endfunction
 call SetupCommandAbbrs('ch', 'checkhealth')
 call SetupCommandAbbrs('cl', 'CocList')
 call SetupCommandAbbrs('cr', 'CocRestart')
+call SetupCommandAbbrs('co', 'CocOutline')
 ]])
