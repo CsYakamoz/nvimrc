@@ -9,6 +9,14 @@ local diagnostics = {
 }
 
 local function trailing_space()
+	local ignored_list = { "help", "gitcommit" }
+	local ft = vim.bo.filetype
+	for _, value in ipairs(ignored_list) do
+		if ft == value then
+			return ""
+		end
+	end
+
 	local space = vim.fn.search([[\s\+$]], "nwc")
 	return space ~= 0 and string.format("[%d]trailing", space) or ""
 end
