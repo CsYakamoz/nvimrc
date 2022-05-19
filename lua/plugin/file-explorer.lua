@@ -47,6 +47,7 @@ end
 
 local mapping_list = {
 	{ key = "x",     action = "close_node" },
+	{ key = "X",     action = "collapse_all" },
 	{ key = "<C-r>", action = "refresh" },
 	{ key = "C",     action = "cd" },
 	{ key = "u",     action = "dir_up" },
@@ -88,6 +89,9 @@ local mapping_list = {
 	{ key = "<C-a>",      action = "resize", action_cb = resize },
 	{ key = "<Leader>sg", action = "search_text", action_cb = search_text },
 	{ key = "<Leader>sf", action = "search_file", action_cb = search_file },
+
+	{ key = "f", action = "live_filter" },
+	{ key = "F", action = "clear_live_filter" },
 }
 
 nvim_tree.setup({
