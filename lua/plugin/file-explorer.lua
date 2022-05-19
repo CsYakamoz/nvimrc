@@ -1,3 +1,5 @@
+local path = require("plenary.path")
+
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_icons = {
 	git = {
@@ -19,6 +21,28 @@ local function resize()
 
 	nvim_tree.resize(col)
 	vim.api.nvim_set_var("cs_nvim_tree_resize", wider)
+end
+
+local function getDir(node)
+	local dir = node["absolute_path"]
+	local isDir = node["fs_stat"]["type"] == "directory"
+
+	if not isDir then
+		dir = path.new(dir):parent().filename
+	end
+
+	return dir
+end
+
+local function search_text(node)
+	local dir = getDir(node)
+	print(type(dir))
+	vim.cmd([[Telescope live_grep cwd=]] .. dir)
+end
+
+local function search_file(node)
+	local dir = getDir(node)
+	vim.cmd([[Telescope find_files cwd=]] .. dir)
 end
 
 local mapping_list = {
@@ -61,7 +85,9 @@ local mapping_list = {
 	{ key = "<Tab>",     action = "preview" },
 	{ key = "<Leader>o", action = "system_open" },
 
-	{ key = "<C-a>", action = "resize", action_cb = resize },
+	{ key = "<C-a>",      action = "resize", action_cb = resize },
+	{ key = "<Leader>sg", action = "search_text", action_cb = search_text },
+	{ key = "<Leader>sf", action = "search_file", action_cb = search_file },
 }
 
 nvim_tree.setup({
