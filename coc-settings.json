@@ -133,7 +133,8 @@
       "command": "bash-language-server",
       "args": ["start"],
       "filetypes": ["sh", "zsh"],
-      "progressOnInitialization": true
+      "progressOnInitialization": true,
+      "ignoredRootPaths": ["~"]
     },
     "intelephense": {
       "command": "intelephense",
