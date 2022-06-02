@@ -2,7 +2,7 @@ local tabby = require("tabby")
 local presets = require("tabby.presets")
 
 tabby.setup({
-	tabline = presets.active_wins_at_tail,
+	tabline = presets.tab_only,
 	opt = {
 		show_at_least = 2,
 	},
