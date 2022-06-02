@@ -1,13 +1,4 @@
 local path = require("plenary.path")
-
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_icons = {
-	git = {
-		staged = "Ꮥ",
-		untracked = "Ü",
-	},
-}
-
 local nvim_tree = require("nvim-tree")
 
 local function resize()
@@ -46,47 +37,47 @@ local function search_file(node)
 end
 
 local mapping_list = {
-	{ key = "x",     action = "close_node" },
-	{ key = "X",     action = "collapse_all" },
+	{ key = "x", action = "close_node" },
+	{ key = "X", action = "collapse_all" },
 	{ key = "<C-r>", action = "refresh" },
-	{ key = "C",     action = "cd" },
-	{ key = "u",     action = "dir_up" },
+	{ key = "C", action = "cd" },
+	{ key = "u", action = "dir_up" },
 
-	{ key = { "o", "<CR>" },           action = "edit" },
+	{ key = { "o", "<CR>" }, action = "edit" },
 	{ key = { "<C-s>", "<C-w><C-s>" }, action = "split" },
 	{ key = { "<C-v>", "<C-w><C-v>" }, action = "vsplit" },
 	{ key = { "<C-t>", "<C-w><C-t>" }, action = "tabnew" },
 
-	{ key = "p",     action = "parent_node" },
+	{ key = "p", action = "parent_node" },
 	{ key = "<C-k>", action = "prev_sibling" },
 	{ key = "<C-j>", action = "next_sibling" },
-	{ key = "K",     action = "first_sibling" },
-	{ key = "J",     action = "last_sibling" },
+	{ key = "K", action = "first_sibling" },
+	{ key = "J", action = "last_sibling" },
 
-	{ key = "a",         action = "create" },
-	{ key = "dd",        action = "trash" },
-	{ key = "c",         action = "copy" },
+	{ key = "a", action = "create" },
+	{ key = "dd", action = "trash" },
+	{ key = "c", action = "copy" },
 	{ key = "<Leader>x", action = "cut" },
 	{ key = "<Leader>p", action = "paste" },
-	{ key = "r",         action = "rename" },
-    { key = ".",         action = "run_file_command" },
+	{ key = "r", action = "rename" },
+	{ key = ".", action = "run_file_command" },
 
-	{ key = "y",  action = "copy_name" },
-	{ key = "Y",  action = "copy_path" },
+	{ key = "y", action = "copy_name" },
+	{ key = "Y", action = "copy_path" },
 	{ key = "gy", action = "copy_absolute_path" },
 
 	{ key = "[c", action = "prev_git_item" },
 	{ key = "]c", action = "next_git_item" },
 
-	{ key = "I",  action = "toggle_ignored" },
-	{ key = "H",  action = "toggle_dotfiles" },
-    { key = "U",  action = "toggle_custom" },
+	{ key = "I", action = "toggle_ignored" },
+	{ key = "H", action = "toggle_dotfiles" },
+	{ key = "U", action = "toggle_custom" },
 	{ key = "g?", action = "toggle_help" },
 
-	{ key = "<Tab>",     action = "preview" },
+	{ key = "<Tab>", action = "preview" },
 	{ key = "<Leader>o", action = "system_open" },
 
-	{ key = "<C-a>",      action = "resize", action_cb = resize },
+	{ key = "<C-a>", action = "resize", action_cb = resize },
 	{ key = "<Leader>sg", action = "search_text", action_cb = search_text },
 	{ key = "<Leader>sf", action = "search_file", action_cb = search_file },
 
@@ -122,6 +113,17 @@ nvim_tree.setup({
 		open_file = {
 			window_picker = {
 				chars = "ASDHJKL",
+			},
+		},
+	},
+	renderer = {
+		highlight_git = true,
+		icons = {
+			glyphs = {
+				git = {
+					staged = "Ꮥ",
+					untracked = "Ü",
+				},
 			},
 		},
 	},
