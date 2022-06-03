@@ -284,12 +284,6 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 		config = [[require("plugin.treesitter")]],
 	})
-	use({
-		"SmiteshP/nvim-gps",
-		after = { "nvim-treesitter", "lualine.nvim" },
-		requires = "nvim-treesitter/nvim-treesitter",
-		config = [[require("plugin.gps")]],
-	})
 
 	-- Make your Vim/Neovim as smart as VSCode.
 	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
