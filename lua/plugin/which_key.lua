@@ -164,6 +164,19 @@ local normal = {
 			h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 			v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		},
+
+		d = {
+			name = "Debug",
+			s = { "<Cmd>lua require'dap'.continue()<CR>", "Start/Continue" },
+			o = { "<Cmd>lua require'dap'.step_over()<CR>", "Step Over" },
+			i = { "<Cmd>lua require'dap'.step_into()<CR>", "Step Into" },
+			p = { "<Cmd>lua require'dap'.step_out()<CR>", "Step Out" },
+			t = { "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint" },
+			c = { "<Cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear Breakpoint" },
+			l = { "<Cmd>lua require'dap'.list_breakpoints()<CR><Cmd>copen<CR>", "List Breakpoint" },
+			u = { "<Cmd>lua require('dapui').toggle()<CR>", "Toggle Dap UI" },
+			g = { "<Cmd>lua require('dap-go').debug_test()<CR>", "Debug closest method for Golang" },
+		},
 	},
 }
 

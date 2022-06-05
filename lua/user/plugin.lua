@@ -285,6 +285,22 @@ return packer.startup(function(use)
 		config = [[require("plugin.treesitter")]],
 	})
 
+	-- Debug Adapter Protocol client implementation for Neovim
+	use({
+		"mfussenegger/nvim-dap",
+		event = "VimEnter",
+	})
+	use({
+		"leoluz/nvim-dap-go",
+		requires = { "mfussenegger/nvim-dap" },
+		ft = { "go" },
+		config = [[require('dap-go').setup()]],
+	})
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+	})
+
 	-- Make your Vim/Neovim as smart as VSCode.
 	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
 
