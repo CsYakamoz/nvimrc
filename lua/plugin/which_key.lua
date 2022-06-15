@@ -86,6 +86,7 @@ local normal = {
 		u = {
 			name = "Utool",
 			a = { "<cmd>ArgWrap<cr>", "ArgWrap" },
+			c = { "<cmd>CheatSH<cr>", "CheatSH" },
 			e = { "<Plug>(ExchangeClear)", "ExchangeClear" },
 			l = { "<cmd>Linediff<cr>", "Line Diff" },
 			u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle" },

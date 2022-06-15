@@ -301,6 +301,13 @@ return packer.startup(function(use)
 		requires = { "mfussenegger/nvim-dap" },
 	})
 
+	-- Nvim cheat sheet implementation
+	use({
+		"Djancyp/cheat-sheet",
+		cmd = "CheatSH",
+		config = [[require("plugin.cheat-sh")]],
+	})
+
 	-- Make your Vim/Neovim as smart as VSCode.
 	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
 
