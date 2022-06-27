@@ -112,7 +112,13 @@ return packer.startup(function(use)
 	})
 
 	-- A vim 7.4+ plugin to generate table of contents for Markdown files.
-	use({ "mzlogin/vim-markdown-toc", cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" } })
+	use({
+		"mzlogin/vim-markdown-toc",
+		cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" },
+		config = function ()
+			vim.cmd([[let g:vmt_list_item_char="-"]])
+		end
+	})
 
 	-- Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 	use({ "plasticboy/vim-markdown", ft = { "markdown" } })
