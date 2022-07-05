@@ -92,16 +92,12 @@ nvim_tree.setup({
 		"dashboard",
 		"alpha",
 	},
-	update_cwd = true,
+	sync_root_with_cwd = true,
 	filters = {
 		custom = { "vendor", "node_modules" },
 	},
-	git = {
-		timeout = 400,
-	},
 	view = {
 		width = "17%",
-		side = "left",
 		preserve_window_proportions = true,
 		mappings = {
 			custom_only = true,
@@ -118,6 +114,8 @@ nvim_tree.setup({
 	},
 	renderer = {
 		highlight_git = true,
+		group_empty = true,
+		full_name = true,
 		icons = {
 			glyphs = {
 				git = {
@@ -126,6 +124,9 @@ nvim_tree.setup({
 				},
 			},
 		},
+	},
+	trash = {
+		cmd = "trash-put",
 	},
 })
 
