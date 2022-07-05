@@ -248,15 +248,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Land on window you chose like tmux's 'display-pane'
-	use({
-		"t9md/vim-choosewin",
-		keys = "-",
-		config = function()
-			vim.cmd([[nmap  -  <Plug>(choosewin)]])
-		end,
-	})
-
 	-- Snippet engine and snippet template
 	use({ "honza/vim-snippets", event = "VimEnter" })
 
