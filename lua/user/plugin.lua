@@ -115,9 +115,10 @@ return packer.startup(function(use)
 	use({
 		"mzlogin/vim-markdown-toc",
 		cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" },
-		config = function ()
+		ft = { "markdown" },
+		config = function()
 			vim.cmd([[let g:vmt_list_item_char="-"]])
-		end
+		end,
 	})
 
 	-- Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
