@@ -12,10 +12,11 @@ vim.g.coc_global_extensions = {
 
 vim.cmd([[
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CocCheckBackSpace() ? "\<TAB>" :
-      \ coc#refresh()
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ?
+	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ CocCheckBackSpace() ? "\<TAB>" :
+	\ coc#refresh()
 
 function! CocCheckBackSpace() abort
 	let col = col('.') - 1
