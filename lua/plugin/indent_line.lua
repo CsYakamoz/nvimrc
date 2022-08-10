@@ -1,8 +1,9 @@
 local indent_blankline = require("indent_blankline")
 
 indent_blankline.setup({
-	char = "┊",
-	context_char = "│",
+	char = "│",
+	-- char = "┊",
+	-- context_char = "│",
 	use_treesitter = true,
 	show_current_context = true,
 
