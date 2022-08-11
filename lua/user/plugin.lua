@@ -133,6 +133,11 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"glepnir/mcc.nvim",
+		config = [[require('plugin.mcc')]],
+	})
+
 	-- markdown preview plugin for (neo)vim
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
