@@ -29,12 +29,10 @@ let g:coc_snippet_prev = '<S-Tab>'
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call CocShowDocumentation()<CR>
 function! CocShowDocumentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	elseif (coc#rpc#ready())
+	if CocAction('hasProvider', 'hover')
 		call CocActionAsync('doHover')
 	else
-		execute '!' . &keywordprg . " " . expand('<cword>')
+		call feedkeys('K', 'in')
 	endif
 endfunction
 
