@@ -288,6 +288,11 @@ return packer.startup(function(use)
 		config = [[require("plugin.treesitter")]],
 	})
 
+	use({
+		"nvim-treesitter/nvim-treesitter-context",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+
 	-- Debug Adapter Protocol client implementation for Neovim
 	use({
 		"mfussenegger/nvim-dap",
