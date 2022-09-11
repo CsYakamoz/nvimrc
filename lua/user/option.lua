@@ -19,6 +19,7 @@ local optionList = {
 	pumheight = 15,
 	foldmethod = "indent",
 	foldlevelstart = 10,
+	mouse = "",
 
 	-- time
 	updatetime = 300,
