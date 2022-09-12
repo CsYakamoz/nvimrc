@@ -2,14 +2,12 @@ local M = {}
 local empty_opts = {}
 local silent_opts = { silent = true }
 local opts = { noremap = true, silent = true }
-local map = vim.api.nvim_set_keymap
-local bmap = vim.api.nvim_buf_set_keymap
+local map = vim.keymap.set
 
 M.empty_opts = empty_opts
 M.silent_opts = silent_opts
 M.opts = opts
 M.map = map
-M.bmap = bmap
 
 --Remap space as leader key
 map("", "<Space>", "<Nop>", opts)
@@ -117,5 +115,36 @@ map("n", "#", "?\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
 
 -- Highlight matches without moving: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
 map("n", "z/", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>", opts)
+
+-- reference: https://www.reddit.com/r/vim/comments/ksix5c/replacing_text_my_favorite_remap/
+map("n", "<Leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left><C-r><C-w>", { noremap = true })
+
+vim.cmd([[
+function! SwapWindow(nav) abort
+    let winCount = winnr('$')
+    if winCount == 1
+        return
+    endif
+    let currWinnr = winnr()
+    let currBufnr = bufnr()
+
+    " 0: previous, 1: next
+    let targetWinnr = a:nav == 0 ? currWinnr - 1 : currWinnr + 1
+    if targetWinnr == 0
+        let targetWinnr = winCount
+    elseif targetWinnr >  winCount
+        let targetWinnr = 1
+    endif
+
+    execute targetWinnr . 'wincmd w'
+    let targetBufnr = bufnr()
+
+    execute 'buffer ' . currBufnr . '|'.
+        \ currWinnr . 'wincmd w' . '|'.
+        \ 'buffer ' . targetBufnr
+endf
+]])
+map("n", "<Leader>{", ":<C-U>call SwapWindow(0)<CR>", opts)
+map("n", "<Leader>}", ":<C-U>call SwapWindow(1)<CR>", opts)
 
 return M
