@@ -1,9 +1,12 @@
 {
+  "coc.preferences.extensionUpdateCheck": "daily",
+
   "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
   "snippets.extends": { "typescript": ["javascript"] },
 
-  "semanticTokens.filetypes": ["go", "javascript", "lua", "typescript"],
+  "semanticTokens.enable": true,
 
+  "suggest.snippetIndicator": " ✩",
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
   "suggest.minTriggerInputLength": 2,
@@ -34,35 +37,29 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
+  "suggest.virtualText": true,
+  "suggest.detailField": "abbr",
 
-  "diagnostic.errorSign": "",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
-  "diagnostic.floatConfig": {
-    "border": true,
-    "highlight": "Normal",
-    "focusable": false
-  },
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
   "diagnostic.signPriority": 20,
   "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
 
+  "tree.key.invoke": "o",
   "tree.closedIcon": "",
   "tree.openedIcon": "",
   "tree.key.close": "<Leader>q",
 
+  "outline.autoPreview": true,
   "outline.keepWindow": true,
+  "outline.sortBy": "position",
 
-  "hover.floatConfig": {
-    "border": true,
+  "floatFactory.floatConfig": {
     "highlight": "Normal",
-    "focusable": true
-  },
-
-  "signature.floatConfig": {
-    "border": true,
-    "highlight": "Normal",
-    "focusable": false
+    "border": true
   },
 
   "diagnostic-languageserver.mergeConfig": true,
