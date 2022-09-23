@@ -71,4 +71,8 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 let g:coc_disable_transparent_cursor=1
+
+inoremap <silent><expr> <C-e> coc#pum#visible() ? 
+		\ coc#pum#cancel() :
+		\ col('.') > strlen(getline('.')) ? "\<C-e>" : "\<End>"
 ]])

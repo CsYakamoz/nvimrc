@@ -329,7 +329,12 @@ return packer.startup(function(use)
 	})
 
 	-- Make your Vim/Neovim as smart as VSCode.
-	use({ "neoclide/coc.nvim", branch = "release", config = [[require("plugin.coc")]] })
+	use({
+		"neoclide/coc.nvim",
+		branch = "release",
+		config = [[require("plugin.coc")]],
+		after = "vim-rsi",
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
