@@ -133,6 +133,7 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- neovim macgic char
 	use({
 		"glepnir/mcc.nvim",
 		config = [[require('plugin.mcc')]],
@@ -287,10 +288,17 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 		config = [[require("plugin.treesitter")]],
 	})
-
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
 		requires = "nvim-treesitter/nvim-treesitter",
+	})
+	use({
+		"m-demare/hlargs.nvim",
+		after = "nvim-treesitter",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("hlargs").setup()
+		end,
 	})
 
 	-- Debug Adapter Protocol client implementation for Neovim
