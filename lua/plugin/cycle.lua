@@ -59,4 +59,8 @@ let g:cycle_default_groups = [
     \       'hard_case', {'name': 'Months'}
     \   ],
     \ ]
+
+let g:cycle_default_groups_for_javascript = [
+    \ [ ['var', 'let', 'const'] ],
+    \ ]
 ]])

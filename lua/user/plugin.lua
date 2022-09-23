@@ -96,7 +96,11 @@ return packer.startup(function(use)
 	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
 
 	-- Cycle text within predefined candidates.
-	use({ "bootleq/vim-cycle", keys = { "<C-a>", "<C-v>" }, config = [[require("plugin.cycle")]] })
+	use({
+		"bootleq/vim-cycle",
+		event = "VimEnter",
+		config = [[require("plugin.cycle")]],
+	})
 
 	-- Easy text exchange operator for Vim
 	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("plugin.exchange")]] })
