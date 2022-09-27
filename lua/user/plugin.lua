@@ -29,7 +29,6 @@ if not status_ok then
 	return
 end
 
--- Have packer use a popup window
 packer.init({ display = { open_cmd = "tabedit" } })
 
 return packer.startup(function(use)
@@ -70,7 +69,11 @@ return packer.startup(function(use)
 	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 
 	-- A Vim plugin for profiling Vim's startup time.
-	use({ "dstein64/vim-startuptime", cmd = "StartupTime", config = [[vim.g.startuptime_tries = 10]] })
+	use({
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+		config = [[vim.g.startuptime_tries = 10]],
+	})
 
 	-- Reorder delimited items.
 	use({ "machakann/vim-swap", keys = { "gs" } })
@@ -87,7 +90,10 @@ return packer.startup(function(use)
 	})
 
 	-- asily search for, substitute, and abbreviate multiple variants of a word
-	use({ "tpope/vim-abolish", keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" } })
+	use({
+		"tpope/vim-abolish",
+		keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
+	})
 
 	-- 『盘古之白』中文排版自动规范化的 Vim 插件
 	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
@@ -100,15 +106,27 @@ return packer.startup(function(use)
 	})
 
 	-- Easy text exchange operator for Vim
-	use({ "tommcdo/vim-exchange", keys = { { "x", "<C-x>" } }, config = [[require("plugin.exchange")]] })
+	use({
+		"tommcdo/vim-exchange",
+		keys = { { "x", "<C-x>" } },
+		config = [[require("plugin.exchange")]],
+	})
 
 	-- A simple, easy-to-use Vim alignment plugin.
-	use({ "junegunn/vim-easy-align", keys = { { "v", "ga" } }, config = [[require("plugin.easy-align")]] })
+	use({
+		"junegunn/vim-easy-align",
+		keys = { { "v", "ga" } },
+		config = [[require("plugin.easy-align")]],
+	})
 
 	-- Vim plugin for intensely nerdy commenting powers
 	use({
 		"preservim/nerdcommenter",
-		keys = { { "n", "<leader>c<leader>" }, { "x", "<leader>c<leader>" }, { "x", "<leader>cs" } },
+		keys = {
+			{ "n", "<leader>c<leader>" },
+			{ "x", "<leader>c<leader>" },
+			{ "x", "<leader>cs" },
+		},
 		config = [[require('plugin.comment')]],
 	})
 
@@ -137,12 +155,17 @@ return packer.startup(function(use)
 	-- neovim macgic char
 	use({
 		"glepnir/mcc.nvim",
+		event = "VimEnter",
 		config = [[require('plugin.mcc')]],
 	})
 
 	-- markdown preview plugin for (neo)vim
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = { "markdown" } })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && yarn install",
+		ft = { "markdown" },
+	})
 
 	-- Readline style insertion
 	use({ "tpope/vim-rsi", event = "VimEnter" })
@@ -157,7 +180,11 @@ return packer.startup(function(use)
 	use({ "andymass/vim-matchup", event = "VimEnter" })
 
 	-- A more adventurous wildmenu
-	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins", config = [[require("plugin.wilder")]] })
+	use({
+		"gelguy/wilder.nvim",
+		run = ":UpdateRemotePlugins",
+		config = [[require("plugin.wilder")]],
+	})
 
 	-- lua `fork` of vim-web-devicons for neovim
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
@@ -171,7 +198,11 @@ return packer.startup(function(use)
 	})
 
 	-- Indent guides for Neovim
-	use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('plugin.indent_line')]] })
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = "VimEnter",
+		config = [[require('plugin.indent_line')]],
+	})
 
 	-- a lua powered greeter like vim-startify / dashboard-nvim
 	use({
@@ -190,7 +221,11 @@ return packer.startup(function(use)
 	})
 
 	-- A minimal, configurable, neovim style tabline. Use your nvim tabs as workspace multiplexer.
-	use({ "nanozuki/tabby.nvim", config = [[require('plugin.tabline')]] })
+	use({
+		"nanozuki/tabby.nvim",
+		event = "BufEnter",
+		config = [[require('plugin.tabline')]],
+	})
 
 	-- A neovim lua plugin to help easily manage multiple terminal windows
 	use({
@@ -201,7 +236,11 @@ return packer.startup(function(use)
 	})
 
 	-- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-	use({ "folke/which-key.nvim", event = "VimEnter", config = [[require('plugin.which_key')]] })
+	use({
+		"folke/which-key.nvim",
+		event = "VimEnter",
+		config = [[require('plugin.which_key')]],
+	})
 
 	-- Smooth scrolling neovim plugin written in lua
 	use({
@@ -260,7 +299,11 @@ return packer.startup(function(use)
 	use({ "honza/vim-snippets", event = "VimEnter" })
 
 	-- Vim plugin, insert or delete brackets, parens, quotes in pair
-	use({ "jiangmiao/auto-pairs", event = "VimEnter", config = [[vim.g.AutoPairsShortcutBackInsert = '']] })
+	use({
+		"jiangmiao/auto-pairs",
+		event = "VimEnter",
+		config = [[vim.g.AutoPairsShortcutBackInsert = '']],
+	})
 
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	use({
@@ -308,6 +351,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"rcarriga/nvim-dap-ui",
+		after = "nvim-dap",
 		requires = { "mfussenegger/nvim-dap" },
 	})
 
