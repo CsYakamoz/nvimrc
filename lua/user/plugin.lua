@@ -47,9 +47,6 @@ return packer.startup(function(use)
 	-- All the lua functions I don't want to write twice
 	use("nvim-lua/plenary.nvim")
 
-	-- An implementation of the Popup API from vim in Neovim
-	use({ "nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim" })
-
 	-- colorscheme
 	use({ "sainnhe/everforest" })
 
