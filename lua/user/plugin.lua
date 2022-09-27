@@ -295,14 +295,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
 		requires = "nvim-treesitter/nvim-treesitter",
-	})
-	use({
-		"m-demare/hlargs.nvim",
 		after = "nvim-treesitter",
-		requires = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("hlargs").setup()
-		end,
 	})
 
 	-- Debug Adapter Protocol client implementation for Neovim
