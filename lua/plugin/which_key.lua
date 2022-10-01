@@ -92,6 +92,13 @@ local normal = {
 			u = { "<cmd>UndotreeToggle<cr>", "UndotreeToggle" },
 			t = { "<cmd>TestNearest<cr>", "TestNearest" },
 			T = { "<cmd>TestFile<cr>", "TestFile" },
+			s = {
+				name = "Session-Manager",
+				d = { "<cmd>SessionManager delete_session<cr>", "Delete Session" },
+				l = { "<cmd>SessionManager load_current_dir_session<cr>", "Load Current Dir Session" },
+				L = { "<cmd>SessionManager load_session<cr>", "Load Session" },
+				s = { "<cmd>SessionManager save_current_session<cr>", "Save Session" },
+			},
 		},
 
 		m = {

@@ -362,6 +362,14 @@ return packer.startup(function(use)
 		config = [[require("plugin.cheat-sh")]],
 	})
 
+	-- A simple wrapper around :mksession.
+	use({
+		"Shatur/neovim-session-manager",
+		cmd = "SessionManager",
+		requires = "plenary.nvim",
+		config = [[require("plugin.session")]],
+	})
+
 	-- Make your Vim/Neovim as smart as VSCode.
 	use({
 		"neoclide/coc.nvim",
