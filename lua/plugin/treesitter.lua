@@ -7,6 +7,15 @@ configs.setup({
 		enable = true,
 		disable = { "bash" },
 	},
+	textobjects = {
+		select = {
+			enable = true,
+			keymaps = {
+				["i,"] = "@parameter.inner",
+				["a,"] = "@parameter.outer",
+			},
+		},
+	},
 	-- andymass/vim-matchup: Tree-sitter integration
 	matchup = {
 		enable = true,

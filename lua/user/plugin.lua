@@ -337,6 +337,11 @@ return packer.startup(function(use)
 		requires = "nvim-treesitter/nvim-treesitter",
 		after = "nvim-treesitter",
 	})
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		requires = "nvim-treesitter/nvim-treesitter",
+		after = "nvim-treesitter",
+	})
 
 	-- Debug Adapter Protocol client implementation for Neovim
 	use({
