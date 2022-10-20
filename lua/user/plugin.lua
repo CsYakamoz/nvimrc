@@ -343,22 +343,6 @@ return packer.startup(function(use)
 		after = "nvim-treesitter",
 	})
 
-	-- Debug Adapter Protocol client implementation for Neovim
-	use({
-		"mfussenegger/nvim-dap",
-		event = "VimEnter",
-	})
-	use({
-		"leoluz/nvim-dap-go",
-		requires = { "mfussenegger/nvim-dap" },
-		ft = { "go" },
-		config = [[require('dap-go').setup()]],
-	})
-	use({
-		"rcarriga/nvim-dap-ui",
-		after = "nvim-dap",
-		requires = { "mfussenegger/nvim-dap" },
-	})
 
 	-- Nvim cheat sheet implementation
 	use({
