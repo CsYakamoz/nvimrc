@@ -65,9 +65,6 @@ return packer.startup(function(use)
 	-- Wrap and unwrap function arguments, lists, and dictionaries in Vim
 	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
 
-	-- The undo history visualizer for VIM
-	use({ "mbbill/undotree", cmd = "UndotreeToggle" })
-
 	-- A Vim plugin for profiling Vim's startup time.
 	use({
 		"dstein64/vim-startuptime",
@@ -283,18 +280,6 @@ return packer.startup(function(use)
 		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
 	})
 
-	-- Incremental fuzzy search motion plugin for Neovim
-	use({
-		"rlane/pounce.nvim",
-		keys = { { "n", "s" }, { "v", "s" } },
-		config = function()
-			vim.cmd([[
-			nmap s <cmd>Pounce<CR>
-			vmap s <cmd>Pounce<CR>
-		]])
-		end,
-	})
-
 	-- Snippet engine and snippet template
 	use({ "honza/vim-snippets", event = "VimEnter" })
 
@@ -341,14 +326,6 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		requires = "nvim-treesitter/nvim-treesitter",
 		after = "nvim-treesitter",
-	})
-
-
-	-- Nvim cheat sheet implementation
-	use({
-		"Djancyp/cheat-sheet",
-		cmd = "CheatSH",
-		config = [[require("plugin.cheat-sh")]],
 	})
 
 	-- A simple wrapper around :mksession.
