@@ -44,8 +44,6 @@
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
-  "diagnostic.signPriority": 20,
-  "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
 
   "tree.key.invoke": "o",
@@ -96,13 +94,22 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
-      "filetypes": ["go"],
+      "filetypes": ["go", "gomod"],
       "progressOnInitialization": true,
       "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
       "settings": {
         "gopls": {
           "usePlaceholders": true,
-          "semanticTokens": true
+          "semanticTokens": true,
+          "hints": {
+            "assignVariableTypes": true,
+            "compositeLiteralFields": true,
+            "compositeLiteralTypes": true,
+            "constantValues": true,
+            "functionTypeParameters": true,
+            "parameterNames": true,
+            "rangeVariableTypes": true
+          }
         }
       }
     },
