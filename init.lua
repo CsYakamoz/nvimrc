@@ -11,6 +11,10 @@ require("user.keymap")
 
 require("user.plugin")
 
-require("user.colorscheme")
+local ok, _ = pcall(require, "user.colorscheme.color")
+if not ok then
+	print("user/colorscheme/color.lua is not exist")
+end
+
 require("user.input-method")
 require("user.move_tab")
