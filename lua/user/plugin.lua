@@ -293,7 +293,6 @@ return packer.startup(function(use)
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	use({
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
 		config = [[require("plugin.telescope")]],
 	})
 	use({
