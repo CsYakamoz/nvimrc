@@ -40,11 +40,9 @@
   "suggest.virtualText": true,
   "suggest.detailField": "abbr",
 
-  "diagnostic.errorSign": "",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.signLevel": "warning",
+  "diagnostic.messageLevel": "warning",
 
   "tree.key.invoke": "o",
   "tree.closedIcon": "",
