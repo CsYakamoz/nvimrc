@@ -165,7 +165,7 @@ return packer.startup(function(use)
 	})
 
 	-- Readline style insertion
-	use({ "tpope/vim-rsi", event = "VimEnter" })
+	use({ "tpope/vim-rsi" })
 
 	-- enable repeating supported plugin maps with "."
 	use({ "tpope/vim-repeat", event = "VimEnter" })
