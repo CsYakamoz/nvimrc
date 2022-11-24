@@ -119,32 +119,4 @@ map("n", "z/", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>", 
 -- reference: https://www.reddit.com/r/vim/comments/ksix5c/replacing_text_my_favorite_remap/
 map("n", "<Leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left><C-r><C-w>", { noremap = true })
 
-vim.cmd([[
-function! SwapWindow(nav) abort
-    let winCount = winnr('$')
-    if winCount == 1
-        return
-    endif
-    let currWinnr = winnr()
-    let currBufnr = bufnr()
-
-    " 0: previous, 1: next
-    let targetWinnr = a:nav == 0 ? currWinnr - 1 : currWinnr + 1
-    if targetWinnr == 0
-        let targetWinnr = winCount
-    elseif targetWinnr >  winCount
-        let targetWinnr = 1
-    endif
-
-    execute targetWinnr . 'wincmd w'
-    let targetBufnr = bufnr()
-
-    execute 'buffer ' . currBufnr . '|'.
-        \ currWinnr . 'wincmd w' . '|'.
-        \ 'buffer ' . targetBufnr
-endf
-]])
-map("n", "<Leader>{", ":<C-U>call SwapWindow(0)<CR>", opts)
-map("n", "<Leader>}", ":<C-U>call SwapWindow(1)<CR>", opts)
-
 return M
