@@ -53,7 +53,7 @@ return packer.startup(function(use)
 	use({ "moll/vim-bbye", cmd = "Bdelete" })
 
 	-- A vim plugin to perform diffs on blocks of code
-	use({ "AndrewRadev/linediff.vim", cmd = "Linediff" })
+	use({ "AndrewRadev/linediff.vim", cmd = { "Linediff", "LinediffAdd", "LinediffReset" } })
 
 	-- A Vim plugin to copy text through SSH with OSC52
 	use({
