@@ -13,8 +13,17 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('ch', 'checkhealth')
+
 call SetupCommandAbbrs('cl', 'CocList')
 call SetupCommandAbbrs('cr', 'CocRestart')
 call SetupCommandAbbrs('co', 'CocOutline')
-call SetupCommandAbbrs('dc', 'DiffviewClose')
+
+call SetupCommandAbbrs('dvb', 'DiffviewFileHistory %') " DiffviewFileHistory Current Buffer
+call SetupCommandAbbrs('dvc', 'DiffviewClose')
+
+" dont use SetupCommandAbbrs, because need to support visual mode
+cabbr lda LinediffAdd
+call SetupCommandAbbrs('ldb', '%Linediff') " Linediff Current Buffer
+call SetupCommandAbbrs('ldr', 'LinediffReset')
+call SetupCommandAbbrs('lds', 'LinediffShow')
 ]])
