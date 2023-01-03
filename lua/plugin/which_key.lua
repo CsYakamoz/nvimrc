@@ -162,6 +162,7 @@ local normal = {
 			m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
 			R = { "<cmd>Telescope registers<cr>", "Registers" },
+			w = { "<cmd>Telescope grep_string<cr>", "Grep Word String" },
 		},
 
 		t = {

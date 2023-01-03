@@ -144,6 +144,7 @@ telescope.setup({
 		registers = { theme = "ivy" },
 		jumplist = { theme = "ivy" },
 		current_buffer_fuzzy_find = { theme = "ivy", previewer = false },
+		grep_string = { theme = "ivy" },
 	},
 	extensions = {
 		fzf = {
