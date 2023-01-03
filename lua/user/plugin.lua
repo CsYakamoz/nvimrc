@@ -161,6 +161,7 @@ return packer.startup(function(use)
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
+		cond = vim.fn.executable("yarn") == 1,
 		ft = { "markdown" },
 	})
 
@@ -298,6 +299,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",
+		cond = vim.fn.executable("make") == 1,
 		after = "telescope.nvim",
 		requires = "nvim-telescope/telescope.nvim",
 		config = [[require('telescope').load_extension("fzf")]],
