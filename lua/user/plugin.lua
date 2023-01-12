@@ -149,11 +149,11 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- neovim macgic char
+	-- a neovim plugin that change type character to other characters accroding rules and filter.
 	use({
-		"glepnir/mcc.nvim",
-		event = "VimEnter",
-		config = [[require('plugin.mcc')]],
+		"glepnir/mutchar.nvim",
+		ft = { "go" },
+		config = [[require("plugin.mutchar")]],
 	})
 
 	-- markdown preview plugin for (neo)vim
