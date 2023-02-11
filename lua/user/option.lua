@@ -1,30 +1,34 @@
-vim.cmd([[
-language en_US.UTF-8
-]])
+vim.api.nvim_exec("language en_US", true)
 
 local optionList = {
+	mouse = "",
 	wrap = false,
 	number = true,
 	hidden = true,
-	cursorline = true,
-	termguicolors = true,
 	swapfile = false,
 	autoread = true,
-	background = "light",
-	synmaxcol = 300,
-	colorcolumn = { 80, 120 },
+	jumpoptions = "stack",
+	timeoutlen = 400,
+
+	-- appearance
+	background = "light", -- default to light, and may be overwritten in lua/user/colorscheme/color.lua
+	termguicolors = true,
+	cursorline = true,
+	-- This comment is copied from ESLint
+	-- Very long lines of code in any language can be difficult to read.
+	-- In order to aid in readability and maintainability
+	-- Many coders have developed a convention to limit lines of code to X number of characters
+	-- (traditionally 80 characters).
+	colorcolumn = { 80, 120 }, -- help me checking the line
 	signcolumn = "yes",
+	synmaxcol = 300,
+
+	-- work with listchars(see below)
 	list = true,
-	completeopt = "menuone,noselect",
-	pumheight = 15,
+
+	-- fold
 	foldmethod = "indent",
 	foldlevelstart = 10,
-	mouse = "",
-
-	-- time
-	updatetime = 300,
-	timeoutlen = 400,
-	jumpoptions = "stack",
 
 	-- match
 	showmatch = true,
@@ -54,11 +58,18 @@ local optionList = {
 	-- split
 	splitright = true,
 	splitbelow = true,
-}
 
-vim.opt.shortmess:append({ c = true })
-vim.opt.listchars = { extends = ">", tab = "▸ ", trail = "·" }
+	-- advised by coc
+	backup = false,
+	writebackup = false,
+	updatetime = 300,
+
+	-- replace
+	inccommand = "split",
+}
 
 for k, v in pairs(optionList) do
 	vim.opt[k] = v
 end
+
+vim.opt.listchars = { extends = ">", tab = "▸ ", trail = "·" }

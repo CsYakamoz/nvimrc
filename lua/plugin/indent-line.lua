@@ -20,6 +20,5 @@ indent_blankline.setup({
 		"gitconfig",
 		"alpha",
 		"NvimTree",
-		"packer",
 	},
 })

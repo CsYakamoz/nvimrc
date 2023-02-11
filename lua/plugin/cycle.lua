@@ -1,10 +1,12 @@
-vim.cmd([[
-let g:cycle_no_mappings = 1
-noremap <silent> <Plug>CycleFallbackNext <C-A>
-noremap <silent> <Plug>CycleFallbackPrev <C-X>
-nmap <silent> <C-a> <Plug>CycleNext
-nmap <silent> <C-x> <Plug>CyclePrev
+local keymap = require("user.keymap")
 
+vim.g.cycle_no_mappings = 1
+keymap.map("n", "<Plug>CycleFallbackNext", "<C-A>", keymap.opts)
+keymap.map("n", "<Plug>CycleFallbackPrev", "<C-X>", keymap.opts)
+keymap.map("n", "<C-a>", "<Plug>CycleNext", keymap.silent_opts)
+keymap.map("n", "<C-x>", "<Plug>CyclePrev", keymap.silent_opts)
+
+vim.cmd([[
 let g:cycle_default_groups = [
     \   [ [',', '，'] ],
     \   [ ['.', '。'] ],

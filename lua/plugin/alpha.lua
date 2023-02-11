@@ -14,7 +14,7 @@ dashboard.section.header.val = {
 	[[ ⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁    ]],
 }
 dashboard.section.buttons.val = {
-	dashboard.button("f", "Find (Git) file", "<cmd>lua project_files()<CR>"),
+	dashboard.button("f", "Find (Git) file", "<cmd>TelescopeProjectFile<CR>"),
 	dashboard.button("F", "Find file", ":Telescope find_files <CR>"),
 	dashboard.button("s", "Git changed file", ":Telescope git_status <CR>"),
 	dashboard.button("r", "Recently used files", ":Telescope oldfiles only_cwd=true<CR>"),

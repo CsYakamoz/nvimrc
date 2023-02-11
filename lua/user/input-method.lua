@@ -5,7 +5,7 @@ vim.cmd([[
 let s:auto = 0
 let s:input_toggle = 0
 
-if has('mac') && executable('im-select')
+if g:os == "mac" && executable('im-select')
     function! s:Method2En()
         let method = trim(system("im-select"))
 
@@ -27,7 +27,7 @@ if has('mac') && executable('im-select')
     endfunction
 
 	let s:auto = 1
-elseif has('unix') && executable('fcitx-remote')
+elseif g:os == "linux" && executable('fcitx-remote')
 	" `fcitx-remote`: 0 for close, 1 for inactive, 2 for active
     function! s:Method2En()
         let input_status = system("fcitx-remote")

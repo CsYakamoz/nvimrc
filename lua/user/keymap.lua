@@ -1,16 +1,12 @@
-local M = {}
-local empty_opts = {}
+local map = function(mode, l, r, opts)
+	opts = opts or {}
+	vim.keymap.set(mode, l, r, opts)
+end
+
 local silent_opts = { silent = true }
 local opts = { noremap = true, silent = true }
-local map = vim.keymap.set
-
-M.empty_opts = empty_opts
-M.silent_opts = silent_opts
-M.opts = opts
-M.map = map
 
 --Remap space as leader key
-map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -38,11 +34,12 @@ map("n", "Q", "<Nop>", opts)
 
 -- Ctrl-c doesn't trigger the InsertLeave autocmd . map to <ESC> instead
 -- map("i", "<C-c>", "<Esc>", opts)
+-- Force myself to use <C-[> in insert mode
 map("i", "<C-c>", "<Nop>", opts)
 
 -- Like j,k in normal mode
-map("i", "<C-k>", "<Up>", empty_opts)
-map("i", "<C-j>", "<Down>", empty_opts)
+map("i", "<C-k>", "<Up>")
+map("i", "<C-j>", "<Down>")
 
 -- Focus the current split: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
 map("n", "<Leader>z", ":tab split<CR>", opts)
@@ -60,15 +57,15 @@ map("n", "N", "Nzzzv", opts)
 map("n", "<C-n>", "gt", opts)
 map("n", "<C-p>", "gT", opts)
 
--- Unimpaired.vim
+-- See unimpaired.vim
 map("n", "]q", ":cnext<CR>", opts)
 map("n", "[q", ":cprevious<CR>", opts)
 map("n", "]e", ":<c-u>execute 'move +'. v:count1<cr>", opts)
 map("n", "[e", ":<c-u>execute 'move -1-'. v:count1<cr>", opts)
 map("n", "]ow", ":set wrap!<CR>", opts)
-map("n", "[ow", "]ow", empty_opts)
+map("n", "[ow", ":set wrap!<CR>", opts)
 map("n", "]op", ":set paste!<CR>", opts)
-map("n", "[op", "]op", empty_opts)
+map("n", "[op", ":set paste!<CR>", opts)
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
@@ -114,9 +111,23 @@ map("n", "*", "/\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
 map("n", "#", "?\\<<C-R>=expand('<cword>')<CR>\\><CR>", opts)
 
 -- Highlight matches without moving: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
-map("n", "z/", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>", opts)
+map(
+	"n",
+	"z/",
+	":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>",
+	opts
+)
 
 -- reference: https://www.reddit.com/r/vim/comments/ksix5c/replacing_text_my_favorite_remap/
-map("n", "<Leader>rw", ":%s/\\<<C-r><C-w>\\>//g<Left><Left><C-r><C-w>", { noremap = true })
+map(
+	"n",
+	"<Leader>rw",
+	":%s/\\<<C-r><C-w>\\>//g<Left><Left><C-r><C-w>",
+	{ noremap = true }
+)
 
-return M
+return {
+	silent_opts = silent_opts,
+	opts = opts,
+	map = map,
+}

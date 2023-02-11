@@ -1,5 +1,4 @@
-vim.cmd([[
-let g:exchange_no_mappings = 1
+local keymap = require("user.keymap")
 
-xmap <C-x> <Plug>(Exchange)
-]])
+vim.g.exchange_no_mappings = 1
+keymap.map("x", "<C-x>", "<Plug>(Exchange)")

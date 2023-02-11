@@ -39,9 +39,9 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 
-nmap <silent> gd :Telescope coc definitions theme=ivy<CR>
-nmap <silent> <leader>gi :Telescope coc implementations theme=ivy<CR>
-nmap <silent> gr :Telescope coc references theme=ivy<CR>
+nmap <silent> gd :Telescope coc definitions<CR>
+nmap <silent> <leader>gi :Telescope coc implementations<CR>
+nmap <silent> gr :Telescope coc references<CR>
 
 nmap <silent> <Leader>f :call CocAction('format')<CR>
 xmap <silent> <Leader>f  <Plug>(coc-format-selected)
@@ -72,7 +72,7 @@ omap ac <Plug>(coc-classobj-a)
 
 let g:coc_disable_transparent_cursor=1
 
-inoremap <silent><expr> <C-e> coc#pum#visible() ? 
+inoremap <silent><expr> <C-e> coc#pum#visible() ?
 		\ coc#pum#cancel() :
 		\ col('.') > strlen(getline('.')) ? "\<C-e>" : "\<End>"
 ]])

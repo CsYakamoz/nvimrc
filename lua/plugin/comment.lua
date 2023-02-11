@@ -1,10 +1,8 @@
-vim.cmd([[
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+-- Add spaces after comment delimiters by default
+vim.g.NERDSpaceDelims = 1
 
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
+-- Enable trimming of trailing whitespace when uncommenting
+vim.g.NERDTrimTrailingWhitespace = 1
 
-" Specifies the default alignment to use when inserting comments.
-let g:NERDDefaultAlign = 'left'
-]])
+-- Specifies the default alignment to use when inserting comments.
+vim.g.NERDDefaultAlign = "left"

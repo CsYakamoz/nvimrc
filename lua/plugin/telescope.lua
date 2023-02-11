@@ -6,22 +6,25 @@ local action_state = require("telescope.actions.state")
 local previewers = require("telescope.previewers")
 
 -- Refer: https://github.com/nvim-telescope/telescope.nvim/issues/1048
-local function open_on_tab(prompt_bufnr)
-	local picker = action_state.get_current_picker(prompt_bufnr)
-	local num_selections = #picker:get_multi_selection()
-	local copen = true
-	if not num_selections or num_selections <= 1 then
-		actions.add_selection(prompt_bufnr)
-		copen = false
-	end
+local function open_on_tab(action)
+	return function(prompt_bufnr)
+		local picker = action_state.get_current_picker(prompt_bufnr)
+		local num_selections = #picker:get_multi_selection()
+		local copen = true
 
-	if copen then
-		actions.send_selected_to_qflist(prompt_bufnr)
-		vim.cmd("tabnew")
-		vim.cmd("copen")
-		vim.cmd("cc")
-	else
-		actions.select_tab(prompt_bufnr)
+		if not num_selections or num_selections <= 1 then
+			actions.add_selection(prompt_bufnr)
+			copen = false
+		end
+
+		if copen then
+			actions.send_selected_to_qflist(prompt_bufnr)
+			vim.cmd("tabnew")
+			vim.cmd("copen")
+			vim.cmd("cc")
+		else
+			action(prompt_bufnr)
+		end
 	end
 end
 
@@ -43,7 +46,8 @@ local buffer_previewer_maker = function(filepath, bufnr, opts)
 end
 
 telescope.setup({
-	defaults = {
+	-- Refer: https://github.com/nvim-telescope/telescope.nvim/issues/938#issuecomment-877539724
+	defaults = require("telescope.themes").get_ivy({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -65,10 +69,10 @@ telescope.setup({
 				["<Down>"] = actions.move_selection_next,
 				["<Up>"] = actions.move_selection_previous,
 
-				["<CR>"] = actions.select_default,
-				["<C-s>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = open_on_tab,
+				["<CR>"] = open_on_tab(actions.select_default),
+				["<C-s>"] = open_on_tab(actions.select_horizontal),
+				["<C-v>"] = open_on_tab(actions.select_vertical),
+				["<C-t>"] = open_on_tab(actions.select_tab),
 
 				["<C-u>"] = actions.preview_scrolling_up,
 				["<C-d>"] = actions.preview_scrolling_down,
@@ -86,10 +90,10 @@ telescope.setup({
 
 			n = {
 				["<esc>"] = actions.close,
-				["<CR>"] = actions.select_default,
-				["<C-s>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = open_on_tab,
+				["<CR>"] = open_on_tab(actions.select_default),
+				["<C-s>"] = open_on_tab(actions.select_horizontal),
+				["<C-v>"] = open_on_tab(actions.select_vertical),
+				["<C-t>"] = open_on_tab(actions.select_tab),
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -128,23 +132,9 @@ telescope.setup({
 		},
 
 		buffer_previewer_maker = buffer_previewer_maker,
-	},
+	}),
 	pickers = {
-		find_files = { theme = "ivy" },
-		git_files = { theme = "ivy" },
-		live_grep = { theme = "ivy" },
-		buffers = { theme = "ivy" },
-		oldfiles = { theme = "ivy" },
-		keymaps = { theme = "ivy" },
-		git_status = { theme = "ivy" },
-		commands = { theme = "ivy" },
-		command_history = { theme = "ivy" },
-		help_tags = { theme = "ivy" },
-		man_pages = { theme = "ivy" },
-		registers = { theme = "ivy" },
-		jumplist = { theme = "ivy" },
-		current_buffer_fuzzy_find = { theme = "ivy", previewer = false },
-		grep_string = { theme = "ivy" },
+		current_buffer_fuzzy_find = { previewer = false },
 	},
 	extensions = {
 		fzf = {
@@ -155,3 +145,12 @@ telescope.setup({
 		},
 	},
 })
+
+vim.api.nvim_create_user_command("TelescopeProjectFile", function()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	if vim.v.shell_error == 0 then
+		vim.cmd([[execute 'Telescope git_files']])
+	else
+		vim.cmd([[execute 'Telescope find_files']])
+	end
+end, {})

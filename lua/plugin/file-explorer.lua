@@ -1,5 +1,9 @@
+local keymap = require("user.keymap")
 local path = require("plenary.path")
 local nvim_tree = require("nvim-tree")
+
+keymap.map("n", "<F4>", ":NvimTreeFindFile<CR>", keymap.opts)
+keymap.map("n", "<M-4>", ":NvimTreeFindFile<CR>", keymap.opts)
 
 local function resize()
 	local wider = 1 - (vim.g.cs_nvim_tree_resize or 0)
@@ -124,8 +128,3 @@ nvim_tree.setup({
 		cmd = "trash-put",
 	},
 })
-
-local keymap = require("user.keymap")
-
-keymap.map("n", "<F4>", ":NvimTreeFindFile<CR>", keymap.opts)
-keymap.map("n", "<M-4>", ":NvimTreeFindFile<CR>", keymap.opts)

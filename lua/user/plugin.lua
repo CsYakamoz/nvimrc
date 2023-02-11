@@ -1,353 +1,396 @@
-local fn = vim.fn
-
-local packer_install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(packer_install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		packer_install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
-end
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugin.lua source <afile> | PackerSync
-    augroup end
-]])
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
-
-packer.init({ display = { open_cmd = "tabedit" } })
-
-return packer.startup(function(use)
-	-- Improve startup time for Neovim, impatient needs to be setup before any other lua plugin is loaded
-	use({
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient").enable_profile()
-		end,
-	})
-
-	-- Packer can manage itself
-	use({ "wbthomason/packer.nvim" })
-
+return {
 	-- All the lua functions I don't want to write twice
-	use("nvim-lua/plenary.nvim")
+	{ "nvim-lua/plenary.nvim", lazy = true },
 
 	-- colorscheme
-	use({ "sainnhe/everforest" })
+	{
+		"sainnhe/everforest",
+		lazy = false,
+		priority = 1000,
+	},
 
 	-- Delete buffers and close files in Vim without closing your windows or messing up your layout.
-	use({ "moll/vim-bbye", cmd = "Bdelete" })
+	{ "moll/vim-bbye", cmd = "Bdelete" },
 
 	-- A vim plugin to perform diffs on blocks of code
-	use({ "AndrewRadev/linediff.vim", cmd = { "Linediff", "LinediffAdd", "LinediffReset" } })
+	{
+		"AndrewRadev/linediff.vim",
+		cmd = { "Linediff", "LinediffAdd", "LinediffReset" },
+	},
 
 	-- A Vim plugin to copy text through SSH with OSC52
-	use({
+	{
 		"ojroques/vim-oscyank",
-		setup = [[require('plugin.oscyank')]],
+		init = function()
+			require("plugin.oscyank")
+		end,
 		cmd = "OSCYankReg",
-	})
+	},
 
 	-- Wrap and unwrap function arguments, lists, and dictionaries in Vim
-	use({ "FooSoft/vim-argwrap", cmd = "ArgWrap" })
+	{ "FooSoft/vim-argwrap", cmd = "ArgWrap" },
 
 	-- A Vim plugin for profiling Vim's startup time.
-	use({
+	{
 		"dstein64/vim-startuptime",
 		cmd = "StartupTime",
-		config = [[vim.g.startuptime_tries = 10]],
-	})
+		config = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
 
 	-- Reorder delimited items.
-	use({ "machakann/vim-swap", keys = { "gs" } })
+	{ "machakann/vim-swap", keys = { "gs" } },
 
 	-- A Git wrapper so awesome, it should be illegal
-	use({ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } })
+	{ "tpope/vim-fugitive", cmd = { "G", "Git", "Gwrite", "Gread" } },
 
 	-- Run your tests at the speed of thought
-	use({
+	{
 		"vim-test/vim-test",
 		keys = { "<F5>", "<M-5>", "<F6>", "<M-6>" },
 		cmd = { "TestFile", "TestNearest" },
-		config = [[require("plugin.test")]],
-	})
+		config = function()
+			require("plugin.test")
+		end,
+	},
 
 	-- asily search for, substitute, and abbreviate multiple variants of a word
-	use({
+	{
 		"tpope/vim-abolish",
-		keys = { "crs", "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
-	})
+		keys = {
+			"crs",
+			"crm",
+			"crc",
+			"crs",
+			"cru",
+			"cr-",
+			"cr.",
+			"cr<space>",
+			"crt",
+		},
+	},
 
 	-- 『盘古之白』中文排版自动规范化的 Vim 插件
-	use({ "hotoo/pangu.vim", cmd = { "Pangu" } })
+	{ "hotoo/pangu.vim", cmd = { "Pangu" } },
 
 	-- Cycle text within predefined candidates.
-	use({
+	{
 		"bootleq/vim-cycle",
-		event = "VimEnter",
-		config = [[require("plugin.cycle")]],
-	})
+		lazy = false,
+		config = function()
+			require("plugin.cycle")
+		end,
+	},
 
 	-- Easy text exchange operator for Vim
-	use({
+	{
 		"tommcdo/vim-exchange",
-		keys = { { "x", "<C-x>" } },
-		config = [[require("plugin.exchange")]],
-	})
+		keys = { { "<C-x>", mode = "x" } },
+		config = function()
+			require("plugin.exchange")
+		end,
+	},
 
 	-- A simple, easy-to-use Vim alignment plugin.
-	use({
+	{
 		"junegunn/vim-easy-align",
-		keys = { { "v", "ga" } },
-		config = [[require("plugin.easy-align")]],
-	})
+		keys = { { "ga", mode = "v" } },
+		config = function()
+			require("plugin.easy-align")
+		end,
+	},
 
 	-- Vim plugin for intensely nerdy commenting powers
-	use({
+	{
 		"preservim/nerdcommenter",
 		keys = {
-			{ "n", "<leader>c<leader>" },
-			{ "x", "<leader>c<leader>" },
-			{ "x", "<leader>cs" },
+			"<leader>c<leader>",
+			{ "<leader>c<leader>", mode = "x" },
+			{ "<leader>cs", mode = "x" },
 		},
-		config = [[require('plugin.comment')]],
-	})
+		config = function()
+			require("plugin.comment")
+		end,
+	},
 
 	-- A vim 7.4+ plugin to generate table of contents for Markdown files.
-	use({
+	{
 		"mzlogin/vim-markdown-toc",
 		cmd = { "GenTocGFM", "GenTocGitLab", "GenTocMarked" },
 		ft = { "markdown" },
 		config = function()
-			vim.cmd([[let g:vmt_list_item_char="-"]])
+			vim.g.vmt_list_item_char = "-"
 		end,
-	})
+	},
 
 	-- Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
-	use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+	{
+		"plasticboy/vim-markdown",
+		ft = { "markdown" },
+		config = function()
+			vim.g.vim_markdown_toc_autofit = 1
+		end,
+	},
 
 	-- This plugin adds 3 kind of horizontal highlights for text filetypes
-	use({
+	{
 		"lukas-reineke/headlines.nvim",
 		ft = { "markdown", "rmd", "vimwiki" },
-		config = function()
-			require("headlines").setup()
-		end,
-	})
+		config = true,
+	},
 
 	-- a neovim plugin that change type character to other characters accroding rules and filter.
-	use({
+	{
 		"glepnir/mutchar.nvim",
 		ft = { "go" },
-		config = [[require("plugin.mutchar")]],
-	})
+		config = function()
+			require("plugin.mutchar")
+		end,
+	},
 
 	-- markdown preview plugin for (neo)vim
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
-	use({
+	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && yarn install",
+		build = "cd app && yarn install",
 		cond = vim.fn.executable("yarn") == 1,
 		ft = { "markdown" },
-	})
+	},
 
 	-- Readline style insertion
-	use({ "tpope/vim-rsi" })
+	{ "tpope/vim-rsi", event = "VeryLazy" },
 
 	-- enable repeating supported plugin maps with "."
-	use({ "tpope/vim-repeat", event = "VimEnter" })
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 
 	-- Set of operators and textobjects to search/select/edit sandwiched texts.
-	use({ "machakann/vim-sandwich", event = "VimEnter" })
+	{
+		"machakann/vim-sandwich",
+		event = { "BufReadPost", "BufNewFile" },
+	},
 
 	-- match-up is a plugin that lets you highlight, navigate, and operate on sets of matching text.
-	use({ "andymass/vim-matchup", event = "VimEnter" })
+	{
+		"andymass/vim-matchup",
+		event = { "BufReadPost", "BufNewFile" },
+	},
 
 	-- A more adventurous wildmenu
-	use({
+	{
 		"gelguy/wilder.nvim",
-		run = ":UpdateRemotePlugins",
-		config = [[require("plugin.wilder")]],
-	})
+		event = "VeryLazy",
+		build = ":UpdateRemotePlugins",
+		config = function()
+			require("plugin.wilder")
+		end,
+	},
 
 	-- lua `fork` of vim-web-devicons for neovim
-	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
+	{ "kyazdani42/nvim-web-devicons", lazy = true },
 
 	-- A file explorer tree for neovim written in lua
-	use({
+	{
 		"kyazdani42/nvim-tree.lua",
-		after = "nvim-web-devicons",
-		config = [[require('plugin.file-explorer')]],
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+		keys = { "<F4>", "<M-4>" },
+		config = function()
+			require("plugin.file-explorer")
+		end,
+	},
 
 	-- Indent guides for Neovim
-	use({
+	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "VimEnter",
-		config = [[require('plugin.indent_line')]],
-	})
+		event = { "VeryLazy" },
+		config = function()
+			require("plugin.indent-line")
+		end,
+	},
 
 	-- a lua powered greeter like vim-startify / dashboard-nvim
-	use({
+	{
 		"goolord/alpha-nvim",
-		after = "nvim-web-devicons",
-		config = [[require('plugin.alpha')]],
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("plugin.alpha")
+		end,
+	},
 
 	-- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
-	use({
+	{
 		"nvim-lualine/lualine.nvim",
-		after = "nvim-web-devicons",
-		config = [[require('plugin.statusline')]],
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+		event = "VeryLazy",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("plugin.statusline")
+		end,
+	},
 
 	-- A minimal, configurable, neovim style tabline. Use your nvim tabs as workspace multiplexer.
-	use({
+	{
 		"nanozuki/tabby.nvim",
-		event = "BufEnter",
-		config = [[require('plugin.tabline')]],
-	})
+		event = "VeryLazy",
+		config = function()
+			require("plugin.tabline")
+		end,
+	},
 
 	-- A neovim lua plugin to help easily manage multiple terminal windows
-	use({
+	{
 		"akinsho/toggleterm.nvim",
 		cmd = { "CD", "ToggleTerm" },
 		keys = { "<M-j>" },
-		config = [[require('plugin.toggleterm')]],
-	})
+		config = function()
+			require("plugin.toggleterm")
+		end,
+	},
 
 	-- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-	use({
+	{
 		"folke/which-key.nvim",
-		event = "VimEnter",
-		config = [[require('plugin.which_key')]],
-	})
+		event = "VeryLazy",
+		config = function()
+			require("plugin.which-key")
+		end,
+	},
 
 	-- Smooth scrolling neovim plugin written in lua
-	use({
+	{
 		"karb94/neoscroll.nvim",
-		keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
-		config = [[require('plugin.neoscroll')]],
-	})
+		keys = {
+			"<C-u>",
+			"<C-d>",
+			"<C-b>",
+			"<C-f>",
+			"<C-y>",
+			"<C-e>",
+			"zt",
+			"zz",
+			"zb",
+		},
+		config = function()
+			require("plugin.neoscroll")
+		end,
+	},
 
 	-- Better quickfix window in Neovim, polish old quickfix window.
-	use({ "kevinhwang91/nvim-bqf", event = "FileType qf" })
+	{ "kevinhwang91/nvim-bqf", event = "VeryLazy" },
 
 	-- Hlsearch Lens for Neovim
-	use({
+	{
 		"kevinhwang91/nvim-hlslens",
 		keys = {
-			{ "n", "n" },
-			{ "n", "N" },
-			{ "n", "*" },
-			{ "n", "#" },
-			{ "v", "*" },
+			"n",
+			"N",
+			"*",
+			"#",
 			"z/",
-			{ "v", "/" },
-			{ "v", "?" },
+			{ "*", mode = "v" },
+			{ "/", mode = "v" },
+			{ "?", mode = "v" },
 		},
-		config = [[require('plugin.hlslens')]],
-	})
+		config = function()
+			require("plugin.hlslens")
+		end,
+	},
 
 	-- Git integration for buffers
-	use({
+	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufEnter",
-		config = [[require('plugin.gitsigns')]],
-		requires = "nvim-lua/plenary.nvim",
-	})
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugin.gitsigns")
+		end,
+	},
 
 	-- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
-	use({
+	{
 		"sindrets/diffview.nvim",
-		requires = "nvim-lua/plenary.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
 		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-	})
+	},
 
 	-- Snippet engine and snippet template
-	use({ "honza/vim-snippets", event = "VimEnter" })
+	{ "honza/vim-snippets", event = "VeryLazy" },
 
 	-- Vim plugin, insert or delete brackets, parens, quotes in pair
-	use({
+	{
 		"jiangmiao/auto-pairs",
-		event = "VimEnter",
-		config = [[vim.g.AutoPairsShortcutBackInsert = '']],
-	})
-
-	-- Find, Filter, Preview, Pick. All lua, all the time.
-	use({
-		"nvim-telescope/telescope.nvim",
-		config = [[require("plugin.telescope")]],
-	})
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-		cond = vim.fn.executable("make") == 1,
-		after = "telescope.nvim",
-		requires = "nvim-telescope/telescope.nvim",
-		config = [[require('telescope').load_extension("fzf")]],
-	})
-	use({
-		"fannheyward/telescope-coc.nvim",
-		after = { "telescope.nvim", "coc.nvim" },
-		requires = { "nvim-telescope/telescope.nvim", "neoclide/coc.nvim" },
-		config = [[require('telescope').load_extension("coc")]],
-	})
-
-	-- treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		event = "BufEnter",
-		run = ":TSUpdate",
-		config = [[require("plugin.treesitter")]],
-	})
-	use({
-		"nvim-treesitter/nvim-treesitter-context",
-		requires = "nvim-treesitter/nvim-treesitter",
-		after = "nvim-treesitter",
-	})
-	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		requires = "nvim-treesitter/nvim-treesitter",
-		after = "nvim-treesitter",
-	})
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			vim.g.AutoPairsShortcutBackInsert = ""
+		end,
+	},
 
 	-- A simple wrapper around :mksession.
-	use({
+	{
 		"Shatur/neovim-session-manager",
 		cmd = "SessionManager",
-		requires = "plenary.nvim",
-		config = [[require("plugin.session")]],
-	})
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugin.session")
+		end,
+	},
 
 	-- Make your Vim/Neovim as smart as VSCode.
-	use({
+	{
 		"neoclide/coc.nvim",
 		branch = "release",
-		config = [[require("plugin.coc")]],
-		after = "vim-rsi",
-	})
+		evet = "VeryLazy",
+		dependencies = { "tpope/vim-rsi" },
+		config = function()
+			require("plugin.coc")
+		end,
+	},
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
-end)
+	-- Find, Filter, Preview, Pick. All lua, all the time.
+	{
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugin.telescope")
+		end,
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+		event = "VeryLazy",
+		cond = vim.fn.executable("make") == 1,
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
+	},
+	{
+		"fannheyward/telescope-coc.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-telescope/telescope.nvim", "neoclide/coc.nvim" },
+		config = function()
+			require("telescope").load_extension("coc")
+		end,
+	},
+
+	-- treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPre", "BufNewFile" },
+		build = ":TSUpdate",
+		config = function()
+			require("plugin.treesitter")
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+}

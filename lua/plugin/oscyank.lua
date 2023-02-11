@@ -1,8 +1,10 @@
+if vim.g.os == "mac" then
+	return
+end
+
 vim.cmd([[
-if !has('macunix')
-	autocmd TextYankPost *
-		\ if v:event.operator is 'y' && v:event.regname is '+' |
-		\   OSCYankReg + |
-		\ endif
-endif
+autocmd TextYankPost *
+	\ if v:event.operator is 'y' && v:event.regname is '+' |
+	\     execute 'OSCYankReg +' |
+	\ endif
 ]])

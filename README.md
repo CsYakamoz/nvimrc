@@ -9,6 +9,7 @@
 - [pynvim](https://github.com/neovim/pynvim)
 - [neovim(npm)](https://github.com/neovim/node-client)
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
+- [fzf](https://github.com/junegunn/fzf)
 
 ## Language Requirements
 

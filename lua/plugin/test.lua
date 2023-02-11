@@ -1,12 +1,9 @@
-vim.cmd([[
-let g:test#strategy = "neovim"
+local keymap = require("user.keymap")
+vim.g["test#strategy"] = "neovim"
+vim.g["test#go#gotest#options"] = { all = "-v" }
 
-let test#go#gotest#options = {
-\   'all':   '-v',
-\ }
+keymap.map("n", "<F5>", ":TestFile<CR>", keymap.opts)
+keymap.map("n", "<M-5>", ":TestFile<CR>", keymap.opts)
 
-nnoremap <silent> <F5> :TestFile<CR>
-nnoremap <silent> <M-5> :TestFile<CR>
-nnoremap <silent> <F6> :TestNearest<CR>
-nnoremap <silent> <M-6> :TestNearest<CR>
-]])
+keymap.map("n", "<F6>", ":TestNearest<CR>", keymap.opts)
+keymap.map("n", "<M-6>", ":TestNearest<CR>", keymap.opts)
