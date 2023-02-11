@@ -87,11 +87,6 @@ local mapping_list = {
 
 nvim_tree.setup({
 	hijack_netrw = false,
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
 	sync_root_with_cwd = true,
 	filters = {
 		custom = { "vendor", "node_modules" },
