@@ -32,7 +32,7 @@ hlslens.setup({
 })
 
 local keymap = require("user.keymap")
-local map = keymap.map
+local map = keymap.set
 local opts = keymap.opts
 
 local call_hlslens = "<Cmd>lua require('hlslens').start()<CR>"

@@ -187,12 +187,12 @@ return {
 	},
 
 	-- lua `fork` of vim-web-devicons for neovim
-	{ "kyazdani42/nvim-web-devicons", lazy = true },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
 	-- A file explorer tree for neovim written in lua
 	{
-		"kyazdani42/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
 		keys = { "<F4>", "<M-4>" },
 		config = function()
@@ -212,7 +212,8 @@ return {
 	-- a lua powered greeter like vim-startify / dashboard-nvim
 	{
 		"goolord/alpha-nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		event = "VimEnter",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("plugin.alpha")
 		end,
@@ -222,7 +223,7 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("plugin.statusline")
 		end,

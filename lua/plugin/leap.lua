@@ -1,13 +1,13 @@
 local keymap = require("user.keymap")
 
-keymap.map(
+keymap.set(
 	{ "n", "v", "o" },
 	",",
 	"<Plug>(leap-forward-to)",
 	keymap.silent_opts
 )
 
-keymap.map(
+keymap.set(
 	{ "n", "v", "o" },
 	"<leader>,",
 	"<Plug>(leap-backward-to)",

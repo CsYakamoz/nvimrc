@@ -29,5 +29,5 @@ local move_tab = function(direction)
 	end
 end
 
-keymap.map("n", "<M-h>", move_tab("left"), keymap.opts)
-keymap.map("n", "<M-l>", move_tab("right"), keymap.opts)
+keymap.set("n", "<M-h>", move_tab("left"), keymap.opts)
+keymap.set("n", "<M-l>", move_tab("right"), keymap.opts)
