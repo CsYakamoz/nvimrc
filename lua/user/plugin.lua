@@ -335,6 +335,15 @@ return {
 		end,
 	},
 
+	-- 🦘 Neovim's answer to the mouse
+	{
+		"ggandor/leap.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugin.leap")
+		end,
+	},
+
 	-- Make your Vim/Neovim as smart as VSCode.
 	{
 		"neoclide/coc.nvim",
