@@ -356,6 +356,16 @@ return {
 		end,
 	},
 
+	-- Not UFO in the sky, but an ultra fold in Neovim.
+	{
+		"kevinhwang91/nvim-ufo",
+		event = "VeryLazy",
+		dependencies = { "kevinhwang91/promise-async", "neoclide/coc.nvim" },
+		config = function()
+			require("plugin.ufo")
+		end,
+	},
+
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		"nvim-telescope/telescope.nvim",
