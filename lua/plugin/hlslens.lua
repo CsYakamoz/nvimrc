@@ -7,7 +7,10 @@ hlslens.setup({
 		local indicator, text, chunks
 		local abs_r_idx = math.abs(r_idx)
 		if abs_r_idx > 1 then
-			indicator = ("%d%s"):format(abs_r_idx, sfw ~= (r_idx > 1) and "▲" or "▼")
+			indicator = ("%d%s"):format(
+				abs_r_idx,
+				sfw ~= (r_idx > 1) and "▲" or "▼"
+			)
 		elseif abs_r_idx == 1 then
 			indicator = sfw ~= (r_idx == 1) and "▲" or "▼"
 		else
@@ -38,12 +41,28 @@ local opts = keymap.opts
 local call_hlslens = "<Cmd>lua require('hlslens').start()<CR>"
 
 -- Remap search mapping, ref: lua/user/keymap.lua
-map("n", "n", "<Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>" .. call_hlslens, opts)
-map("n", "N", "<Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR>" .. call_hlslens, opts)
+map(
+	"n",
+	"n",
+	"<Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>" .. call_hlslens,
+	opts
+)
+map(
+	"n",
+	"N",
+	"<Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR>" .. call_hlslens,
+	opts
+)
 map("n", "*", "/\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts)
 map("n", "#", "?\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts)
 map("v", "*", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>" .. call_hlslens, opts)
-map("n", "z/", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>" .. call_hlslens, opts)
+map(
+	"n",
+	"z/",
+	":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>"
+		.. call_hlslens,
+	opts
+)
 vim.cmd([[
 function! RangeSearch(direction)
 	call inputsave()
