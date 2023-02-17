@@ -8,6 +8,11 @@ local previewers = require("telescope.previewers")
 -- Refer: https://github.com/nvim-telescope/telescope.nvim/issues/1048
 local function open_on_tab(action)
 	return function(prompt_bufnr)
+		local entry = action_state.get_selected_entry()
+		if not entry then
+			return
+		end
+
 		local picker = action_state.get_current_picker(prompt_bufnr)
 		local num_selections = #picker:get_multi_selection()
 		local copen = true
@@ -55,67 +60,28 @@ telescope.setup({
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
-				["<C-w>"] = function()
-					vim.api.nvim_input("<c-s-w>")
-				end,
 				["<C-n>"] = actions.cycle_history_next,
 				["<C-p>"] = actions.cycle_history_prev,
 
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 
-				["<C-c>"] = actions.close,
-
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
-
 				["<CR>"] = open_on_tab(actions.select_default),
 				["<C-s>"] = open_on_tab(actions.select_horizontal),
 				["<C-v>"] = open_on_tab(actions.select_vertical),
 				["<C-t>"] = open_on_tab(actions.select_tab),
 
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
-
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
-
 				["<C-g>"] = actions.toggle_all,
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+				["<C-a>"] = actions.select_all,
 
-				["<C-_>"] = actions.which_key,
 				["<M-p>"] = action_layout.toggle_preview,
 			},
 
 			n = {
-				["<esc>"] = actions.close,
 				["<CR>"] = open_on_tab(actions.select_default),
 				["<C-s>"] = open_on_tab(actions.select_horizontal),
 				["<C-v>"] = open_on_tab(actions.select_vertical),
 				["<C-t>"] = open_on_tab(actions.select_tab),
-
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-
-				["j"] = actions.move_selection_next,
-				["k"] = actions.move_selection_previous,
-				["H"] = actions.move_to_top,
-				["M"] = actions.move_to_middle,
-				["L"] = actions.move_to_bottom,
-
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
-				["gg"] = actions.move_to_top,
-				["G"] = actions.move_to_bottom,
-
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
-
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
-
-				["?"] = actions.which_key,
 			},
 		},
 
