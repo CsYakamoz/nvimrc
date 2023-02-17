@@ -6,10 +6,8 @@ local normal = {
 		prefix = "<leader>",
 	},
 	mappings = {
-		["a"] = { "<cmd>Alpha<cr>", "Alpha" },
 		["x"] = { "<cmd>Bdelete<CR>", "Delete Buffer" },
 		["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-		["S"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		["M"] = { "<cmd>message<cr>", "See Message" },
 
 		u = {
@@ -72,7 +70,7 @@ local normal = {
 
 		s = {
 			name = "Search",
-			b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffers" },
+			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>TelescopeProjectFile<CR>", "Find (Git) files" },
 			F = {
@@ -91,6 +89,7 @@ local normal = {
 			m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
 			R = { "<cmd>Telescope registers<cr>", "Registers" },
+			s = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 			w = { "<cmd>Telescope grep_string<cr>", "Grep Word String" },
 		},
 
