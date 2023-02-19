@@ -1,4 +1,5 @@
 local keymap = require("user.keymap")
+local builtin = require("telescope.builtin")
 local path = require("plenary.path")
 local nvim_tree = require("nvim-tree")
 
@@ -31,13 +32,12 @@ end
 
 local function search_text(node)
 	local dir = getDir(node)
-	print(type(dir))
-	vim.cmd([[Telescope live_grep cwd=]] .. dir)
+	builtin.live_grep({ cwd = dir })
 end
 
 local function search_file(node)
 	local dir = getDir(node)
-	vim.cmd([[Telescope find_files cwd=]] .. dir)
+	builtin.find_files({ cwd = dir })
 end
 
 local mapping_list = {

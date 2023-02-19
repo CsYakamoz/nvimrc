@@ -10,16 +10,15 @@ toggleterm.setup({
 	},
 })
 
-vim.cmd([[
-function! s:CD()
-	let path = expand('%:p:h')
-	if !isdirectory(path)
-        echo 'path does not exist or is not a directory: ' . path
-        return
-    endif
+local function cd()
+	local path = vim.fn.expand("%:p:h")
+	if vim.fn.isdirectory(path) == false then
+		vim.notify("path does not exist or is not a directory: " .. path, "error")
+		return
+	end
 
-	execute 'ToggleTerm dir=' . path . ' direction=float'
-endfunction
+	local cmd = "ToggleTerm dir=" .. path .. " direction=float"
+	vim.cmd(cmd)
+end
 
-command! -nargs=0 CD :call <SID>CD()
-]])
+vim.api.nvim_create_user_command("CD", cd, {})

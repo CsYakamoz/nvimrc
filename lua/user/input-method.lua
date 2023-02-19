@@ -1,58 +1,81 @@
 -- Requirement:
 -- MacOS: im-select
 -- Unix: fcitx-remote, link: https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Vim
-vim.cmd([[
-let s:auto = 0
-let s:input_toggle = 0
 
-if g:os == "mac" && executable('im-select')
-    function! s:Method2En()
-        let method = trim(system("im-select"))
+local auto = false
+local input_toggle = 0
+local method_to_en = nil
+local restore_method = nil
 
-		if method != "com.apple.keylayout.ABC"
-            let s:input_toggle = 1
-			let s:original_method = method
+if vim.g.os == "mac" and vim.fn.executable("im-select") == 1 then
+	auto = true
 
-			call system("im-select com.apple.keylayout.ABC")
-		endif
-    endfunction
+	local original_method = ""
+	local abc = "com.apple.keylayout.ABC"
+	local getMethod = function()
+		return vim.fn.trim(vim.fn.system("im-select"))
+	end
 
-    function! s:RestoreMethod()
-        let method = trim(system("im-select"))
+	method_to_en = function()
+		local method = getMethod()
 
-		if method == "com.apple.keylayout.ABC" && s:input_toggle == 1
-			call system("im-select " . s:original_method)
-            let s:input_toggle = 0
-		endif
-    endfunction
+		if method ~= abc then
+			input_toggle = 1
+			original_method = method
 
-	let s:auto = 1
-elseif g:os == "linux" && executable('fcitx-remote')
-	" `fcitx-remote`: 0 for close, 1 for inactive, 2 for active
-    function! s:Method2En()
-        let input_status = system("fcitx-remote")
+			vim.fn.system("im-select " .. abc)
+		end
+	end
 
-        if input_status == 2
-            let s:input_toggle = 1
-            call system("fcitx-remote -c")
-        endif
-    endfunction
+	restore_method = function()
+		local method = getMethod()
 
-    function! s:RestoreMethod()
-        let input_status = system("fcitx-remote")
+		if method == abc and input_toggle == 1 then
+			input_toggle = 0
 
-        if input_status != 2 && s:input_toggle == 1
-            call system("fcitx-remote -o")
-            let s:input_toggle = 0
-        endif
-    endfunction
+			vim.fn.system("im-select " .. original_method)
+		end
+	end
+end
 
-	let s:auto = 1
-endif
+if vim.g.os == "linux" and vim.fn.executable("fcitx-remote") == 1 then
+	auto = true
 
-if s:auto == 1
-    set ttimeoutlen=150
-    autocmd InsertLeave * call <SID>Method2En()
-    autocmd InsertEnter * call <SID>RestoreMethod()
-endif
-]])
+	local getMethod = function()
+		return vim.api.trim(vim.api.system("fcitx-remote"))
+	end
+
+	-- `fcitx-remote`: 0 for close, 1 for inactive, 2 for active
+	method_to_en = function()
+		local input_status = getMethod()
+
+		if input_status == "2" then
+			input_toggle = 1
+
+			vim.api.system("fcitx-remote -c")
+		end
+	end
+
+	restore_method = function()
+		local input_status = getMethod()
+
+		if input_status ~= "2" and input_toggle == 1 then
+			input_toggle = 0
+			vim.api.system("fcitx-remote -o")
+		end
+	end
+end
+
+if auto then
+	vim.opt.ttimeoutlen = 150
+
+	vim.api.nvim_create_augroup("InputMethod", { clear = true })
+	vim.api.nvim_create_autocmd(
+		"InsertLeave",
+		{ group = "InputMethod", pattern = "*", callback = method_to_en }
+	)
+	vim.api.nvim_create_autocmd(
+		"InsertEnter",
+		{ group = "InputMethod", pattern = "*", callback = restore_method }
+	)
+end
