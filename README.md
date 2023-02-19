@@ -11,6 +11,10 @@
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
 - [fzf](https://github.com/junegunn/fzf)
 
+### Mac Only
+
+[im-select](https://github.com/daipeihust/im-select)
+
 ## Language Requirements
 
 ### Go
