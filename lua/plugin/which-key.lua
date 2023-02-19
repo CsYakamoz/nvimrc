@@ -74,7 +74,7 @@ local normal = {
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>TelescopeProjectFile<CR>", "Find (Git) files" },
 			F = {
-				":Telescope find_files default_text=<C-r><C-w><CR>",
+				":TelescopeProjectFile <C-r><C-w><CR>",
 				"Find Current-Word files",
 			},
 			g = { "<cmd>Telescope live_grep<cr>", "Grep Text" },
@@ -111,6 +111,17 @@ local visual = {
 		u = {
 			name = "Utool",
 			l = { ":Linediff<cr>", "Line Diff" },
+		},
+		s = {
+			name = "Search",
+			f = {
+				"<Esc><cmd>FindVisualFile<cr>",
+				"Find Visual File",
+			},
+			g = {
+				"<Esc><cmd>GrepVisualText<cr>",
+				"Grep Visual Text",
+			},
 		},
 	},
 }
