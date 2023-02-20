@@ -41,6 +41,12 @@
   "diagnostic.checkCurrentLine": true,
   "diagnostic.signLevel": "warning",
   "diagnostic.messageLevel": "warning",
+  "diagnostic.virtualTextLevel": "warning",
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextLineSeparator": "||",
+  "diagnostic.virtualTextCurrentLineOnly": false,
 
   "tree.key.invoke": "o",
   "tree.closedIcon": "",
