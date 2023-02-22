@@ -97,7 +97,6 @@
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go", "gomod"],
-      "progressOnInitialization": true,
       "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
       "settings": {
         "gopls": {
@@ -118,7 +117,6 @@
     "lua": {
       "command": "lua-language-server",
       "filetypes": ["lua"],
-      "progressOnInitialization": true,
       "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
       "settings": {
         "Lua": {
@@ -139,14 +137,12 @@
       "command": "bash-language-server",
       "args": ["start"],
       "filetypes": ["sh", "zsh"],
-      "progressOnInitialization": true,
       "ignoredRootPaths": ["~"]
     },
     "intelephense": {
       "command": "intelephense",
       "args": ["--stdio"],
       "filetypes": ["php"],
-      "progressOnInitialization": true,
       "initializationOptions": {
         "storagePath": "/tmp/intelephense"
       }
