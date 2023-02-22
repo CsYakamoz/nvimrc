@@ -4,9 +4,8 @@ return {
 
 	-- colorscheme
 	{
-		"sainnhe/everforest",
-		lazy = false,
-		priority = 1000,
+		{ "sainnhe/everforest", lazy = false, priority = 1000 },
+		{ "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 	},
 
 	-- Delete buffers and close files in Vim without closing your windows or messing up your layout.
