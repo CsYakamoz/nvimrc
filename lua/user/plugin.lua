@@ -405,7 +405,7 @@ return {
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		build = ":TSUpdate",
 		config = function()
 			require("plugin.treesitter")
@@ -413,12 +413,12 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 }
