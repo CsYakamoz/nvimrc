@@ -16,7 +16,7 @@ return {
 		"rcarriga/nvim-notify",
 		event = "VeryLazy",
 		config = function()
-			require("plugin.coc-notify")
+			vim.notify = require("notify")
 		end,
 	},
 
