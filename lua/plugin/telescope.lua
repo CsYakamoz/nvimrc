@@ -57,14 +57,12 @@ local opts = {
 	selection_caret = " ",
 	path_display = { "smart" },
 
+	-- see https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
 	mappings = {
 		i = {
 			["<esc>"] = actions.close,
-			["<C-n>"] = actions.cycle_history_next,
-			["<C-p>"] = actions.cycle_history_prev,
-
-			["<C-j>"] = actions.move_selection_next,
-			["<C-k>"] = actions.move_selection_previous,
+			["<C-j>"] = actions.cycle_history_next,
+			["<C-k>"] = actions.cycle_history_prev,
 
 			["<CR>"] = open_on_tab(actions.select_default),
 			["<C-s>"] = open_on_tab(actions.select_horizontal),
@@ -72,7 +70,6 @@ local opts = {
 			["<C-t>"] = open_on_tab(actions.select_tab),
 
 			["<C-g>"] = actions.toggle_all,
-			["<C-a>"] = actions.select_all,
 
 			["<M-p>"] = action_layout.toggle_preview,
 		},

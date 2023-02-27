@@ -38,8 +38,8 @@ set("n", "Q", "<Nop>", opts)
 set("i", "<C-c>", "<Nop>", opts)
 
 -- Like j,k in normal mode
-set("i", "<C-k>", "<Up>")
-set("i", "<C-j>", "<Down>")
+-- set("i", "<C-k>", "<Up>")
+-- set("i", "<C-j>", "<Down>")
 
 -- Focus the current split: https://www.reddit.com/r/vim/comments/5civsq/is_there_a_way_to_focus_the_current_split/
 set("n", "<Leader>z", ":tab split<CR>", opts)

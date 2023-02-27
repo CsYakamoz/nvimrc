@@ -72,7 +72,11 @@ omap ac <Plug>(coc-classobj-a)
 
 let g:coc_disable_transparent_cursor=1
 
+"see :help coc-completion
 inoremap <silent><expr> <C-e> coc#pum#visible() ?
 		\ coc#pum#cancel() :
 		\ col('.') > strlen(getline('.')) ? "\<C-e>" : "\<End>"
+
+inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<Down>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<Up>"
 ]])
