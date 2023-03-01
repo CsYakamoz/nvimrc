@@ -11,15 +11,6 @@ return {
 	-- Delete buffers and close files in Vim without closing your windows or messing up your layout.
 	{ "moll/vim-bbye", cmd = "Bdelete" },
 
-	-- A fancy, configurable, notification manager for NeoVim
-	{
-		"rcarriga/nvim-notify",
-		event = "VeryLazy",
-		config = function()
-			vim.notify = require("notify")
-		end,
-	},
-
 	-- A vim plugin to perform diffs on blocks of code
 	{
 		"AndrewRadev/linediff.vim",
