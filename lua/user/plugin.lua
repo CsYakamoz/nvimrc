@@ -202,7 +202,7 @@ return {
 	-- Indent guides for Neovim
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "VeryLazy" },
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("plugin.indent-line")
 		end,
@@ -368,8 +368,17 @@ return {
 	-- Find, Filter, Preview, Pick. All lua, all the time.
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = {
+			"TelescopeProjectFile",
+			"Telescope",
+			"GrepVisualText",
+			"FindVisualFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"fannheyward/telescope-coc.nvim",
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
 		config = function()
 			require("plugin.telescope")
 		end,
@@ -377,17 +386,16 @@ return {
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
-		event = "VeryLazy",
+		lazy = true,
 		cond = vim.fn.executable("make") == 1,
-		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
 			require("telescope").load_extension("fzf")
 		end,
 	},
 	{
 		"fannheyward/telescope-coc.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-telescope/telescope.nvim", "neoclide/coc.nvim" },
+		lazy = true,
+		dependencies = { "neoclide/coc.nvim" },
 		config = function()
 			require("telescope").load_extension("coc")
 		end,
@@ -396,20 +404,23 @@ return {
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		build = ":TSUpdate",
 		config = function()
 			require("plugin.treesitter")
 		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		lazy = true,
+		opts = true,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		lazy = true,
 	},
 }
