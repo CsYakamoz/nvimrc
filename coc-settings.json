@@ -149,5 +149,6 @@
   },
 
   "prettier.statusItemText": "",
-  "cSpell.showStatus": false
+  "cSpell.showStatus": false,
+  "cSpell.userWords": ["csyakamoz", "leetcode"]
 }
