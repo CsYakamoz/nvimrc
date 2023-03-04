@@ -2,11 +2,9 @@ local toggleterm = require("toggleterm")
 
 toggleterm.setup({
 	open_mapping = [[<M-j>]],
-	start_in_insert = true,
 	direction = "float",
 	float_opts = {
 		border = "curved",
-		winblend = 0,
 	},
 })
 

@@ -240,6 +240,7 @@ return {
 	-- A neovim lua plugin to help easily manage multiple terminal windows
 	{
 		"akinsho/toggleterm.nvim",
+		version = "*",
 		cmd = { "CD", "ToggleTerm" },
 		keys = { "<M-j>" },
 		config = function()
