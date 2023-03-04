@@ -54,7 +54,7 @@ require("gitsigns").setup({
 		delete = { text = "契" },
 		topdelete = { text = "契" },
 	},
-	current_line_blame = true,
+	current_line_blame = false,
 	current_line_blame_formatter_opts = {
 		relative_time = false,
 	},
