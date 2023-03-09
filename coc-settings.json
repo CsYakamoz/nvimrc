@@ -107,14 +107,22 @@
         "gopls": {
           "usePlaceholders": true,
           "semanticTokens": true,
+          "staticcheck": true,
           "hints": {
-            "assignVariableTypes": true,
-            "compositeLiteralFields": true,
-            "compositeLiteralTypes": true,
+            "assignVariableTypes": false,
+            "compositeLiteralFields": false,
+            "compositeLiteralTypes": false,
             "constantValues": true,
             "functionTypeParameters": true,
-            "parameterNames": true,
+            "parameterNames": false,
             "rangeVariableTypes": true
+          },
+          "analyses": {
+            "nilness": true,
+            "shadow": true,
+            "unusedparams": true,
+            "unusedwrite": true,
+            "useany": true
           }
         }
       }
