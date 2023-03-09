@@ -142,7 +142,7 @@ return {
 	-- a neovim plugin that change type character to other characters accroding rules and filter.
 	{
 		"glepnir/mutchar.nvim",
-		ft = { "go" },
+		ft = { "go", "php" },
 		config = function()
 			require("plugin.mutchar")
 		end,
