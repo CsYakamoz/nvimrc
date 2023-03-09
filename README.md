@@ -36,3 +36,7 @@
 
 - [lua-language-server](https://github.com/sumneko/lua-language-server): LSP
 - [stylua](https://github.com/JohnnyMorganz/StyLua): Formatter
+
+### Protobuf
+
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html): Formatter
