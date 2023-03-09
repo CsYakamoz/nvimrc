@@ -80,6 +80,11 @@
     "goimports": {
       "command": "goimports",
       "args": ["-srcdir", "%dirname"]
+    },
+    "clang-format": {
+      "command": "clang-format",
+      "args": ["%filepath"],
+      "rootPatterns": [".clang-format"]
     }
   },
   "diagnostic-languageserver.filetypes": {
@@ -88,7 +93,8 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt",
     "lua": "stylua",
-    "go": "goimports"
+    "go": "goimports",
+    "proto": "clang-format"
   },
 
   "languageserver": {
