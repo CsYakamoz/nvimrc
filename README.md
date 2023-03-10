@@ -21,6 +21,7 @@
 
 - [gopls](https://github.com/golang/tools/tree/master/gopls): LSP
 - [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports): Formatter
+- [golangci-lint](https://github.com/golangci/golangci-lint): Linter
 
 ### PHP
 
