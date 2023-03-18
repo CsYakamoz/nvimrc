@@ -4,8 +4,10 @@ indent_blankline.setup({
 	char = "│",
 	-- char = "┊",
 	-- context_char = "│",
+
 	use_treesitter = true,
 	show_current_context = true,
+	show_current_context_start = true,
 
 	show_end_of_line = false,
 	disable_with_nolist = true,
