@@ -1,5 +1,3 @@
-vim.api.nvim_exec("language en_US", true)
-
 local optionList = {
 	mouse = "",
 	wrap = false,
