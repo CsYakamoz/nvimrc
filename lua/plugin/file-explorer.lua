@@ -3,8 +3,18 @@ local keymap = require("user.keymap")
 local nvim_tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 
-keymap.set("n", "<F4>", ":NvimTreeFindFile<CR>", keymap.opts)
-keymap.set("n", "<M-4>", ":NvimTreeFindFile<CR>", keymap.opts)
+keymap.set(
+	"n",
+	"<F4>",
+	":NvimTreeFindFile<CR>",
+	keymap.opts("NvimTreeFindFile")
+)
+keymap.set(
+	"n",
+	"<M-4>",
+	":NvimTreeFindFile<CR>",
+	keymap.opts("NvimTreeFindFile")
+)
 
 local function resize()
 	local wider = 1 - (vim.g.cs_nvim_tree_resize or 0)
@@ -42,6 +52,13 @@ local function search_file()
 	local dir = get_dir(node)
 
 	require("telescope.builtin").find_files({ cwd = dir })
+end
+
+local function search_todo()
+	local node = api.tree.get_node_under_cursor()
+	local dir = get_dir(node)
+
+	vim.api.nvim_exec("TodoTelescope cwd=" .. dir, true)
 end
 
 -- Migrating To on_attach: https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach
@@ -197,6 +214,7 @@ local on_attach = function(bufnr)
 	vim.keymap.set("n", "<C-a>", resize, opts("Resize"))
 	vim.keymap.set("n", "<Leader>sg", search_text, opts("Search Text"))
 	vim.keymap.set("n", "<Leader>sf", search_file, opts("Search File"))
+	vim.keymap.set("n", "<Leader>st", search_todo, opts("Search Todo"))
 end
 
 nvim_tree.setup({

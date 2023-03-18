@@ -90,6 +90,7 @@ local normal = {
 			r = { "<cmd>Telescope oldfiles only_cwd=true<cr>", "Open Recent File" },
 			R = { "<cmd>Telescope registers<cr>", "Registers" },
 			s = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+			t = { "<cmd>TodoTelescope<cr>", "TodoTelescope" },
 			w = { "<cmd>Telescope grep_string<cr>", "Grep Word String" },
 		},
 

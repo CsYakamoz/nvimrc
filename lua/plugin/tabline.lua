@@ -9,4 +9,4 @@ tabby.setup({
 })
 
 local keymap = require("user.keymap")
-keymap.set("n", "<F2>", ":TabRename ")
+keymap.set("n", "<F2>", ":TabRename ", { desc = "TabRename" })

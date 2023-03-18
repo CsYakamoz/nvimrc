@@ -45,23 +45,23 @@ map(
 	"n",
 	"n",
 	"<Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>" .. call_hlslens,
-	opts
+	opts()
 )
 map(
 	"n",
 	"N",
 	"<Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR>" .. call_hlslens,
-	opts
+	opts()
 )
-map("n", "*", "/\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts)
-map("n", "#", "?\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts)
-map("v", "*", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>" .. call_hlslens, opts)
+map("n", "*", "/\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts())
+map("n", "#", "?\\<<C-R>=expand('<cword>')<CR>\\><CR>" .. call_hlslens, opts())
+map("v", "*", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>" .. call_hlslens, opts())
 map(
 	"n",
 	"z/",
 	":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>"
 		.. call_hlslens,
-	opts
+	opts()
 )
 vim.cmd([[
 function! RangeSearch(direction)

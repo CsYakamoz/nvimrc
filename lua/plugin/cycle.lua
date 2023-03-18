@@ -1,10 +1,20 @@
 local keymap = require("user.keymap")
 
 vim.g.cycle_no_mappings = 1
-keymap.set("n", "<Plug>CycleFallbackNext", "<C-A>", keymap.opts)
-keymap.set("n", "<Plug>CycleFallbackPrev", "<C-X>", keymap.opts)
-keymap.set("n", "<C-a>", "<Plug>CycleNext", keymap.silent_opts)
-keymap.set("n", "<C-x>", "<Plug>CyclePrev", keymap.silent_opts)
+keymap.set(
+	"n",
+	"<Plug>CycleFallbackNext",
+	"<C-A>",
+	keymap.opts("CycleFallbackNext")
+)
+keymap.set(
+	"n",
+	"<Plug>CycleFallbackPrev",
+	"<C-X>",
+	keymap.opts("CycleFallbackPrev")
+)
+keymap.set("n", "<C-a>", "<Plug>CycleNext", keymap.silent_opts("CycleNext"))
+keymap.set("n", "<C-x>", "<Plug>CyclePrev", keymap.silent_opts("CyclePrev"))
 
 vim.cmd([[
 let g:cycle_default_groups = [
