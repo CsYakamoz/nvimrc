@@ -428,4 +428,15 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		lazy = true,
 	},
+
+	-- ✅ Highlight, list and search todo comments in your projects
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoQuickFix", "TodoLocList", "TodoTelescope" },
+		event = "BufReadPre",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("plugin.todo-comment")
+		end,
+	},
 }
