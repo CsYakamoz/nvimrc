@@ -41,3 +41,4 @@
 ### Protobuf
 
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html): Formatter
+- [protolint](https://github.com/yoheimuta/protolint): Linter

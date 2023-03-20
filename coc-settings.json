@@ -90,7 +90,8 @@
   },
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck",
-    "go": "golangci-lint"
+    "go": "golangci-lint",
+    "proto": "protolint"
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt",
