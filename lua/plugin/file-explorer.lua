@@ -212,8 +212,6 @@ local on_attach = function(bufnr)
 end
 
 nvim_tree.setup({
-	hijack_netrw = false,
-	sync_root_with_cwd = true,
 	on_attach = on_attach,
 	filters = {
 		custom = { "vendor", "node_modules" },
@@ -221,7 +219,7 @@ nvim_tree.setup({
 	view = {
 		width = "17%",
 		preserve_window_proportions = true,
-		signcolumn = "no",
+		signcolumn = "yes",
 	},
 	actions = {
 		open_file = {
@@ -232,7 +230,6 @@ nvim_tree.setup({
 	},
 	renderer = {
 		highlight_git = true,
-		group_empty = true,
 		full_name = true,
 		icons = {
 			glyphs = {
@@ -242,8 +239,19 @@ nvim_tree.setup({
 				},
 			},
 		},
+		indent_markers = {
+			enable = true,
+			inline_arrows = false,
+		},
 	},
 	trash = {
 		cmd = "trash-put",
+	},
+	diagnostics = {
+		enable = true,
+		severity = {
+			min = vim.diagnostic.severity.WARN,
+			max = vim.diagnostic.severity.ERROR,
+		},
 	},
 })
