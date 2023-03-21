@@ -206,7 +206,7 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+		cmd = { "NvimTreeToggle" },
 		keys = { "<F4>", "<M-4>" },
 		config = function()
 			require("plugin.file-explorer")

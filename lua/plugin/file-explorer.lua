@@ -3,18 +3,12 @@ local keymap = require("user.keymap")
 local nvim_tree = require("nvim-tree")
 local api = require("nvim-tree.api")
 
-keymap.set(
-	"n",
-	"<F4>",
-	":NvimTreeFindFile<CR>",
-	keymap.opts("NvimTreeFindFile")
-)
-keymap.set(
-	"n",
-	"<M-4>",
-	":NvimTreeFindFile<CR>",
-	keymap.opts("NvimTreeFindFile")
-)
+local function find_file()
+	api.tree.find_file({ focus = true, open = true })
+end
+
+keymap.set("n", "<F4>", find_file, keymap.opts("NvimTreeFindFile"))
+keymap.set("n", "<M-4>", find_file, keymap.opts("NvimTreeFindFile"))
 
 local function resize()
 	local wider = 1 - (vim.g.cs_nvim_tree_resize or 0)
