@@ -239,10 +239,6 @@ nvim_tree.setup({
 				},
 			},
 		},
-		indent_markers = {
-			enable = true,
-			inline_arrows = false,
-		},
 	},
 	trash = {
 		cmd = "trash-put",
