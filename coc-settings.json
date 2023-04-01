@@ -100,36 +100,32 @@
     "proto": "clang-format"
   },
 
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go", "gomod"],
-      "disabledFeatures": ["documentFormatting", "documentRangeFormatting"],
-      "settings": {
-        "gopls": {
-          "usePlaceholders": true,
-          "semanticTokens": true,
-          "staticcheck": true,
-          "hints": {
-            "assignVariableTypes": false,
-            "compositeLiteralFields": false,
-            "compositeLiteralTypes": false,
-            "constantValues": true,
-            "functionTypeParameters": true,
-            "parameterNames": false,
-            "rangeVariableTypes": true
-          },
-          "analyses": {
-            "nilness": true,
-            "shadow": true,
-            "unusedparams": true,
-            "unusedwrite": true,
-            "useany": true
-          }
-        }
-      }
+  "go.disable": {
+    "features": ["documentFormatting", "documentRangeFormatting"]
+  },
+  "go.goplsOptions": {
+    "usePlaceholders": true,
+    "semanticTokens": true,
+    "staticcheck": true,
+    "hints": {
+      "assignVariableTypes": false,
+      "compositeLiteralFields": false,
+      "compositeLiteralTypes": false,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": false,
+      "rangeVariableTypes": true
     },
+    "analyses": {
+      "nilness": true,
+      "shadow": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "useany": true
+    }
+  },
+
+  "languageserver": {
     "lua": {
       "command": "lua-language-server",
       "filetypes": ["lua"],

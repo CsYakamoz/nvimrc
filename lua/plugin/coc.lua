@@ -8,6 +8,7 @@ vim.g.coc_global_extensions = {
 	"coc-tsserver",
 	"coc-clangd",
 	"coc-diagnostic",
+	"coc-go",
 }
 
 vim.cmd([[
