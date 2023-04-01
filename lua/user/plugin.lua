@@ -37,7 +37,7 @@ return {
 		init = function()
 			require("plugin.oscyank")
 		end,
-		cmd = "OSCYankReg",
+		cmd = "OSCYankRegister",
 	},
 
 	-- Wrap and unwrap function arguments, lists, and dictionaries in Vim
