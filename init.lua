@@ -14,7 +14,7 @@ end
 
 safeRequire("user.local-specific")
 
-require("user.gloabl")
+require("user.global")
 require("user.option")
 require("user.abbr")
 require("user.autocmd")

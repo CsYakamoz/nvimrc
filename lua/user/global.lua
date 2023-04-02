@@ -3,10 +3,17 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+--- @param os string
+local function has(os)
+	return vim.fn.has(os) == 1
+end
+
+if has("win32") or has("win64") then
 	vim.g.os = "win"
-elseif vim.fn.has("mac") == 1 then
+elseif has("mac") then
 	vim.g.os = "mac"
+elseif has("wsl") then
+	vim.g.os = "wsl"
 else
 	vim.g.os = "linux"
 end
