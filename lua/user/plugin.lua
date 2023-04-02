@@ -141,6 +141,7 @@ return {
 	{
 		"plasticboy/vim-markdown",
 		ft = { "markdown" },
+		enabled = vim.g.os ~= "wsl",
 		config = function()
 			vim.g.vim_markdown_toc_autofit = 1
 		end,
