@@ -71,6 +71,10 @@ local normal = {
 		s = {
 			name = "Search",
 			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+			B = {
+				"<cmd>Telescope  current_buffer_fuzzy_find<cr>",
+				"Current Buffer Fuzzy Find",
+			},
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>TelescopeProjectFile<CR>", "Find (Git) files" },
 			F = {
