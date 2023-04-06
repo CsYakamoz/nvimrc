@@ -2,6 +2,7 @@ local keymap = require("user.keymap")
 
 local nvim_tree = require("nvim-tree")
 local api = require("nvim-tree.api")
+local view = require("nvim-tree.view")
 
 local function find_file()
 	api.tree.find_file({ focus = true, open = true })
@@ -19,7 +20,7 @@ local function resize()
 		col = math.floor(vim.o.columns / 3)
 	end
 
-	nvim_tree.resize(col)
+	view.resize(col)
 	vim.api.nvim_set_var("cs_nvim_tree_resize", wider)
 end
 
