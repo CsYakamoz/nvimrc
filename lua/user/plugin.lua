@@ -34,10 +34,11 @@ return {
 	-- A Vim plugin to copy text through SSH with OSC52
 	{
 		"ojroques/vim-oscyank",
-		init = function()
+		event = "VeryLazy",
+		cond = vim.g.os ~= "mac",
+		config = function()
 			require("plugin.oscyank")
 		end,
-		cmd = "OSCYankRegister",
 	},
 
 	-- Wrap and unwrap function arguments, lists, and dictionaries in Vim
