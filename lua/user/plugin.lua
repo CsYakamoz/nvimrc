@@ -441,4 +441,6 @@ return {
 			require("plugin.todo-comment")
 		end,
 	},
+
+	{ "Bekaboo/deadcolumn.nvim", event = "VeryLazy" },
 }
