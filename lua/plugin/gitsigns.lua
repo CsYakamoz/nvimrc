@@ -51,8 +51,8 @@ end
 
 require("gitsigns").setup({
 	signs = {
-		delete = { text = "契" },
-		topdelete = { text = "契" },
+		delete = { text = "↳" },
+		topdelete = { text = "↱" },
 	},
 	current_line_blame = false,
 	current_line_blame_formatter_opts = {
