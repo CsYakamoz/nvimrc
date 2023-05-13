@@ -63,6 +63,13 @@
   },
 
   "diagnostic-languageserver.mergeConfig": true,
+  "diagnostic-languageserver.linters": {
+    "protolint": {
+      "command": "protolint",
+      "rootPatterns": [".git"],
+      "debounce": 100
+    }
+  },
   "diagnostic-languageserver.formatters": {
     "shfmt": {
       "command": "shfmt",
