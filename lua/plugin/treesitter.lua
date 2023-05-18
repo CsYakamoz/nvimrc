@@ -1,10 +1,10 @@
 local configs = require("nvim-treesitter.configs")
 
-local highlight_disabl_list = { "bash" }
+local highlight_disabl_list = { "bash", "ini" }
 local function whether_disable_highlight(lang, buf)
 	for _, val in ipairs(highlight_disabl_list) do
 		if lang == val then
-			return false
+			return true
 		end
 	end
 
