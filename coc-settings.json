@@ -85,9 +85,8 @@
         "-"
       ]
     },
-    "goimports": {
-      "command": "goimports",
-      "args": ["-srcdir", "%dirname"]
+    "golines": {
+      "command": "golines"
     },
     "clang-format": {
       "command": "clang-format",
@@ -103,7 +102,7 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt",
     "lua": "stylua",
-    "go": "goimports",
+    "go": "golines",
     "proto": "clang-format"
   },
 
