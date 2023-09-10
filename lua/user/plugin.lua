@@ -155,15 +155,6 @@ return {
 		config = true,
 	},
 
-	-- a neovim plugin that change type character to other characters accroding rules and filter.
-	{
-		"glepnir/mutchar.nvim",
-		ft = { "go", "php" },
-		config = function()
-			require("plugin.mutchar")
-		end,
-	},
-
 	-- markdown preview plugin for (neo)vim
 	-- TODO: lazy load markdown-preview with cmd instead ft, issues: https://github.com/wbthomason/packer.nvim/issues/620
 	{
