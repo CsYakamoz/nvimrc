@@ -434,4 +434,9 @@ return {
 	},
 
 	{ "Bekaboo/deadcolumn.nvim", event = "VeryLazy" },
+
+	{
+		"williamboman/mason.nvim",
+		config = true,
+	},
 }
