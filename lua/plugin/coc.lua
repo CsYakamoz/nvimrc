@@ -9,6 +9,7 @@ vim.g.coc_global_extensions = {
 	"coc-clangd",
 	"coc-diagnostic",
 	"coc-go",
+	"@yaegassy/coc-intelephense",
 }
 
 vim.cmd([[

@@ -156,14 +156,6 @@
       "args": ["start"],
       "filetypes": ["sh", "zsh"],
       "ignoredRootPaths": ["~"]
-    },
-    "intelephense": {
-      "command": "intelephense",
-      "args": ["--stdio"],
-      "filetypes": ["php"],
-      "initializationOptions": {
-        "storagePath": "/tmp/intelephense"
-      }
     }
   },
 
