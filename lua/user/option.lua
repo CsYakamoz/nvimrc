@@ -21,9 +21,6 @@ local optionList = {
 	signcolumn = "yes",
 	synmaxcol = 300,
 
-	-- work with listchars(see below)
-	list = true,
-
 	-- fold
 	foldmethod = "indent",
 	foldlevelstart = 10,
@@ -69,5 +66,3 @@ local optionList = {
 for k, v in pairs(optionList) do
 	vim.opt[k] = v
 end
-
-vim.opt.listchars = { extends = ">", tab = "▸ ", trail = "·" }
