@@ -70,7 +70,7 @@ local normal = {
 
 		s = {
 			name = "Search",
-			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+			b = { "<cmd>Telescope buffers sort_lastused=true<cr>", "Buffers" },
 			B = {
 				"<cmd>Telescope  current_buffer_fuzzy_find<cr>",
 				"Current Buffer Fuzzy Find",
