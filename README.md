@@ -10,6 +10,7 @@
 - [neovim(npm)](https://github.com/neovim/node-client)
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
 - [fzf](https://github.com/junegunn/fzf)
+- [fd](https://github.com/sharkdp/fd)
 
 ### Mac Only
 
@@ -17,11 +18,23 @@
 
 ## Language Requirements
 
+### Common
+
+- [CSpell](https://cspell.org/): Spell Checker for Code
+- [Prettier](https://prettier.io/): Formatter for JS, JSON, Markdown, etc...
+- [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)
+
+### JavaScript
+
+- [tsserver](<https://github.com/microsoft/TypeScript/wiki/Standalone-Server-(tsserver)>)
+- [eslint](https://eslint.org/)
+
 ### Go
 
 - [gopls](https://github.com/golang/tools/tree/master/gopls): LSP
 - [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports): Formatter
 - [golangci-lint](https://github.com/golangci/golangci-lint): Linter
+- [golines](https://github.com/segmentio/golines): Formatter
 
 ### PHP
 
@@ -42,3 +55,7 @@
 
 - [clang-format](https://clang.llvm.org/docs/ClangFormat.html): Formatter
 - [protolint](https://github.com/yoheimuta/protolint): Linter
+
+### CPP
+
+- [clangd](https://clangd.llvm.org/)
