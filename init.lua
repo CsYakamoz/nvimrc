@@ -1,18 +1,20 @@
 --- @param path string module path
-local function safeRequire(path)
+local function safe_require(path)
 	local ok, _ = pcall(require, path)
-	if not ok then
-		print(
-			string.format(
-				"%s/%s.lua is not exist",
-				vim.fn.stdpath("config"),
-				path:gsub("%.", "/")
-			)
-		)
+	if ok then
+		return
 	end
+
+	print(
+		string.format(
+			"%s/%s.lua is not exist",
+			vim.fn.stdpath("config"),
+			path:gsub("%.", "/")
+		)
+	)
 end
 
-safeRequire("user.local-specific")
+safe_require("user.local-specific")
 
 require("user.global")
 require("user.option")
@@ -34,7 +36,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("user.plugin")
 
-safeRequire("user.colorscheme.color")
+safe_require("user.colorscheme.color")
 
 require("user.input-method")
 require("user.move-tab")
